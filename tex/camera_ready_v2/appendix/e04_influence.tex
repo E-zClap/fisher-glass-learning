@@ -33,7 +33,7 @@ J_g(t,a)=\frac{J_g+t\eta_gM_{g,a}}{1+t\eta_g}
 \end{aligned}
 \label{eq:influence-ridge-normalized-gain}
 \end{equation}
-Indeed $Q_gC_gQ_g=Q_g-\rho Q_g^2$, so $p_g^\top J_gp_g=\lambda_g-\rho\lVert Q_gB_g^\top u_g\rVert^2$; the correction vanishes at $\rho=0$. Rank-one gain is the squared efficient residual $[u_g^\top(s_{T,a}-B_gQ_gs_{N,a})]^2$. Replacement instead uses the allocated new-minus-removed contribution. For one observation appended to group $g$, its indicator and original sample-count scaling enter $\eta_g$; they cannot be omitted when claiming a normalized-augmentation derivative.
+Indeed $Q_gC_gQ_g=Q_g-\rho Q_g^2$, so $p_g^\top J_gp_g=\lambda_g-\rho\lVert Q_gB_g^\top u_g\rVert^2$; the correction vanishes at $\rho=0$. The additive rank-one gain is $\eta_g$ times the squared residual $[u_g^\top(s_{T,a}-B_gQ_gs_{N,a})]^2$. This is the efficient residual for $\rho=0$ and the corresponding ridge residual for $\rho>0$. Replacement instead uses the allocated new-minus-removed contribution. For one observation appended to group $g$, its indicator and original sample-count scaling enter $\eta_g$; they cannot be omitted when claiming a normalized-augmentation derivative.
 
 \paragraph{Tail sensitivity, including nonsmooth cases.}
 Fix $\varepsilon>0$ and $0<\alpha<1$, and put $L_g=(\lambda_g+\varepsilon)^{-1}$. Appendix~\ref{app:theory-certificate}'s finite CVaR dual uses

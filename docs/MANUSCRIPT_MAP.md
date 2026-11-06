@@ -1,6 +1,8 @@
-# Manuscript map: camera-ready-v2 to camera-ready-v3
+# Manuscript map: camera-ready-v2 to camera-ready-v3/v4
 
 The current PDF has 43 pages: main text 1–10, references 11–12, scientific appendices 13–35, and declarations/checklist 36–43. The main text is unchanged. The scientific appendix reduction (41 to 23 pages) consolidates presentation while preserving the proofs, assumptions, essential controls and uncertainty.
+
+Camera-ready-v4 applies seven wording clarifications to v3. Table and equation numbering, numerical values, the page budget, and the crosswalk below are unchanged. The revised caption of Table E.2 now appears on page 31.
 
 ## Table crosswalk
 

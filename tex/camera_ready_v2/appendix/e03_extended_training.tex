@@ -6,7 +6,7 @@ MobileNetV3-small is fine-tuned for 10 epochs (batch 128, evaluation batch 512, 
 
 \begin{table}[htbp]
 \centering\small
-\caption{End-to-end Waterbirds frontier. FG entries are means $\pm$ sample standard deviations over five seeds, not confidence intervals. The Group DRO reference is the reported comparator at $\lambda_{\FG}=10^{-4}$; each sweep reran its baseline, so this is not a shared paired reference for every coefficient.}
+\caption{End-to-end Waterbirds frontier. Each non-reference row uses Group DRO + FG. FG entries are means $\pm$ sample standard deviations over five seeds, not confidence intervals. The Group DRO reference is the reported comparator at $\lambda_{\FG}=10^{-4}$; each sweep reran its baseline, so this is not a shared paired reference for every coefficient.}
 \label{tab:e-frontier-performance}\label{tab:e-frontier-information}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -36,7 +36,7 @@ $10^{-2}$ & $0.809\pm0.076$ & $1.23\pm0.12$ & \\
 At $10^{-4}$ the certificate rises from $.259$ to $.502$ and inverse p95 falls from $3.68$ to $2.10$; at $10^{-2}$ worst-group accuracy is only $22.7\%$. Historical report summaries support this table; Appendix~\ref{app:estimation-certification}'s retained fresh audits are a separate cohort.
 
 \paragraph{Prospective information training.}
-Use Appendix~\ref{app:prospective-intervention}'s shared model, 50-epoch schedule and seeds 22--26. FG adds coefficients $\{.003,.01,.03\}$ and a background probe trained on detached features (AdamW learning rate $.001$, default weight decay $.01$), whose scores are detached in the penalty. After one penalty-free epoch, training uses $\alpha=.75$, ridge $.001$, batch standard-deviation guard $10^{-6}$, groups of at least six observations with nuisance standard deviation at least $.05$, and a $.05$ information floor before direct inversion. This floor differs from audit stabilization.
+Use Appendix~\ref{app:prospective-intervention}'s shared model, 50-epoch schedule and seeds 22--26. Backbone fine-tuning uses AdamW with learning rate and weight decay $10^{-4}$. FG adds coefficients $\{.003,.01,.03\}$ and a background probe trained on detached features (AdamW learning rate $.001$, default weight decay $.01$), whose scores are detached in the penalty. After one penalty-free epoch, training uses $\alpha=.75$, ridge $.001$, batch standard-deviation guard $10^{-6}$, groups of at least six observations with nuisance standard deviation at least $.05$, and a $.05$ information floor before direct inversion. This floor differs from audit stabilization.
 
 Select the final model with largest validation certificate among candidates whose overall validation accuracy is at least ERM minus $.01$; an empty set triggers a recorded unconstrained fallback. Choices are $[.01,.03,.01,.003,.01]$, with fallbacks in seeds 22 and 24. All audit objects are frozen before intervention scoring. In the current v2 rerun, FG raises the validation certificate from $.289$ to $.330$, but the controlled drop is $52.9$ versus $52.6$ percentage points for ERM and the originally-correct flip rate is $57.7\%$ versus $56.4\%$. Thus accuracy matching fails in two seeds and background sensitivity persists.
 
@@ -95,7 +95,7 @@ The risk allowance uses the minimizer's SE for all candidates. Bonferroni adjust
 
 \begin{table}[htbp]
 \centering\small
-\caption{Post hoc coefficient selection, five paired seeds. Brackets are 95\% Student-$t$ intervals. Exactly identical policies share rows; the text explains both coincidences. Coefficient counts are $\lambda:\text{number of seeds}$.}
+\caption{Post hoc coefficient selection, five paired seeds. Accuracies are test results; hidden information is predictive projected information on test slices defined by the corresponding validation-rediscovered, frozen gates. Brackets are 95\% Student-$t$ intervals. Policies selecting identical models across these five seeds share rows; the text explains both coincidences. Coefficient counts are $\lambda:\text{number of seeds}$.}
 \label{tab:e-groupfree-performance}\label{tab:e-groupfree-information}
 \begin{tabular}{@{}lrr@{}}
 \toprule

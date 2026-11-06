@@ -2,7 +2,7 @@
 \subsection{Experimental Quantities and Aggregation}
 \label{app:experimental-conventions}
 
-Table~\ref{tab:d-experiment-overview} identifies the operational targets; Appendix~\ref{app:operational-matrices} defines their normalization. Real-data audits use nuisance ridge $10^{-3}$ and stabilization $10^{-8}$; synthetic audits use $10^{-12}$. Certificates use $\alpha=0.95$. Primary predefined-group coordinates use training moments; prospective normalization is specified below.
+Table~\ref{tab:d-experiment-overview} identifies the operational targets; Appendix~\ref{app:operational-matrices} defines their normalization. Real-data audits use nuisance ridge $10^{-3}$ and stabilization $10^{-8}$. Synthetic stabilization is $\varepsilon=10^{-12}$. Certificates use $\alpha=0.95$. Primary predefined-group coordinates use training moments; prospective normalization is specified below.
 
 \begin{table}[htbp]
 \centering\small
@@ -124,7 +124,7 @@ Reapplying eligibility within each seed leaves LL and WW. Minimum validation acc
 \input{appendix/prospective_reanalysis.tex}
 
 \paragraph{Auxiliary flip prediction.}
-Originally correct predictions contribute two opposite-type donor rows per bird. Baseline predictors are uncalibrated NLL, calibrated true-label confidence, absolute raw logit and standardized task logit $z$. Augmentation adds $\beta_gb$ and $|z-\beta_gb|$, with $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ frozen from the validation block. Both models use identical five-fold, nonshuffled CUB-species \texttt{GroupKFold} splits, keeping species and donor pairs together. Logistic regression uses an intercept, $\ell_2$ penalty, $C=1$, L-BFGS, tolerance $10^{-4}$, maximum 5,000 iterations, seed 0 and no class weighting or tuning. All columns, including group indicators, use training-fold means/population deviations (deviations below $10^{-9}$ become one).
+Originally correct predictions contribute two opposite-type donor rows per bird. Baseline predictors are uncalibrated NLL, calibrated true-label confidence, absolute raw logit and standardized task logit $z$. Augmentation adds $\beta_gb$ and $|z-\beta_gb|$, with $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ frozen from the validation block. Both models use identical five-fold, nonshuffled CUB-species \texttt{GroupKFold} splits, keeping species and donor pairs together. Logistic regression uses an intercept, $\ell_2$ penalty, $C=1$, L-BFGS, tolerance $10^{-4}$, maximum 5,000 iterations, seed 0 and no class weighting or tuning. All columns, including group indicators, are centered and scaled using training-fold means and population standard deviations; standard deviations below $10^{-9}$ are replaced by one.
 
 Pool out-of-fold predictions within seed before computing average precision (AUPRC), AUROC and mean log likelihood. For clipped probabilities $q\in[10^{-12},1-10^{-12}]$,
 \begin{equation}
@@ -308,7 +308,7 @@ Hidden-loss & 0.060 & 0.177 & Loss-coordinate stress control \\
 \end{table}
 
 
-Random nuisance is independent standard normal; under-projection sets it to zero. Over-projection uses standardized task score plus Gaussian noise of standard deviation $0.01$ and deliberately erases task information. ``Hidden-loss'' is observed test loss with original groups fixed. These three stress coordinates use evaluated-array normalization and are not independently learned nuisance scores. The metadata/random contrast is $0.587$/$0.588$ on CivilComments, versus probe/random $0.165$/$0.482$ on Waterbirds, illustrating specification dependence.
+Random nuisance is independent standard normal; under-projection sets it to zero. Over-projection uses standardized task score plus Gaussian noise of standard deviation $0.01$ and deliberately erases task information. ``Hidden-loss'' is observed test loss with original groups fixed. The random, over-projected, and observed-loss coordinates use evaluated-array normalization and are not independently learned nuisance scores. The metadata/random contrast is $0.587$/$0.588$ on CivilComments, versus probe/random $0.165$/$0.482$ on Waterbirds, illustrating specification dependence.
 
 The versioned artifact (see the \hyperref[sec:artifact-availability]{artifact availability statement}) retains execution commands, full-precision matrices and overlaps, run-history ledgers and expanded source tables, with original cohort provenance. Those records supplement the scientific definitions and controls above.
 \FloatBarrier
