@@ -1,0 +1,466 @@
+{
+  "args": {
+    "out_dir": "build/prospective_shift_v1_rerun",
+    "tags": null,
+    "folds": 5,
+    "seed": 0
+  },
+  "outcome": "flip under the opposite-type background swap, among originally-correct predictions",
+  "baseline_features": [
+    "nll",
+    "confidence_true",
+    "margin",
+    "z"
+  ],
+  "added_features": [
+    "nuisance_component",
+    "abs_transverse_residual"
+  ],
+  "cross_fitting": "GroupKFold over CUB species",
+  "selected_slice": "landbird/land",
+  "variant_notes": {
+    "pooled_with_group": "all groups; group indicators in the baseline (most stringent: the baseline already knows the slice, which is what the certificate outputs)",
+    "pooled_no_group": "all groups; no group indicator (the practitioner's situation, where the subpopulation structure is unknown)",
+    "selected_slice": "restricted to the frozen selected slice, matching the bin analysis"
+  },
+  "summary": {
+    "pooled_with_group": {
+      "n_runs": 5,
+      "n_rows": {
+        "mean": 9252.4,
+        "ci95": 105.4283253020743,
+        "n": 5
+      },
+      "flip_base_rate": {
+        "mean": 0.2122416747492893,
+        "ci95": 0.012528811766494672,
+        "n": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.3550881628969928,
+        "ci95": 0.009137702255392571,
+        "n": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.3539480097962314,
+        "ci95": 0.008438297772676415,
+        "n": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.0011401531007613778,
+        "ci95": 0.00116620098104162,
+        "n": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.5861987757766535,
+        "ci95": 0.024035280902323274,
+        "n": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.5813200404904031,
+        "ci95": 0.02405377771840184,
+        "n": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.8584108406542965,
+        "ci95": 0.005678457068193085,
+        "n": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.8617631571690154,
+        "ci95": 0.004842669525164792,
+        "n": 5
+      },
+      "delta_auprc": {
+        "mean": -0.004878735286250357,
+        "ci95": 0.0018409104911846596,
+        "n": 5
+      },
+      "delta_auroc": {
+        "mean": 0.0033523165147188783,
+        "ci95": 0.0022517309882032115,
+        "n": 5
+      },
+      "n_runs_auprc_improved": 0,
+      "n_runs_auroc_improved": 5,
+      "lr_p_value_max": 0.027681949309074843,
+      "n_runs_lr_significant_05": 5
+    },
+    "pooled_no_group": {
+      "n_runs": 5,
+      "n_rows": {
+        "mean": 9252.4,
+        "ci95": 105.4283253020743,
+        "n": 5
+      },
+      "flip_base_rate": {
+        "mean": 0.2122416747492893,
+        "ci95": 0.012528811766494672,
+        "n": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.49981869554423985,
+        "ci95": 0.018592513703365527,
+        "n": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.4817391405987744,
+        "ci95": 0.015192502308239986,
+        "n": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.018079554945465457,
+        "ci95": 0.0043645340179819265,
+        "n": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.2967831398198601,
+        "ci95": 0.024936905424534632,
+        "n": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.33203087897333255,
+        "ci95": 0.022294319721855676,
+        "n": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.6233648616846924,
+        "ci95": 0.02005760655349592,
+        "n": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.7135323642170668,
+        "ci95": 0.019011996821357836,
+        "n": 5
+      },
+      "delta_auprc": {
+        "mean": 0.03524773915347248,
+        "ci95": 0.012827857498554782,
+        "n": 5
+      },
+      "delta_auroc": {
+        "mean": 0.09016750253237427,
+        "ci95": 0.006912074242647328,
+        "n": 5
+      },
+      "n_runs_auprc_improved": 5,
+      "n_runs_auroc_improved": 5,
+      "lr_p_value_max": 5.5919211702743566e-55,
+      "n_runs_lr_significant_05": 5
+    },
+    "selected_slice": {
+      "n_runs": 5,
+      "n_rows": {
+        "mean": 4451.2,
+        "ci95": 6.148279759412383,
+        "n": 5
+      },
+      "flip_base_rate": {
+        "mean": 0.2937666478129609,
+        "ci95": 0.03022280139057806,
+        "n": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.5496293992977785,
+        "ci95": 0.01612444028096814,
+        "n": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.5274518769531517,
+        "ci95": 0.011669156202069098,
+        "n": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.022177522344626943,
+        "ci95": 0.0047640304323472065,
+        "n": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.49451519705018737,
+        "ci95": 0.046474156806097934,
+        "n": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.5428885988534813,
+        "ci95": 0.05098642418581681,
+        "n": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.6981605810381504,
+        "ci95": 0.017234400040820892,
+        "n": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.7344030447945536,
+        "ci95": 0.01666144869895385,
+        "n": 5
+      },
+      "delta_auprc": {
+        "mean": 0.04837340180329395,
+        "ci95": 0.006019270567541984,
+        "n": 5
+      },
+      "delta_auroc": {
+        "mean": 0.03624246375640343,
+        "ci95": 0.00764883177688047,
+        "n": 5
+      },
+      "n_runs_auprc_improved": 5,
+      "n_runs_auroc_improved": 5,
+      "lr_p_value_max": 6.1213161290396506e-33,
+      "n_runs_lr_significant_05": 5
+    }
+  },
+  "runs": [
+    {
+      "tag": "erm_lam0_seed17",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9266,
+          "n_species": 200,
+          "base_rate": 0.2073170731707317,
+          "heldout_loglik_per_row_baseline": -0.3458296951539111,
+          "heldout_loglik_per_row_with_fisher": -0.34444313436096136,
+          "heldout_loglik_gain_per_row": 0.001386560792949735,
+          "auprc_baseline": 0.6018330760240387,
+          "auprc_with_fisher": 0.5971572101598982,
+          "auroc_baseline": 0.8632168405594857,
+          "auroc_with_fisher": 0.8669275383786171,
+          "lr_statistic": 31.45511874879594,
+          "lr_df": 2,
+          "lr_p_value": 1.477773076484796e-07
+        },
+        "pooled_no_group": {
+          "n_rows": 9266,
+          "n_species": 200,
+          "base_rate": 0.2073170731707317,
+          "heldout_loglik_per_row_baseline": -0.48960603782115053,
+          "heldout_loglik_per_row_with_fisher": -0.4703798041008239,
+          "heldout_loglik_gain_per_row": 0.0192262337203266,
+          "auprc_baseline": 0.31183560722765846,
+          "auprc_with_fisher": 0.3404980012962168,
+          "auroc_baseline": 0.6335428811789299,
+          "auroc_with_fisher": 0.728981601014051,
+          "lr_statistic": 368.0702453424183,
+          "lr_df": 2,
+          "lr_p_value": 1.1873034985328932e-80
+        },
+        "selected_slice": {
+          "n_rows": 4446,
+          "n_species": 154,
+          "base_rate": 0.2732793522267207,
+          "heldout_loglik_per_row_baseline": -0.5403204229863469,
+          "heldout_loglik_per_row_with_fisher": -0.5219477812365724,
+          "heldout_loglik_gain_per_row": 0.018372641749774498,
+          "auprc_baseline": 0.4590013200408463,
+          "auprc_with_fisher": 0.5045047149414726,
+          "auroc_baseline": 0.6878316157899362,
+          "auroc_with_fisher": 0.7222395441281921,
+          "lr_statistic": 165.06560869150235,
+          "lr_df": 2,
+          "lr_p_value": 1.4337006978742706e-36
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed18",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9128,
+          "n_species": 200,
+          "base_rate": 0.23510078878177038,
+          "heldout_loglik_per_row_baseline": -0.3696302620083162,
+          "heldout_loglik_per_row_with_fisher": -0.36797181470885193,
+          "heldout_loglik_gain_per_row": 0.0016584472994642884,
+          "auprc_baseline": 0.6120386998679382,
+          "auprc_with_fisher": 0.6070939793933189,
+          "auroc_baseline": 0.8626427348930535,
+          "auroc_with_fisher": 0.8654141404217955,
+          "lr_statistic": 34.38440052741589,
+          "lr_df": 2,
+          "lr_p_value": 3.4160348581284666e-08
+        },
+        "pooled_no_group": {
+          "n_rows": 9128,
+          "n_species": 200,
+          "base_rate": 0.23510078878177038,
+          "heldout_loglik_per_row_baseline": -0.5321931911169988,
+          "heldout_loglik_per_row_with_fisher": -0.5098786687045895,
+          "heldout_loglik_gain_per_row": 0.022314522412409218,
+          "auprc_baseline": 0.29476624283625874,
+          "auprc_with_fisher": 0.34924439542014774,
+          "auroc_baseline": 0.6148048650197032,
+          "auroc_with_fisher": 0.6970576449680352,
+          "lr_statistic": 423.3944223916078,
+          "lr_df": 2,
+          "lr_p_value": 1.1509841507338712e-92
+        },
+        "selected_slice": {
+          "n_rows": 4444,
+          "n_species": 154,
+          "base_rate": 0.34405940594059403,
+          "heldout_loglik_per_row_baseline": -0.5653398434175683,
+          "heldout_loglik_per_row_with_fisher": -0.5396854410351247,
+          "heldout_loglik_gain_per_row": 0.025654402382443528,
+          "auprc_baseline": 0.5762694697021666,
+          "auprc_with_fisher": 0.62809369404449,
+          "auroc_baseline": 0.7327549592946881,
+          "auroc_with_fisher": 0.765683576637832,
+          "lr_statistic": 232.74141320455055,
+          "lr_df": 2,
+          "lr_p_value": 2.8896435066667456e-51
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed19",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9134,
+          "n_species": 200,
+          "base_rate": 0.20921830523319465,
+          "heldout_loglik_per_row_baseline": -0.34873056281770093,
+          "heldout_loglik_per_row_with_fisher": -0.34877068740712597,
+          "heldout_loglik_gain_per_row": -4.0124589425051055e-05,
+          "auprc_baseline": 0.6018960278107193,
+          "auprc_with_fisher": 0.5954963181508213,
+          "auroc_baseline": 0.8634400777851263,
+          "auroc_with_fisher": 0.8645609086561599,
+          "lr_statistic": 7.173949455393085,
+          "lr_df": 2,
+          "lr_p_value": 0.027681949309074843
+        },
+        "pooled_no_group": {
+          "n_rows": 9134,
+          "n_species": 200,
+          "base_rate": 0.20921830523319465,
+          "heldout_loglik_per_row_baseline": -0.4844452015363809,
+          "heldout_loglik_per_row_with_fisher": -0.47178847378459177,
+          "heldout_loglik_gain_per_row": 0.012656727751789115,
+          "auprc_baseline": 0.33678312658025267,
+          "auprc_with_fisher": 0.3578909583466347,
+          "auroc_baseline": 0.6570625928728023,
+          "auroc_with_fisher": 0.7440969827690818,
+          "lr_statistic": 249.84171441343096,
+          "lr_df": 2,
+          "lr_p_value": 5.5919211702743566e-55
+        },
+        "selected_slice": {
+          "n_rows": 4452,
+          "n_species": 154,
+          "base_rate": 0.2619047619047619,
+          "heldout_loglik_per_row_baseline": -0.5319815581217044,
+          "heldout_loglik_per_row_with_fisher": -0.5159017027526301,
+          "heldout_loglik_gain_per_row": 0.01607985536907425,
+          "auprc_baseline": 0.4412634653571903,
+          "auprc_with_fisher": 0.48020712046503483,
+          "auroc_baseline": 0.6887651129747387,
+          "auroc_with_fisher": 0.7176372760784617,
+          "lr_statistic": 148.34706188327073,
+          "lr_df": 2,
+          "lr_p_value": 6.1213161290396506e-33
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed20",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9398,
+          "n_species": 200,
+          "base_rate": 0.21344967014258354,
+          "heldout_loglik_per_row_baseline": -0.36257189346186314,
+          "heldout_loglik_per_row_with_fisher": -0.35960041323540465,
+          "heldout_loglik_gain_per_row": 0.0029714802264584634,
+          "auprc_baseline": 0.5679751791391278,
+          "auprc_with_fisher": 0.5664649335280248,
+          "auroc_baseline": 0.8502304908866475,
+          "auroc_with_fisher": 0.8578048322564774,
+          "lr_statistic": 64.79654704841414,
+          "lr_df": 2,
+          "lr_p_value": 8.503712821911475e-15
+        },
+        "pooled_no_group": {
+          "n_rows": 9398,
+          "n_species": 200,
+          "base_rate": 0.21344967014258354,
+          "heldout_loglik_per_row_baseline": -0.5103508205455979,
+          "heldout_loglik_per_row_with_fisher": -0.4872249754753866,
+          "heldout_loglik_gain_per_row": 0.023125845070211273,
+          "auprc_baseline": 0.26980683160591923,
+          "auprc_with_fisher": 0.31681255177394313,
+          "auroc_baseline": 0.5968054305697625,
+          "auroc_with_fisher": 0.6979792494809942,
+          "lr_statistic": 449.21687739228946,
+          "lr_df": 2,
+          "lr_p_value": 2.843115384367406e-98
+        },
+        "selected_slice": {
+          "n_rows": 4462,
+          "n_species": 154,
+          "base_rate": 0.31465710443747197,
+          "heldout_loglik_per_row_baseline": -0.573216830855898,
+          "heldout_loglik_per_row_with_fisher": -0.5437175167274777,
+          "heldout_loglik_gain_per_row": 0.02949931412842031,
+          "auprc_baseline": 0.5128397097184199,
+          "auprc_with_fisher": 0.5701326143544003,
+          "auroc_baseline": 0.6860315943049756,
+          "auroc_with_fisher": 0.7374091402868381,
+          "lr_statistic": 265.2308655262086,
+          "lr_df": 2,
+          "lr_p_value": 2.5459468665913466e-58
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed21",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9336,
+          "n_species": 200,
+          "base_rate": 0.19612253641816624,
+          "heldout_loglik_per_row_baseline": -0.34867840104317266,
+          "heldout_loglik_per_row_with_fisher": -0.3489539992688132,
+          "heldout_loglik_gain_per_row": -0.0002755982256405465,
+          "auprc_baseline": 0.5472508960414434,
+          "auprc_with_fisher": 0.5403877612199524,
+          "auroc_baseline": 0.8525240591471697,
+          "auroc_with_fisher": 0.8541083661320271,
+          "lr_statistic": 11.794989849890044,
+          "lr_df": 2,
+          "lr_p_value": 0.0027463159363877777
+        },
+        "pooled_no_group": {
+          "n_rows": 9336,
+          "n_species": 200,
+          "base_rate": 0.19612253641816624,
+          "heldout_loglik_per_row_baseline": -0.48249822670107095,
+          "heldout_loglik_per_row_with_fisher": -0.46942378092847986,
+          "heldout_loglik_gain_per_row": 0.01307444577259108,
+          "auprc_baseline": 0.2707238908492113,
+          "auprc_with_fisher": 0.2957084880297204,
+          "auroc_baseline": 0.6146085387822646,
+          "auroc_with_fisher": 0.6995463428531717,
+          "lr_statistic": 288.680579670523,
+          "lr_df": 2,
+          "lr_p_value": 2.0597220023171373e-63
+        },
+        "selected_slice": {
+          "n_rows": 4452,
+          "n_species": 154,
+          "base_rate": 0.2749326145552561,
+          "heldout_loglik_per_row_baseline": -0.537288341107375,
+          "heldout_loglik_per_row_with_fisher": -0.5160069430139529,
+          "heldout_loglik_gain_per_row": 0.02128139809342212,
+          "auprc_baseline": 0.48320202043231353,
+          "auprc_with_fisher": 0.5315048504620086,
+          "auroc_baseline": 0.6954196228264127,
+          "auroc_with_fisher": 0.7290456868414446,
+          "lr_statistic": 193.89925645277617,
+          "lr_df": 2,
+          "lr_p_value": 7.857989401290818e-43
+        }
+      }
+    }
+  ]
+}

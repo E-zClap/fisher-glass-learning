@@ -1,0 +1,13 @@
+candidate_set,selector,selection_counts,mean_controlled_drop_pp,normal_95_halfwidth_pp,sample_sd_pp,n_seeds
+original_eligible_set,min_surviving_fraction,waterbird/water: 5/5,52.585669781931465,1.390186488302419,1.5859956577785335,5
+original_eligible_set,min_validation_accuracy,waterbird/water: 5/5,52.585669781931465,1.390186488302419,1.5859956577785335,5
+original_eligible_set,max_validation_nll,waterbird/water: 5/5,52.585669781931465,1.390186488302419,1.5859956577785335,5
+original_eligible_set,min_raw_information,landbird/land: 5/5,26.696230598669622,1.7653656080288744,2.014019135047353,5
+original_eligible_set,min_absolute_projected_information,landbird/land: 5/5,26.696230598669622,1.7653656080288744,2.014019135047353,5
+original_eligible_set,min_normalized_probability_weighted_fraction,waterbird/water: 5/5,52.585669781931465,1.390186488302419,1.5859956577785335,5
+all_four_groups,min_surviving_fraction,waterbird/water: 5/5,52.585669781931465,1.390186488302419,1.5859956577785335,5
+all_four_groups,min_validation_accuracy,waterbird/land: 5/5,-51.71339563862929,2.0210730251477034,2.305743199857861,5
+all_four_groups,max_validation_nll,waterbird/land: 5/5,-51.71339563862929,2.0210730251477034,2.305743199857861,5
+all_four_groups,min_raw_information,landbird/land: 4/5; landbird/water: 1/5,15.764966740576497,21.313012253207017,24.314971532375942,5
+all_four_groups,min_absolute_projected_information,landbird/water: 5/5,-26.895787139689578,1.9945257306442796,2.2754566921393087,5
+all_four_groups,min_normalized_probability_weighted_fraction,landbird/water: 4/5; waterbird/water: 1/5,-11.455996021302608,32.179183784926636,36.71165428752803,5

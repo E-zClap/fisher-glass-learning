@@ -1,0 +1,103 @@
+{
+  "archive": "experiments/waterbirds_hidden_slice_v2_corrected_results.tar.gz",
+  "archive_sha256": "427620ed2213c133fce6fca9ca07a02983dbfa70f20311abd7a6bbdcc2605463",
+  "archive_member_sha256": {
+    "waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json": "ed7a65fc15b50d71a77c0a854ca88a76a9c9137f7ebc505bb69b0c2eda6335e8",
+    "waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json": "9608a3f9f337bce7d4566f3b016a8159a0445ce559c35ba585c1cc3b8790892e",
+    "waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json": "96feab573fa563027ca8c277b2f85c19d639e6f078c3c13797ef7559dcb14a94",
+    "waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json": "fc2dc772015792b78c903fc41372bfbda6626510458879807ffe079591b76d5f",
+    "waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json": "2d79df4f0bb5237be4b7caa306b9a73d220f44cce10a92be3f74ce904dc858e2",
+    "waterbirds_hidden_slice_v2/aggregate.json": "8d24974b87cc010fbe4ab58a225e24df5cd7358e135268a0d9462de844663633"
+  },
+  "class_mapping": {
+    "0": "landbird",
+    "1": "waterbird"
+  },
+  "seeds": [
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "selectors": [
+    {
+      "selector": "Fisher search, fixed CLIP direction",
+      "landbird_seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "waterbird_seeds": [],
+      "landbird_count": 5,
+      "waterbird_count": 0,
+      "class_choice_rule": "independently selected"
+    },
+    {
+      "selector": "High loss",
+      "landbird_seeds": [
+        17,
+        18,
+        21
+      ],
+      "waterbird_seeds": [
+        19,
+        20
+      ],
+      "landbird_count": 3,
+      "waterbird_count": 2,
+      "class_choice_rule": "independently selected"
+    },
+    {
+      "selector": "Random slice",
+      "landbird_seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "waterbird_seeds": [],
+      "landbird_count": 5,
+      "waterbird_count": 0,
+      "class_choice_rule": "inherits CLIP Fisher class"
+    },
+    {
+      "selector": "Constant class-conditional gate",
+      "landbird_seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "waterbird_seeds": [],
+      "landbird_count": 5,
+      "waterbird_count": 0,
+      "class_choice_rule": "inherits CLIP Fisher class"
+    },
+    {
+      "selector": "Fisher search, random direction",
+      "landbird_seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "waterbird_seeds": [],
+      "landbird_count": 5,
+      "waterbird_count": 0,
+      "class_choice_rule": "independently selected"
+    }
+  ],
+  "mean_jaccard_all_five": 0.000666420027130349,
+  "mean_jaccard_same_class_three": 0.0011107000452172484,
+  "interpretation": "Two zeros (seeds 19 and 20) arise from different selected classes. The other three runs compare the same class and also have very low overlap. The overall mean combines class-selection differences and within-class population differences.",
+  "inheritance_code": [
+    "experiments/waterbirds_hidden_slice/certify.py:365",
+    "experiments/waterbirds_hidden_slice/aggregate.py:238"
+  ]
+}

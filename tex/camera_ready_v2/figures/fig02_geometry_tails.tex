@@ -1,0 +1,49 @@
+\documentclass[tikz,border=0pt]{standalone}
+\input{figure_style}
+% B--C use the SAME regenerated initial seed-11 environment draw.
+% See make_tail_data.py and fig02_data_provenance.json.
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=1mm]
+\path[use as bounding box] (0,0) rectangle (140,61);
+\node[panel label] at (0,61) {A};
+\node[panel title] at (5,61) {Score geometry};
+\node[panel label] at (44,61) {B};
+\node[panel title] at (49,61) {Information collapse};
+\node[panel label] at (91,61) {C};
+\node[panel title] at (96,61) {Inverse-information tail};
+
+% The drawing is a normalized L2 score-space illustration, not data.
+\fill[fgslate!10] (1,34.8) rectangle (35,36.2);
+\draw[fgslate,line width=.55pt] (1,35.5)--(35,35.5);
+\draw[fgslate,line width=1.4pt,-{Stealth[length=1.8mm]}] (3,35.5)--(29,35.5);
+\draw[fgdark,line width=1pt,-{Stealth[length=2mm]}] (3,35.5)--(29,42);
+\draw[fgblue,line width=1.5pt,-{Stealth[length=1.6mm]}] (29,35.5)--(29,42);
+\draw[fgslate,line width=.4pt] (27.5,35.5)--(27.5,37)--(29,37);
+\fill[fgdark] (3,35.5) circle (.65);
+\node[anchor=south,font=\fontsize{8}{10}\selectfont] at (15,41.8) {Task score};
+\node[anchor=north,font=\fontsize{8}{10}\selectfont,text=fgslate!70!black] at (17.5,33.4) {Nuisance span};
+\draw[fgblue!65,line width=.45pt] (30.7,39)--(34,39)--(34,23.5)--(29,23.5);
+\node[anchor=east,align=right,text=fgblue,font=\fontsize{8}{10}\selectfont] at (28.7,23.5) {Remaining\\task score};
+\node[font=\fontsize{12}{14}\selectfont,text=fgblue] at (18,10) {$\lambda=\delta^2$};
+
+\begin{axis}[fg axis,at={(51mm,15mm)},anchor=south west,width=33mm,height=35mm,scale only axis,
+ xmin=0,xmax=1,ymode=log,ymin=1e-9,ymax=3,ytick={1e-8,1e-4,1},clip=true,
+ xtick={0,.5,1},xticklabels={0,.5,1},grid=major,
+ xlabel={Environment quantile},xlabel style={font=\fontsize{8}{10}\selectfont},ylabel={Information},
+ ylabel style={font=\fontsize{8}{10}\selectfont},log basis y=10]
+\addplot[fgslate,line width=1pt] table[x=quantile,y=raw] {fig02_quantiles.dat};
+\addplot[fgblue,line width=1.2pt] table[x=quantile,y=projected] {fig02_quantiles.dat};
+\node[anchor=north,text=fgslate!70!black,font=\fontsize{8}{10}\selectfont] at (axis cs:.71,.9) {Raw};
+\node[anchor=north,text=fgblue,font=\fontsize{8}{10}\selectfont] at (axis cs:.7,.002) {Remaining};
+\end{axis}
+\begin{axis}[fg axis,at={(103mm,15mm)},anchor=south west,width=35mm,height=35mm,scale only axis,
+ xmode=log,ymode=log,xmin=30,xmax=5e7,ymin=3e-4,ymax=1,clip=true,
+ xtick={1e2,1e4,1e6},ytick={1,.01,.001},grid=major,
+ xlabel={Inverse information $x$},xlabel style={font=\fontsize{8}{10}\selectfont},
+ ylabel={$\Pr(L>x)$},ylabel style={font=\fontsize{8}{10}\selectfont}]
+\addplot[fgslate,dashed,line width=.8pt] table[x=threshold,y=theory] {fig02_survival.dat};
+\addplot[only marks,mark=*,mark size=1pt,fgblue,mark repeat=10] table[x=threshold,y=survival] {fig02_survival.dat};
+\node[anchor=south west,font=\fontsize{8}{10}\selectfont] at (axis cs:1500,.12) {Slope $-1/2$};
+\end{axis}
+\end{tikzpicture}
+\end{document}

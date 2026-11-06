@@ -1,0 +1,33 @@
+% Shared publication style. Compile figure sources from this directory.
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta,calc,positioning,backgrounds,patterns,shapes.geometric}
+\usepgfplotslibrary{groupplots,fillbetween}
+\pgfplotsset{compat=1.18}
+\definecolor{fgblue}{HTML}{0072B2}
+\definecolor{fgorange}{HTML}{D55E00}
+\definecolor{fgslate}{HTML}{8B949E}
+\definecolor{fgdark}{HTML}{25313C}
+\definecolor{fgpale}{HTML}{F2F6F8}
+\definecolor{fggrid}{HTML}{E3E8EC}
+\definecolor{fgwater}{HTML}{D6EAF4}
+\definecolor{fgland}{HTML}{E8E3D3}
+\renewcommand{\familydefault}{\sfdefault}
+\tikzset{every picture/.style={font=\fontsize{9}{11}\selectfont,text=fgdark},
+  panel label/.style={font=\bfseries\fontsize{10}{12}\selectfont,anchor=north west},
+  panel title/.style={font=\bfseries\fontsize{9}{11}\selectfont,anchor=north west},
+  light arrow/.style={-{Stealth[length=1.6mm]},draw=fgslate,line width=.65pt}}
+\pgfplotsset{fg axis/.style={
+  axis line style={fgslate,line width=.4pt},axis x line*=bottom,axis y line*=left,
+  tick align=outside,tick style={fgslate,line width=.4pt},
+  tick label style={font=\fontsize{8}{10}\selectfont,text=fgdark},
+  label style={font=\fontsize{9}{11}\selectfont,text=fgdark},
+  title style={font=\bfseries\fontsize{9}{11}\selectfont,text=fgdark},
+  grid style={fggrid,line width=.35pt},minor tick num=0,
+  legend style={draw=none,fill=none,font=\fontsize{8}{10}\selectfont},
+  scaled ticks=false,clip=false,
+  every axis plot/.append style={line width=.85pt,mark size=2.2pt}
+}}

@@ -1,0 +1,2056 @@
+{
+  "schema_version": 2,
+  "dataset": "CivilComments-WILDS",
+  "model": "TF-IDF bigram + SGD logistic regression",
+  "seed": 17,
+  "n_train": 269038,
+  "n_val": 45180,
+  "n_test": 133782,
+  "max_features": 50000,
+  "min_df": 5,
+  "max_iter": 50,
+  "tol": 0.001,
+  "min_group_size": 100,
+  "n_groups": 18,
+  "ridge": 0.001,
+  "eps": 1e-08,
+  "alpha": 0.95,
+  "overall_accuracy": 0.8639278826747993,
+  "overall_loss": 0.37285450269912296,
+  "group_loss_cvar": 0.9784067465650291,
+  "worst_group_accuracy": 0.4482758620689655,
+  "mean_group_accuracy": 0.7504965009206044,
+  "feature_raw_fisher_mean": 2.3894183338857626,
+  "feature_projected_fisher_min": 0.5002210921434724,
+  "feature_projected_fisher_q05": 0.5547317142542139,
+  "feature_inverse_loss_p95": 1.8060215988722828,
+  "feature_inverse_loss_cvar": 1.999115982342508,
+  "fisher_glass_certificate": 0.5002211021434725,
+  "feature_tail_exponent_beta_hat": 5.917176999700078,
+  "predictive_fisher_glass_certificate": 0.36543442646522917,
+  "predictive_inverse_loss_p95": 2.5573546664671385,
+  "ridge_exact_audit": {
+    "schema_version": 2,
+    "definition": "scalar held-out feature Schur audit",
+    "conditional_on_fitted_model": true,
+    "environment_weighting": "uniform",
+    "alpha": 0.95,
+    "eps": 1e-08,
+    "ridge": 0.001,
+    "sampling_audit": {
+      "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+      "replicates": 100000,
+      "confidence": 0.95,
+      "seed": 20260729,
+      "bonferroni_tail_probability": 0.0009259259259259267,
+      "scope": "fixed fitted model and fixed evaluated environment set"
+    },
+    "environments": [
+      {
+        "j_tt": 0.6324382726685261,
+        "j_tn": 0.31541748045609036,
+        "j_nn": 2.6175954808013016,
+        "ridge_information": 0.5944453151053273,
+        "exact_information": 0.5944308006557717,
+        "operator_gap": 1.4514449555580455e-05,
+        "eigenvalue_gap": 1.4514449555580455e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 12092,
+        "effective_n": 12092.000000000002,
+        "name": "male/y=0",
+        "moment_covariance_of_mean": [
+          [
+            9.884083553116624e-05,
+            8.276734173971667e-05,
+            7.212291255678047e-05
+          ],
+          [
+            8.276734173971667e-05,
+            0.00020081196866840486,
+            0.00020816057190155117
+          ],
+          [
+            7.212291255678047e-05,
+            0.00020816057190155117,
+            0.0012698453517363192
+          ]
+        ],
+        "j_nn_lcb": 2.5060847790854583,
+        "ridge_information_lcb": 0.5681685141567667,
+        "exact_information_direct_lcb": 0.5681548936195465,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 1.8473555620987242e-05,
+        "eigenvalue_gap_ucb": 1.8473555620987242e-05,
+        "eta": 0.026276800948560552,
+        "conservative_information": 0.5681500406011457
+      },
+      {
+        "j_tt": 3.8232129720053365,
+        "j_tn": 2.6585582963040992,
+        "j_nn": 3.5958985255707785,
+        "ridge_information": 1.8582055733810534,
+        "exact_information": 1.8576591154138302,
+        "operator_gap": 0.0005464579672231906,
+        "eigenvalue_gap": 0.0005464579672231906,
+        "status": "ok",
+        "reasons": [],
+        "n": 2203,
+        "effective_n": 2203.0,
+        "name": "male/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.012601983448623757,
+            0.0046609955311468715,
+            0.0017403685355449258
+          ],
+          [
+            0.0046609955311468715,
+            0.004773953310354047,
+            0.005118333687806038
+          ],
+          [
+            0.0017403685355449258,
+            0.005118333687806038,
+            0.010093106995087314
+          ]
+        ],
+        "j_nn_lcb": 3.2841492279276334,
+        "ridge_information_lcb": 1.613445855558969,
+        "exact_information_direct_lcb": 1.612901464889032,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0006187478611713488,
+        "eigenvalue_gap_ucb": 0.0006187478611713488,
+        "eta": 0.2447597178220844,
+        "conservative_information": 1.6128271076977976
+      },
+      {
+        "j_tt": 0.5873698701736477,
+        "j_tn": 0.1885541023247384,
+        "j_nn": 2.462480380562929,
+        "ridge_information": 0.5729379916882328,
+        "exact_information": 0.572932130980225,
+        "operator_gap": 5.860708007787707e-06,
+        "eigenvalue_gap": 5.860708007787707e-06,
+        "status": "ok",
+        "reasons": [],
+        "n": 14179,
+        "effective_n": 14179.000000000005,
+        "name": "female/y=0",
+        "moment_covariance_of_mean": [
+          [
+            6.500085206347552e-05,
+            4.357987827028341e-05,
+            4.061702391179893e-05
+          ],
+          [
+            4.357987827028341e-05,
+            0.00014012570862987695,
+            0.00014132362093390052
+          ],
+          [
+            4.061702391179893e-05,
+            0.00014132362093390052,
+            0.0008717367459786667
+          ]
+        ],
+        "j_nn_lcb": 2.3720994889970397,
+        "ridge_information_lcb": 0.5498081165938089,
+        "exact_information_direct_lcb": 0.5498023227543035,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 8.230329140531137e-06,
+        "eigenvalue_gap_ucb": 8.230329140531137e-06,
+        "eta": 0.02312987509442388,
+        "conservative_information": 0.5497998862646684
+      },
+      {
+        "j_tt": 3.4187570040041217,
+        "j_tn": 2.3255172335492116,
+        "j_nn": 3.234881691747819,
+        "ridge_information": 1.747487495812275,
+        "exact_information": 1.746970855740876,
+        "operator_gap": 0.000516640071398955,
+        "eigenvalue_gap": 0.000516640071398955,
+        "status": "ok",
+        "reasons": [],
+        "n": 2270,
+        "effective_n": 2270.0,
+        "name": "female/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.009976470331253194,
+            0.0036795169658237845,
+            0.0012246916266727191
+          ],
+          [
+            0.0036795169658237845,
+            0.0037153236395652558,
+            0.004110761190181198
+          ],
+          [
+            0.0012246916266727191,
+            0.004110761190181198,
+            0.008744429218214965
+          ]
+        ],
+        "j_nn_lcb": 2.9471711690849043,
+        "ridge_information_lcb": 1.537090281780759,
+        "exact_information_direct_lcb": 1.536591239940148,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.000588542043949742,
+        "eigenvalue_gap_ucb": 0.000588542043949742,
+        "eta": 0.210397214031516,
+        "conservative_information": 1.5365017397368093
+      },
+      {
+        "j_tt": 1.0469796050131153,
+        "j_tn": 0.8362427505823659,
+        "j_nn": 1.8140256056173718,
+        "ridge_information": 0.6616947166141458,
+        "exact_information": 0.6614823244146059,
+        "operator_gap": 0.00021239219953994581,
+        "eigenvalue_gap": 0.00021239219953994581,
+        "status": "ok",
+        "reasons": [],
+        "n": 3210,
+        "effective_n": 3210.0,
+        "name": "LGBTQ/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0012210220476067254,
+            0.0009572285350590324,
+            0.0007600515924318582
+          ],
+          [
+            0.0009572285350590324,
+            0.0011339829960315443,
+            0.0013120523988972579
+          ],
+          [
+            0.0007600515924318582,
+            0.0013120523988972579,
+            0.00285891949845643
+          ]
+        ],
+        "j_nn_lcb": 1.6512878667211923,
+        "ridge_information_lcb": 0.6030177499969421,
+        "exact_information_direct_lcb": 0.6028065431215919,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.000250473722261119,
+        "eigenvalue_gap_ucb": 0.000250473722261119,
+        "eta": 0.058676966617203674,
+        "conservative_information": 0.602767276274681
+      },
+      {
+        "j_tt": 4.043923467123544,
+        "j_tn": 2.5684508188656423,
+        "j_nn": 2.682080385269771,
+        "ridge_information": 1.5852048818925248,
+        "exact_information": 1.584288161201104,
+        "operator_gap": 0.0009167206914209025,
+        "eigenvalue_gap": 0.0009167206914209025,
+        "status": "ok",
+        "reasons": [],
+        "n": 1216,
+        "effective_n": 1216.0,
+        "name": "LGBTQ/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.02192980694982996,
+            0.011662969768459945,
+            0.007382195312619291
+          ],
+          [
+            0.011662969768459945,
+            0.010879469552761322,
+            0.010072875411117005
+          ],
+          [
+            0.007382195312619291,
+            0.010072875411117005,
+            0.013442155052996542
+          ]
+        ],
+        "j_nn_lcb": 2.320868808082896,
+        "ridge_information_lcb": 1.3289856872303099,
+        "exact_information_direct_lcb": 1.3280127850857069,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0010667432419158816,
+        "eigenvalue_gap_ucb": 0.0010667432419158816,
+        "eta": 0.256219194662215,
+        "conservative_information": 1.327918943988394
+      },
+      {
+        "j_tt": 0.7445549520117434,
+        "j_tn": -0.09694449188648743,
+        "j_nn": 1.5792121947673199,
+        "ridge_information": 0.7386075010692368,
+        "exact_information": 0.7386037349819674,
+        "operator_gap": 3.7660872693745517e-06,
+        "eigenvalue_gap": 3.7660872693745517e-06,
+        "status": "ok",
+        "reasons": [],
+        "n": 12101,
+        "effective_n": 12101.000000000005,
+        "name": "christian/y=0",
+        "moment_covariance_of_mean": [
+          [
+            7.72821543781381e-05,
+            2.449506597424323e-05,
+            3.104420196292985e-05
+          ],
+          [
+            2.449506597424323e-05,
+            0.0001274418900112124,
+            0.00010161093776970408
+          ],
+          [
+            3.104420196292985e-05,
+            0.00010161093776970408,
+            0.0006135494397210346
+          ]
+        ],
+        "j_nn_lcb": 1.502224741201098,
+        "ridge_information_lcb": 0.7093974497390975,
+        "exact_information_direct_lcb": 0.7093920497648241,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 7.344667197790159e-06,
+        "eigenvalue_gap_ucb": 7.344667197790159e-06,
+        "eta": 0.02921005133013932,
+        "conservative_information": 0.7093901050718997
+      },
+      {
+        "j_tt": 2.6247576999295554,
+        "j_tn": 2.009279410173783,
+        "j_nn": 2.8508065564109195,
+        "ridge_information": 1.2090923424484916,
+        "exact_information": 1.2085957582960885,
+        "operator_gap": 0.0004965841524031678,
+        "eigenvalue_gap": 0.0004965841524031678,
+        "status": "ok",
+        "reasons": [],
+        "n": 1260,
+        "effective_n": 1260.0000000000002,
+        "name": "christian/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.009958155074375597,
+            0.00547913888530945,
+            0.0031024714846145524
+          ],
+          [
+            0.00547913888530945,
+            0.005839145600421474,
+            0.006075098539183629
+          ],
+          [
+            0.0031024714846145524,
+            0.006075098539183629,
+            0.010859565775920847
+          ]
+        ],
+        "j_nn_lcb": 2.5275449998781157,
+        "ridge_information_lcb": 1.0275041075335227,
+        "exact_information_direct_lcb": 1.0269704783860647,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.000582429250874021,
+        "eigenvalue_gap_ucb": 0.000582429250874021,
+        "eta": 0.1815882349149689,
+        "conservative_information": 1.0269216782826487
+      },
+      {
+        "j_tt": 0.8759323262968993,
+        "j_tn": 0.88490486293841,
+        "j_nn": 2.083198036336259,
+        "ridge_information": 0.5002210921434718,
+        "exact_information": 0.500040739038486,
+        "operator_gap": 0.0001803531049857643,
+        "eigenvalue_gap": 0.0001803531049857643,
+        "status": "ok",
+        "reasons": [],
+        "n": 5355,
+        "effective_n": 5355.000000000002,
+        "name": "muslim/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0004278526106345399,
+            0.00039264275859284155,
+            0.0003680456555226338
+          ],
+          [
+            0.00039264275859284155,
+            0.0005626074571014728,
+            0.0007705276812018595
+          ],
+          [
+            0.0003680456555226338,
+            0.0007705276812018595,
+            0.0019785236773782935
+          ]
+        ],
+        "j_nn_lcb": 1.944552525993978,
+        "ridge_information_lcb": 0.46499818876286597,
+        "exact_information_direct_lcb": 0.4648142378360512,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.00020187920740306726,
+        "eigenvalue_gap_ucb": 0.00020187920740306726,
+        "eta": 0.0352229033806058,
+        "conservative_information": 0.4647963095554629
+      },
+      {
+        "j_tt": 3.7273979922666074,
+        "j_tn": 2.6510937283933322,
+        "j_nn": 3.036136892679583,
+        "ridge_information": 1.4132784102132665,
+        "exact_information": 1.412516218104066,
+        "operator_gap": 0.0007621921092004769,
+        "eigenvalue_gap": 0.0007621921092004769,
+        "status": "ok",
+        "reasons": [],
+        "n": 1627,
+        "effective_n": 1626.9999999999998,
+        "name": "muslim/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.013303695239335717,
+            0.005848322974481635,
+            0.0031981708192001055
+          ],
+          [
+            0.005848322974481635,
+            0.00583568164410416,
+            0.006249850753566709
+          ],
+          [
+            0.0031981708192001055,
+            0.006249850753566709,
+            0.009999689411442352
+          ]
+        ],
+        "j_nn_lcb": 2.726258447245395,
+        "ridge_information_lcb": 1.1963735919737029,
+        "exact_information_direct_lcb": 1.1956187706659356,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0008592051978248951,
+        "eigenvalue_gap_ucb": 0.0008592051978248951,
+        "eta": 0.21690481823956365,
+        "conservative_information": 1.195514386775878
+      },
+      {
+        "j_tt": 0.7127006263599585,
+        "j_tn": 0.47228571980739936,
+        "j_nn": 1.988426413164001,
+        "ridge_information": 0.6005809723440823,
+        "exact_information": 0.6005245862222356,
+        "operator_gap": 5.638612184666325e-05,
+        "eigenvalue_gap": 5.638612184666325e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 2980,
+        "effective_n": 2979.9999999999995,
+        "name": "other_religions/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0005489758273293591,
+            0.0005234904177122608,
+            0.000550000764282369
+          ],
+          [
+            0.0005234904177122608,
+            0.000950839619266818,
+            0.001206206676410282
+          ],
+          [
+            0.000550000764282369,
+            0.001206206676410282,
+            0.0038630086221706833
+          ]
+        ],
+        "j_nn_lcb": 1.793119713229805,
+        "ridge_information_lcb": 0.547670291521617,
+        "exact_information_direct_lcb": 0.5476106123920073,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 7.554909108681839e-05,
+        "eigenvalue_gap_ucb": 7.554909108681839e-05,
+        "eta": 0.052910680822465306,
+        "conservative_information": 0.5475947424305301
+      },
+      {
+        "j_tt": 3.357392045088445,
+        "j_tn": 2.5141598336902775,
+        "j_nn": 3.0068111361761196,
+        "ridge_information": 1.255863929404454,
+        "exact_information": 1.2551650068514544,
+        "operator_gap": 0.0006989225529996368,
+        "eigenvalue_gap": 0.0006989225529996368,
+        "status": "ok",
+        "reasons": [],
+        "n": 520,
+        "effective_n": 519.9999999999998,
+        "name": "other_religions/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.03235128902598329,
+            0.016638690370145433,
+            0.010276561043718201
+          ],
+          [
+            0.016638690370145433,
+            0.017548322354584336,
+            0.01852247661820142
+          ],
+          [
+            0.010276561043718201,
+            0.01852247661820142,
+            0.0286042605672478
+          ]
+        ],
+        "j_nn_lcb": 2.4841469794123494,
+        "ridge_information_lcb": 0.9296239136740538,
+        "exact_information_direct_lcb": 0.9289381853330729,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0008584079805625082,
+        "eigenvalue_gap_ucb": 0.0008584079805625082,
+        "eta": 0.3262400157304002,
+        "conservative_information": 0.9287655056934914
+      },
+      {
+        "j_tt": 1.4621298888354022,
+        "j_tn": 1.3449201044178238,
+        "j_nn": 2.100743704767182,
+        "ridge_information": 0.601506358399935,
+        "exact_information": 0.6010966827557894,
+        "operator_gap": 0.00040967564414562396,
+        "eigenvalue_gap": 0.00040967564414562396,
+        "status": "ok",
+        "reasons": [],
+        "n": 3335,
+        "effective_n": 3334.9999999999995,
+        "name": "black/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0013755834731257752,
+            0.0011433940343855578,
+            0.0009749735170672862
+          ],
+          [
+            0.0011433940343855578,
+            0.0013537227888896185,
+            0.0016296665514944943
+          ],
+          [
+            0.0009749735170672862,
+            0.0016296665514944943,
+            0.003035947037260649
+          ]
+        ],
+        "j_nn_lcb": 1.9296578539470555,
+        "ridge_information_lcb": 0.5507870286421884,
+        "exact_information_direct_lcb": 0.5503845914458902,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.000455254110618132,
+        "eigenvalue_gap_ucb": 0.000455254110618132,
+        "eta": 0.05071932975774662,
+        "conservative_information": 0.5503317745315703
+      },
+      {
+        "j_tt": 5.2260731062118175,
+        "j_tn": 3.1148090834582387,
+        "j_nn": 2.9074252187122775,
+        "ridge_information": 1.8902350162472468,
+        "exact_information": 1.8890876649521924,
+        "operator_gap": 0.0011473512950543885,
+        "eigenvalue_gap": 0.0011473512950543885,
+        "status": "ok",
+        "reasons": [],
+        "n": 1537,
+        "effective_n": 1537.0000000000002,
+        "name": "black/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.05010422774412622,
+            0.006634492960468155,
+            0.005323947797337846
+          ],
+          [
+            0.006634492960468155,
+            0.008899716754004739,
+            0.008411818427390277
+          ],
+          [
+            0.005323947797337846,
+            0.008411818427390277,
+            0.01150386354855572
+          ]
+        ],
+        "j_nn_lcb": 2.5773719815801233,
+        "ridge_information_lcb": 1.2015213595941052,
+        "exact_information_direct_lcb": 1.200404873881347,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0013120596560218794,
+        "eigenvalue_gap_ucb": 0.0013120596560218794,
+        "eta": 0.6887136566531415,
+        "conservative_information": 1.2002092999380833
+      },
+      {
+        "j_tt": 1.285030801947302,
+        "j_tn": 1.2889274045397252,
+        "j_nn": 2.3042323559861333,
+        "ridge_information": 0.5643512358031654,
+        "exact_information": 0.564038472394444,
+        "operator_gap": 0.00031276340872132824,
+        "eigenvalue_gap": 0.00031276340872132824,
+        "status": "ok",
+        "reasons": [],
+        "n": 5723,
+        "effective_n": 5723.000000000002,
+        "name": "white/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0005566323866754492,
+            0.00047933258745593254,
+            0.00039703266470842216
+          ],
+          [
+            0.00047933258745593254,
+            0.0006241692774508692,
+            0.0008295353336976023
+          ],
+          [
+            0.00039703266470842216,
+            0.0008295353336976023,
+            0.001984863829099011
+          ]
+        ],
+        "j_nn_lcb": 2.163754599466188,
+        "ridge_information_lcb": 0.5287759971710233,
+        "exact_information_direct_lcb": 0.5284548023559688,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0003411576355209105,
+        "eigenvalue_gap_ucb": 0.0003411576355209105,
+        "eta": 0.03557523863214207,
+        "conservative_information": 0.5284348395355024
+      },
+      {
+        "j_tt": 5.027380266276189,
+        "j_tn": 3.321836466669698,
+        "j_nn": 3.253995302324847,
+        "ridge_information": 1.6373300553234187,
+        "exact_information": 1.6362882436746649,
+        "operator_gap": 0.001041811648753832,
+        "eigenvalue_gap": 0.001041811648753832,
+        "status": "ok",
+        "reasons": [],
+        "n": 2246,
+        "effective_n": 2246.000000000001,
+        "name": "white/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.01417789066279024,
+            0.005753204637008449,
+            0.0025578077977389526
+          ],
+          [
+            0.005753204637008449,
+            0.004929511253492499,
+            0.004841574897779593
+          ],
+          [
+            0.0025578077977389526,
+            0.004841574897779593,
+            0.007520058406755632
+          ]
+        ],
+        "j_nn_lcb": 2.9849567956666676,
+        "ridge_information_lcb": 1.4384482874554911,
+        "exact_information_direct_lcb": 1.437418936327286,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0011559591127156112,
+        "eigenvalue_gap_ucb": 0.0011559591127156112,
+        "eta": 0.19888176786792755,
+        "conservative_information": 1.4372923283427754
+      },
+      {
+        "j_tt": 0.712656496917252,
+        "j_tn": 0.2545834310626999,
+        "j_nn": 1.4568596313682263,
+        "ridge_information": 0.6681990457490427,
+        "exact_information": 0.6681685298021313,
+        "operator_gap": 3.0515946911391367e-05,
+        "eigenvalue_gap": 3.0515946911391367e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 46185,
+        "effective_n": 46185.0,
+        "name": "identity_any/y=0",
+        "moment_covariance_of_mean": [
+          [
+            3.07399257237107e-05,
+            1.939088557764337e-05,
+            1.4610718985935639e-05
+          ],
+          [
+            1.939088557764337e-05,
+            3.5687883328985145e-05,
+            3.320375529547422e-05
+          ],
+          [
+            1.4610718985935639e-05,
+            3.320375529547422e-05,
+            0.00015387945194125885
+          ]
+        ],
+        "j_nn_lcb": 1.4178288953469127,
+        "ridge_information_lcb": 0.6536821513998186,
+        "exact_information_direct_lcb": 0.653651082883015,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 3.463910258782174e-05,
+        "eigenvalue_gap_ucb": 3.463910258782174e-05,
+        "eta": 0.014516894349224096,
+        "conservative_information": 0.6536475122972307
+      },
+      {
+        "j_tt": 3.700842616814251,
+        "j_tn": 1.9411677604158786,
+        "j_nn": 2.031059277277292,
+        "ridge_information": 1.8465009072914715,
+        "exact_information": 1.8455879148789562,
+        "operator_gap": 0.0009129924125153011,
+        "eigenvalue_gap": 0.0009129924125153011,
+        "status": "ok",
+        "reasons": [],
+        "n": 9161,
+        "effective_n": 9160.999999999998,
+        "name": "identity_any/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.003513166884494142,
+            0.0007854975217211656,
+            0.0003387900911794741
+          ],
+          [
+            0.0007854975217211656,
+            0.0007480148135097962,
+            0.0006972942775883079
+          ],
+          [
+            0.0003387900911794741,
+            0.0006972942775883079,
+            0.0011224090399385947
+          ]
+        ],
+        "j_nn_lcb": 1.9260429228330234,
+        "ridge_information_lcb": 1.693780265344098,
+        "exact_information_direct_lcb": 1.6928479769991118,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0009778250611917718,
+        "eigenvalue_gap_ucb": 0.0009778250611917718,
+        "eta": 0.15272064194737345,
+        "conservative_information": 1.6928024402829063
+      }
+    ],
+    "aggregate": {
+      "min_nuisance_eigenvalue": 1.4568596313682263,
+      "min_nuisance_eigenvalue_lcb": 1.4178288953469127,
+      "max_operator_gap": 0.0011473512950543885,
+      "max_eigenvalue_gap": 0.0011473512950543885,
+      "max_operator_gap_ucb": 0.0013120596560218794,
+      "max_eigenvalue_gap_ucb": 0.0013120596560218794,
+      "ridge_certificate": 0.5002211021434717,
+      "exact_certificate": 0.500040749038486,
+      "conservative_lower_certificate": 0.46479631955546297,
+      "certificate_gap": 0.00018035310498565327,
+      "weakest_ridge_environment": "muslim/y=0",
+      "weakest_exact_environment": "muslim/y=0",
+      "weakest_conservative_environment": "muslim/y=0",
+      "status": "audited",
+      "reasons": []
+    },
+    "ridge_sweep": [
+      {
+        "ridge": 0.0,
+        "certificate": 0.500040749038486
+      },
+      {
+        "ridge": 1e-06,
+        "certificate": 0.5000409294780795
+      },
+      {
+        "ridge": 1e-05,
+        "certificate": 0.5000425534266254
+      },
+      {
+        "ridge": 0.0001,
+        "certificate": 0.5000587921403709
+      },
+      {
+        "ridge": 0.001,
+        "certificate": 0.5002211021434717
+      },
+      {
+        "ridge": 0.01,
+        "certificate": 0.5018365255523812
+      },
+      {
+        "ridge": 0.1,
+        "certificate": 0.5172582245492839
+      }
+    ]
+  },
+  "predictive_ridge_exact_audit": {
+    "schema_version": 2,
+    "definition": "scalar held-out feature Schur audit",
+    "conditional_on_fitted_model": true,
+    "environment_weighting": "uniform",
+    "alpha": 0.95,
+    "eps": 1e-08,
+    "ridge": 0.001,
+    "sampling_audit": {
+      "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+      "replicates": 100000,
+      "confidence": 0.95,
+      "seed": 20260730,
+      "bonferroni_tail_probability": 0.0009259259259259267,
+      "scope": "fixed fitted model and fixed evaluated environment set"
+    },
+    "environments": [
+      {
+        "j_tt": 0.4813321966859508,
+        "j_tn": 0.4495085674314236,
+        "j_nn": 2.7012698505336634,
+        "ridge_information": 0.40655877901474863,
+        "exact_information": 0.40653109817506633,
+        "operator_gap": 2.7680839682298064e-05,
+        "eigenvalue_gap": 2.7680839682298064e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 12092,
+        "effective_n": 10886.756343610316,
+        "name": "male/y=0",
+        "moment_covariance_of_mean": [
+          [
+            3.884364851530304e-05,
+            4.339230167662983e-05,
+            3.668306758790883e-05
+          ],
+          [
+            4.339230167662983e-05,
+            0.00011865955213324703,
+            0.0002166913162948874
+          ],
+          [
+            3.668306758790883e-05,
+            0.0002166913162948874,
+            0.0015737999641565318
+          ]
+        ],
+        "j_nn_lcb": 2.576406368643626,
+        "ridge_information_lcb": 0.39177336598600293,
+        "exact_information_direct_lcb": 0.3917460452532905,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 3.150947164171126e-05,
+        "eigenvalue_gap_ucb": 3.150947164171126e-05,
+        "eta": 0.014785413028745698,
+        "conservative_information": 0.3917418565143612
+      },
+      {
+        "j_tt": 1.706787947903437,
+        "j_tn": 1.6854721080624109,
+        "j_nn": 3.174520230684993,
+        "ridge_information": 0.8121892614880292,
+        "exact_information": 0.8119074555389701,
+        "operator_gap": 0.0002818059490590219,
+        "eigenvalue_gap": 0.0002818059490590219,
+        "status": "ok",
+        "reasons": [],
+        "n": 2203,
+        "effective_n": 1754.9981603907006,
+        "name": "male/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.001089793188571181,
+            0.0007570645232077595,
+            0.00036185437642589826
+          ],
+          [
+            0.0007570645232077595,
+            0.001351042785613425,
+            0.002454260207487303
+          ],
+          [
+            0.00036185437642589826,
+            0.002454260207487303,
+            0.008877845658826086
+          ]
+        ],
+        "j_nn_lcb": 2.885495295314855,
+        "ridge_information_lcb": 0.7458515904168237,
+        "exact_information_direct_lcb": 0.7455718334608831,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.00032218236959108393,
+        "eigenvalue_gap_ucb": 0.00032218236959108393,
+        "eta": 0.06633767107120547,
+        "conservative_information": 0.7455294080472327
+      },
+      {
+        "j_tt": 0.4492114848253555,
+        "j_tn": 0.3702272754098076,
+        "j_nn": 2.575676554685742,
+        "ridge_information": 0.3960157373000761,
+        "exact_information": 0.3959950841837411,
+        "operator_gap": 2.0653116335034305e-05,
+        "eigenvalue_gap": 2.0653116335034305e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 14179,
+        "effective_n": 12669.872619296519,
+        "name": "female/y=0",
+        "moment_covariance_of_mean": [
+          [
+            2.836075253474673e-05,
+            3.0509405562821826e-05,
+            2.72259647334363e-05
+          ],
+          [
+            3.0509405562821826e-05,
+            9.331692956983716e-05,
+            0.0001651429097981641
+          ],
+          [
+            2.72259647334363e-05,
+            0.0001651429097981641,
+            0.0010460396163230559
+          ]
+        ],
+        "j_nn_lcb": 2.475178871645449,
+        "ridge_information_lcb": 0.3825760898539984,
+        "exact_information_direct_lcb": 0.38255615641677776,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 2.364133576571761e-05,
+        "eigenvalue_gap_ucb": 2.364133576571761e-05,
+        "eta": 0.01343964744607773,
+        "conservative_information": 0.38255244851823267
+      },
+      {
+        "j_tt": 1.6076866782555497,
+        "j_tn": 1.527615602019286,
+        "j_nn": 2.9178678627397163,
+        "ridge_information": 0.8081953901016673,
+        "exact_information": 0.8079213916460267,
+        "operator_gap": 0.00027399845564057834,
+        "eigenvalue_gap": 0.00027399845564057834,
+        "status": "ok",
+        "reasons": [],
+        "n": 2270,
+        "effective_n": 1857.9997315415962,
+        "name": "female/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.0009403803195992367,
+            0.0006369072060083856,
+            0.0002971387790240079
+          ],
+          [
+            0.0006369072060083856,
+            0.0011764934311331591,
+            0.0021715776866462794
+          ],
+          [
+            0.0002971387790240079,
+            0.0021715776866462794,
+            0.007854391681573777
+          ]
+        ],
+        "j_nn_lcb": 2.6413468545870145,
+        "ridge_information_lcb": 0.7447211184779032,
+        "exact_information_direct_lcb": 0.7444533277610952,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.00031405544395630183,
+        "eigenvalue_gap_ucb": 0.00031405544395630183,
+        "eta": 0.06347427162376407,
+        "conservative_information": 0.7444070630339469
+      },
+      {
+        "j_tt": 0.7355330139070623,
+        "j_tn": 0.6774709212895297,
+        "j_nn": 1.6832662235970268,
+        "ridge_information": 0.4630304589293313,
+        "exact_information": 0.46286856976934126,
+        "operator_gap": 0.00016188915999004738,
+        "eigenvalue_gap": 0.00016188915999004738,
+        "status": "ok",
+        "reasons": [],
+        "n": 3210,
+        "effective_n": 2946.7010035039007,
+        "name": "LGBTQ/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.00024167451975434345,
+            0.00020577863020616811,
+            0.0001766634765997283
+          ],
+          [
+            0.00020577863020616811,
+            0.00038793066981262424,
+            0.0006823134911270893
+          ],
+          [
+            0.0001766634765997283,
+            0.0006823134911270893,
+            0.002344348754474661
+          ]
+        ],
+        "j_nn_lcb": 1.5300406340350365,
+        "ridge_information_lcb": 0.4312671816458539,
+        "exact_information_direct_lcb": 0.43110209060576665,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0001854366160142356,
+        "eigenvalue_gap_ucb": 0.0001854366160142356,
+        "eta": 0.03176327728347739,
+        "conservative_information": 0.4310817450298397
+      },
+      {
+        "j_tt": 1.8367695398285093,
+        "j_tn": 1.3363980393878796,
+        "j_nn": 1.8839677443936609,
+        "ridge_information": 0.8892945896647018,
+        "exact_information": 0.8887916750298928,
+        "operator_gap": 0.0005029146348090041,
+        "eigenvalue_gap": 0.0005029146348090041,
+        "status": "ok",
+        "reasons": [],
+        "n": 1216,
+        "effective_n": 954.2794066773564,
+        "name": "LGBTQ/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.002091149194128504,
+            0.001291884874619418,
+            0.0007553740260336308
+          ],
+          [
+            0.001291884874619418,
+            0.0019545135596470706,
+            0.0029312161723203277
+          ],
+          [
+            0.0007553740260336308,
+            0.0029312161723203277,
+            0.008154239065232176
+          ]
+        ],
+        "j_nn_lcb": 1.6039222921719336,
+        "ridge_information_lcb": 0.7905747462822252,
+        "exact_information_direct_lcb": 0.7899952094826336,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0006231823467042555,
+        "eigenvalue_gap_ucb": 0.0006231823467042555,
+        "eta": 0.09871984338247652,
+        "conservative_information": 0.789951563935521
+      },
+      {
+        "j_tt": 0.4999662595003596,
+        "j_tn": 0.14082023754904843,
+        "j_nn": 1.785205842759457,
+        "ridge_information": 0.4888643255414296,
+        "exact_information": 0.4888581066877305,
+        "operator_gap": 6.21885369911368e-06,
+        "eigenvalue_gap": 6.21885369911368e-06,
+        "status": "ok",
+        "reasons": [],
+        "n": 12101,
+        "effective_n": 10001.004487931777,
+        "name": "christian/y=0",
+        "moment_covariance_of_mean": [
+          [
+            3.5080409014460995e-05,
+            2.912730359685195e-05,
+            3.2226511685223014e-05
+          ],
+          [
+            2.912730359685195e-05,
+            0.00010476968633742435,
+            0.0001557833021593706
+          ],
+          [
+            3.2226511685223014e-05,
+            0.0001557833021593706,
+            0.0008610232593107212
+          ]
+        ],
+        "j_nn_lcb": 1.6938588553216738,
+        "ridge_information_lcb": 0.4721322829828004,
+        "exact_information_direct_lcb": 0.4721262031248172,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 8.932660508795928e-06,
+        "eigenvalue_gap_ucb": 8.932660508795928e-06,
+        "eta": 0.0167320425586292,
+        "conservative_information": 0.47212335032229164
+      },
+      {
+        "j_tt": 1.382280070788348,
+        "j_tn": 1.3063307318314468,
+        "j_nn": 2.422297525607438,
+        "ridge_information": 0.6780743499082749,
+        "exact_information": 0.6777836318138065,
+        "operator_gap": 0.0002907180944683452,
+        "eigenvalue_gap": 0.0002907180944683452,
+        "status": "ok",
+        "reasons": [],
+        "n": 1260,
+        "effective_n": 1073.5023693488233,
+        "name": "christian/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.0014224967806084963,
+            0.0010584650467135206,
+            0.0006796841561231546
+          ],
+          [
+            0.0010584650467135206,
+            0.0017382289036061895,
+            0.0027977476295564653
+          ],
+          [
+            0.0006796841561231546,
+            0.0027977476295564653,
+            0.00887350868455273
+          ]
+        ],
+        "j_nn_lcb": 2.130298822025669,
+        "ridge_information_lcb": 0.6046875723357525,
+        "exact_information_direct_lcb": 0.6044123998387191,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0003481244782677023,
+        "eigenvalue_gap_ucb": 0.0003481244782677023,
+        "eta": 0.07338677757252232,
+        "conservative_information": 0.6043394478574848
+      },
+      {
+        "j_tt": 0.6668601691090654,
+        "j_tn": 0.7714401287281298,
+        "j_nn": 1.973349792584794,
+        "ridge_information": 0.3654344164652292,
+        "exact_information": 0.36528166820246477,
+        "operator_gap": 0.00015274826276440168,
+        "eigenvalue_gap": 0.00015274826276440168,
+        "status": "ok",
+        "reasons": [],
+        "n": 5355,
+        "effective_n": 5035.816279260032,
+        "name": "muslim/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.00011737261490495553,
+            0.00012131367638217546,
+            0.00012172399800616066
+          ],
+          [
+            0.00012131367638217546,
+            0.00023930656733220108,
+            0.000463850394307793
+          ],
+          [
+            0.00012172399800616066,
+            0.000463850394307793,
+            0.0017196976108378626
+          ]
+        ],
+        "j_nn_lcb": 1.8428222461424475,
+        "ridge_information_lcb": 0.3456105911179125,
+        "exact_information_direct_lcb": 0.3454626754934156,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.00016840288896206176,
+        "eigenvalue_gap_ucb": 0.00016840288896206176,
+        "eta": 0.019823825347316693,
+        "conservative_information": 0.3454421882289504
+      },
+      {
+        "j_tt": 1.8400692861631702,
+        "j_tn": 1.6512114465754588,
+        "j_nn": 2.3941519117574233,
+        "ridge_information": 0.7017284452679167,
+        "exact_information": 0.7012529780115138,
+        "operator_gap": 0.0004754672564029061,
+        "eigenvalue_gap": 0.0004754672564029061,
+        "status": "ok",
+        "reasons": [],
+        "n": 1627,
+        "effective_n": 1310.7101752478034,
+        "name": "muslim/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.0014703143468249688,
+            0.001038035631004529,
+            0.0007635774437693892
+          ],
+          [
+            0.001038035631004529,
+            0.0016187981501501684,
+            0.002620530634552672
+          ],
+          [
+            0.0007635774437693892,
+            0.002620530634552672,
+            0.006932461814284048
+          ]
+        ],
+        "j_nn_lcb": 2.1310354457498852,
+        "ridge_information_lcb": 0.6280045540810502,
+        "exact_information_direct_lcb": 0.6275101409597634,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0005484070619922867,
+        "eigenvalue_gap_ucb": 0.0005484070619922867,
+        "eta": 0.07372389118686651,
+        "conservative_information": 0.6274561470190578
+      },
+      {
+        "j_tt": 0.5248068543685335,
+        "j_tn": 0.5101156868022179,
+        "j_nn": 2.0180051831854113,
+        "ridge_information": 0.3959225820106245,
+        "exact_information": 0.3958587148444587,
+        "operator_gap": 6.386716616579857e-05,
+        "eigenvalue_gap": 6.386716616579857e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 2980,
+        "effective_n": 2667.422652865408,
+        "name": "other_religions/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.00018051568385983344,
+            0.0002116813868432278,
+            0.0002483619241657114
+          ],
+          [
+            0.0002116813868432278,
+            0.0004858782720506762,
+            0.0008889004387540933
+          ],
+          [
+            0.0002483619241657114,
+            0.0008889004387540933,
+            0.0038670143896329377
+          ]
+        ],
+        "j_nn_lcb": 1.8238864087678985,
+        "ridge_information_lcb": 0.3680318601089812,
+        "exact_information_direct_lcb": 0.36797281050354996,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 7.80321182855141e-05,
+        "eigenvalue_gap_ucb": 7.80321182855141e-05,
+        "eta": 0.027890721901643323,
+        "conservative_information": 0.3679538279906957
+      },
+      {
+        "j_tt": 1.7167400627304936,
+        "j_tn": 1.5547629996036376,
+        "j_nn": 2.3694003751420407,
+        "ridge_information": 0.6969596027347216,
+        "exact_information": 0.6965292067279114,
+        "operator_gap": 0.0004303960068101631,
+        "eigenvalue_gap": 0.0004303960068101631,
+        "status": "ok",
+        "reasons": [],
+        "n": 520,
+        "effective_n": 427.30577141935413,
+        "name": "other_religions/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.004291069410252228,
+            0.003232414999603363,
+            0.0026023396272091236
+          ],
+          [
+            0.003232414999603363,
+            0.0052847752619200345,
+            0.00846402977558292
+          ],
+          [
+            0.0026023396272091236,
+            0.00846402977558292,
+            0.021179726037432362
+          ]
+        ],
+        "j_nn_lcb": 1.9194935353230103,
+        "ridge_information_lcb": 0.5742620772749638,
+        "exact_information_direct_lcb": 0.573807819677796,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0005536799654913743,
+        "eigenvalue_gap_ucb": 0.0005536799654913743,
+        "eta": 0.12269752545975776,
+        "conservative_information": 0.5737083973094724
+      },
+      {
+        "j_tt": 0.9927874766527907,
+        "j_tn": 1.0022838847889042,
+        "j_nn": 1.797582300839969,
+        "ridge_information": 0.4342514645735077,
+        "exact_information": 0.43394074944696337,
+        "operator_gap": 0.0003107151265443475,
+        "eigenvalue_gap": 0.0003107151265443475,
+        "status": "ok",
+        "reasons": [],
+        "n": 3335,
+        "effective_n": 3062.6287555090926,
+        "name": "black/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0003116564866834552,
+            0.0002785937533489088,
+            0.00024173107200720965
+          ],
+          [
+            0.0002785937533489088,
+            0.00043546952953394953,
+            0.0006990972411220789
+          ],
+          [
+            0.00024173107200720965,
+            0.0006990972411220789,
+            0.002021708138689897
+          ]
+        ],
+        "j_nn_lcb": 1.6581821182622372,
+        "ridge_information_lcb": 0.40396558063293153,
+        "exact_information_direct_lcb": 0.4036427754790446,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.00034555572599341983,
+        "eigenvalue_gap_ucb": 0.00034555572599341983,
+        "eta": 0.030285883940576186,
+        "conservative_information": 0.4036200249069381
+      },
+      {
+        "j_tt": 2.3177908529099844,
+        "j_tn": 1.703307175844422,
+        "j_nn": 2.002661134114733,
+        "ridge_information": 0.8698138043533445,
+        "exact_information": 0.8690907778642942,
+        "operator_gap": 0.0007230264890503157,
+        "eigenvalue_gap": 0.0007230264890503157,
+        "status": "ok",
+        "reasons": [],
+        "n": 1537,
+        "effective_n": 1114.6226007510948,
+        "name": "black/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.002495882961608307,
+            0.0015854168385980147,
+            0.0011348412885096972
+          ],
+          [
+            0.0015854168385980147,
+            0.0020783349064509697,
+            0.002959107555886316
+          ],
+          [
+            0.0011348412885096972,
+            0.002959107555886316,
+            0.006936782539829776
+          ]
+        ],
+        "j_nn_lcb": 1.7430210355422906,
+        "ridge_information_lcb": 0.7630351918360763,
+        "exact_information_direct_lcb": 0.7621786031393061,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0008617443644773697,
+        "eigenvalue_gap_ucb": 0.0008617443644773697,
+        "eta": 0.10677861251726828,
+        "conservative_information": 0.7621734474715989
+      },
+      {
+        "j_tt": 0.9279707012009498,
+        "j_tn": 1.0362908238238442,
+        "j_nn": 2.0839784550271423,
+        "ridge_information": 0.4129060639850598,
+        "exact_information": 0.41265890949266415,
+        "operator_gap": 0.00024715449239565146,
+        "eigenvalue_gap": 0.00024715449239565146,
+        "status": "ok",
+        "reasons": [],
+        "n": 5723,
+        "effective_n": 5328.730518229258,
+        "name": "white/y=0",
+        "moment_covariance_of_mean": [
+          [
+            0.0001620987213365747,
+            0.00015127991755319243,
+            0.00012532353089355627
+          ],
+          [
+            0.00015127991755319243,
+            0.00025057188075967347,
+            0.00043577174907286336
+          ],
+          [
+            0.00012532353089355627,
+            0.00043577174907286336,
+            0.0014970232718951183
+          ]
+        ],
+        "j_nn_lcb": 1.964637911205617,
+        "ridge_information_lcb": 0.39110003066712373,
+        "exact_information_direct_lcb": 0.39084685654015605,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0002685039180664238,
+        "eigenvalue_gap_ucb": 0.0002685039180664238,
+        "eta": 0.02180603331793607,
+        "conservative_information": 0.3908315267490573
+      },
+      {
+        "j_tt": 2.3587506724368352,
+        "j_tn": 2.0199280575721326,
+        "j_nn": 2.562475969019971,
+        "ridge_information": 0.7671190725794848,
+        "exact_information": 0.766497942227786,
+        "operator_gap": 0.000621130351698751,
+        "eigenvalue_gap": 0.000621130351698751,
+        "status": "ok",
+        "reasons": [],
+        "n": 2246,
+        "effective_n": 1651.7338398070335,
+        "name": "white/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.0016542489699783833,
+            0.0010859266893762046,
+            0.0006794210629217999
+          ],
+          [
+            0.0010859266893762046,
+            0.0014351537510588854,
+            0.0021075296003250105
+          ],
+          [
+            0.0006794210629217999,
+            0.0021075296003250105,
+            0.005401615141444582
+          ]
+        ],
+        "j_nn_lcb": 2.3338237133210886,
+        "ridge_information_lcb": 0.6897722035120897,
+        "exact_information_direct_lcb": 0.6890999327234135,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0007017058557703769,
+        "eigenvalue_gap_ucb": 0.0007017058557703769,
+        "eta": 0.07734686906739507,
+        "conservative_information": 0.6890704976563193
+      },
+      {
+        "j_tt": 0.5343514955369065,
+        "j_tn": 0.3533098811328611,
+        "j_nn": 1.5054028494739378,
+        "ridge_information": 0.4514866283138337,
+        "exact_information": 0.4514315833355064,
+        "operator_gap": 5.504497832725663e-05,
+        "eigenvalue_gap": 5.504497832725663e-05,
+        "status": "ok",
+        "reasons": [],
+        "n": 46185,
+        "effective_n": 40929.96850647264,
+        "name": "identity_any/y=0",
+        "moment_covariance_of_mean": [
+          [
+            1.1227191307718884e-05,
+            9.04923255017183e-06,
+            6.270744568208173e-06
+          ],
+          [
+            9.04923255017183e-06,
+            1.9760258761378224e-05,
+            3.1748528023346545e-05
+          ],
+          [
+            6.270744568208173e-06,
+            3.1748528023346545e-05,
+            0.00018607167134215187
+          ]
+        ],
+        "j_nn_lcb": 1.4628193458866943,
+        "ridge_information_lcb": 0.443308359759398,
+        "exact_information_direct_lcb": 0.4432543226471516,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 5.8855451137499006e-05,
+        "eigenvalue_gap_ucb": 5.8855451137499006e-05,
+        "eta": 0.008178268554435708,
+        "conservative_information": 0.4432495043082605
+      },
+      {
+        "j_tt": 1.728123014197491,
+        "j_tn": 1.2047303038061392,
+        "j_nn": 1.6964373698449726,
+        "ridge_information": 0.8730840415128098,
+        "exact_information": 0.8725800211535066,
+        "operator_gap": 0.0005040203593031922,
+        "eigenvalue_gap": 0.0005040203593031922,
+        "status": "ok",
+        "reasons": [],
+        "n": 9161,
+        "effective_n": 7379.25448972252,
+        "name": "identity_any/y=1",
+        "moment_covariance_of_mean": [
+          [
+            0.0002561220004739918,
+            0.00013684828248665285,
+            6.758260184585317e-05
+          ],
+          [
+            0.00013684828248665285,
+            0.00020352125931295839,
+            0.0003107586629509647
+          ],
+          [
+            6.758260184585317e-05,
+            0.0003107586629509647,
+            0.0009009346774378895
+          ]
+        ],
+        "j_nn_lcb": 1.60301290773442,
+        "ridge_information_lcb": 0.83739008501657,
+        "exact_information_direct_lcb": 0.8368716439294368,
+        "gaussian_singular_fraction": 0.0,
+        "operator_gap_ucb": 0.0005451238086286781,
+        "eigenvalue_gap_ucb": 0.0005451238086286781,
+        "eta": 0.035693956496239854,
+        "conservative_information": 0.8368449612079413
+      }
+    ],
+    "aggregate": {
+      "min_nuisance_eigenvalue": 1.5054028494739378,
+      "min_nuisance_eigenvalue_lcb": 1.4628193458866943,
+      "max_operator_gap": 0.0007230264890503157,
+      "max_eigenvalue_gap": 0.0007230264890503157,
+      "max_operator_gap_ucb": 0.0008617443644773697,
+      "max_eigenvalue_gap_ucb": 0.0008617443644773697,
+      "ridge_certificate": 0.36543442646522917,
+      "exact_certificate": 0.36528167820246477,
+      "conservative_lower_certificate": 0.3454421982289504,
+      "certificate_gap": 0.00015274826276440168,
+      "weakest_ridge_environment": "muslim/y=0",
+      "weakest_exact_environment": "muslim/y=0",
+      "weakest_conservative_environment": "muslim/y=0",
+      "status": "audited",
+      "reasons": []
+    },
+    "ridge_sweep": [
+      {
+        "ridge": 0.0,
+        "certificate": 0.36528167820246477
+      },
+      {
+        "ridge": 1e-06,
+        "certificate": 0.36528183102805567
+      },
+      {
+        "ridge": 1e-05,
+        "certificate": 0.36528320645140366
+      },
+      {
+        "ridge": 0.0001,
+        "certificate": 0.36529695999488937
+      },
+      {
+        "ridge": 0.001,
+        "certificate": 0.36543442646522917
+      },
+      {
+        "ridge": 0.01,
+        "certificate": 0.3668022294538584
+      },
+      {
+        "ridge": 0.1,
+        "certificate": 0.3798271495930221
+      }
+    ]
+  },
+  "reserve_r": 0.05,
+  "reserve_anchor_projected_fisher": 1.5406000685103105,
+  "reserve_fisher_glass_certificate": 0.5522400509618144,
+  "reserve_theory_floor": 0.07703000342551553,
+  "worst_group_by_accuracy": {
+    "group": "black/y=0",
+    "n": 3335,
+    "accuracy": 0.4482758620689655,
+    "loss": 0.9784067465650291,
+    "raw_feature_fisher": 1.462129888835403,
+    "projected_feature_fisher": 0.6015063583999337,
+    "exact_projected_feature_fisher": 0.6010966827557881,
+    "feature_ridge_to_exact_gap": 0.00040967564414562396,
+    "feature_j_tn": 1.3449201044178252,
+    "feature_j_nn": 2.1007437047671806,
+    "feature_audit_status": "ok",
+    "inverse_feature_loss": 1.662492788995898,
+    "raw_predictive_fisher": 0.9927874766527918,
+    "projected_predictive_fisher": 0.43425146457350716,
+    "exact_projected_predictive_fisher": 0.4339407494469628,
+    "predictive_ridge_to_exact_gap": 0.0003107151265443475,
+    "predictive_j_tn": 1.0022838847889046,
+    "predictive_j_nn": 1.7975823008399652,
+    "inverse_predictive_loss": 2.3028131360570123
+  },
+  "worst_group_by_inverse_fisher": {
+    "group": "muslim/y=0",
+    "n": 5355,
+    "accuracy": 0.6069094304388422,
+    "loss": 0.7270524514766556,
+    "raw_feature_fisher": 0.875932326296899,
+    "projected_feature_fisher": 0.5002210921434724,
+    "exact_projected_feature_fisher": 0.5000407390384867,
+    "feature_ridge_to_exact_gap": 0.0001803531049857643,
+    "feature_j_tn": 0.8849048629384091,
+    "feature_j_nn": 2.0831980363362606,
+    "feature_audit_status": "ok",
+    "inverse_feature_loss": 1.999115982342508,
+    "raw_predictive_fisher": 0.6668601691090663,
+    "projected_predictive_fisher": 0.3654344164652292,
+    "exact_projected_predictive_fisher": 0.36528166820246477,
+    "predictive_ridge_to_exact_gap": 0.00015274826276440168,
+    "predictive_j_tn": 0.7714401287281307,
+    "predictive_j_nn": 1.9733497925847927,
+    "inverse_predictive_loss": 2.7364690559474405
+  },
+  "nuisance_ablation": [
+    {
+      "basis": "metadata nuisance",
+      "fisher_glass_certificate": 0.5873226783621522,
+      "exact_fisher_glass_certificate": 0.5873226439335452,
+      "inverse_loss_p95": 1.6718819901694093,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "female/y=0",
+      "weakest_slice_accuracy": 0.8207207842584103,
+      "weakest_slice_projected_fisher": 0.5873226683621522
+    },
+    {
+      "basis": "learned probe nuisance",
+      "fisher_glass_certificate": 0.5002211021434725,
+      "exact_fisher_glass_certificate": 0.5000407490384867,
+      "inverse_loss_p95": 1.8060215988722828,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "muslim/y=0",
+      "weakest_slice_accuracy": 0.6069094304388422,
+      "weakest_slice_projected_fisher": 0.5002210921434724
+    },
+    {
+      "basis": "random nuisance",
+      "fisher_glass_certificate": 0.587359021878141,
+      "exact_fisher_glass_certificate": 0.5873590110116601,
+      "inverse_loss_p95": 1.5993857111915457,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "female/y=0",
+      "weakest_slice_accuracy": 0.8207207842584103,
+      "weakest_slice_projected_fisher": 0.587359011878141
+    },
+    {
+      "basis": "under-projected nuisance",
+      "fisher_glass_certificate": 0.5873698801736457,
+      "exact_fisher_glass_certificate": null,
+      "inverse_loss_p95": 1.5993803711624566,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "female/y=0",
+      "weakest_slice_accuracy": 0.8207207842584103,
+      "weakest_slice_projected_fisher": 0.5873698701736456
+    },
+    {
+      "basis": "over-projected nuisance",
+      "fisher_glass_certificate": 0.0010893800325809163,
+      "exact_fisher_glass_certificate": 9.762427688115276e-05,
+      "inverse_loss_p95": 917.5746707366678,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "white/y=1",
+      "weakest_slice_accuracy": 0.9096170970614426,
+      "weakest_slice_projected_fisher": 0.0010893700325809164
+    },
+    {
+      "basis": "hidden-loss nuisance",
+      "fisher_glass_certificate": 0.060797921963305086,
+      "exact_fisher_glass_certificate": 0.060530966620741256,
+      "inverse_loss_p95": 16.270939177838002,
+      "worst_group_accuracy": 0.4482758620689655,
+      "weakest_slice": "white/y=0",
+      "weakest_slice_accuracy": 0.46688799580639523,
+      "weakest_slice_projected_fisher": 0.060797911963305085
+    }
+  ],
+  "groups": [
+    {
+      "group": "muslim/y=0",
+      "n": 5355,
+      "accuracy": 0.6069094304388422,
+      "loss": 0.7270524514766556,
+      "raw_feature_fisher": 0.875932326296899,
+      "projected_feature_fisher": 0.5002210921434724,
+      "exact_projected_feature_fisher": 0.5000407390384867,
+      "feature_ridge_to_exact_gap": 0.0001803531049857643,
+      "feature_j_tn": 0.8849048629384091,
+      "feature_j_nn": 2.0831980363362606,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.999115982342508,
+      "raw_predictive_fisher": 0.6668601691090663,
+      "projected_predictive_fisher": 0.3654344164652292,
+      "exact_projected_predictive_fisher": 0.36528166820246477,
+      "predictive_ridge_to_exact_gap": 0.00015274826276440168,
+      "predictive_j_tn": 0.7714401287281307,
+      "predictive_j_nn": 1.9733497925847927,
+      "inverse_predictive_loss": 2.7364690559474405
+    },
+    {
+      "group": "white/y=0",
+      "n": 5723,
+      "accuracy": 0.46688799580639523,
+      "loss": 0.9233297743318237,
+      "raw_feature_fisher": 1.2850308019473031,
+      "projected_feature_fisher": 0.5643512358031683,
+      "exact_projected_feature_fisher": 0.564038472394447,
+      "feature_ridge_to_exact_gap": 0.0003127634087212172,
+      "feature_j_tn": 1.2889274045397245,
+      "feature_j_nn": 2.304232355986137,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.771946119436361,
+      "raw_predictive_fisher": 0.9279707012009473,
+      "projected_predictive_fisher": 0.41290606398505936,
+      "exact_projected_predictive_fisher": 0.4126589094926636,
+      "predictive_ridge_to_exact_gap": 0.0002471544923957625,
+      "predictive_j_tn": 1.036290823823842,
+      "predictive_j_nn": 2.0839784550271414,
+      "inverse_predictive_loss": 2.421858294184803
+    },
+    {
+      "group": "female/y=0",
+      "n": 14179,
+      "accuracy": 0.8207207842584103,
+      "loss": 0.44612194896524604,
+      "raw_feature_fisher": 0.5873698701736456,
+      "projected_feature_fisher": 0.5729379916882307,
+      "exact_projected_feature_fisher": 0.5729321309802229,
+      "feature_ridge_to_exact_gap": 5.860708007787707e-06,
+      "feature_j_tn": 0.1885541023247384,
+      "feature_j_nn": 2.4624803805629334,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.745389548351444,
+      "raw_predictive_fisher": 0.44921148482535567,
+      "projected_predictive_fisher": 0.3960157373000762,
+      "exact_projected_predictive_fisher": 0.39599508418374124,
+      "predictive_ridge_to_exact_gap": 2.0653116334978794e-05,
+      "predictive_j_tn": 0.3702272754098067,
+      "predictive_j_nn": 2.575676554685729,
+      "inverse_predictive_loss": 2.525152110282781
+    },
+    {
+      "group": "male/y=0",
+      "n": 12092,
+      "accuracy": 0.7968905061197485,
+      "loss": 0.48600162504987504,
+      "raw_feature_fisher": 0.6324382726685263,
+      "projected_feature_fisher": 0.5944453151053273,
+      "exact_projected_feature_fisher": 0.5944308006557716,
+      "feature_ridge_to_exact_gap": 1.4514449555691478e-05,
+      "feature_j_tn": 0.31541748045609125,
+      "feature_j_nn": 2.617595480801307,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.682240498439136,
+      "raw_predictive_fisher": 0.4813321966859519,
+      "projected_predictive_fisher": 0.4065587790147497,
+      "exact_projected_predictive_fisher": 0.4065310981750674,
+      "predictive_ridge_to_exact_gap": 2.7680839682298064e-05,
+      "predictive_j_tn": 0.44950856743142387,
+      "predictive_j_nn": 2.7012698505336648,
+      "inverse_predictive_loss": 2.4596688769744457
+    },
+    {
+      "group": "other_religions/y=0",
+      "n": 2980,
+      "accuracy": 0.7825503355704698,
+      "loss": 0.5139206668690085,
+      "raw_feature_fisher": 0.7127006263599571,
+      "projected_feature_fisher": 0.6005809723440809,
+      "exact_projected_feature_fisher": 0.6005245862222343,
+      "feature_ridge_to_exact_gap": 5.638612184666325e-05,
+      "feature_j_tn": 0.47228571980739953,
+      "feature_j_nn": 1.9884264131640026,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.6650543879977313,
+      "raw_predictive_fisher": 0.5248068543685336,
+      "projected_predictive_fisher": 0.3959225820106249,
+      "exact_projected_predictive_fisher": 0.3958587148444591,
+      "predictive_ridge_to_exact_gap": 6.386716616579857e-05,
+      "predictive_j_tn": 0.5101156868022175,
+      "predictive_j_nn": 2.018005183185413,
+      "inverse_predictive_loss": 2.5257462447941443
+    },
+    {
+      "group": "black/y=0",
+      "n": 3335,
+      "accuracy": 0.4482758620689655,
+      "loss": 0.9784067465650291,
+      "raw_feature_fisher": 1.462129888835403,
+      "projected_feature_fisher": 0.6015063583999337,
+      "exact_projected_feature_fisher": 0.6010966827557881,
+      "feature_ridge_to_exact_gap": 0.00040967564414562396,
+      "feature_j_tn": 1.3449201044178252,
+      "feature_j_nn": 2.1007437047671806,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.662492788995898,
+      "raw_predictive_fisher": 0.9927874766527918,
+      "projected_predictive_fisher": 0.43425146457350716,
+      "exact_projected_predictive_fisher": 0.4339407494469628,
+      "predictive_ridge_to_exact_gap": 0.0003107151265443475,
+      "predictive_j_tn": 1.0022838847889046,
+      "predictive_j_nn": 1.7975823008399652,
+      "inverse_predictive_loss": 2.3028131360570123
+    },
+    {
+      "group": "LGBTQ/y=0",
+      "n": 3210,
+      "accuracy": 0.602803738317757,
+      "loss": 0.7534231811017512,
+      "raw_feature_fisher": 1.0469796050131162,
+      "projected_feature_fisher": 0.6616947166141475,
+      "exact_projected_feature_fisher": 0.6614823244146075,
+      "feature_ridge_to_exact_gap": 0.00021239219953994581,
+      "feature_j_tn": 0.8362427505823645,
+      "feature_j_nn": 1.8140256056173696,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.511270922645765,
+      "raw_predictive_fisher": 0.7355330139070619,
+      "projected_predictive_fisher": 0.46303045892932976,
+      "exact_projected_predictive_fisher": 0.4628685697693397,
+      "predictive_ridge_to_exact_gap": 0.00016188915999004738,
+      "predictive_j_tn": 0.6774709212895305,
+      "predictive_j_nn": 1.6832662235970233,
+      "inverse_predictive_loss": 2.1596850900812434
+    },
+    {
+      "group": "identity_any/y=0",
+      "n": 46185,
+      "accuracy": 0.7797986359207535,
+      "loss": 0.4949042377660419,
+      "raw_feature_fisher": 0.7126564969172514,
+      "projected_feature_fisher": 0.6681990457490427,
+      "exact_projected_feature_fisher": 0.6681685298021313,
+      "feature_ridge_to_exact_gap": 3.0515946911391367e-05,
+      "feature_j_tn": 0.2545834310626992,
+      "feature_j_nn": 1.4568596313682352,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.4965600316196386,
+      "raw_predictive_fisher": 0.5343514955369084,
+      "projected_predictive_fisher": 0.4514866283138363,
+      "exact_projected_predictive_fisher": 0.45143158333550903,
+      "predictive_ridge_to_exact_gap": 5.504497832725663e-05,
+      "predictive_j_tn": 0.35330988113285966,
+      "predictive_j_nn": 1.5054028494739389,
+      "inverse_predictive_loss": 2.2149049720157663
+    },
+    {
+      "group": "christian/y=0",
+      "n": 12101,
+      "accuracy": 0.8952979092636972,
+      "loss": 0.3176872887298462,
+      "raw_feature_fisher": 0.7445549520117438,
+      "projected_feature_fisher": 0.7386075010692372,
+      "exact_projected_feature_fisher": 0.7386037349819677,
+      "feature_ridge_to_exact_gap": 3.766087269485574e-06,
+      "feature_j_tn": -0.0969444918864879,
+      "feature_j_nn": 1.579212194767324,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 1.3538990397651938,
+      "raw_predictive_fisher": 0.4999662595003601,
+      "projected_predictive_fisher": 0.48886432554143006,
+      "exact_projected_predictive_fisher": 0.48885810668773094,
+      "predictive_ridge_to_exact_gap": 6.21885369911368e-06,
+      "predictive_j_tn": 0.14082023754904877,
+      "predictive_j_nn": 1.785205842759459,
+      "inverse_predictive_loss": 2.0455572789789906
+    },
+    {
+      "group": "christian/y=1",
+      "n": 1260,
+      "accuracy": 0.6904761904761905,
+      "loss": 0.5552788957743515,
+      "raw_feature_fisher": 2.624757699929554,
+      "projected_feature_fisher": 1.209092342448492,
+      "exact_projected_feature_fisher": 1.2085957582960887,
+      "feature_ridge_to_exact_gap": 0.0004965841524033898,
+      "feature_j_tn": 2.0092794101737823,
+      "feature_j_nn": 2.8508065564109204,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.8270666818584484,
+      "raw_predictive_fisher": 1.3822800707883491,
+      "projected_predictive_fisher": 0.6780743499082775,
+      "exact_projected_predictive_fisher": 0.6777836318138092,
+      "predictive_ridge_to_exact_gap": 0.0002907180944683452,
+      "predictive_j_tn": 1.3063307318314457,
+      "predictive_j_nn": 2.422297525607439,
+      "inverse_predictive_loss": 1.4747645083280674
+    },
+    {
+      "group": "other_religions/y=1",
+      "n": 520,
+      "accuracy": 0.7961538461538461,
+      "loss": 0.42197155946655324,
+      "raw_feature_fisher": 3.3573920450884436,
+      "projected_feature_fisher": 1.255863929404454,
+      "exact_projected_feature_fisher": 1.2551650068514544,
+      "feature_ridge_to_exact_gap": 0.0006989225529996368,
+      "feature_j_tn": 2.5141598336902757,
+      "feature_j_nn": 3.0068111361761174,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.7962646020987052,
+      "raw_predictive_fisher": 1.7167400627304943,
+      "projected_predictive_fisher": 0.6969596027347236,
+      "exact_projected_predictive_fisher": 0.6965292067279134,
+      "predictive_ridge_to_exact_gap": 0.0004303960068101631,
+      "predictive_j_tn": 1.5547629996036367,
+      "predictive_j_nn": 2.369400375142041,
+      "inverse_predictive_loss": 1.434803368413572
+    },
+    {
+      "group": "muslim/y=1",
+      "n": 1627,
+      "accuracy": 0.8358942839582053,
+      "loss": 0.37108814193003753,
+      "raw_feature_fisher": 3.7273979922666083,
+      "projected_feature_fisher": 1.4132784102132723,
+      "exact_projected_feature_fisher": 1.4125162181040718,
+      "feature_ridge_to_exact_gap": 0.0007621921092004769,
+      "feature_j_tn": 2.651093728393329,
+      "feature_j_nn": 3.0361368926795826,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.7075746616502459,
+      "raw_predictive_fisher": 1.8400692861631698,
+      "projected_predictive_fisher": 0.7017284452679153,
+      "exact_projected_predictive_fisher": 0.7012529780115122,
+      "predictive_ridge_to_exact_gap": 0.00047546725640312815,
+      "predictive_j_tn": 1.6512114465754597,
+      "predictive_j_nn": 2.3941519117574237,
+      "inverse_predictive_loss": 1.425052657467348
+    },
+    {
+      "group": "LGBTQ/y=1",
+      "n": 1216,
+      "accuracy": 0.8264802631578947,
+      "loss": 0.3883404206381903,
+      "raw_feature_fisher": 4.043923467123544,
+      "projected_feature_fisher": 1.5852048818925262,
+      "exact_projected_feature_fisher": 1.5842881612011053,
+      "feature_ridge_to_exact_gap": 0.0009167206914209025,
+      "feature_j_tn": 2.5684508188656414,
+      "feature_j_nn": 2.6820803852697708,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.63083327910131,
+      "raw_predictive_fisher": 1.8367695398285104,
+      "projected_predictive_fisher": 0.8892945896647048,
+      "exact_projected_predictive_fisher": 0.8887916750298958,
+      "predictive_ridge_to_exact_gap": 0.0005029146348090041,
+      "predictive_j_tn": 1.3363980393878785,
+      "predictive_j_nn": 1.8839677443936615,
+      "inverse_predictive_loss": 1.1244867565563033
+    },
+    {
+      "group": "white/y=1",
+      "n": 2246,
+      "accuracy": 0.9096170970614426,
+      "loss": 0.272374636473441,
+      "raw_feature_fisher": 5.027380266276191,
+      "projected_feature_fisher": 1.637330055323421,
+      "exact_projected_feature_fisher": 1.636288243674667,
+      "feature_ridge_to_exact_gap": 0.001041811648753832,
+      "feature_j_tn": 3.321836466669697,
+      "feature_j_nn": 3.2539953023248445,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.6107504046854906,
+      "raw_predictive_fisher": 2.3587506724368357,
+      "projected_predictive_fisher": 0.7671190725794885,
+      "exact_projected_predictive_fisher": 0.7664979422277896,
+      "predictive_ridge_to_exact_gap": 0.000621130351698973,
+      "predictive_j_tn": 2.019928057572131,
+      "predictive_j_nn": 2.562475969019972,
+      "inverse_predictive_loss": 1.3035785743165638
+    },
+    {
+      "group": "female/y=1",
+      "n": 2270,
+      "accuracy": 0.762114537444934,
+      "loss": 0.4524045376504836,
+      "raw_feature_fisher": 3.4187570040041217,
+      "projected_feature_fisher": 1.7474874958122741,
+      "exact_projected_feature_fisher": 1.7469708557408752,
+      "feature_ridge_to_exact_gap": 0.000516640071398955,
+      "feature_j_tn": 2.3255172335492125,
+      "feature_j_nn": 3.2348816917478196,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.5722501572537287,
+      "raw_predictive_fisher": 1.6076866782555514,
+      "projected_predictive_fisher": 0.8081953901016727,
+      "exact_projected_predictive_fisher": 0.8079213916460323,
+      "predictive_ridge_to_exact_gap": 0.0002739984556404673,
+      "predictive_j_tn": 1.527615602019284,
+      "predictive_j_nn": 2.917867862739722,
+      "inverse_predictive_loss": 1.2373245379449052
+    },
+    {
+      "group": "identity_any/y=1",
+      "n": 9161,
+      "accuracy": 0.7978386639013209,
+      "loss": 0.41582224831659914,
+      "raw_feature_fisher": 3.7008426168142465,
+      "projected_feature_fisher": 1.84650090729147,
+      "exact_projected_feature_fisher": 1.845587914878955,
+      "feature_ridge_to_exact_gap": 0.000912992412515079,
+      "feature_j_tn": 1.9411677604158752,
+      "feature_j_nn": 2.0310592772772886,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.5415648541712315,
+      "raw_predictive_fisher": 1.728123014197489,
+      "projected_predictive_fisher": 0.8730840415128036,
+      "exact_projected_predictive_fisher": 0.8725800211535004,
+      "predictive_ridge_to_exact_gap": 0.0005040203593031922,
+      "predictive_j_tn": 1.2047303038061412,
+      "predictive_j_nn": 1.6964373698449697,
+      "inverse_predictive_loss": 1.1453650977443552
+    },
+    {
+      "group": "male/y=1",
+      "n": 2203,
+      "accuracy": 0.7884702678166137,
+      "loss": 0.41641748371961385,
+      "raw_feature_fisher": 3.8232129720053343,
+      "projected_feature_fisher": 1.8582055733810543,
+      "exact_projected_feature_fisher": 1.857659115413831,
+      "feature_ridge_to_exact_gap": 0.0005464579672231906,
+      "feature_j_tn": 2.6585582963040966,
+      "feature_j_nn": 3.595898525570777,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.538153586956979,
+      "raw_predictive_fisher": 1.7067879479034371,
+      "projected_predictive_fisher": 0.8121892614880307,
+      "exact_projected_predictive_fisher": 0.8119074555389717,
+      "predictive_ridge_to_exact_gap": 0.0002818059490590219,
+      "predictive_j_tn": 1.6854721080624102,
+      "predictive_j_nn": 3.1745202306849953,
+      "inverse_predictive_loss": 1.2312401001897955
+    },
+    {
+      "group": "black/y=1",
+      "n": 1537,
+      "accuracy": 0.9017566688353936,
+      "loss": 0.28090174690044106,
+      "raw_feature_fisher": 5.226073106211828,
+      "projected_feature_fisher": 1.8902350162472539,
+      "exact_projected_feature_fisher": 1.889087664952199,
+      "feature_ridge_to_exact_gap": 0.0011473512950548326,
+      "feature_j_tn": 3.1148090834582423,
+      "feature_j_nn": 2.907425218712281,
+      "feature_audit_status": "ok",
+      "inverse_feature_loss": 0.5290347423015079,
+      "raw_predictive_fisher": 2.317790852909985,
+      "projected_predictive_fisher": 0.8698138043533412,
+      "exact_projected_predictive_fisher": 0.8690907778642909,
+      "predictive_ridge_to_exact_gap": 0.0007230264890503157,
+      "predictive_j_tn": 1.7033071758444236,
+      "predictive_j_nn": 2.0026611341147316,
+      "inverse_predictive_loss": 1.149671324481602
+    }
+  ]
+}

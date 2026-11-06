@@ -1,0 +1,40 @@
+\documentclass[tikz,border=0pt]{standalone}
+\input{figure_style.tex}
+% Source: tex/main.tex, tab:end2end-frontier. Error bars = SD, n = 5.
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=1mm]
+\path[use as bounding box] (0,0) rectangle (140,69);
+\node[panel label] at (0,69) {A};
+\node[panel title] at (5,69) {Average accuracy (\%)};
+\node[panel label] at (49,69) {B};
+\node[panel title] at (54,69) {Worst-group accuracy (\%)};
+\node[panel label] at (98,69) {C};
+\node[panel title] at (103,69) {Fisher-Glass certificate};
+\begin{scope}[shift={(22,59)}]
+ \draw[fgblue,line width=.9pt] (0,0)--(6,0);
+ \fill[fgblue] (3,0) circle (1.9pt);
+ \node[anchor=west,font=\fontsize{8}{10}\selectfont] at (7,0) {Group DRO + Fisher-Glass};
+ \draw[fgslate,dashed,line width=.8pt] (64,0)--(70,0);
+ \node[anchor=west,font=\fontsize{8}{10}\selectfont] at (71,0) {Group DRO};
+\end{scope}
+\pgfplotsset{frontier/.style={fg axis,width=35mm,height=35mm,scale only axis,
+ xmin=0.000035,xmax=0.014,xtick={0.0001,0.001,0.01},
+ ymajorgrids=true,minor x tick style={draw=none},
+ tick label style={font=\fontsize{8}{10}\selectfont},
+ error bars/y dir=both,error bars/y explicit,
+ error bars/error bar style={line width=.65pt},error bars/error mark options={rotate=90,mark size=2pt,line width=.65pt}}}
+\begin{semilogxaxis}[frontier,at={(7mm,17mm)},anchor=south west,ymin=25,ymax=95,ytick={30,50,70,90}]
+ \addplot[fgslate,dashed,no marks,forget plot] coordinates {(0.000035,85.4) (0.014,85.4)};
+ \addplot[fgblue,mark=*,mark size=1.8pt] table[col sep=comma,x=coefficient,y=average,y error=average_sd]{training_frontier.csv};
+\end{semilogxaxis}
+\begin{semilogxaxis}[frontier,at={(56mm,17mm)},anchor=south west,ymin=0,ymax=75,ytick={0,20,40,60}]
+ \addplot[fgslate,dashed,no marks,forget plot] coordinates {(0.000035,53.2) (0.014,53.2)};
+ \addplot[fgblue,mark=*,mark size=1.8pt] table[col sep=comma,x=coefficient,y=worst,y error=worst_sd]{training_frontier.csv};
+\end{semilogxaxis}
+\begin{semilogxaxis}[frontier,at={(104mm,17mm)},width=33mm,anchor=south west,ymin=0,ymax=1,ytick={0,0.25,0.5,0.75,1},yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2}]
+ \addplot[fgslate,dashed,no marks,forget plot] coordinates {(0.000035,.259) (0.014,.259)};
+ \addplot[fgblue,mark=*,mark size=1.8pt] table[col sep=comma,x=coefficient,y=certificate,y error=certificate_sd]{training_frontier.csv};
+\end{semilogxaxis}
+\node at (72,4) {Regularization coefficient $\lambda_{\mathrm{FG}}$};
+\end{tikzpicture}
+\end{document}

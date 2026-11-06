@@ -1,0 +1,65 @@
+{
+  "tag": "fisher_glass_lam0.01_seed24",
+  "method": "fisher_glass",
+  "fg_lambda": 0.01,
+  "seed": 24,
+  "selected_slice": "waterbird/water",
+  "partner_slice": "waterbird/land",
+  "validation": {
+    "accuracy": 0.9323308270676691,
+    "nll": 0.5204034536860472,
+    "projected_fisher": 0.618274890213191,
+    "projected_over_raw": 0.4644171443921001,
+    "overall_accuracy": 0.780650542118432
+  },
+  "test_selected_slice": {
+    "n": 642,
+    "accuracy": 0.9252336448598131,
+    "nll": 0.6388425115028895,
+    "nll_calibrated": 0.36640552056847586,
+    "n_confident": 185,
+    "confident_accuracy": 0.9675675675675676,
+    "bootstrap_species": {
+      "accuracy": {
+        "point": 0.9252336448598131,
+        "lo": 0.8772544893378227,
+        "hi": 0.9645752847680233,
+        "se": 0.022940013234786786,
+        "n_clusters": 46
+      },
+      "confident_accuracy": {
+        "point": 0.9675675675675676,
+        "lo": 0.9249963872832371,
+        "hi": 0.9947643979057592,
+        "se": 0.018845354570529264,
+        "n_clusters": 46
+      }
+    }
+  },
+  "test_partner_slice": {
+    "n": 642,
+    "accuracy": 0.38006230529595014,
+    "nll": 4.724285296049425,
+    "nll_calibrated": 0.9356208456758967,
+    "n_confident": 95,
+    "confident_accuracy": 0.7368421052631579,
+    "bootstrap_species": {
+      "accuracy": {
+        "point": 0.38006230529595014,
+        "lo": 0.32448876333431714,
+        "hi": 0.43906026294052863,
+        "se": 0.029793361702870558,
+        "n_clusters": 46
+      },
+      "confident_accuracy": {
+        "point": 0.7368421052631579,
+        "lo": 0.6219486575117852,
+        "hi": 0.8369701086956521,
+        "se": 0.05515254951219224,
+        "n_clusters": 46
+      }
+    }
+  },
+  "delta_accuracy": 0.5451713395638629,
+  "delta_confident_accuracy": 0.2307254623044097
+}

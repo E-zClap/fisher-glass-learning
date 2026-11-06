@@ -1,0 +1,42 @@
+{
+  "args": {
+    "image_root": "data/wilds/waterbirds_v1.0",
+    "mask_root": "data/cub_segmentations/segmentations",
+    "metadata": "data/wilds/waterbirds_v1.0/metadata.csv",
+    "out_dir": "build/prospective_shift_v2_rerun",
+    "groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "only_selected_group": false,
+    "draws": 2,
+    "max_per_group": 0,
+    "max_donor_foreground": 0.08,
+    "max_visible_inpaint": 0.03,
+    "donor_tries": 4,
+    "inpaint_radius": 5,
+    "dilate": 2,
+    "jpeg_quality": 95,
+    "workers": 12
+  },
+  "n_source_images": 5794,
+  "n_generated": 23176,
+  "groups": {
+    "landbird/land": 9020,
+    "landbird/water": 9020,
+    "waterbird/land": 2568,
+    "waterbird/water": 2568
+  },
+  "visible_inpaint_fraction": {
+    "mean": 0.041290777307098125,
+    "p95": 0.0845014154029474,
+    "max": 0.20367053963607315
+  },
+  "visible_inpaint_by_arm": {
+    "same": 0.04134319657630826,
+    "opposite": 0.041238358037888
+  },
+  "manifest": "build/prospective_shift_v2_rerun/paired_manifest.csv"
+}

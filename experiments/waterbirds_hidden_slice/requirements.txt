@@ -1,0 +1,16 @@
+# Python 3.8+ is required. Install a CUDA build of torch/torchvision that
+# matches the NVIDIA driver first; then install the remaining requirements.
+
+numpy>=1.24
+torch>=2.1
+torchvision>=0.16
+transformers>=4.38
+huggingface-hub>=0.20
+wilds>=2.0
+Pillow>=10.0
+tqdm>=4.65
+
+# Discovery, repair, uncertainty, and reporting stages.
+scikit-learn>=1.3
+scipy>=1.10
+matplotlib>=3.7

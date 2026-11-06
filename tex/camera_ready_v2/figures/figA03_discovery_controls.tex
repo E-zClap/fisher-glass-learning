@@ -1,0 +1,43 @@
+% Paired contrasts transcribed from tex/main.tex, app:hidden-slice-exp.
+% Endpoints are reported 95% Student-t CIs across five paired seeds.
+\documentclass[tikz,border=0pt]{standalone}
+\input{figure_style.tex}
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=1mm]
+\path[use as bounding box] (0,0) rectangle (140,90);
+\node[panel title] at (0,89) {A\quad Predictive information: CLIP search minus control};
+\node[anchor=west] at (1,75.5) {High-loss slice};
+\node[anchor=west] at (1,67.5) {Random slice};
+\node[anchor=west] at (1,59.5) {Constant gate};
+\node[anchor=west] at (1,51.5) {Random direction};
+\begin{axis}[fg axis,at={(50mm,47.5mm)},anchor=south west,
+ width=85mm,height=32mm,scale only axis,
+ xmin=-.022,xmax=.003,ymin=.5,ymax=4.5,axis y line=none,ytick=\empty,
+ xtick={-.02,-.01,0},xticklabels={$-0.02$,$-0.01$,0},xmajorgrids=true,
+ error bars/error bar style={line width=.85pt},
+ error bars/error mark options={rotate=90,mark size=2pt,line width=.85pt}]
+\draw[fgdark,dashed,line width=.5pt] (axis cs:0,.5)--(axis cs:0,4.5);
+\addplot+[only marks,fgblue,mark=*,mark options={fill=fgblue},error bars/.cd,x dir=both,x explicit]
+ coordinates {(-.014,4) += (.006,0) -= (.006,0)
+ (-.008,3) += (.001,0) -= (.001,0)
+ (-.008,2) += (.001,0) -= (.001,0)};
+\addplot+[only marks,fgdark,mark=diamond*,mark options={fill=white},error bars/.cd,x dir=both,x explicit]
+ coordinates {(-.0004,1) += (.0011,0) -= (.0011,0)};
+\end{axis}
+\node[panel title] at (0,37) {B\quad Moment controls: CLIP search minus high-loss slice};
+\node[anchor=west] at (1,24.75) {Unweighted};
+\node[anchor=west] at (1,14.25) {Centered unweighted};
+\begin{axis}[fg axis,at={(50mm,9mm)},anchor=south west,
+ width=85mm,height=21mm,scale only axis,
+ xmin=-.18,xmax=.05,ymin=.5,ymax=2.5,axis y line=none,ytick=\empty,
+ xtick={-.15,-.10,-.05,0,.05},xticklabels={$-0.15$,$-0.10$,$-0.05$,0,0.05},xmajorgrids=true,
+ error bars/error bar style={line width=.85pt},
+ error bars/error mark options={rotate=90,mark size=2pt,line width=.85pt}]
+\draw[fgdark,dashed,line width=.5pt] (axis cs:0,.5)--(axis cs:0,2.5);
+\addplot+[only marks,fgslate,mark=square*,mark options={fill=white},error bars/.cd,x dir=both,x explicit]
+ coordinates {(-.034,2) += (.073,0) -= (.072,0)};
+\addplot+[only marks,fgslate,mark=triangle*,mark options={fill=fgslate},error bars/.cd,x dir=both,x explicit]
+ coordinates {(-.071,1) += (.095,0) -= (.095,0)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

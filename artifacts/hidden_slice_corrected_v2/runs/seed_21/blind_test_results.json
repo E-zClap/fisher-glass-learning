@@ -1,0 +1,1022 @@
+{
+  "arms": {
+    "combined_repair": {
+      "accuracy_budget_satisfied": true,
+      "frozen_original_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006221725334481052,
+          "lo": 0.003925849816172363,
+          "mean": 0.005023618317396325,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0005949698428708319
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "overall": {
+        "accuracy": 0.7562996202968588,
+        "calibrated_loss": 0.630963718354353,
+        "loss": 1.1278098074500233,
+        "mean_confidence": 0.8812057835958168,
+        "mean_entropy": 0.2728342230456806
+      },
+      "rediscovered_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006144589300677115,
+          "lo": 0.0039030459802809623,
+          "mean": 0.004988204925917634,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0005865751282898845
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "spec": {
+        "lambda_fisher": 0.0,
+        "lambda_loss": 0.0,
+        "name": "no_op"
+      }
+    },
+    "erm": {
+      "fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.0062292868521958734,
+          "lo": 0.0039053366438817076,
+          "mean": 0.004991123799458084,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.000591069691026403
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "fisher_vs_high_loss": {
+        "left": "hidden_fisher",
+        "left_class": 0,
+        "left_top_size": 451,
+        "right": "high_loss",
+        "right_class": 0,
+        "right_top_size": 451,
+        "same_selected_class": true,
+        "score_correlation_within_shared_class": -0.09446447407332861,
+        "top_slice_intersection": 0,
+        "top_slice_jaccard": 0.0
+      },
+      "high_loss_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.015692127392416745,
+          "lo": 0.012711482064606362,
+          "mean": 0.014158185133559948,
+          "point": 0.01419184548169513,
+          "replicates": 2000,
+          "standard_error": 0.0007684979946543385
+        },
+        "centered_unweighted": {
+          "correlation": 0.32255586738209274,
+          "exact_projected_fisher": 0.25342653274786797,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9449354019931486,
+          "j_nn": 0.4658839416194094,
+          "j_tn": 0.11709169737349104,
+          "j_tt": 0.2828554620776657,
+          "projected_fisher": 0.2534895653919716,
+          "projected_over_raw": 0.8961805564227326,
+          "raw_projected_fisher": 0.2534895653919716,
+          "ridge_beta": 0.25079401310602556,
+          "ridge_to_exact_gap": 6.303264410362219e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 383.3669479897696,
+          "max_weight": 0.0028788357826668677,
+          "nonzero_weights": 3357,
+          "sum": 0.9999999999999999
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.022979458794704394,
+          "heldout_mean_membership": 0.07702054120529561,
+          "membership_max": 1.0,
+          "membership_min": 1.2549156164451376e-33,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.11529933481152993,
+        "mean_abs_margin": 2.969630219728523,
+        "mean_confidence": 0.8761043318368222,
+        "mean_entropy": 0.2876712432847085,
+        "mean_probability": 0.845994329317607,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.014001412497604726,
+          "exact_status": "ok",
+          "inverse_fisher": 70.46294977353843,
+          "j_nn": 0.19697387063201405,
+          "j_tn": 0.08617461128144176,
+          "j_tt": 0.05170216745398641,
+          "projected_fisher": 0.01419184548169513,
+          "raw_projected_fisher": 0.01419184548169513,
+          "ridge_beta": 0.4352827522457228,
+          "ridge_to_exact_gap": 0.0001904329840904037
+        },
+        "selector_objective": "high_loss",
+        "unweighted": {
+          "exact_projected_fisher": 0.3617919870019255,
+          "exact_status": "ok",
+          "inverse_fisher": 2.760644139326676,
+          "j_nn": 2.454516277512072,
+          "j_tn": 1.6327315255019086,
+          "j_tt": 1.4478765482621547,
+          "projected_fisher": 0.36223429095698645,
+          "raw_projected_fisher": 0.36223429095698645,
+          "ridge_beta": 0.6649239267744507,
+          "ridge_to_exact_gap": 0.000442303955060952
+        },
+        "weighted_accuracy": 0.08782591410971857,
+        "weighted_calibrated_loss": 3.045528780236445,
+        "weighted_loss": 6.349314344090704
+      },
+      "overall": {
+        "accuracy": 0.7562996202968588,
+        "calibrated_loss": 0.630963718354353,
+        "loss": 1.1278098074500233,
+        "mean_confidence": 0.8812057835958168,
+        "mean_entropy": 0.2728342230456806
+      },
+      "random_nuisance_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006579916181782522,
+          "lo": 0.005094200428721029,
+          "mean": 0.005824941011617238,
+          "point": 0.005853196367208354,
+          "replicates": 2000,
+          "standard_error": 0.00038686203016332336
+        },
+        "centered_unweighted": {
+          "correlation": 0.12633480924039936,
+          "exact_projected_fisher": 0.2693943941398386,
+          "exact_status": "ok",
+          "inverse_fisher": 3.711959118840943,
+          "j_nn": 0.8533088821075984,
+          "j_tn": 0.06106103617597618,
+          "j_tt": 0.27376379684624774,
+          "projected_fisher": 0.26939950868657686,
+          "projected_over_raw": 0.9840581983083688,
+          "raw_projected_fisher": 0.26939950868657686,
+          "ridge_beta": 0.07147419095694907,
+          "ridge_to_exact_gap": 5.1145467382385235e-06
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 458.6538350313317,
+          "max_weight": 0.0024141193856256783,
+          "nonzero_weights": 2978,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.008153055171003357,
+          "heldout_mean_membership": 0.09184694482899665,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+        "mean_abs_margin": 4.933888679410627,
+        "mean_confidence": 0.9625130531707996,
+        "mean_entropy": 0.10877552578146837,
+        "mean_probability": 0.03964432260777867,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005853158865002659,
+          "exact_status": "ok",
+          "inverse_fisher": 170.8465304764136,
+          "j_nn": 0.04290125741130864,
+          "j_tn": 0.0002657675152836435,
+          "j_tt": 0.005854805258988338,
+          "projected_fisher": 0.005853196367208354,
+          "raw_projected_fisher": 0.005853196367208354,
+          "ridge_beta": 0.006053756337630178,
+          "ridge_to_exact_gap": 3.750220569503915e-08
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.586692710729014,
+          "exact_status": "ok",
+          "inverse_fisher": 1.704229963711386,
+          "j_nn": 1.3064175050532616,
+          "j_tn": -0.3754993956052932,
+          "j_tt": 0.6946212983011715,
+          "projected_fisher": 0.5867752617023296,
+          "raw_projected_fisher": 0.5867752617023296,
+          "ridge_beta": -0.2872069512255736,
+          "ridge_to_exact_gap": 8.255097331566486e-05
+        },
+        "weighted_accuracy": 0.9888911107325323,
+        "weighted_calibrated_loss": 0.04751533683026318,
+        "weighted_loss": 0.02596949595043076
+      },
+      "random_slice_baseline": {
+        "class_id": 0,
+        "draws": 200,
+        "hard_slice_size": 451,
+        "inverse_fisher": {
+          "mean": 77.14085414986572,
+          "p2_5": 67.40243520137273,
+          "p50": 77.15602320123979,
+          "p97_5": 87.66623785694294,
+          "std": 5.310360873365132
+        },
+        "predictive_fisher": {
+          "mean": 0.013024913952283255,
+          "p2_5": 0.011406893547793326,
+          "p50": 0.012960741099621764,
+          "p97_5": 0.014836285660846577,
+          "std": 0.0009026697455611972
+        },
+        "slice_mass": 0.1,
+        "unweighted_fisher": {
+          "mean": 0.3846293649183977,
+          "p2_5": 0.3465630245096995,
+          "p50": 0.38445766921084873,
+          "p97_5": 0.43366534026154147,
+          "std": 0.022762198557548796
+        },
+        "weighted_accuracy": {
+          "mean": 0.7633259423503327,
+          "p2_5": 0.7293237250554324,
+          "p50": 0.7638580931263858,
+          "p97_5": 0.7982261640798226,
+          "std": 0.01887368313806975
+        },
+        "weighted_loss": {
+          "mean": 1.0990416957889624,
+          "p2_5": 0.8955588548365943,
+          "p50": 1.0875697700576015,
+          "p97_5": 1.3048523411850774,
+          "std": 0.11187220846314683
+        }
+      }
+    },
+    "erm_continuation": {
+      "accuracy_budget_satisfied": true,
+      "frozen_original_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006224807397405257,
+          "lo": 0.003836519915427505,
+          "mean": 0.0049924571595523345,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0006059395275619252
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "overall": {
+        "accuracy": 0.7562996202968588,
+        "calibrated_loss": 0.630963718354353,
+        "loss": 1.1278098074500233,
+        "mean_confidence": 0.8812057835958168,
+        "mean_entropy": 0.2728342230456806
+      },
+      "rediscovered_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006164449883412438,
+          "lo": 0.003862748553064079,
+          "mean": 0.005000975545313853,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0005868493916176494
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "spec": {
+        "lambda_fisher": 0.0,
+        "lambda_loss": 0.0,
+        "name": "erm_continuation"
+      }
+    },
+    "fisher_repair": {
+      "accuracy_budget_satisfied": true,
+      "frozen_original_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006282306988550707,
+          "lo": 0.003859660822433033,
+          "mean": 0.004994981388297126,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.000605532156670969
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "overall": {
+        "accuracy": 0.7562996202968588,
+        "calibrated_loss": 0.630963718354353,
+        "loss": 1.1278098074500233,
+        "mean_confidence": 0.8812057835958168,
+        "mean_entropy": 0.2728342230456806
+      },
+      "rediscovered_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006250319274078961,
+          "lo": 0.0038539896664341817,
+          "mean": 0.004988733490328082,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0006123825713623955
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "spec": {
+        "lambda_fisher": 0.0,
+        "lambda_loss": 0.0,
+        "name": "no_op"
+      }
+    },
+    "loss_repair": {
+      "accuracy_budget_satisfied": true,
+      "frozen_original_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006155622159754109,
+          "lo": 0.0038999669999687154,
+          "mean": 0.005002730697896593,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0005827013329725485
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "overall": {
+        "accuracy": 0.7562996202968588,
+        "calibrated_loss": 0.630963718354353,
+        "loss": 1.1278098074500233,
+        "mean_confidence": 0.8812057835958168,
+        "mean_entropy": 0.2728342230456806
+      },
+      "rediscovered_fisher_selector": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.006174004692170069,
+          "lo": 0.0038777242466811056,
+          "mean": 0.0050094501943739045,
+          "point": 0.0050309411594251984,
+          "replicates": 2000,
+          "standard_error": 0.0005961511641662253
+        },
+        "centered_unweighted": {
+          "correlation": 0.1836943232431074,
+          "exact_projected_fisher": 0.2523943937060268,
+          "exact_status": "ok",
+          "inverse_fisher": 3.9616393299955095,
+          "j_nn": 0.3334554080420705,
+          "j_tn": 0.0542136040089795,
+          "j_tt": 0.26120851034279047,
+          "projected_fisher": 0.2524207473436862,
+          "projected_over_raw": 0.9663572867990715,
+          "raw_projected_fisher": 0.2524207473436862,
+          "ridge_beta": 0.16209516337723584,
+          "ridge_to_exact_gap": 2.635363765940424e-05
+        },
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 395.25668054178544,
+          "max_weight": 0.0027772227299706345,
+          "nonzero_weights": 2963,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.020161430471758585,
+          "heldout_mean_membership": 0.07983856952824142,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9933481152993349,
+        "mean_abs_margin": 4.7483018649624,
+        "mean_confidence": 0.9619776453428835,
+        "mean_entropy": 0.11584167014333269,
+        "mean_probability": 0.03972580261854003,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.005012082968711861,
+          "exact_status": "ok",
+          "inverse_fisher": 198.76957026834924,
+          "j_nn": 0.02991371359546499,
+          "j_tn": 0.004176002662269209,
+          "j_tt": 0.005595059675352634,
+          "projected_fisher": 0.0050309411594251984,
+          "raw_projected_fisher": 0.0050309411594251984,
+          "ridge_beta": 0.13508576539577646,
+          "ridge_to_exact_gap": 1.8858190713337553e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.3786902967219038,
+          "exact_status": "ok",
+          "inverse_fisher": 2.638272039179919,
+          "j_nn": 0.727872324389297,
+          "j_tn": 0.42823247578771795,
+          "j_tt": 0.6306342808171108,
+          "projected_fisher": 0.379035959433554,
+          "raw_projected_fisher": 0.379035959433554,
+          "ridge_beta": 0.5875274193549915,
+          "ridge_to_exact_gap": 0.00034566271165020757
+        },
+        "weighted_accuracy": 0.9927268771772815,
+        "weighted_calibrated_loss": 0.04639151725840747,
+        "weighted_loss": 0.021253301032481336
+      },
+      "spec": {
+        "lambda_fisher": 0.0,
+        "lambda_loss": 0.0,
+        "name": "no_op"
+      }
+    }
+  },
+  "blind_test_sha256": "b921de4d6e96d0f895beac756a375216005474bf7bfddf827425e2b7ef468e34",
+  "certification_protocol": {
+    "bootstrap_confidence": 0.95,
+    "bootstrap_replicates": 2000,
+    "discovery_artifact_sha256": "db24746d12e141f88fceed39a4e3c3a97af969e1fbf435408a300800527b9154",
+    "discovery_frozen_blind_sha256": "e8ce07126cc1fb32b05a614b570970231142dba1422a2bab5eea63c8993b50ae",
+    "random_slices": 200,
+    "repair_artifact_sha256": "e6ebbfff0de48758322f47c1d0ded0804dc31ce92bb2a176b9567f85927ff3bd",
+    "repair_evaluations": [
+      "original frozen Fisher gate",
+      "freshly reinitialized Fisher gate"
+    ],
+    "repair_frozen_sha256": "57ac8ef25a82538f1b0f8b16ed57f2c1ff81e642a0983e06a1cf84c1d5245a39",
+    "test_blind_sha256": "917c431f9f9d6eb4e1bdfbb2916a82cb216e6fe9f5433339a5a9f6be6d5c07ab"
+  },
+  "certification_protocol_sha256": "21f1357626a2a4f5701e1e9e4e206e8d7a3c9de5cf589efbc10adb148a99f2ea",
+  "discovery_artifact_sha256": "db24746d12e141f88fceed39a4e3c3a97af969e1fbf435408a300800527b9154",
+  "freeze_statement": "All reported test gates and model parameters were frozen before test_blind.npz was opened. No group/background metadata was opened in this stage.",
+  "metadata_accessed": false,
+  "repair_artifact_sha256": "e6ebbfff0de48758322f47c1d0ded0804dc31ce92bb2a176b9567f85927ff3bd",
+  "schema_version": 1,
+  "score_artifact": "build/results/waterbirds_hidden_slice_v2/runs/seed_21/blind_test_scores.npz",
+  "score_artifact_sha256": "d30ae5e70ba480f5b78b21648fddf2e4f2716e64a14eadb142ea0490f645e1f9",
+  "seed": 21,
+  "stage": "blind_heldout_test_certification",
+  "test_blind_sha256": "917c431f9f9d6eb4e1bdfbb2916a82cb216e6fe9f5433339a5a9f6be6d5c07ab",
+  "test_data_accessed_after_freeze": true
+}

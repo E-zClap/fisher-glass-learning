@@ -1,0 +1,2070 @@
+{
+  "blind_test_artifact_sha256": "1e6900a987f4ebd901453631e079a62c8a53c4f8350f88b44941f386674c2ea0",
+  "blind_test_sha256": "4482145e90111a9fb7e83c7f205a18f4b337f8b905bee5ff2bcf64136f0353f4",
+  "candidates": [
+    {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005161638224861866,
+            "lo": 0.0034527053546599073,
+            "mean": 0.004291816612800132,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004238772426218856
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "candidate_index": 0,
+      "lambda_fg": 0.0,
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005190198103612138,
+            "lo": 0.003493862174577537,
+            "mean": 0.004269092622687127,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.00043368217016513276
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "candidate_index": 1,
+      "lambda_fg": 0.01,
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005168713121066123,
+            "lo": 0.003493806209415529,
+            "mean": 0.004286960658293383,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.00043195135643313954
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "candidate_index": 2,
+      "lambda_fg": 0.03,
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.00515293280348118,
+            "lo": 0.003481958166273304,
+            "mean": 0.004288763293381922,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004336756514023652
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "candidate_index": 3,
+      "lambda_fg": 0.1,
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005180969460641302,
+            "lo": 0.003471545539833027,
+            "mean": 0.004281770727205372,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.00044417790831586927
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "candidate_index": 4,
+      "lambda_fg": 0.3,
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    }
+  ],
+  "comparator_disclosure": "group_supervised_val_comparator uses validation y-by-background labels. It is not an upper bound, does not alter the primary group-free choice, and uses no test group label to choose a policy.",
+  "frozen_erm_reference": {
+    "blind_test_candidate": {
+      "hidden_certificate": {
+        "bootstrap_predictive_fisher": {
+          "confidence": 0.95,
+          "hi": 0.00516664550297433,
+          "lo": 0.0034669272369781306,
+          "mean": 0.004296872318476563,
+          "point": 0.004297631087254982,
+          "replicates": 2000,
+          "standard_error": 0.0004293578206644958
+        },
+        "centered_unweighted": {
+          "correlation": 0.13679988052878828,
+          "exact_projected_fisher": 0.23944921728293792,
+          "exact_status": "ok",
+          "inverse_fisher": 4.176029348453639,
+          "j_nn": 0.3588172006058922,
+          "j_tn": 0.040479142156730444,
+          "j_tt": 0.24401577916173844,
+          "projected_fisher": 0.23946190862140398,
+          "projected_over_raw": 0.9813378030061078,
+          "raw_projected_fisher": 0.23946190862140398,
+          "ridge_beta": 0.11249918594377387,
+          "ridge_to_exact_gap": 1.2691338466069846e-05
+        },
+        "certificate": 0.004297631087254982,
+        "class_id": 0,
+        "constraints": {
+          "effective_sample_size": 486.55706985743865,
+          "max_weight": 0.002294335222430262,
+          "nonzero_weights": 3354,
+          "sum": 1.0
+        },
+        "fisher_config": {
+          "epsilon": 1e-08,
+          "ridge": 0.001,
+          "shrinkage": 0.1
+        },
+        "gate_transfer": {
+          "absolute_mass_error": 0.003357849430865978,
+          "heldout_mean_membership": 0.09664215056913403,
+          "membership_max": 1.0,
+          "membership_min": 0.0,
+          "target_membership_mass": 0.1
+        },
+        "hard_top_mass": 0.1,
+        "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+        "mean_abs_margin": 5.135468263962903,
+        "mean_confidence": 0.9702464576514203,
+        "mean_entropy": 0.09344286927423326,
+        "mean_probability": 0.03189580851472994,
+        "n_class": 4510,
+        "predictive": {
+          "exact_projected_fisher": 0.004272117200412449,
+          "exact_status": "ok",
+          "inverse_fisher": 232.6857873184395,
+          "j_nn": 0.023695029630853025,
+          "j_tn": 0.0038638629736002044,
+          "j_tt": 0.004902183391987038,
+          "projected_fisher": 0.004297631087254982,
+          "raw_projected_fisher": 0.004297631087254982,
+          "ridge_beta": 0.15646318434754342,
+          "ridge_to_exact_gap": 2.5513886842533015e-05
+        },
+        "selector_objective": "fisher",
+        "unweighted": {
+          "exact_projected_fisher": 0.4542957353559258,
+          "exact_status": "ok",
+          "inverse_fisher": 2.199479535545963,
+          "j_nn": 0.6417354846987484,
+          "j_tn": 0.3838765633369626,
+          "j_tt": 0.6839249508084159,
+          "projected_fisher": 0.45465300396940544,
+          "raw_projected_fisher": 0.45465300396940544,
+          "ridge_beta": 0.5972543487573063,
+          "ridge_to_exact_gap": 0.00035726861347962213
+        },
+        "weighted_accuracy": 0.9897999525184653,
+        "weighted_calibrated_loss": 0.038081202595023504,
+        "weighted_loss": 0.02038724804715548
+      },
+      "task_metrics": {
+        "accuracy": 0.7649292371418709,
+        "balanced_accuracy": 0.7554116501232981,
+        "minimum_class_accuracy": 0.7383177570093458,
+        "n": 5794,
+        "nll": 0.6294397414993993,
+        "nll_standard_error": 0.015847334538893698,
+        "per_class_accuracy": {
+          "0": 0.7725055432372505,
+          "1": 0.7383177570093458
+        }
+      }
+    },
+    "source": "frozen_reference",
+    "test_group_metrics": {
+      "average_accuracy": 0.7649292371418709,
+      "definition": "four post-hoc y-by-background groups",
+      "groups": [
+        {
+          "accuracy": 0.9556541019955654,
+          "group": "landbird/land",
+          "group_id": 0,
+          "n": 2255
+        },
+        {
+          "accuracy": 0.5893569844789357,
+          "group": "landbird/water",
+          "group_id": 1,
+          "n": 2255
+        },
+        {
+          "accuracy": 0.573208722741433,
+          "group": "waterbird/land",
+          "group_id": 2,
+          "n": 642
+        },
+        {
+          "accuracy": 0.9034267912772586,
+          "group": "waterbird/water",
+          "group_id": 3,
+          "n": 642
+        }
+      ],
+      "mean_group_accuracy": 0.7554116501232981,
+      "worst_group_accuracy": 0.573208722741433
+    },
+    "validation_group_metrics": {
+      "average_accuracy": 0.749791492910759,
+      "definition": "four post-hoc y-by-background groups",
+      "groups": [
+        {
+          "accuracy": 0.9443254817987152,
+          "group": "landbird/land",
+          "group_id": 0,
+          "n": 467
+        },
+        {
+          "accuracy": 0.5686695278969958,
+          "group": "landbird/water",
+          "group_id": 1,
+          "n": 466
+        },
+        {
+          "accuracy": 0.5488721804511278,
+          "group": "waterbird/land",
+          "group_id": 2,
+          "n": 133
+        },
+        {
+          "accuracy": 0.9022556390977443,
+          "group": "waterbird/water",
+          "group_id": 3,
+          "n": 133
+        }
+      ],
+      "mean_group_accuracy": 0.7410307073111458,
+      "worst_group_accuracy": 0.5488721804511278
+    }
+  },
+  "frozen_selection_sha256": "c061f88321488df2b9c5d9074b627a081eb687bb6cc621ad2368d5d51233a88b",
+  "implementation_manifest": {
+    "algorithm_version": "group-free-lambda-selection-2.0.0",
+    "combined_sha256": "ab05c6bd499234960426fb3b6281b5ac2e7861a72e980d142823f137c56c3fd7",
+    "files": {
+      "waterbirds_group_free_lambda/aggregate.py": "d583b10633c3cfbe338982e4d4520faab7e3c2576d456f16cce73d19b1ac1696",
+      "waterbirds_group_free_lambda/certify.py": "89a023f45d78ac13b683bbc51f868c1e8e162a0c6b87d86fe9e480305d5cd613",
+      "waterbirds_group_free_lambda/experiment_common.py": "e869db5ee2fbd5976646eee7ac06042fd29bd63c86d94679b7b08c5ffce1b55a",
+      "waterbirds_group_free_lambda/posthoc.py": "ca70947d60b5b6ad641c761b7c3c2a1599c23716b52d66aa745396eb7cb12477",
+      "waterbirds_group_free_lambda/preflight.py": "31e42c1242187999710a94aa0691f89070fa0163488668342928a80bb689e8a8",
+      "waterbirds_group_free_lambda/run_all.sh": "2364ceee317e84ce450e7950ae3da77005cb888f65ae35e82a6817c8c7a873ba",
+      "waterbirds_group_free_lambda/select_lambda.py": "f962d5e2f23c698b26d4ee928c60d55705340116471ba9eaf49124f649ad6600",
+      "waterbirds_hidden_slice/blind_protocol.py": "deccd124d3677dbdc5489a9d8c214bd9738dd1768a91ae4adc85d254b3784336",
+      "waterbirds_hidden_slice/common.py": "324269c6a56ded790f6c822a12c409cf578a268c0929f005ba2709865d972781",
+      "waterbirds_hidden_slice/compat.py": "554891fb0803cc34e569d96639e37cd620e299b454ff7e62c399da6044721af3",
+      "waterbirds_hidden_slice/gates.py": "6679b6cabc5f0663691f343b884901ff9ec298ea8c121c8860138521a035a356",
+      "waterbirds_hidden_slice/geometry.py": "69f85333835f4cc0ee6c23b9c878bef8e45f205aa4466704095c1a8dafb5bd0d",
+      "waterbirds_hidden_slice/heads.py": "f09a4ed1a2777c0478e42610235baa33e1ce15b9439faf807cbd1be801ace21e",
+      "waterbirds_hidden_slice/metrics.py": "21467346142cec026af1f0211d0037184c1a4906abf45be25171a34d9975a61a"
+    }
+  },
+  "metadata_accessed_after_blind_freeze": true,
+  "policies": {
+    "fixed_0.03": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005168713121066123,
+            "lo": 0.003493806209415529,
+            "mean": 0.004286960658293383,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.00043195135643313954
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": false,
+      "key": "fixed_0.03",
+      "lambda_fg": 0.03,
+      "selection_basis": "predeclared fixed lambda=0.03 reference on the hidden-slice penalty scale",
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    "frozen_erm_reference": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.00516664550297433,
+            "lo": 0.0034669272369781306,
+            "mean": 0.004296872318476563,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004293578206644958
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": false,
+      "key": "frozen_erm_reference",
+      "lambda_fg": null,
+      "selection_basis": "predeclared frozen ERM reference; no continuation and no repair",
+      "source": "frozen_reference",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    "group_free": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005161638224861866,
+            "lo": 0.0034527053546599073,
+            "mean": 0.004291816612800132,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004238772426218856
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": false,
+      "key": "group_free",
+      "lambda_fg": 0.0,
+      "selection_basis": "primary frozen rule: highest Bonferroni-adjusted cross-fit hidden-certificate lower score within the one-standard-error validation-NLL risk set; ties choose smaller lambda",
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    "group_supervised_val_comparator": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005161638224861866,
+            "lo": 0.0034527053546599073,
+            "mean": 0.004291816612800132,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004238772426218856
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": true,
+      "key": "group_supervised_val_comparator",
+      "lambda_fg": 0.0,
+      "selection_basis": "post-hoc group-supervised comparator maximizing validation worst-group accuracy over the same one-standard-error risk set as the primary rule; ties choose the smallest lambda",
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    "matched_erm_lambda_0": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005161638224861866,
+            "lo": 0.0034527053546599073,
+            "mean": 0.004291816612800132,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004238772426218856
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": false,
+      "key": "matched_erm_lambda_0",
+      "lambda_fg": 0.0,
+      "selection_basis": "matched continuation candidate with lambda=0 and no Fisher penalty",
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    },
+    "validation_risk_minimizer": {
+      "blind_test_candidate": {
+        "hidden_certificate": {
+          "bootstrap_predictive_fisher": {
+            "confidence": 0.95,
+            "hi": 0.005161638224861866,
+            "lo": 0.0034527053546599073,
+            "mean": 0.004291816612800132,
+            "point": 0.004297631087254982,
+            "replicates": 2000,
+            "standard_error": 0.0004238772426218856
+          },
+          "centered_unweighted": {
+            "correlation": 0.13679988052878828,
+            "exact_projected_fisher": 0.23944921728293792,
+            "exact_status": "ok",
+            "inverse_fisher": 4.176029348453639,
+            "j_nn": 0.3588172006058922,
+            "j_tn": 0.040479142156730444,
+            "j_tt": 0.24401577916173844,
+            "projected_fisher": 0.23946190862140398,
+            "projected_over_raw": 0.9813378030061078,
+            "raw_projected_fisher": 0.23946190862140398,
+            "ridge_beta": 0.11249918594377387,
+            "ridge_to_exact_gap": 1.2691338466069846e-05
+          },
+          "certificate": 0.004297631087254982,
+          "class_id": 0,
+          "constraints": {
+            "effective_sample_size": 486.55706985743865,
+            "max_weight": 0.002294335222430262,
+            "nonzero_weights": 3354,
+            "sum": 1.0
+          },
+          "fisher_config": {
+            "epsilon": 1e-08,
+            "ridge": 0.001,
+            "shrinkage": 0.1
+          },
+          "gate_transfer": {
+            "absolute_mass_error": 0.003357849430865978,
+            "heldout_mean_membership": 0.09664215056913403,
+            "membership_max": 1.0,
+            "membership_min": 0.0,
+            "target_membership_mass": 0.1
+          },
+          "hard_top_mass": 0.1,
+          "hard_top_weight_accuracy_diagnostic": 0.9889135254988913,
+          "mean_abs_margin": 5.135468263962903,
+          "mean_confidence": 0.9702464576514203,
+          "mean_entropy": 0.09344286927423326,
+          "mean_probability": 0.03189580851472994,
+          "n_class": 4510,
+          "predictive": {
+            "exact_projected_fisher": 0.004272117200412449,
+            "exact_status": "ok",
+            "inverse_fisher": 232.6857873184395,
+            "j_nn": 0.023695029630853025,
+            "j_tn": 0.0038638629736002044,
+            "j_tt": 0.004902183391987038,
+            "projected_fisher": 0.004297631087254982,
+            "raw_projected_fisher": 0.004297631087254982,
+            "ridge_beta": 0.15646318434754342,
+            "ridge_to_exact_gap": 2.5513886842533015e-05
+          },
+          "selector_objective": "fisher",
+          "unweighted": {
+            "exact_projected_fisher": 0.4542957353559258,
+            "exact_status": "ok",
+            "inverse_fisher": 2.199479535545963,
+            "j_nn": 0.6417354846987484,
+            "j_tn": 0.3838765633369626,
+            "j_tt": 0.6839249508084159,
+            "projected_fisher": 0.45465300396940544,
+            "raw_projected_fisher": 0.45465300396940544,
+            "ridge_beta": 0.5972543487573063,
+            "ridge_to_exact_gap": 0.00035726861347962213
+          },
+          "weighted_accuracy": 0.9897999525184653,
+          "weighted_calibrated_loss": 0.038081202595023504,
+          "weighted_loss": 0.02038724804715548
+        },
+        "task_metrics": {
+          "accuracy": 0.7649292371418709,
+          "balanced_accuracy": 0.7554116501232981,
+          "minimum_class_accuracy": 0.7383177570093458,
+          "n": 5794,
+          "nll": 0.6294397414993993,
+          "nll_standard_error": 0.015847334538893698,
+          "per_class_accuracy": {
+            "0": 0.7725055432372505,
+            "1": 0.7383177570093458
+          }
+        }
+      },
+      "group_labels_used_for_selection": false,
+      "key": "validation_risk_minimizer",
+      "lambda_fg": 0.0,
+      "selection_basis": "minimum ordinary validation NLL; task labels only",
+      "source": "lambda_grid",
+      "test_group_metrics": {
+        "average_accuracy": 0.7649292371418709,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9556541019955654,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.5893569844789357,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 2255
+          },
+          {
+            "accuracy": 0.573208722741433,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 642
+          },
+          {
+            "accuracy": 0.9034267912772586,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 642
+          }
+        ],
+        "mean_group_accuracy": 0.7554116501232981,
+        "worst_group_accuracy": 0.573208722741433
+      },
+      "validation_group_metrics": {
+        "average_accuracy": 0.749791492910759,
+        "definition": "four post-hoc y-by-background groups",
+        "groups": [
+          {
+            "accuracy": 0.9443254817987152,
+            "group": "landbird/land",
+            "group_id": 0,
+            "n": 467
+          },
+          {
+            "accuracy": 0.5686695278969958,
+            "group": "landbird/water",
+            "group_id": 1,
+            "n": 466
+          },
+          {
+            "accuracy": 0.5488721804511278,
+            "group": "waterbird/land",
+            "group_id": 2,
+            "n": 133
+          },
+          {
+            "accuracy": 0.9022556390977443,
+            "group": "waterbird/water",
+            "group_id": 3,
+            "n": 133
+          }
+        ],
+        "mean_group_accuracy": 0.7410307073111458,
+        "worst_group_accuracy": 0.5488721804511278
+      }
+    }
+  },
+  "posthoc_protocol": {
+    "blind_cohort": {
+      "artifacts": [
+        {
+          "blind_test_artifact_sha256": "e6391a4a7222931ee3cd676cb8b7a93e0ef5365441fadb75f2520d2bf6826622",
+          "blind_test_score_artifact_sha256": "ee8abc21c8ed2543019cb409bbb9cabd22b7882e50763092e07c83bc076ca80f",
+          "blind_test_sha256": "6aefe8925f0ec5c03bf81b279d536142ebfaed2bab6c636f7a9d65f7b33df8fd",
+          "seed": 17
+        },
+        {
+          "blind_test_artifact_sha256": "b291c5240914374ae96a04f74c7aef8b9d70e05df42a04c8ec413c62d6139bf3",
+          "blind_test_score_artifact_sha256": "d0138371ead389ff2eb1ed26862cc7c96e7845b0751f3f877078001dda2bed57",
+          "blind_test_sha256": "be730b5380fe9ed0b8a2c0c2aff41438ab2dcd152adeba0b9fec0ffaa5c4cd51",
+          "seed": 18
+        },
+        {
+          "blind_test_artifact_sha256": "7fab34d5d4b2031958fd5db3be77e31a7ec1431a288e9bf5683418d1c09c44b8",
+          "blind_test_score_artifact_sha256": "f2724e8eb74f38cfd9d6957a1504f12618cc4f977fe345a13b22406d3b92d5be",
+          "blind_test_sha256": "db77882b2ad8b19d374def48f8ad0f4b085bc049efb626b3f8c8dd83c97a9157",
+          "seed": 19
+        },
+        {
+          "blind_test_artifact_sha256": "1e6900a987f4ebd901453631e079a62c8a53c4f8350f88b44941f386674c2ea0",
+          "blind_test_score_artifact_sha256": "bee95f5a26d7c80efa97b83657f6dd15e7a0cc5eb0b802407a743e741fa81c21",
+          "blind_test_sha256": "4482145e90111a9fb7e83c7f205a18f4b337f8b905bee5ff2bcf64136f0353f4",
+          "seed": 20
+        },
+        {
+          "blind_test_artifact_sha256": "5c65340b4eae59009117c534e9b7bac9d2c77b8d93a5399410d8d32920d0df08",
+          "blind_test_score_artifact_sha256": "88d8c4daa920b05fd871e15696a7fdaed25606f65813510c6b0a875b41a6b595",
+          "blind_test_sha256": "8ca643c610d81812a4a3c50d7642595fc33b8a78462f6ebaf4d02821adece755",
+          "seed": 21
+        }
+      ],
+      "seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "selection_cohort_sha256": "985fa55e0a406a715c05fe5989ccff159a61718cdfa53d10c6303e78de3fcf89",
+      "sha256": "34796d1f824881ae7c8cc4ef7effe1d685740228116f6807c2ed62c61cdf09a9"
+    },
+    "blind_cohort_sha256": "34796d1f824881ae7c8cc4ef7effe1d685740228116f6807c2ed62c61cdf09a9",
+    "blind_test_artifact_sha256": "1e6900a987f4ebd901453631e079a62c8a53c4f8350f88b44941f386674c2ea0",
+    "blind_test_score_artifact_sha256": "bee95f5a26d7c80efa97b83657f6dd15e7a0cc5eb0b802407a743e741fa81c21",
+    "blind_test_sha256": "4482145e90111a9fb7e83c7f205a18f4b337f8b905bee5ff2bcf64136f0353f4",
+    "candidate_schema": "frozen_erm_reference is audited separately; comparator and selected policies use only the matched lambda grid",
+    "cohort_seeds": [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "comparator_candidate_set": "selection.selection.eligible_lambdas (the frozen one-standard-error risk set)",
+    "comparator_tie_break": "smallest lambda_fg among equal validation worst-group accuracies",
+    "complete_default_cohort_frozen_before_metadata": true,
+    "frozen_selection_sha256": "c061f88321488df2b9c5d9074b627a081eb687bb6cc621ad2368d5d51233a88b",
+    "metadata_role": "post-hoc reporting and explicitly labeled group-supervised validation comparator only",
+    "sealed_metadata_sha256": "258913ba9f313a379af33c1acda4f2426bfc7b90da2ea2b9aae1368592e3d93b",
+    "selection_artifact_sha256": "c2e3aba67ecaa8737a9b2a9d7f5b5adbe5233fec73abee2db242bb209d7f87c2",
+    "smoke": false,
+    "validation_score_artifact_sha256": "f74686cc50e344e353fb0a46ef43fc93c1881aae735b5e5dc7288a510ab2de35"
+  },
+  "posthoc_protocol_sha256": "0c51197f0fa3fa2c3c8a84ff1e1696d8c633e5073de210a61bd3b0df14c5f684",
+  "posthoc_sha256": "7c78ed226eb3af76bc570541d18ab199a2876232317a423165c466ffb55204f9",
+  "primary_selection_unchanged": true,
+  "schema_version": 2,
+  "seed": 20,
+  "selection_artifact_sha256": "c2e3aba67ecaa8737a9b2a9d7f5b5adbe5233fec73abee2db242bb209d7f87c2",
+  "stage": "posthoc_group_label_audit"
+}

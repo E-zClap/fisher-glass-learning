@@ -1,0 +1,3894 @@
+{
+  "aggregate_sha256": "bef0e6e48dd6c96419944395b9c43aa1245e9b1ad8214c598359458104570129",
+  "analysis_status": "post-hoc matched-control sensitivity designed after v1 Waterbirds group/test outcomes were inspected; not an independent held-out confirmation",
+  "confidence": 0.95,
+  "frontier": [
+    {
+      "lambda_fg": 0.0,
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.011247878988854789,
+          "high": 0.7658906128514713,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7433948548737617,
+          "mean": 0.7546427338626165,
+          "n": 5,
+          "standard_deviation": 0.009058713955729051,
+          "standard_error": 0.004051180038747235,
+          "unbounded_high": 0.7658906128514713,
+          "unbounded_low": 0.7433948548737617,
+          "values": [
+            0.754228512254056,
+            0.7625129444252675,
+            0.7445633413876424,
+            0.7649292371418709,
+            0.7469796341042457
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007308596710422681,
+          "high": 0.7577839681591243,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7431667747382789,
+          "mean": 0.7504753714487016,
+          "n": 5,
+          "standard_deviation": 0.005886130805914923,
+          "standard_error": 0.0026323577212962776,
+          "unbounded_high": 0.7577839681591243,
+          "unbounded_low": 0.7431667747382789,
+          "values": [
+            0.7529947296074491,
+            0.7549737171118525,
+            0.7473433905961829,
+            0.7554116501232981,
+            0.7416533698047261
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.002082696770663399,
+          "high": 0.008772586968360566,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004607193427033767,
+          "mean": 0.006689890197697166,
+          "n": 5,
+          "standard_deviation": 0.0016773432858456872,
+          "standard_error": 0.0007501307217507634,
+          "unbounded_high": 0.008772586968360566,
+          "unbounded_low": 0.004607193427033767,
+          "values": [
+            0.005826843137228892,
+            0.00845856649451241,
+            0.007958998858565061,
+            0.004297631087254982,
+            0.006907411410924489
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 57.45906542241489,
+          "high": 216.04782961852078,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 101.12969877369102,
+          "mean": 158.5887641961059,
+          "n": 5,
+          "standard_deviation": 46.275856838514386,
+          "standard_error": 20.695192321593336,
+          "unbounded_high": 216.04782961852078,
+          "unbounded_low": 101.12969877369102,
+          "values": [
+            171.61922163625619,
+            118.22320229045165,
+            125.64378527156096,
+            232.6857873184395,
+            144.77182446382116
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04110472265191908,
+          "high": 0.6682004573699116,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5859910120660734,
+          "mean": 0.6270957347179925,
+          "n": 5,
+          "standard_deviation": 0.03310454576389633,
+          "standard_error": 0.014804802938464978,
+          "unbounded_high": 0.6682004573699116,
+          "unbounded_low": 0.5859910120660734,
+          "values": [
+            0.6661681030961858,
+            0.5743167295298334,
+            0.6335898821960729,
+            0.6294397414993993,
+            0.6319642172684714
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.024564706935448825,
+          "high": 0.5816898217719838,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.532560407901086,
+          "mean": 0.5571251148365349,
+          "n": 5,
+          "standard_deviation": 0.0197836991094088,
+          "standard_error": 0.008847539211008025,
+          "unbounded_high": 0.5816898217719838,
+          "unbounded_low": 0.532560407901086,
+          "values": [
+            0.5583148558758315,
+            0.5791574279379157,
+            0.5325942350332594,
+            0.573208722741433,
+            0.542350332594235
+          ]
+        },
+        "validation_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.012996463307133891,
+          "high": 0.7527796159343233,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7267866893200555,
+          "mean": 0.7397831526271894,
+          "n": 5,
+          "standard_deviation": 0.010466972809016786,
+          "standard_error": 0.004680972543920691,
+          "unbounded_high": 0.7527796159343233,
+          "unbounded_low": 0.7267866893200555,
+          "values": [
+            0.731442869057548,
+            0.7489574645537949,
+            0.7264386989157632,
+            0.749791492910759,
+            0.7422852376980817
+          ]
+        },
+        "validation_certificate_lower_score": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0015277452932811238,
+          "high": 0.005604346684427793,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.002548856097865545,
+          "mean": 0.004076601391146669,
+          "n": 5,
+          "standard_deviation": 0.0012304015381707227,
+          "standard_error": 0.0005502522957940077,
+          "unbounded_high": 0.005604346684427793,
+          "unbounded_low": 0.002548856097865545,
+          "values": [
+            0.003285318280534245,
+            0.0060875507782808145,
+            0.003934589808846421,
+            0.0029114082274879494,
+            0.0041641398605839165
+          ]
+        },
+        "validation_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.059189606513385874,
+          "high": 0.7397908820297713,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.6214116690029995,
+          "mean": 0.6806012755163854,
+          "n": 5,
+          "standard_deviation": 0.047669584202337814,
+          "standard_error": 0.021318486147115488,
+          "unbounded_high": 0.7397908820297713,
+          "unbounded_low": 0.6214116690029995,
+          "values": [
+            0.7444145058735929,
+            0.621947207360954,
+            0.7072757486044251,
+            0.6780805630868749,
+            0.6512883526560798
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.02259512406916134,
+          "high": 0.5509406660356655,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5057504178973429,
+          "mean": 0.5283455419665042,
+          "n": 5,
+          "standard_deviation": 0.01819745446582024,
+          "standard_error": 0.008138149040606234,
+          "unbounded_high": 0.5509406660356655,
+          "unbounded_low": 0.5057504178973429,
+          "values": [
+            0.5128755364806867,
+            0.5413533834586466,
+            0.5064377682403434,
+            0.5488721804511278,
+            0.5321888412017167
+          ]
+        }
+      },
+      "per_seed": [
+        {
+          "lambda_fg": 0.0,
+          "seed": 17,
+          "test_accuracy": 0.754228512254056,
+          "test_balanced_accuracy": 0.7529947296074491,
+          "test_hidden_certificate": 0.005826843137228892,
+          "test_inverse_fisher": 171.61922163625619,
+          "test_nll": 0.6661681030961858,
+          "test_worst_group_accuracy": 0.5583148558758315,
+          "validation_accuracy": 0.731442869057548,
+          "validation_certificate_lower_score": 0.003285318280534245,
+          "validation_nll": 0.7444145058735929,
+          "validation_worst_group_accuracy": 0.5128755364806867
+        },
+        {
+          "lambda_fg": 0.0,
+          "seed": 18,
+          "test_accuracy": 0.7625129444252675,
+          "test_balanced_accuracy": 0.7549737171118525,
+          "test_hidden_certificate": 0.00845856649451241,
+          "test_inverse_fisher": 118.22320229045165,
+          "test_nll": 0.5743167295298334,
+          "test_worst_group_accuracy": 0.5791574279379157,
+          "validation_accuracy": 0.7489574645537949,
+          "validation_certificate_lower_score": 0.0060875507782808145,
+          "validation_nll": 0.621947207360954,
+          "validation_worst_group_accuracy": 0.5413533834586466
+        },
+        {
+          "lambda_fg": 0.0,
+          "seed": 19,
+          "test_accuracy": 0.7445633413876424,
+          "test_balanced_accuracy": 0.7473433905961829,
+          "test_hidden_certificate": 0.007958998858565061,
+          "test_inverse_fisher": 125.64378527156096,
+          "test_nll": 0.6335898821960729,
+          "test_worst_group_accuracy": 0.5325942350332594,
+          "validation_accuracy": 0.7264386989157632,
+          "validation_certificate_lower_score": 0.003934589808846421,
+          "validation_nll": 0.7072757486044251,
+          "validation_worst_group_accuracy": 0.5064377682403434
+        },
+        {
+          "lambda_fg": 0.0,
+          "seed": 20,
+          "test_accuracy": 0.7649292371418709,
+          "test_balanced_accuracy": 0.7554116501232981,
+          "test_hidden_certificate": 0.004297631087254982,
+          "test_inverse_fisher": 232.6857873184395,
+          "test_nll": 0.6294397414993993,
+          "test_worst_group_accuracy": 0.573208722741433,
+          "validation_accuracy": 0.749791492910759,
+          "validation_certificate_lower_score": 0.0029114082274879494,
+          "validation_nll": 0.6780805630868749,
+          "validation_worst_group_accuracy": 0.5488721804511278
+        },
+        {
+          "lambda_fg": 0.0,
+          "seed": 21,
+          "test_accuracy": 0.7469796341042457,
+          "test_balanced_accuracy": 0.7416533698047261,
+          "test_hidden_certificate": 0.006907411410924489,
+          "test_inverse_fisher": 144.77182446382116,
+          "test_nll": 0.6319642172684714,
+          "test_worst_group_accuracy": 0.542350332594235,
+          "validation_accuracy": 0.7422852376980817,
+          "validation_certificate_lower_score": 0.0041641398605839165,
+          "validation_nll": 0.6512883526560798,
+          "validation_worst_group_accuracy": 0.5321888412017167
+        }
+      ],
+      "selected_counts": {
+        "fixed_0.03": 0,
+        "group_free": 1,
+        "group_supervised_val_comparator": 1,
+        "matched_erm_lambda_0": 5,
+        "validation_risk_minimizer": 1
+      }
+    },
+    {
+      "lambda_fg": 0.01,
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.006446884472328114,
+          "high": 0.7667161285178926,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7538223595732364,
+          "mean": 0.7602692440455645,
+          "n": 5,
+          "standard_deviation": 0.00519213288108087,
+          "standard_error": 0.0023219924140617312,
+          "unbounded_high": 0.7667161285178926,
+          "unbounded_low": 0.7538223595732364,
+          "values": [
+            0.762167759751467,
+            0.7625129444252675,
+            0.7602692440455644,
+            0.7649292371418709,
+            0.7514670348636521
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.009139976978194155,
+          "high": 0.7571572939822901,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7388773400259019,
+          "mean": 0.748017317004096,
+          "n": 5,
+          "standard_deviation": 0.00736107110411219,
+          "standard_error": 0.0032919710752008576,
+          "unbounded_high": 0.7571572939822901,
+          "unbounded_low": 0.7388773400259019,
+          "values": [
+            0.7475098604002183,
+            0.7549737171118525,
+            0.7440620013676773,
+            0.7554116501232981,
+            0.7381293560174345
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0020981565792627696,
+          "high": 0.009095693518581116,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004899380360055576,
+          "mean": 0.006997536939318346,
+          "n": 5,
+          "standard_deviation": 0.001689794165167094,
+          "standard_error": 0.0007556989242592259,
+          "unbounded_high": 0.009095693518581116,
+          "unbounded_low": 0.004899380360055576,
+          "values": [
+            0.006417794644849473,
+            0.00845856649451241,
+            0.007969016939495312,
+            0.004297631087254982,
+            0.007844675530479553
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 58.799375570433924,
+          "high": 210.736612106292,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 93.13786096542417,
+          "mean": 151.9372365358581,
+          "n": 5,
+          "standard_deviation": 47.355303572862795,
+          "standard_error": 21.177935576811972,
+          "unbounded_high": 210.736612106292,
+          "unbounded_low": 93.13786096542417,
+          "values": [
+            155.81652221255086,
+            118.22320229045165,
+            125.48583504516691,
+            232.6857873184395,
+            127.47483581268159
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.03407022088569118,
+          "high": 0.6349211230678129,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5667806812964304,
+          "mean": 0.6008509021821217,
+          "n": 5,
+          "standard_deviation": 0.0274391630384535,
+          "standard_error": 0.01227116675993634,
+          "unbounded_high": 0.6349211230678129,
+          "unbounded_low": 0.5667806812964304,
+          "values": [
+            0.6207213661746142,
+            0.5743167295298334,
+            0.5692115914046647,
+            0.6294397414993993,
+            0.6105650823020969
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.026310207935738142,
+          "high": 0.5807709770124178,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5281505611409415,
+          "mean": 0.5544607690766796,
+          "n": 5,
+          "standard_deviation": 0.021189474748240573,
+          "standard_error": 0.009476221188916233,
+          "unbounded_high": 0.5807709770124178,
+          "unbounded_low": 0.5281505611409415,
+          "values": [
+            0.5498442367601246,
+            0.5791574279379157,
+            0.5295950155763239,
+            0.573208722741433,
+            0.5404984423676013
+          ]
+        },
+        "validation_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007631059164750067,
+          "high": 0.7535860216334739,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7383239033039738,
+          "mean": 0.7459549624687238,
+          "n": 5,
+          "standard_deviation": 0.00614583266953815,
+          "standard_error": 0.0027484999254852606,
+          "unbounded_high": 0.7535860216334739,
+          "unbounded_low": 0.7383239033039738,
+          "values": [
+            0.7389491242702252,
+            0.7489574645537949,
+            0.7397831526271893,
+            0.749791492910759,
+            0.7522935779816514
+          ]
+        },
+        "validation_certificate_lower_score": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0019366470564616415,
+          "high": 0.0063455137514576475,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.0024722196385343646,
+          "mean": 0.004408866694996006,
+          "n": 5,
+          "standard_deviation": 0.0015597191021590874,
+          "standard_error": 0.0006975275876465317,
+          "unbounded_high": 0.0063455137514576475,
+          "unbounded_low": 0.0024722196385343646,
+          "values": [
+            0.002589499518980482,
+            0.0060875507782808145,
+            0.005131289168557542,
+            0.0029114082274879494,
+            0.005324585781673242
+          ]
+        },
+        "validation_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04012526038397708,
+          "high": 0.6912074702422137,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.6109569494742595,
+          "mean": 0.6510822098582366,
+          "n": 5,
+          "standard_deviation": 0.0323157153964548,
+          "standard_error": 0.014452027273601899,
+          "unbounded_high": 0.6912074702422137,
+          "unbounded_low": 0.6109569494742595,
+          "values": [
+            0.6933785257194979,
+            0.621947207360954,
+            0.6324314764382495,
+            0.6780805630868749,
+            0.6295732766856065
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.033270115497861755,
+          "high": 0.553570867377561,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.4870306363818375,
+          "mean": 0.5203007518796993,
+          "n": 5,
+          "standard_deviation": 0.026794781475496948,
+          "standard_error": 0.011982990564292657,
+          "unbounded_high": 0.553570867377561,
+          "unbounded_low": 0.4870306363818375,
+          "values": [
+            0.49624060150375937,
+            0.5413533834586466,
+            0.48872180451127817,
+            0.5488721804511278,
+            0.5263157894736842
+          ]
+        }
+      },
+      "per_seed": [
+        {
+          "lambda_fg": 0.01,
+          "seed": 17,
+          "test_accuracy": 0.762167759751467,
+          "test_balanced_accuracy": 0.7475098604002183,
+          "test_hidden_certificate": 0.006417794644849473,
+          "test_inverse_fisher": 155.81652221255086,
+          "test_nll": 0.6207213661746142,
+          "test_worst_group_accuracy": 0.5498442367601246,
+          "validation_accuracy": 0.7389491242702252,
+          "validation_certificate_lower_score": 0.002589499518980482,
+          "validation_nll": 0.6933785257194979,
+          "validation_worst_group_accuracy": 0.49624060150375937
+        },
+        {
+          "lambda_fg": 0.01,
+          "seed": 18,
+          "test_accuracy": 0.7625129444252675,
+          "test_balanced_accuracy": 0.7549737171118525,
+          "test_hidden_certificate": 0.00845856649451241,
+          "test_inverse_fisher": 118.22320229045165,
+          "test_nll": 0.5743167295298334,
+          "test_worst_group_accuracy": 0.5791574279379157,
+          "validation_accuracy": 0.7489574645537949,
+          "validation_certificate_lower_score": 0.0060875507782808145,
+          "validation_nll": 0.621947207360954,
+          "validation_worst_group_accuracy": 0.5413533834586466
+        },
+        {
+          "lambda_fg": 0.01,
+          "seed": 19,
+          "test_accuracy": 0.7602692440455644,
+          "test_balanced_accuracy": 0.7440620013676773,
+          "test_hidden_certificate": 0.007969016939495312,
+          "test_inverse_fisher": 125.48583504516691,
+          "test_nll": 0.5692115914046647,
+          "test_worst_group_accuracy": 0.5295950155763239,
+          "validation_accuracy": 0.7397831526271893,
+          "validation_certificate_lower_score": 0.005131289168557542,
+          "validation_nll": 0.6324314764382495,
+          "validation_worst_group_accuracy": 0.48872180451127817
+        },
+        {
+          "lambda_fg": 0.01,
+          "seed": 20,
+          "test_accuracy": 0.7649292371418709,
+          "test_balanced_accuracy": 0.7554116501232981,
+          "test_hidden_certificate": 0.004297631087254982,
+          "test_inverse_fisher": 232.6857873184395,
+          "test_nll": 0.6294397414993993,
+          "test_worst_group_accuracy": 0.573208722741433,
+          "validation_accuracy": 0.749791492910759,
+          "validation_certificate_lower_score": 0.0029114082274879494,
+          "validation_nll": 0.6780805630868749,
+          "validation_worst_group_accuracy": 0.5488721804511278
+        },
+        {
+          "lambda_fg": 0.01,
+          "seed": 21,
+          "test_accuracy": 0.7514670348636521,
+          "test_balanced_accuracy": 0.7381293560174345,
+          "test_hidden_certificate": 0.007844675530479553,
+          "test_inverse_fisher": 127.47483581268159,
+          "test_nll": 0.6105650823020969,
+          "test_worst_group_accuracy": 0.5404984423676013,
+          "validation_accuracy": 0.7522935779816514,
+          "validation_certificate_lower_score": 0.005324585781673242,
+          "validation_nll": 0.6295732766856065,
+          "validation_worst_group_accuracy": 0.5263157894736842
+        }
+      ],
+      "selected_counts": {
+        "fixed_0.03": 0,
+        "group_free": 0,
+        "group_supervised_val_comparator": 0,
+        "matched_erm_lambda_0": 0,
+        "validation_risk_minimizer": 0
+      }
+    },
+    {
+      "lambda_fg": 0.03,
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0057901128493729175,
+          "high": 0.772272681023346,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7606924553246002,
+          "mean": 0.7664825681739731,
+          "n": 5,
+          "standard_deviation": 0.004663188155369804,
+          "standard_error": 0.0020854411414557464,
+          "unbounded_high": 0.772272681023346,
+          "unbounded_low": 0.7606924553246002,
+          "values": [
+            0.7697618225750776,
+            0.772868484639282,
+            0.762167759751467,
+            0.7649292371418709,
+            0.7626855367621678
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.009929218776712484,
+          "high": 0.7528014445677894,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7329430070143644,
+          "mean": 0.7428722257910769,
+          "n": 5,
+          "standard_deviation": 0.00799670344882064,
+          "standard_error": 0.003576234501493992,
+          "unbounded_high": 0.7528014445677894,
+          "unbounded_low": 0.7329430070143644,
+          "values": [
+            0.7426388917669975,
+            0.7440773704678423,
+            0.7344183227303811,
+            0.7554116501232981,
+            0.7378148938668656
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0026702798404135914,
+          "high": 0.009663111155005882,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004322551474178699,
+          "mean": 0.00699283131459229,
+          "n": 5,
+          "standard_deviation": 0.0021505655670749167,
+          "standard_error": 0.0009617621596099794,
+          "unbounded_high": 0.009663111155005882,
+          "unbounded_low": 0.004322551474178699,
+          "values": [
+            0.006929297155810717,
+            0.007064860088222878,
+            0.010287748430571463,
+            0.004297631087254982,
+            0.006384619811101409
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 61.05672336080778,
+          "high": 215.53169053559725,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 93.41824381398169,
+          "mean": 154.47496717478947,
+          "n": 5,
+          "standard_deviation": 49.17330570036219,
+          "standard_error": 21.990970844877552,
+          "unbounded_high": 215.53169053559725,
+          "unbounded_low": 93.41824381398169,
+          "values": [
+            144.3145725126976,
+            141.54541945038702,
+            97.20290447609705,
+            232.6857873184395,
+            156.62615211632615
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04908690362192348,
+          "high": 0.6167441393780206,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5185703321341737,
+          "mean": 0.5676572357560972,
+          "n": 5,
+          "standard_deviation": 0.03953316170311314,
+          "standard_error": 0.017679767386730466,
+          "unbounded_high": 0.6167441393780206,
+          "unbounded_low": 0.5185703321341737,
+          "values": [
+            0.565073550798345,
+            0.5269311878841335,
+            0.5411220428626168,
+            0.6294397414993993,
+            0.5757196557359917
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.043604279603521486,
+          "high": 0.5582460241518081,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.4710374649447651,
+          "mean": 0.5146417445482866,
+          "n": 5,
+          "standard_deviation": 0.03511761609147154,
+          "standard_error": 0.01570507535765417,
+          "unbounded_high": 0.5582460241518081,
+          "unbounded_low": 0.4710374649447651,
+          "values": [
+            0.5093457943925234,
+            0.5046728971962616,
+            0.4781931464174455,
+            0.573208722741433,
+            0.5077881619937694
+          ]
+        },
+        "validation_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007560465055702302,
+          "high": 0.7578523749806398,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7427314448692353,
+          "mean": 0.7502919099249376,
+          "n": 5,
+          "standard_deviation": 0.006088978231340789,
+          "standard_error": 0.0027230738477588886,
+          "unbounded_high": 0.7578523749806398,
+          "unbounded_low": 0.7427314448692353,
+          "values": [
+            0.74395329441201,
+            0.755629691409508,
+            0.7447873227689742,
+            0.749791492910759,
+            0.7572977481234362
+          ]
+        },
+        "validation_certificate_lower_score": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0009865043785879759,
+          "high": 0.00469781991023589,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.0027248111530599377,
+          "mean": 0.003711315531647914,
+          "n": 5,
+          "standard_deviation": 0.0007945018781369894,
+          "standard_error": 0.00035531204155311245,
+          "unbounded_high": 0.00469781991023589,
+          "unbounded_low": 0.0027248111530599377,
+          "values": [
+            0.0035444770359627366,
+            0.00353927608542107,
+            0.005048572943943124,
+            0.0029114082274879494,
+            0.0035128433654246878
+          ]
+        },
+        "validation_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.05379499688065261,
+          "high": 0.6656610065884239,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5580710128271187,
+          "mean": 0.6118660097077713,
+          "n": 5,
+          "standard_deviation": 0.04332492281202829,
+          "standard_error": 0.019375494505525316,
+          "unbounded_high": 0.6656610065884239,
+          "unbounded_low": 0.5580710128271187,
+          "values": [
+            0.6254091066208722,
+            0.5624994151496312,
+            0.5921128288867648,
+            0.6780805630868749,
+            0.6012281347947137
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04448006125457115,
+          "high": 0.5392169033598343,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.45025678085069204,
+          "mean": 0.4947368421052632,
+          "n": 5,
+          "standard_deviation": 0.035822945111493545,
+          "standard_error": 0.01602050808470867,
+          "unbounded_high": 0.5392169033598343,
+          "unbounded_low": 0.45025678085069204,
+          "values": [
+            0.48120300751879697,
+            0.45112781954887216,
+            0.48872180451127817,
+            0.5488721804511278,
+            0.5037593984962406
+          ]
+        }
+      },
+      "per_seed": [
+        {
+          "lambda_fg": 0.03,
+          "seed": 17,
+          "test_accuracy": 0.7697618225750776,
+          "test_balanced_accuracy": 0.7426388917669975,
+          "test_hidden_certificate": 0.006929297155810717,
+          "test_inverse_fisher": 144.3145725126976,
+          "test_nll": 0.565073550798345,
+          "test_worst_group_accuracy": 0.5093457943925234,
+          "validation_accuracy": 0.74395329441201,
+          "validation_certificate_lower_score": 0.0035444770359627366,
+          "validation_nll": 0.6254091066208722,
+          "validation_worst_group_accuracy": 0.48120300751879697
+        },
+        {
+          "lambda_fg": 0.03,
+          "seed": 18,
+          "test_accuracy": 0.772868484639282,
+          "test_balanced_accuracy": 0.7440773704678423,
+          "test_hidden_certificate": 0.007064860088222878,
+          "test_inverse_fisher": 141.54541945038702,
+          "test_nll": 0.5269311878841335,
+          "test_worst_group_accuracy": 0.5046728971962616,
+          "validation_accuracy": 0.755629691409508,
+          "validation_certificate_lower_score": 0.00353927608542107,
+          "validation_nll": 0.5624994151496312,
+          "validation_worst_group_accuracy": 0.45112781954887216
+        },
+        {
+          "lambda_fg": 0.03,
+          "seed": 19,
+          "test_accuracy": 0.762167759751467,
+          "test_balanced_accuracy": 0.7344183227303811,
+          "test_hidden_certificate": 0.010287748430571463,
+          "test_inverse_fisher": 97.20290447609705,
+          "test_nll": 0.5411220428626168,
+          "test_worst_group_accuracy": 0.4781931464174455,
+          "validation_accuracy": 0.7447873227689742,
+          "validation_certificate_lower_score": 0.005048572943943124,
+          "validation_nll": 0.5921128288867648,
+          "validation_worst_group_accuracy": 0.48872180451127817
+        },
+        {
+          "lambda_fg": 0.03,
+          "seed": 20,
+          "test_accuracy": 0.7649292371418709,
+          "test_balanced_accuracy": 0.7554116501232981,
+          "test_hidden_certificate": 0.004297631087254982,
+          "test_inverse_fisher": 232.6857873184395,
+          "test_nll": 0.6294397414993993,
+          "test_worst_group_accuracy": 0.573208722741433,
+          "validation_accuracy": 0.749791492910759,
+          "validation_certificate_lower_score": 0.0029114082274879494,
+          "validation_nll": 0.6780805630868749,
+          "validation_worst_group_accuracy": 0.5488721804511278
+        },
+        {
+          "lambda_fg": 0.03,
+          "seed": 21,
+          "test_accuracy": 0.7626855367621678,
+          "test_balanced_accuracy": 0.7378148938668656,
+          "test_hidden_certificate": 0.006384619811101409,
+          "test_inverse_fisher": 156.62615211632615,
+          "test_nll": 0.5757196557359917,
+          "test_worst_group_accuracy": 0.5077881619937694,
+          "validation_accuracy": 0.7572977481234362,
+          "validation_certificate_lower_score": 0.0035128433654246878,
+          "validation_nll": 0.6012281347947137,
+          "validation_worst_group_accuracy": 0.5037593984962406
+        }
+      ],
+      "selected_counts": {
+        "fixed_0.03": 5,
+        "group_free": 0,
+        "group_supervised_val_comparator": 0,
+        "matched_erm_lambda_0": 0,
+        "validation_risk_minimizer": 0
+      }
+    },
+    {
+      "lambda_fg": 0.1,
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007785377222789341,
+          "high": 0.7805848249273114,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7650140704817326,
+          "mean": 0.772799447704522,
+          "n": 5,
+          "standard_deviation": 0.006270115936398199,
+          "standard_error": 0.002804081092118224,
+          "unbounded_high": 0.7805848249273114,
+          "unbounded_low": 0.7650140704817326,
+          "values": [
+            0.77856403175699,
+            0.7795995857783914,
+            0.7720055229547808,
+            0.7649292371418709,
+            0.7688988608905765
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.01411690559202584,
+          "high": 0.7504621335727679,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7222283223887163,
+          "mean": 0.7363452279807421,
+          "n": 5,
+          "standard_deviation": 0.011369344373717718,
+          "standard_error": 0.005084525375847518,
+          "unbounded_high": 0.7504621335727679,
+          "unbounded_low": 0.7222283223887163,
+          "values": [
+            0.7287949589351459,
+            0.7383735347548888,
+            0.7301529657182724,
+            0.7554116501232981,
+            0.7289930303721048
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.003557128978142401,
+          "high": 0.012290590255453867,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.005176332299169066,
+          "mean": 0.008733461277311467,
+          "n": 5,
+          "standard_deviation": 0.0028648080183433402,
+          "standard_error": 0.0012811810943004346,
+          "unbounded_high": 0.012290590255453867,
+          "unbounded_low": 0.005176332299169066,
+          "values": [
+            0.008087672374824547,
+            0.009583653266619797,
+            0.012086016181444585,
+            0.004297631087254982,
+            0.009612333476413416
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 73.84888762555752,
+          "high": 203.33847203528535,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 55.6406967841703,
+          "mean": 129.48958440972783,
+          "n": 5,
+          "standard_deviation": 59.47574201425655,
+          "standard_error": 26.59836043122358,
+          "unbounded_high": 203.33847203528535,
+          "unbounded_low": 55.6406967841703,
+          "values": [
+            123.64481611107952,
+            104.3442337423344,
+            82.74018151104772,
+            232.6857873184395,
+            104.03290336573811
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.07048537387863948,
+          "high": 0.6026982877638921,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.4617275400066131,
+          "mean": 0.5322129138852526,
+          "n": 5,
+          "standard_deviation": 0.056766866060871564,
+          "standard_error": 0.025386914276346904,
+          "unbounded_high": 0.6026982877638921,
+          "unbounded_low": 0.4617275400066131,
+          "values": [
+            0.5073899816934229,
+            0.49733493379891675,
+            0.4922355306632186,
+            0.6294397414993993,
+            0.5346643817713053
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0743342066103905,
+          "high": 0.5444276645543157,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.39575925133353473,
+          "mean": 0.4700934579439252,
+          "n": 5,
+          "standard_deviation": 0.05986660378163892,
+          "standard_error": 0.026773159127558118,
+          "unbounded_high": 0.5444276645543157,
+          "unbounded_low": 0.39575925133353473,
+          "values": [
+            0.42834890965732086,
+            0.4672897196261682,
+            0.42990654205607476,
+            0.573208722741433,
+            0.4517133956386293
+          ]
+        },
+        "validation_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.01313191092267856,
+          "high": 0.7707632703889004,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7444994485435433,
+          "mean": 0.7576313594662218,
+          "n": 5,
+          "standard_deviation": 0.010576058371407748,
+          "standard_error": 0.004729757090494688,
+          "unbounded_high": 0.7707632703889004,
+          "unbounded_low": 0.7444994485435433,
+          "values": [
+            0.7472894078398665,
+            0.7731442869057548,
+            0.7547956630525438,
+            0.749791492910759,
+            0.7631359466221852
+          ]
+        },
+        "validation_certificate_lower_score": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0015874371156121498,
+          "high": 0.006117424990513212,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.0029425507592889125,
+          "mean": 0.004529987874901062,
+          "n": 5,
+          "standard_deviation": 0.001278475592357184,
+          "standard_error": 0.0005717516664169947,
+          "unbounded_high": 0.006117424990513212,
+          "unbounded_low": 0.0029425507592889125,
+          "values": [
+            0.004108052321672958,
+            0.004488937009013534,
+            0.00645734460974423,
+            0.0029114082274879494,
+            0.004684197206586637
+          ]
+        },
+        "validation_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0776066406946779,
+          "high": 0.6467895537372721,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.49157627234791623,
+          "mean": 0.5691829130425942,
+          "n": 5,
+          "standard_deviation": 0.06250212682895398,
+          "standard_error": 0.02795180086557089,
+          "unbounded_high": 0.6467895537372721,
+          "unbounded_low": 0.49157627234791623,
+          "values": [
+            0.552005833632378,
+            0.5256580854546145,
+            0.5306543840519657,
+            0.6780805630868749,
+            0.5595156989871372
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.07726765531702107,
+          "high": 0.5359142718583745,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.38137896122433235,
+          "mean": 0.4586466165413534,
+          "n": 5,
+          "standard_deviation": 0.06222911788438667,
+          "standard_error": 0.027829707553867298,
+          "unbounded_high": 0.5359142718583745,
+          "unbounded_low": 0.38137896122433235,
+          "values": [
+            0.38345864661654133,
+            0.46616541353383456,
+            0.42105263157894735,
+            0.5488721804511278,
+            0.47368421052631576
+          ]
+        }
+      },
+      "per_seed": [
+        {
+          "lambda_fg": 0.1,
+          "seed": 17,
+          "test_accuracy": 0.77856403175699,
+          "test_balanced_accuracy": 0.7287949589351459,
+          "test_hidden_certificate": 0.008087672374824547,
+          "test_inverse_fisher": 123.64481611107952,
+          "test_nll": 0.5073899816934229,
+          "test_worst_group_accuracy": 0.42834890965732086,
+          "validation_accuracy": 0.7472894078398665,
+          "validation_certificate_lower_score": 0.004108052321672958,
+          "validation_nll": 0.552005833632378,
+          "validation_worst_group_accuracy": 0.38345864661654133
+        },
+        {
+          "lambda_fg": 0.1,
+          "seed": 18,
+          "test_accuracy": 0.7795995857783914,
+          "test_balanced_accuracy": 0.7383735347548888,
+          "test_hidden_certificate": 0.009583653266619797,
+          "test_inverse_fisher": 104.3442337423344,
+          "test_nll": 0.49733493379891675,
+          "test_worst_group_accuracy": 0.4672897196261682,
+          "validation_accuracy": 0.7731442869057548,
+          "validation_certificate_lower_score": 0.004488937009013534,
+          "validation_nll": 0.5256580854546145,
+          "validation_worst_group_accuracy": 0.46616541353383456
+        },
+        {
+          "lambda_fg": 0.1,
+          "seed": 19,
+          "test_accuracy": 0.7720055229547808,
+          "test_balanced_accuracy": 0.7301529657182724,
+          "test_hidden_certificate": 0.012086016181444585,
+          "test_inverse_fisher": 82.74018151104772,
+          "test_nll": 0.4922355306632186,
+          "test_worst_group_accuracy": 0.42990654205607476,
+          "validation_accuracy": 0.7547956630525438,
+          "validation_certificate_lower_score": 0.00645734460974423,
+          "validation_nll": 0.5306543840519657,
+          "validation_worst_group_accuracy": 0.42105263157894735
+        },
+        {
+          "lambda_fg": 0.1,
+          "seed": 20,
+          "test_accuracy": 0.7649292371418709,
+          "test_balanced_accuracy": 0.7554116501232981,
+          "test_hidden_certificate": 0.004297631087254982,
+          "test_inverse_fisher": 232.6857873184395,
+          "test_nll": 0.6294397414993993,
+          "test_worst_group_accuracy": 0.573208722741433,
+          "validation_accuracy": 0.749791492910759,
+          "validation_certificate_lower_score": 0.0029114082274879494,
+          "validation_nll": 0.6780805630868749,
+          "validation_worst_group_accuracy": 0.5488721804511278
+        },
+        {
+          "lambda_fg": 0.1,
+          "seed": 21,
+          "test_accuracy": 0.7688988608905765,
+          "test_balanced_accuracy": 0.7289930303721048,
+          "test_hidden_certificate": 0.009612333476413416,
+          "test_inverse_fisher": 104.03290336573811,
+          "test_nll": 0.5346643817713053,
+          "test_worst_group_accuracy": 0.4517133956386293,
+          "validation_accuracy": 0.7631359466221852,
+          "validation_certificate_lower_score": 0.004684197206586637,
+          "validation_nll": 0.5595156989871372,
+          "validation_worst_group_accuracy": 0.47368421052631576
+        }
+      ],
+      "selected_counts": {
+        "fixed_0.03": 0,
+        "group_free": 0,
+        "group_supervised_val_comparator": 1,
+        "matched_erm_lambda_0": 0,
+        "validation_risk_minimizer": 0
+      }
+    },
+    {
+      "lambda_fg": 0.3,
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.01084184427559646,
+          "high": 0.7862992139683821,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7646155254171892,
+          "mean": 0.7754573696927857,
+          "n": 5,
+          "standard_deviation": 0.008731705430197413,
+          "standard_error": 0.0039049373802850923,
+          "unbounded_high": 0.7862992139683821,
+          "unbounded_low": 0.7646155254171892,
+          "values": [
+            0.788574387297204,
+            0.7730410769761823,
+            0.7782188470831896,
+            0.7649292371418709,
+            0.7725232999654815
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.019622150249369825,
+          "high": 0.7469786304836709,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7077343299849311,
+          "mean": 0.727356480234301,
+          "n": 5,
+          "standard_deviation": 0.01580310798876016,
+          "standard_error": 0.00706736474372754,
+          "unbounded_high": 0.7469786304836709,
+          "unbounded_low": 0.7077343299849311,
+          "values": [
+            0.7232477498946612,
+            0.718005159873179,
+            0.7207740155141569,
+            0.7554116501232981,
+            0.7193438257662101
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.006416985827926021,
+          "high": 0.01864694362126177,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.005812971965409728,
+          "mean": 0.01222995779333575,
+          "n": 5,
+          "standard_deviation": 0.005168053384175632,
+          "standard_error": 0.0023112237356729096,
+          "unbounded_high": 0.01864694362126177,
+          "unbounded_low": 0.005812971965409728,
+          "values": [
+            0.012289433190653377,
+            0.014458294982494183,
+            0.01844441195679184,
+            0.004297631087254982,
+            0.011660017749484367
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 90.16936204038461,
+          "high": 194.80953452590293,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 14.470810445133708,
+          "mean": 104.64017248551832,
+          "n": 5,
+          "standard_deviation": 72.61977650219922,
+          "standard_error": 32.47655135395187,
+          "unbounded_high": 194.80953452590293,
+          "unbounded_low": 14.470810445133708,
+          "values": [
+            81.37065158172022,
+            69.16440075173261,
+            54.21693357171148,
+            232.6857873184395,
+            85.76308920398773
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.08898764272062698,
+          "high": 0.5945514225533638,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.41657613711210983,
+          "mean": 0.5055637798327368,
+          "n": 5,
+          "standard_deviation": 0.07166805419933214,
+          "standard_error": 0.032050928200969185,
+          "unbounded_high": 0.5945514225533638,
+          "unbounded_low": 0.41657613711210983,
+          "values": [
+            0.45604266024340145,
+            0.48609939752322967,
+            0.45735438200017126,
+            0.6294397414993993,
+            0.4988827178974818
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09984863004785166,
+          "high": 0.5306897515431788,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3309924914474754,
+          "mean": 0.43084112149532705,
+          "n": 5,
+          "standard_deviation": 0.08041517688545058,
+          "standard_error": 0.03596276038770746,
+          "unbounded_high": 0.5306897515431788,
+          "unbounded_low": 0.3309924914474754,
+          "values": [
+            0.3847352024922118,
+            0.40965732087227413,
+            0.38317757009345793,
+            0.573208722741433,
+            0.40342679127725856
+          ]
+        },
+        "validation_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.011377282477490626,
+          "high": 0.7751804517852471,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7524258868302659,
+          "mean": 0.7638031693077565,
+          "n": 5,
+          "standard_deviation": 0.009162931754443547,
+          "standard_error": 0.004097787655225436,
+          "unbounded_high": 0.7751804517852471,
+          "unbounded_low": 0.7524258868302659,
+          "values": [
+            0.7706422018348624,
+            0.7731442869057548,
+            0.7614678899082569,
+            0.749791492910759,
+            0.7639699749791493
+          ]
+        },
+        "validation_certificate_lower_score": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0031342975670693974,
+          "high": 0.010200083762707549,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.003931488628568753,
+          "mean": 0.007065786195638151,
+          "n": 5,
+          "standard_deviation": 0.0025242719218754664,
+          "standard_error": 0.0011288887222015162,
+          "unbounded_high": 0.010200083762707549,
+          "unbounded_low": 0.003931488628568753,
+          "values": [
+            0.006930675330802922,
+            0.008842542739874622,
+            0.009296038395791028,
+            0.0029114082274879494,
+            0.007348266284234232
+          ]
+        },
+        "validation_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.10065690146685778,
+          "high": 0.6364671012733951,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.43515329833967953,
+          "mean": 0.5358101998065373,
+          "n": 5,
+          "standard_deviation": 0.08106613513194512,
+          "standard_error": 0.03625387776564263,
+          "unbounded_high": 0.6364671012733951,
+          "unbounded_low": 0.43515329833967953,
+          "values": [
+            0.4873916062399485,
+            0.5058964849875889,
+            0.4843118505083564,
+            0.6780805630868749,
+            0.5233704942099177
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09414839581516075,
+          "high": 0.5167047867926043,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3284079951622828,
+          "mean": 0.4225563909774436,
+          "n": 5,
+          "standard_deviation": 0.07582437434874413,
+          "standard_error": 0.033909691079036644,
+          "unbounded_high": 0.5167047867926043,
+          "unbounded_low": 0.3284079951622828,
+          "values": [
+            0.3533834586466165,
+            0.42105263157894735,
+            0.37593984962406013,
+            0.5488721804511278,
+            0.41353383458646614
+          ]
+        }
+      },
+      "per_seed": [
+        {
+          "lambda_fg": 0.3,
+          "seed": 17,
+          "test_accuracy": 0.788574387297204,
+          "test_balanced_accuracy": 0.7232477498946612,
+          "test_hidden_certificate": 0.012289433190653377,
+          "test_inverse_fisher": 81.37065158172022,
+          "test_nll": 0.45604266024340145,
+          "test_worst_group_accuracy": 0.3847352024922118,
+          "validation_accuracy": 0.7706422018348624,
+          "validation_certificate_lower_score": 0.006930675330802922,
+          "validation_nll": 0.4873916062399485,
+          "validation_worst_group_accuracy": 0.3533834586466165
+        },
+        {
+          "lambda_fg": 0.3,
+          "seed": 18,
+          "test_accuracy": 0.7730410769761823,
+          "test_balanced_accuracy": 0.718005159873179,
+          "test_hidden_certificate": 0.014458294982494183,
+          "test_inverse_fisher": 69.16440075173261,
+          "test_nll": 0.48609939752322967,
+          "test_worst_group_accuracy": 0.40965732087227413,
+          "validation_accuracy": 0.7731442869057548,
+          "validation_certificate_lower_score": 0.008842542739874622,
+          "validation_nll": 0.5058964849875889,
+          "validation_worst_group_accuracy": 0.42105263157894735
+        },
+        {
+          "lambda_fg": 0.3,
+          "seed": 19,
+          "test_accuracy": 0.7782188470831896,
+          "test_balanced_accuracy": 0.7207740155141569,
+          "test_hidden_certificate": 0.01844441195679184,
+          "test_inverse_fisher": 54.21693357171148,
+          "test_nll": 0.45735438200017126,
+          "test_worst_group_accuracy": 0.38317757009345793,
+          "validation_accuracy": 0.7614678899082569,
+          "validation_certificate_lower_score": 0.009296038395791028,
+          "validation_nll": 0.4843118505083564,
+          "validation_worst_group_accuracy": 0.37593984962406013
+        },
+        {
+          "lambda_fg": 0.3,
+          "seed": 20,
+          "test_accuracy": 0.7649292371418709,
+          "test_balanced_accuracy": 0.7554116501232981,
+          "test_hidden_certificate": 0.004297631087254982,
+          "test_inverse_fisher": 232.6857873184395,
+          "test_nll": 0.6294397414993993,
+          "test_worst_group_accuracy": 0.573208722741433,
+          "validation_accuracy": 0.749791492910759,
+          "validation_certificate_lower_score": 0.0029114082274879494,
+          "validation_nll": 0.6780805630868749,
+          "validation_worst_group_accuracy": 0.5488721804511278
+        },
+        {
+          "lambda_fg": 0.3,
+          "seed": 21,
+          "test_accuracy": 0.7725232999654815,
+          "test_balanced_accuracy": 0.7193438257662101,
+          "test_hidden_certificate": 0.011660017749484367,
+          "test_inverse_fisher": 85.76308920398773,
+          "test_nll": 0.4988827178974818,
+          "test_worst_group_accuracy": 0.40342679127725856,
+          "validation_accuracy": 0.7639699749791493,
+          "validation_certificate_lower_score": 0.007348266284234232,
+          "validation_nll": 0.5233704942099177,
+          "validation_worst_group_accuracy": 0.41353383458646614
+        }
+      ],
+      "selected_counts": {
+        "fixed_0.03": 0,
+        "group_free": 4,
+        "group_supervised_val_comparator": 3,
+        "matched_erm_lambda_0": 0,
+        "validation_risk_minimizer": 4
+      }
+    }
+  ],
+  "frontier_per_seed": [
+    {
+      "lambda_fg": 0.0,
+      "seed": 17,
+      "test_accuracy": 0.754228512254056,
+      "test_balanced_accuracy": 0.7529947296074491,
+      "test_hidden_certificate": 0.005826843137228892,
+      "test_inverse_fisher": 171.61922163625619,
+      "test_nll": 0.6661681030961858,
+      "test_worst_group_accuracy": 0.5583148558758315,
+      "validation_accuracy": 0.731442869057548,
+      "validation_certificate_lower_score": 0.003285318280534245,
+      "validation_nll": 0.7444145058735929,
+      "validation_worst_group_accuracy": 0.5128755364806867
+    },
+    {
+      "lambda_fg": 0.0,
+      "seed": 18,
+      "test_accuracy": 0.7625129444252675,
+      "test_balanced_accuracy": 0.7549737171118525,
+      "test_hidden_certificate": 0.00845856649451241,
+      "test_inverse_fisher": 118.22320229045165,
+      "test_nll": 0.5743167295298334,
+      "test_worst_group_accuracy": 0.5791574279379157,
+      "validation_accuracy": 0.7489574645537949,
+      "validation_certificate_lower_score": 0.0060875507782808145,
+      "validation_nll": 0.621947207360954,
+      "validation_worst_group_accuracy": 0.5413533834586466
+    },
+    {
+      "lambda_fg": 0.0,
+      "seed": 19,
+      "test_accuracy": 0.7445633413876424,
+      "test_balanced_accuracy": 0.7473433905961829,
+      "test_hidden_certificate": 0.007958998858565061,
+      "test_inverse_fisher": 125.64378527156096,
+      "test_nll": 0.6335898821960729,
+      "test_worst_group_accuracy": 0.5325942350332594,
+      "validation_accuracy": 0.7264386989157632,
+      "validation_certificate_lower_score": 0.003934589808846421,
+      "validation_nll": 0.7072757486044251,
+      "validation_worst_group_accuracy": 0.5064377682403434
+    },
+    {
+      "lambda_fg": 0.0,
+      "seed": 20,
+      "test_accuracy": 0.7649292371418709,
+      "test_balanced_accuracy": 0.7554116501232981,
+      "test_hidden_certificate": 0.004297631087254982,
+      "test_inverse_fisher": 232.6857873184395,
+      "test_nll": 0.6294397414993993,
+      "test_worst_group_accuracy": 0.573208722741433,
+      "validation_accuracy": 0.749791492910759,
+      "validation_certificate_lower_score": 0.0029114082274879494,
+      "validation_nll": 0.6780805630868749,
+      "validation_worst_group_accuracy": 0.5488721804511278
+    },
+    {
+      "lambda_fg": 0.0,
+      "seed": 21,
+      "test_accuracy": 0.7469796341042457,
+      "test_balanced_accuracy": 0.7416533698047261,
+      "test_hidden_certificate": 0.006907411410924489,
+      "test_inverse_fisher": 144.77182446382116,
+      "test_nll": 0.6319642172684714,
+      "test_worst_group_accuracy": 0.542350332594235,
+      "validation_accuracy": 0.7422852376980817,
+      "validation_certificate_lower_score": 0.0041641398605839165,
+      "validation_nll": 0.6512883526560798,
+      "validation_worst_group_accuracy": 0.5321888412017167
+    },
+    {
+      "lambda_fg": 0.01,
+      "seed": 17,
+      "test_accuracy": 0.762167759751467,
+      "test_balanced_accuracy": 0.7475098604002183,
+      "test_hidden_certificate": 0.006417794644849473,
+      "test_inverse_fisher": 155.81652221255086,
+      "test_nll": 0.6207213661746142,
+      "test_worst_group_accuracy": 0.5498442367601246,
+      "validation_accuracy": 0.7389491242702252,
+      "validation_certificate_lower_score": 0.002589499518980482,
+      "validation_nll": 0.6933785257194979,
+      "validation_worst_group_accuracy": 0.49624060150375937
+    },
+    {
+      "lambda_fg": 0.01,
+      "seed": 18,
+      "test_accuracy": 0.7625129444252675,
+      "test_balanced_accuracy": 0.7549737171118525,
+      "test_hidden_certificate": 0.00845856649451241,
+      "test_inverse_fisher": 118.22320229045165,
+      "test_nll": 0.5743167295298334,
+      "test_worst_group_accuracy": 0.5791574279379157,
+      "validation_accuracy": 0.7489574645537949,
+      "validation_certificate_lower_score": 0.0060875507782808145,
+      "validation_nll": 0.621947207360954,
+      "validation_worst_group_accuracy": 0.5413533834586466
+    },
+    {
+      "lambda_fg": 0.01,
+      "seed": 19,
+      "test_accuracy": 0.7602692440455644,
+      "test_balanced_accuracy": 0.7440620013676773,
+      "test_hidden_certificate": 0.007969016939495312,
+      "test_inverse_fisher": 125.48583504516691,
+      "test_nll": 0.5692115914046647,
+      "test_worst_group_accuracy": 0.5295950155763239,
+      "validation_accuracy": 0.7397831526271893,
+      "validation_certificate_lower_score": 0.005131289168557542,
+      "validation_nll": 0.6324314764382495,
+      "validation_worst_group_accuracy": 0.48872180451127817
+    },
+    {
+      "lambda_fg": 0.01,
+      "seed": 20,
+      "test_accuracy": 0.7649292371418709,
+      "test_balanced_accuracy": 0.7554116501232981,
+      "test_hidden_certificate": 0.004297631087254982,
+      "test_inverse_fisher": 232.6857873184395,
+      "test_nll": 0.6294397414993993,
+      "test_worst_group_accuracy": 0.573208722741433,
+      "validation_accuracy": 0.749791492910759,
+      "validation_certificate_lower_score": 0.0029114082274879494,
+      "validation_nll": 0.6780805630868749,
+      "validation_worst_group_accuracy": 0.5488721804511278
+    },
+    {
+      "lambda_fg": 0.01,
+      "seed": 21,
+      "test_accuracy": 0.7514670348636521,
+      "test_balanced_accuracy": 0.7381293560174345,
+      "test_hidden_certificate": 0.007844675530479553,
+      "test_inverse_fisher": 127.47483581268159,
+      "test_nll": 0.6105650823020969,
+      "test_worst_group_accuracy": 0.5404984423676013,
+      "validation_accuracy": 0.7522935779816514,
+      "validation_certificate_lower_score": 0.005324585781673242,
+      "validation_nll": 0.6295732766856065,
+      "validation_worst_group_accuracy": 0.5263157894736842
+    },
+    {
+      "lambda_fg": 0.03,
+      "seed": 17,
+      "test_accuracy": 0.7697618225750776,
+      "test_balanced_accuracy": 0.7426388917669975,
+      "test_hidden_certificate": 0.006929297155810717,
+      "test_inverse_fisher": 144.3145725126976,
+      "test_nll": 0.565073550798345,
+      "test_worst_group_accuracy": 0.5093457943925234,
+      "validation_accuracy": 0.74395329441201,
+      "validation_certificate_lower_score": 0.0035444770359627366,
+      "validation_nll": 0.6254091066208722,
+      "validation_worst_group_accuracy": 0.48120300751879697
+    },
+    {
+      "lambda_fg": 0.03,
+      "seed": 18,
+      "test_accuracy": 0.772868484639282,
+      "test_balanced_accuracy": 0.7440773704678423,
+      "test_hidden_certificate": 0.007064860088222878,
+      "test_inverse_fisher": 141.54541945038702,
+      "test_nll": 0.5269311878841335,
+      "test_worst_group_accuracy": 0.5046728971962616,
+      "validation_accuracy": 0.755629691409508,
+      "validation_certificate_lower_score": 0.00353927608542107,
+      "validation_nll": 0.5624994151496312,
+      "validation_worst_group_accuracy": 0.45112781954887216
+    },
+    {
+      "lambda_fg": 0.03,
+      "seed": 19,
+      "test_accuracy": 0.762167759751467,
+      "test_balanced_accuracy": 0.7344183227303811,
+      "test_hidden_certificate": 0.010287748430571463,
+      "test_inverse_fisher": 97.20290447609705,
+      "test_nll": 0.5411220428626168,
+      "test_worst_group_accuracy": 0.4781931464174455,
+      "validation_accuracy": 0.7447873227689742,
+      "validation_certificate_lower_score": 0.005048572943943124,
+      "validation_nll": 0.5921128288867648,
+      "validation_worst_group_accuracy": 0.48872180451127817
+    },
+    {
+      "lambda_fg": 0.03,
+      "seed": 20,
+      "test_accuracy": 0.7649292371418709,
+      "test_balanced_accuracy": 0.7554116501232981,
+      "test_hidden_certificate": 0.004297631087254982,
+      "test_inverse_fisher": 232.6857873184395,
+      "test_nll": 0.6294397414993993,
+      "test_worst_group_accuracy": 0.573208722741433,
+      "validation_accuracy": 0.749791492910759,
+      "validation_certificate_lower_score": 0.0029114082274879494,
+      "validation_nll": 0.6780805630868749,
+      "validation_worst_group_accuracy": 0.5488721804511278
+    },
+    {
+      "lambda_fg": 0.03,
+      "seed": 21,
+      "test_accuracy": 0.7626855367621678,
+      "test_balanced_accuracy": 0.7378148938668656,
+      "test_hidden_certificate": 0.006384619811101409,
+      "test_inverse_fisher": 156.62615211632615,
+      "test_nll": 0.5757196557359917,
+      "test_worst_group_accuracy": 0.5077881619937694,
+      "validation_accuracy": 0.7572977481234362,
+      "validation_certificate_lower_score": 0.0035128433654246878,
+      "validation_nll": 0.6012281347947137,
+      "validation_worst_group_accuracy": 0.5037593984962406
+    },
+    {
+      "lambda_fg": 0.1,
+      "seed": 17,
+      "test_accuracy": 0.77856403175699,
+      "test_balanced_accuracy": 0.7287949589351459,
+      "test_hidden_certificate": 0.008087672374824547,
+      "test_inverse_fisher": 123.64481611107952,
+      "test_nll": 0.5073899816934229,
+      "test_worst_group_accuracy": 0.42834890965732086,
+      "validation_accuracy": 0.7472894078398665,
+      "validation_certificate_lower_score": 0.004108052321672958,
+      "validation_nll": 0.552005833632378,
+      "validation_worst_group_accuracy": 0.38345864661654133
+    },
+    {
+      "lambda_fg": 0.1,
+      "seed": 18,
+      "test_accuracy": 0.7795995857783914,
+      "test_balanced_accuracy": 0.7383735347548888,
+      "test_hidden_certificate": 0.009583653266619797,
+      "test_inverse_fisher": 104.3442337423344,
+      "test_nll": 0.49733493379891675,
+      "test_worst_group_accuracy": 0.4672897196261682,
+      "validation_accuracy": 0.7731442869057548,
+      "validation_certificate_lower_score": 0.004488937009013534,
+      "validation_nll": 0.5256580854546145,
+      "validation_worst_group_accuracy": 0.46616541353383456
+    },
+    {
+      "lambda_fg": 0.1,
+      "seed": 19,
+      "test_accuracy": 0.7720055229547808,
+      "test_balanced_accuracy": 0.7301529657182724,
+      "test_hidden_certificate": 0.012086016181444585,
+      "test_inverse_fisher": 82.74018151104772,
+      "test_nll": 0.4922355306632186,
+      "test_worst_group_accuracy": 0.42990654205607476,
+      "validation_accuracy": 0.7547956630525438,
+      "validation_certificate_lower_score": 0.00645734460974423,
+      "validation_nll": 0.5306543840519657,
+      "validation_worst_group_accuracy": 0.42105263157894735
+    },
+    {
+      "lambda_fg": 0.1,
+      "seed": 20,
+      "test_accuracy": 0.7649292371418709,
+      "test_balanced_accuracy": 0.7554116501232981,
+      "test_hidden_certificate": 0.004297631087254982,
+      "test_inverse_fisher": 232.6857873184395,
+      "test_nll": 0.6294397414993993,
+      "test_worst_group_accuracy": 0.573208722741433,
+      "validation_accuracy": 0.749791492910759,
+      "validation_certificate_lower_score": 0.0029114082274879494,
+      "validation_nll": 0.6780805630868749,
+      "validation_worst_group_accuracy": 0.5488721804511278
+    },
+    {
+      "lambda_fg": 0.1,
+      "seed": 21,
+      "test_accuracy": 0.7688988608905765,
+      "test_balanced_accuracy": 0.7289930303721048,
+      "test_hidden_certificate": 0.009612333476413416,
+      "test_inverse_fisher": 104.03290336573811,
+      "test_nll": 0.5346643817713053,
+      "test_worst_group_accuracy": 0.4517133956386293,
+      "validation_accuracy": 0.7631359466221852,
+      "validation_certificate_lower_score": 0.004684197206586637,
+      "validation_nll": 0.5595156989871372,
+      "validation_worst_group_accuracy": 0.47368421052631576
+    },
+    {
+      "lambda_fg": 0.3,
+      "seed": 17,
+      "test_accuracy": 0.788574387297204,
+      "test_balanced_accuracy": 0.7232477498946612,
+      "test_hidden_certificate": 0.012289433190653377,
+      "test_inverse_fisher": 81.37065158172022,
+      "test_nll": 0.45604266024340145,
+      "test_worst_group_accuracy": 0.3847352024922118,
+      "validation_accuracy": 0.7706422018348624,
+      "validation_certificate_lower_score": 0.006930675330802922,
+      "validation_nll": 0.4873916062399485,
+      "validation_worst_group_accuracy": 0.3533834586466165
+    },
+    {
+      "lambda_fg": 0.3,
+      "seed": 18,
+      "test_accuracy": 0.7730410769761823,
+      "test_balanced_accuracy": 0.718005159873179,
+      "test_hidden_certificate": 0.014458294982494183,
+      "test_inverse_fisher": 69.16440075173261,
+      "test_nll": 0.48609939752322967,
+      "test_worst_group_accuracy": 0.40965732087227413,
+      "validation_accuracy": 0.7731442869057548,
+      "validation_certificate_lower_score": 0.008842542739874622,
+      "validation_nll": 0.5058964849875889,
+      "validation_worst_group_accuracy": 0.42105263157894735
+    },
+    {
+      "lambda_fg": 0.3,
+      "seed": 19,
+      "test_accuracy": 0.7782188470831896,
+      "test_balanced_accuracy": 0.7207740155141569,
+      "test_hidden_certificate": 0.01844441195679184,
+      "test_inverse_fisher": 54.21693357171148,
+      "test_nll": 0.45735438200017126,
+      "test_worst_group_accuracy": 0.38317757009345793,
+      "validation_accuracy": 0.7614678899082569,
+      "validation_certificate_lower_score": 0.009296038395791028,
+      "validation_nll": 0.4843118505083564,
+      "validation_worst_group_accuracy": 0.37593984962406013
+    },
+    {
+      "lambda_fg": 0.3,
+      "seed": 20,
+      "test_accuracy": 0.7649292371418709,
+      "test_balanced_accuracy": 0.7554116501232981,
+      "test_hidden_certificate": 0.004297631087254982,
+      "test_inverse_fisher": 232.6857873184395,
+      "test_nll": 0.6294397414993993,
+      "test_worst_group_accuracy": 0.573208722741433,
+      "validation_accuracy": 0.749791492910759,
+      "validation_certificate_lower_score": 0.0029114082274879494,
+      "validation_nll": 0.6780805630868749,
+      "validation_worst_group_accuracy": 0.5488721804511278
+    },
+    {
+      "lambda_fg": 0.3,
+      "seed": 21,
+      "test_accuracy": 0.7725232999654815,
+      "test_balanced_accuracy": 0.7193438257662101,
+      "test_hidden_certificate": 0.011660017749484367,
+      "test_inverse_fisher": 85.76308920398773,
+      "test_nll": 0.4988827178974818,
+      "test_worst_group_accuracy": 0.40342679127725856,
+      "validation_accuracy": 0.7639699749791493,
+      "validation_certificate_lower_score": 0.007348266284234232,
+      "validation_nll": 0.5233704942099177,
+      "validation_worst_group_accuracy": 0.41353383458646614
+    }
+  ],
+  "implementation_manifest": {
+    "algorithm_version": "group-free-lambda-selection-2.0.0",
+    "combined_sha256": "ab05c6bd499234960426fb3b6281b5ac2e7861a72e980d142823f137c56c3fd7",
+    "files": {
+      "waterbirds_group_free_lambda/aggregate.py": "d583b10633c3cfbe338982e4d4520faab7e3c2576d456f16cce73d19b1ac1696",
+      "waterbirds_group_free_lambda/certify.py": "89a023f45d78ac13b683bbc51f868c1e8e162a0c6b87d86fe9e480305d5cd613",
+      "waterbirds_group_free_lambda/experiment_common.py": "e869db5ee2fbd5976646eee7ac06042fd29bd63c86d94679b7b08c5ffce1b55a",
+      "waterbirds_group_free_lambda/posthoc.py": "ca70947d60b5b6ad641c761b7c3c2a1599c23716b52d66aa745396eb7cb12477",
+      "waterbirds_group_free_lambda/preflight.py": "31e42c1242187999710a94aa0691f89070fa0163488668342928a80bb689e8a8",
+      "waterbirds_group_free_lambda/run_all.sh": "2364ceee317e84ce450e7950ae3da77005cb888f65ae35e82a6817c8c7a873ba",
+      "waterbirds_group_free_lambda/select_lambda.py": "f962d5e2f23c698b26d4ee928c60d55705340116471ba9eaf49124f649ad6600",
+      "waterbirds_hidden_slice/blind_protocol.py": "deccd124d3677dbdc5489a9d8c214bd9738dd1768a91ae4adc85d254b3784336",
+      "waterbirds_hidden_slice/common.py": "324269c6a56ded790f6c822a12c409cf578a268c0929f005ba2709865d972781",
+      "waterbirds_hidden_slice/compat.py": "554891fb0803cc34e569d96639e37cd620e299b454ff7e62c399da6044721af3",
+      "waterbirds_hidden_slice/gates.py": "6679b6cabc5f0663691f343b884901ff9ec298ea8c121c8860138521a035a356",
+      "waterbirds_hidden_slice/geometry.py": "69f85333835f4cc0ee6c23b9c878bef8e45f205aa4466704095c1a8dafb5bd0d",
+      "waterbirds_hidden_slice/heads.py": "f09a4ed1a2777c0478e42610235baa33e1ce15b9439faf807cbd1be801ace21e",
+      "waterbirds_hidden_slice/metrics.py": "21467346142cec026af1f0211d0037184c1a4906abf45be25171a34d9975a61a"
+    }
+  },
+  "inputs": {
+    "17": {
+      "paths": {
+        "blind_test": "build/results/waterbirds_group_free_lambda_v2/runs/seed_17/blind_test.json",
+        "blind_test_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_17/blind_test_scores.npz",
+        "posthoc": "build/results/waterbirds_group_free_lambda_v2/runs/seed_17/posthoc.json",
+        "selection": "build/results/waterbirds_group_free_lambda_v2/runs/seed_17/selection.json",
+        "validation_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_17/validation_scores.npz"
+      },
+      "sha256": {
+        "blind_test": "e6391a4a7222931ee3cd676cb8b7a93e0ef5365441fadb75f2520d2bf6826622",
+        "blind_test_scores": "ee8abc21c8ed2543019cb409bbb9cabd22b7882e50763092e07c83bc076ca80f",
+        "posthoc": "dd94bee8afbb68ade88ce1c8a4bb914f09ac00a155235be54cb3374dd137f3f4",
+        "selection": "fcfedfa3b823331927911d3abc60ce055cfa1ba27ba30517bc4f9399821a6dbd",
+        "validation_scores": "6faf320f412cdcc9232f9be2254f8dde3559c4106623203775d64a9c02baa4c1"
+      }
+    },
+    "18": {
+      "paths": {
+        "blind_test": "build/results/waterbirds_group_free_lambda_v2/runs/seed_18/blind_test.json",
+        "blind_test_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_18/blind_test_scores.npz",
+        "posthoc": "build/results/waterbirds_group_free_lambda_v2/runs/seed_18/posthoc.json",
+        "selection": "build/results/waterbirds_group_free_lambda_v2/runs/seed_18/selection.json",
+        "validation_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_18/validation_scores.npz"
+      },
+      "sha256": {
+        "blind_test": "b291c5240914374ae96a04f74c7aef8b9d70e05df42a04c8ec413c62d6139bf3",
+        "blind_test_scores": "d0138371ead389ff2eb1ed26862cc7c96e7845b0751f3f877078001dda2bed57",
+        "posthoc": "b58730500e399f11d869731ea22542f78214f3e64935f52364187bc7483ad79c",
+        "selection": "f0d201d818a6620f417fbfbff1e7f222238f349980042b9aba99cfb1cf4738ca",
+        "validation_scores": "d73d78c1b8d69ac3a793a2e6ad8ec0cfa7e15abae0aa2d634b233204b1129043"
+      }
+    },
+    "19": {
+      "paths": {
+        "blind_test": "build/results/waterbirds_group_free_lambda_v2/runs/seed_19/blind_test.json",
+        "blind_test_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_19/blind_test_scores.npz",
+        "posthoc": "build/results/waterbirds_group_free_lambda_v2/runs/seed_19/posthoc.json",
+        "selection": "build/results/waterbirds_group_free_lambda_v2/runs/seed_19/selection.json",
+        "validation_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_19/validation_scores.npz"
+      },
+      "sha256": {
+        "blind_test": "7fab34d5d4b2031958fd5db3be77e31a7ec1431a288e9bf5683418d1c09c44b8",
+        "blind_test_scores": "f2724e8eb74f38cfd9d6957a1504f12618cc4f977fe345a13b22406d3b92d5be",
+        "posthoc": "adab5244692982ad6fcfc51ccb94b1b14029a0b2653e0e5681120731ae8e43ae",
+        "selection": "5959e31fc781647b240da5d9d6f55874185a8550d2517674a86e5181e759a368",
+        "validation_scores": "3402b55239305ed01f32a534ea8336dec71c6ddff055e35dec7dec1cc63bd912"
+      }
+    },
+    "20": {
+      "paths": {
+        "blind_test": "build/results/waterbirds_group_free_lambda_v2/runs/seed_20/blind_test.json",
+        "blind_test_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_20/blind_test_scores.npz",
+        "posthoc": "build/results/waterbirds_group_free_lambda_v2/runs/seed_20/posthoc.json",
+        "selection": "build/results/waterbirds_group_free_lambda_v2/runs/seed_20/selection.json",
+        "validation_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_20/validation_scores.npz"
+      },
+      "sha256": {
+        "blind_test": "1e6900a987f4ebd901453631e079a62c8a53c4f8350f88b44941f386674c2ea0",
+        "blind_test_scores": "bee95f5a26d7c80efa97b83657f6dd15e7a0cc5eb0b802407a743e741fa81c21",
+        "posthoc": "f2125b724275c3ea2f21411081e09c6afedba4d7b82ac01b381cf5f90e9fdef8",
+        "selection": "c2e3aba67ecaa8737a9b2a9d7f5b5adbe5233fec73abee2db242bb209d7f87c2",
+        "validation_scores": "f74686cc50e344e353fb0a46ef43fc93c1881aae735b5e5dc7288a510ab2de35"
+      }
+    },
+    "21": {
+      "paths": {
+        "blind_test": "build/results/waterbirds_group_free_lambda_v2/runs/seed_21/blind_test.json",
+        "blind_test_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_21/blind_test_scores.npz",
+        "posthoc": "build/results/waterbirds_group_free_lambda_v2/runs/seed_21/posthoc.json",
+        "selection": "build/results/waterbirds_group_free_lambda_v2/runs/seed_21/selection.json",
+        "validation_scores": "build/results/waterbirds_group_free_lambda_v2/runs/seed_21/validation_scores.npz"
+      },
+      "sha256": {
+        "blind_test": "5c65340b4eae59009117c534e9b7bac9d2c77b8d93a5399410d8d32920d0df08",
+        "blind_test_scores": "88d8c4daa920b05fd871e15696a7fdaed25606f65813510c6b0a875b41a6b595",
+        "posthoc": "15ebcd2757e60682c6dd2ee70de5f822a4942fac7d27729b0d6eb1363c6716d0",
+        "selection": "11654e42f46d1f7e95565b7b93468ca4270053d45d616502d7ed1fe38b93b6c5",
+        "validation_scores": "cf82f087c9e4df235601e325db959a82448addb72ea2c2c72e4023ab9a7f43a5"
+      }
+    }
+  },
+  "interval_convention": "two-sided Student-t interval across paired training/partition seeds on the same dataset; descriptive seed variability, not population or dataset-sampling uncertainty",
+  "metadata_contract": {
+    "group_supervised_comparator_role": "post-hoc group-supervised validation comparator; neither a deployable selector nor an upper bound",
+    "posthoc_group_labels_opened_only_after_blind_freeze": true,
+    "selection_and_certification_metadata_accessed": false
+  },
+  "paired_comparisons": [
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.01872204628145141,
+        "high": 0.03953668211162057,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0020925895487177507,
+        "mean": 0.02081463583016916,
+        "n": 5,
+        "standard_deviation": 0.015078190483524817,
+        "standard_error": 0.006743171779770383,
+        "unbounded_high": 0.03953668211162057,
+        "unbounded_low": 0.0020925895487177507,
+        "values": [
+          0.03434587504314801,
+          0.010528132550914782,
+          0.033655505695547205,
+          0.0,
+          0.025543665861235798
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_accuracy"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.017369863284982516,
+        "high": -0.005749027929418133,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.04048875449938316,
+        "mean": -0.02311889121440065,
+        "n": 5,
+        "standard_deviation": 0.013989181703029447,
+        "standard_error": 0.006256152247514023,
+        "unbounded_high": -0.005749027929418133,
+        "unbounded_low": -0.04048875449938316,
+        "values": [
+          -0.029746979712787835,
+          -0.03696855723867343,
+          -0.02656937508202606,
+          0.0,
+          -0.022309544038515927
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_balanced_accuracy"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.10173797343110502,
+        "high": -0.01979398145415083,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.2232699283163609,
+        "mean": -0.12153195488525585,
+        "n": 5,
+        "standard_deviation": 0.0819367989877154,
+        "standard_error": 0.036643250479053514,
+        "unbounded_high": -0.01979398145415083,
+        "unbounded_low": -0.2232699283163609,
+        "values": [
+          -0.21012544285278434,
+          -0.0882173320066037,
+          -0.17623550019590167,
+          0.0,
+          -0.13308149937098962
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_nll"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.004680234257904579,
+        "high": 0.010220301853543163,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0008598333377340048,
+        "mean": 0.005540067595638584,
+        "n": 5,
+        "standard_deviation": 0.003769324281508657,
+        "standard_error": 0.0016856930645387821,
+        "unbounded_high": 0.010220301853543163,
+        "unbounded_low": 0.0008598333377340048,
+        "values": [
+          0.006462590053424485,
+          0.005999728487981774,
+          0.01048541309822678,
+          0.0,
+          0.0047526063385598775
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_hidden_certificate"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 42.02965528617487,
+        "high": -11.918936424412713,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -95.97824699676246,
+        "mean": -53.948591710587586,
+        "n": 5,
+        "standard_deviation": 33.84945955345118,
+        "standard_error": 15.137938512629303,
+        "unbounded_high": -11.918936424412713,
+        "unbounded_low": -95.97824699676246,
+        "values": [
+          -90.24857005453596,
+          -49.05880153871904,
+          -71.42685169984948,
+          0.0,
+          -59.00873525983343
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_inverse_fisher"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.08942359806320453,
+        "high": -0.03686039527800329,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.21570759140441237,
+        "mean": -0.12628399334120782,
+        "n": 5,
+        "standard_deviation": 0.07201915992778059,
+        "standard_error": 0.03220794745618925,
+        "unbounded_high": -0.03686039527800329,
+        "unbounded_low": -0.21570759140441237,
+        "values": [
+          -0.1735796533836197,
+          -0.16950010706564156,
+          -0.1494166649398015,
+          0.0,
+          -0.13892354131697648
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_worst_group_accuracy"
+    },
+    {
+      "baseline_policy": "matched_erm_lambda_0",
+      "candidate_policy": "group_free",
+      "contrast_role": "primary_regularization_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0761930315950637,
+        "high": -0.02959611939399695,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.18198218258412435,
+        "mean": -0.10578915098906065,
+        "n": 5,
+        "standard_deviation": 0.061363647255044146,
+        "standard_error": 0.027442657321919417,
+        "unbounded_high": -0.02959611939399695,
+        "unbounded_low": -0.18198218258412435,
+        "values": [
+          -0.1594920778340702,
+          -0.12030075187969924,
+          -0.13049791861628324,
+          0.0,
+          -0.11865500661525058
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "validation_worst_group_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_balanced_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_nll"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_hidden_certificate"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_inverse_fisher"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_worst_group_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "matched_erm_lambda_0",
+      "contrast_role": "secondary_continuation_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0,
+        "high": 0.0,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0,
+        "mean": 0.0,
+        "n": 5,
+        "standard_deviation": 0.0,
+        "standard_error": 0.0,
+        "unbounded_high": 0.0,
+        "unbounded_low": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "validation_worst_group_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.01872204628145141,
+        "high": 0.03953668211162057,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0020925895487177507,
+        "mean": 0.02081463583016916,
+        "n": 5,
+        "standard_deviation": 0.015078190483524817,
+        "standard_error": 0.006743171779770383,
+        "unbounded_high": 0.03953668211162057,
+        "unbounded_low": 0.0020925895487177507,
+        "values": [
+          0.03434587504314801,
+          0.010528132550914782,
+          0.033655505695547205,
+          0.0,
+          0.025543665861235798
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.017369863284982516,
+        "high": -0.005749027929418133,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.04048875449938316,
+        "mean": -0.02311889121440065,
+        "n": 5,
+        "standard_deviation": 0.013989181703029447,
+        "standard_error": 0.006256152247514023,
+        "unbounded_high": -0.005749027929418133,
+        "unbounded_low": -0.04048875449938316,
+        "values": [
+          -0.029746979712787835,
+          -0.03696855723867343,
+          -0.02656937508202606,
+          0.0,
+          -0.022309544038515927
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_balanced_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.10173797343110502,
+        "high": -0.01979398145415083,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.2232699283163609,
+        "mean": -0.12153195488525585,
+        "n": 5,
+        "standard_deviation": 0.0819367989877154,
+        "standard_error": 0.036643250479053514,
+        "unbounded_high": -0.01979398145415083,
+        "unbounded_low": -0.2232699283163609,
+        "values": [
+          -0.21012544285278434,
+          -0.0882173320066037,
+          -0.17623550019590167,
+          0.0,
+          -0.13308149937098962
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_nll"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.004680234257904579,
+        "high": 0.010220301853543163,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": 0.0008598333377340048,
+        "mean": 0.005540067595638584,
+        "n": 5,
+        "standard_deviation": 0.003769324281508657,
+        "standard_error": 0.0016856930645387821,
+        "unbounded_high": 0.010220301853543163,
+        "unbounded_low": 0.0008598333377340048,
+        "values": [
+          0.006462590053424485,
+          0.005999728487981774,
+          0.01048541309822678,
+          0.0,
+          0.0047526063385598775
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_hidden_certificate"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 42.02965528617487,
+        "high": -11.918936424412713,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -95.97824699676246,
+        "mean": -53.948591710587586,
+        "n": 5,
+        "standard_deviation": 33.84945955345118,
+        "standard_error": 15.137938512629303,
+        "unbounded_high": -11.918936424412713,
+        "unbounded_low": -95.97824699676246,
+        "values": [
+          -90.24857005453596,
+          -49.05880153871904,
+          -71.42685169984948,
+          0.0,
+          -59.00873525983343
+        ]
+      },
+      "favorable_direction": "lower",
+      "metric": "test_inverse_fisher"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.08942359806320453,
+        "high": -0.03686039527800329,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.21570759140441237,
+        "mean": -0.12628399334120782,
+        "n": 5,
+        "standard_deviation": 0.07201915992778059,
+        "standard_error": 0.03220794745618925,
+        "unbounded_high": -0.03686039527800329,
+        "unbounded_low": -0.21570759140441237,
+        "values": [
+          -0.1735796533836197,
+          -0.16950010706564156,
+          -0.1494166649398015,
+          0.0,
+          -0.13892354131697648
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "test_worst_group_accuracy"
+    },
+    {
+      "baseline_policy": "frozen_erm_reference",
+      "candidate_policy": "group_free",
+      "contrast_role": "secondary_total_effect",
+      "difference_candidate_minus_baseline": {
+        "bounds": null,
+        "confidence": 0.95,
+        "critical_value": 2.7764451051977987,
+        "half_width": 0.0761930315950637,
+        "high": -0.02959611939399695,
+        "interval": "two-sided Student-t interval across experiment seeds",
+        "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+        "low": -0.18198218258412435,
+        "mean": -0.10578915098906065,
+        "n": 5,
+        "standard_deviation": 0.061363647255044146,
+        "standard_error": 0.027442657321919417,
+        "unbounded_high": -0.02959611939399695,
+        "unbounded_low": -0.18198218258412435,
+        "values": [
+          -0.1594920778340702,
+          -0.12030075187969924,
+          -0.13049791861628324,
+          0.0,
+          -0.11865500661525058
+        ]
+      },
+      "favorable_direction": "higher",
+      "metric": "validation_worst_group_accuracy"
+    }
+  ],
+  "policies": [
+    {
+      "key": "frozen_erm_reference",
+      "label": "Frozen ERM reference",
+      "lambda_counts": {
+        "n/a": 5
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.011247878988854789,
+          "high": 0.7658906128514713,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7433948548737617,
+          "mean": 0.7546427338626165,
+          "n": 5,
+          "standard_deviation": 0.009058713955729051,
+          "standard_error": 0.004051180038747235,
+          "unbounded_high": 0.7658906128514713,
+          "unbounded_low": 0.7433948548737617,
+          "values": [
+            0.754228512254056,
+            0.7625129444252675,
+            0.7445633413876424,
+            0.7649292371418709,
+            0.7469796341042457
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007308596710422681,
+          "high": 0.7577839681591243,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7431667747382789,
+          "mean": 0.7504753714487016,
+          "n": 5,
+          "standard_deviation": 0.005886130805914923,
+          "standard_error": 0.0026323577212962776,
+          "unbounded_high": 0.7577839681591243,
+          "unbounded_low": 0.7431667747382789,
+          "values": [
+            0.7529947296074491,
+            0.7549737171118525,
+            0.7473433905961829,
+            0.7554116501232981,
+            0.7416533698047261
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.002082696770663399,
+          "high": 0.008772586968360566,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004607193427033767,
+          "mean": 0.006689890197697166,
+          "n": 5,
+          "standard_deviation": 0.0016773432858456872,
+          "standard_error": 0.0007501307217507634,
+          "unbounded_high": 0.008772586968360566,
+          "unbounded_low": 0.004607193427033767,
+          "values": [
+            0.005826843137228892,
+            0.00845856649451241,
+            0.007958998858565061,
+            0.004297631087254982,
+            0.006907411410924489
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 57.45906542241489,
+          "high": 216.04782961852078,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 101.12969877369102,
+          "mean": 158.5887641961059,
+          "n": 5,
+          "standard_deviation": 46.275856838514386,
+          "standard_error": 20.695192321593336,
+          "unbounded_high": 216.04782961852078,
+          "unbounded_low": 101.12969877369102,
+          "values": [
+            171.61922163625619,
+            118.22320229045165,
+            125.64378527156096,
+            232.6857873184395,
+            144.77182446382116
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04110472265191908,
+          "high": 0.6682004573699116,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5859910120660734,
+          "mean": 0.6270957347179925,
+          "n": 5,
+          "standard_deviation": 0.03310454576389633,
+          "standard_error": 0.014804802938464978,
+          "unbounded_high": 0.6682004573699116,
+          "unbounded_low": 0.5859910120660734,
+          "values": [
+            0.6661681030961858,
+            0.5743167295298334,
+            0.6335898821960729,
+            0.6294397414993993,
+            0.6319642172684714
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.024564706935448825,
+          "high": 0.5816898217719838,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.532560407901086,
+          "mean": 0.5571251148365349,
+          "n": 5,
+          "standard_deviation": 0.0197836991094088,
+          "standard_error": 0.008847539211008025,
+          "unbounded_high": 0.5816898217719838,
+          "unbounded_low": 0.532560407901086,
+          "values": [
+            0.5583148558758315,
+            0.5791574279379157,
+            0.5325942350332594,
+            0.573208722741433,
+            0.542350332594235
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.02259512406916134,
+          "high": 0.5509406660356655,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5057504178973429,
+          "mean": 0.5283455419665042,
+          "n": 5,
+          "standard_deviation": 0.01819745446582024,
+          "standard_error": 0.008138149040606234,
+          "unbounded_high": 0.5509406660356655,
+          "unbounded_low": 0.5057504178973429,
+          "values": [
+            0.5128755364806867,
+            0.5413533834586466,
+            0.5064377682403434,
+            0.5488721804511278,
+            0.5321888412017167
+          ]
+        }
+      },
+      "selection_supervision": "predeclared frozen task-label ERM reference",
+      "source": "frozen_reference"
+    },
+    {
+      "key": "matched_erm_lambda_0",
+      "label": "Matched ERM continuation (lambda=0)",
+      "lambda_counts": {
+        "0": 5
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.011247878988854789,
+          "high": 0.7658906128514713,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7433948548737617,
+          "mean": 0.7546427338626165,
+          "n": 5,
+          "standard_deviation": 0.009058713955729051,
+          "standard_error": 0.004051180038747235,
+          "unbounded_high": 0.7658906128514713,
+          "unbounded_low": 0.7433948548737617,
+          "values": [
+            0.754228512254056,
+            0.7625129444252675,
+            0.7445633413876424,
+            0.7649292371418709,
+            0.7469796341042457
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.007308596710422681,
+          "high": 0.7577839681591243,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7431667747382789,
+          "mean": 0.7504753714487016,
+          "n": 5,
+          "standard_deviation": 0.005886130805914923,
+          "standard_error": 0.0026323577212962776,
+          "unbounded_high": 0.7577839681591243,
+          "unbounded_low": 0.7431667747382789,
+          "values": [
+            0.7529947296074491,
+            0.7549737171118525,
+            0.7473433905961829,
+            0.7554116501232981,
+            0.7416533698047261
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.002082696770663399,
+          "high": 0.008772586968360566,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004607193427033767,
+          "mean": 0.006689890197697166,
+          "n": 5,
+          "standard_deviation": 0.0016773432858456872,
+          "standard_error": 0.0007501307217507634,
+          "unbounded_high": 0.008772586968360566,
+          "unbounded_low": 0.004607193427033767,
+          "values": [
+            0.005826843137228892,
+            0.00845856649451241,
+            0.007958998858565061,
+            0.004297631087254982,
+            0.006907411410924489
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 57.45906542241489,
+          "high": 216.04782961852078,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 101.12969877369102,
+          "mean": 158.5887641961059,
+          "n": 5,
+          "standard_deviation": 46.275856838514386,
+          "standard_error": 20.695192321593336,
+          "unbounded_high": 216.04782961852078,
+          "unbounded_low": 101.12969877369102,
+          "values": [
+            171.61922163625619,
+            118.22320229045165,
+            125.64378527156096,
+            232.6857873184395,
+            144.77182446382116
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04110472265191908,
+          "high": 0.6682004573699116,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5859910120660734,
+          "mean": 0.6270957347179925,
+          "n": 5,
+          "standard_deviation": 0.03310454576389633,
+          "standard_error": 0.014804802938464978,
+          "unbounded_high": 0.6682004573699116,
+          "unbounded_low": 0.5859910120660734,
+          "values": [
+            0.6661681030961858,
+            0.5743167295298334,
+            0.6335898821960729,
+            0.6294397414993993,
+            0.6319642172684714
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.024564706935448825,
+          "high": 0.5816898217719838,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.532560407901086,
+          "mean": 0.5571251148365349,
+          "n": 5,
+          "standard_deviation": 0.0197836991094088,
+          "standard_error": 0.008847539211008025,
+          "unbounded_high": 0.5816898217719838,
+          "unbounded_low": 0.532560407901086,
+          "values": [
+            0.5583148558758315,
+            0.5791574279379157,
+            0.5325942350332594,
+            0.573208722741433,
+            0.542350332594235
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.02259512406916134,
+          "high": 0.5509406660356655,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5057504178973429,
+          "mean": 0.5283455419665042,
+          "n": 5,
+          "standard_deviation": 0.01819745446582024,
+          "standard_error": 0.008138149040606234,
+          "unbounded_high": 0.5509406660356655,
+          "unbounded_low": 0.5057504178973429,
+          "values": [
+            0.5128755364806867,
+            0.5413533834586466,
+            0.5064377682403434,
+            0.5488721804511278,
+            0.5321888412017167
+          ]
+        }
+      },
+      "selection_supervision": "predeclared matched task-label continuation",
+      "source": "lambda_grid"
+    },
+    {
+      "key": "fixed_0.03",
+      "label": "Fixed lambda=0.03 (hidden-slice scale)",
+      "lambda_counts": {
+        "0.03": 5
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0057901128493729175,
+          "high": 0.772272681023346,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7606924553246002,
+          "mean": 0.7664825681739731,
+          "n": 5,
+          "standard_deviation": 0.004663188155369804,
+          "standard_error": 0.0020854411414557464,
+          "unbounded_high": 0.772272681023346,
+          "unbounded_low": 0.7606924553246002,
+          "values": [
+            0.7697618225750776,
+            0.772868484639282,
+            0.762167759751467,
+            0.7649292371418709,
+            0.7626855367621678
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.009929218776712484,
+          "high": 0.7528014445677894,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7329430070143644,
+          "mean": 0.7428722257910769,
+          "n": 5,
+          "standard_deviation": 0.00799670344882064,
+          "standard_error": 0.003576234501493992,
+          "unbounded_high": 0.7528014445677894,
+          "unbounded_low": 0.7329430070143644,
+          "values": [
+            0.7426388917669975,
+            0.7440773704678423,
+            0.7344183227303811,
+            0.7554116501232981,
+            0.7378148938668656
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.0026702798404135914,
+          "high": 0.009663111155005882,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004322551474178699,
+          "mean": 0.00699283131459229,
+          "n": 5,
+          "standard_deviation": 0.0021505655670749167,
+          "standard_error": 0.0009617621596099794,
+          "unbounded_high": 0.009663111155005882,
+          "unbounded_low": 0.004322551474178699,
+          "values": [
+            0.006929297155810717,
+            0.007064860088222878,
+            0.010287748430571463,
+            0.004297631087254982,
+            0.006384619811101409
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 61.05672336080778,
+          "high": 215.53169053559725,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 93.41824381398169,
+          "mean": 154.47496717478947,
+          "n": 5,
+          "standard_deviation": 49.17330570036219,
+          "standard_error": 21.990970844877552,
+          "unbounded_high": 215.53169053559725,
+          "unbounded_low": 93.41824381398169,
+          "values": [
+            144.3145725126976,
+            141.54541945038702,
+            97.20290447609705,
+            232.6857873184395,
+            156.62615211632615
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04908690362192348,
+          "high": 0.6167441393780206,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.5185703321341737,
+          "mean": 0.5676572357560972,
+          "n": 5,
+          "standard_deviation": 0.03953316170311314,
+          "standard_error": 0.017679767386730466,
+          "unbounded_high": 0.6167441393780206,
+          "unbounded_low": 0.5185703321341737,
+          "values": [
+            0.565073550798345,
+            0.5269311878841335,
+            0.5411220428626168,
+            0.6294397414993993,
+            0.5757196557359917
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.043604279603521486,
+          "high": 0.5582460241518081,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.4710374649447651,
+          "mean": 0.5146417445482866,
+          "n": 5,
+          "standard_deviation": 0.03511761609147154,
+          "standard_error": 0.01570507535765417,
+          "unbounded_high": 0.5582460241518081,
+          "unbounded_low": 0.4710374649447651,
+          "values": [
+            0.5093457943925234,
+            0.5046728971962616,
+            0.4781931464174455,
+            0.573208722741433,
+            0.5077881619937694
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.04448006125457115,
+          "high": 0.5392169033598343,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.45025678085069204,
+          "mean": 0.4947368421052632,
+          "n": 5,
+          "standard_deviation": 0.035822945111493545,
+          "standard_error": 0.01602050808470867,
+          "unbounded_high": 0.5392169033598343,
+          "unbounded_low": 0.45025678085069204,
+          "values": [
+            0.48120300751879697,
+            0.45112781954887216,
+            0.48872180451127817,
+            0.5488721804511278,
+            0.5037593984962406
+          ]
+        }
+      },
+      "selection_supervision": "predeclared; task labels + fixed CLIP nuisance score",
+      "source": "lambda_grid"
+    },
+    {
+      "key": "validation_risk_minimizer",
+      "label": "Risk-only selector",
+      "lambda_counts": {
+        "0": 1,
+        "0.3": 4
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.01084184427559646,
+          "high": 0.7862992139683821,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7646155254171892,
+          "mean": 0.7754573696927857,
+          "n": 5,
+          "standard_deviation": 0.008731705430197413,
+          "standard_error": 0.0039049373802850923,
+          "unbounded_high": 0.7862992139683821,
+          "unbounded_low": 0.7646155254171892,
+          "values": [
+            0.788574387297204,
+            0.7730410769761823,
+            0.7782188470831896,
+            0.7649292371418709,
+            0.7725232999654815
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.019622150249369825,
+          "high": 0.7469786304836709,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7077343299849311,
+          "mean": 0.727356480234301,
+          "n": 5,
+          "standard_deviation": 0.01580310798876016,
+          "standard_error": 0.00706736474372754,
+          "unbounded_high": 0.7469786304836709,
+          "unbounded_low": 0.7077343299849311,
+          "values": [
+            0.7232477498946612,
+            0.718005159873179,
+            0.7207740155141569,
+            0.7554116501232981,
+            0.7193438257662101
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.006416985827926021,
+          "high": 0.01864694362126177,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.005812971965409728,
+          "mean": 0.01222995779333575,
+          "n": 5,
+          "standard_deviation": 0.005168053384175632,
+          "standard_error": 0.0023112237356729096,
+          "unbounded_high": 0.01864694362126177,
+          "unbounded_low": 0.005812971965409728,
+          "values": [
+            0.012289433190653377,
+            0.014458294982494183,
+            0.01844441195679184,
+            0.004297631087254982,
+            0.011660017749484367
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 90.16936204038461,
+          "high": 194.80953452590293,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 14.470810445133708,
+          "mean": 104.64017248551832,
+          "n": 5,
+          "standard_deviation": 72.61977650219922,
+          "standard_error": 32.47655135395187,
+          "unbounded_high": 194.80953452590293,
+          "unbounded_low": 14.470810445133708,
+          "values": [
+            81.37065158172022,
+            69.16440075173261,
+            54.21693357171148,
+            232.6857873184395,
+            85.76308920398773
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.08898764272062698,
+          "high": 0.5945514225533638,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.41657613711210983,
+          "mean": 0.5055637798327368,
+          "n": 5,
+          "standard_deviation": 0.07166805419933214,
+          "standard_error": 0.032050928200969185,
+          "unbounded_high": 0.5945514225533638,
+          "unbounded_low": 0.41657613711210983,
+          "values": [
+            0.45604266024340145,
+            0.48609939752322967,
+            0.45735438200017126,
+            0.6294397414993993,
+            0.4988827178974818
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09984863004785166,
+          "high": 0.5306897515431788,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3309924914474754,
+          "mean": 0.43084112149532705,
+          "n": 5,
+          "standard_deviation": 0.08041517688545058,
+          "standard_error": 0.03596276038770746,
+          "unbounded_high": 0.5306897515431788,
+          "unbounded_low": 0.3309924914474754,
+          "values": [
+            0.3847352024922118,
+            0.40965732087227413,
+            0.38317757009345793,
+            0.573208722741433,
+            0.40342679127725856
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09414839581516075,
+          "high": 0.5167047867926043,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3284079951622828,
+          "mean": 0.4225563909774436,
+          "n": 5,
+          "standard_deviation": 0.07582437434874413,
+          "standard_error": 0.033909691079036644,
+          "unbounded_high": 0.5167047867926043,
+          "unbounded_low": 0.3284079951622828,
+          "values": [
+            0.3533834586466165,
+            0.42105263157894735,
+            0.37593984962406013,
+            0.5488721804511278,
+            0.41353383458646614
+          ]
+        }
+      },
+      "selection_supervision": "task labels only",
+      "source": "lambda_grid"
+    },
+    {
+      "key": "group_free",
+      "label": "Group-free selector",
+      "lambda_counts": {
+        "0": 1,
+        "0.3": 4
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.01084184427559646,
+          "high": 0.7862992139683821,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7646155254171892,
+          "mean": 0.7754573696927857,
+          "n": 5,
+          "standard_deviation": 0.008731705430197413,
+          "standard_error": 0.0039049373802850923,
+          "unbounded_high": 0.7862992139683821,
+          "unbounded_low": 0.7646155254171892,
+          "values": [
+            0.788574387297204,
+            0.7730410769761823,
+            0.7782188470831896,
+            0.7649292371418709,
+            0.7725232999654815
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.019622150249369825,
+          "high": 0.7469786304836709,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7077343299849311,
+          "mean": 0.727356480234301,
+          "n": 5,
+          "standard_deviation": 0.01580310798876016,
+          "standard_error": 0.00706736474372754,
+          "unbounded_high": 0.7469786304836709,
+          "unbounded_low": 0.7077343299849311,
+          "values": [
+            0.7232477498946612,
+            0.718005159873179,
+            0.7207740155141569,
+            0.7554116501232981,
+            0.7193438257662101
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.006416985827926021,
+          "high": 0.01864694362126177,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.005812971965409728,
+          "mean": 0.01222995779333575,
+          "n": 5,
+          "standard_deviation": 0.005168053384175632,
+          "standard_error": 0.0023112237356729096,
+          "unbounded_high": 0.01864694362126177,
+          "unbounded_low": 0.005812971965409728,
+          "values": [
+            0.012289433190653377,
+            0.014458294982494183,
+            0.01844441195679184,
+            0.004297631087254982,
+            0.011660017749484367
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 90.16936204038461,
+          "high": 194.80953452590293,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 14.470810445133708,
+          "mean": 104.64017248551832,
+          "n": 5,
+          "standard_deviation": 72.61977650219922,
+          "standard_error": 32.47655135395187,
+          "unbounded_high": 194.80953452590293,
+          "unbounded_low": 14.470810445133708,
+          "values": [
+            81.37065158172022,
+            69.16440075173261,
+            54.21693357171148,
+            232.6857873184395,
+            85.76308920398773
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.08898764272062698,
+          "high": 0.5945514225533638,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.41657613711210983,
+          "mean": 0.5055637798327368,
+          "n": 5,
+          "standard_deviation": 0.07166805419933214,
+          "standard_error": 0.032050928200969185,
+          "unbounded_high": 0.5945514225533638,
+          "unbounded_low": 0.41657613711210983,
+          "values": [
+            0.45604266024340145,
+            0.48609939752322967,
+            0.45735438200017126,
+            0.6294397414993993,
+            0.4988827178974818
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09984863004785166,
+          "high": 0.5306897515431788,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3309924914474754,
+          "mean": 0.43084112149532705,
+          "n": 5,
+          "standard_deviation": 0.08041517688545058,
+          "standard_error": 0.03596276038770746,
+          "unbounded_high": 0.5306897515431788,
+          "unbounded_low": 0.3309924914474754,
+          "values": [
+            0.3847352024922118,
+            0.40965732087227413,
+            0.38317757009345793,
+            0.573208722741433,
+            0.40342679127725856
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09414839581516075,
+          "high": 0.5167047867926043,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3284079951622828,
+          "mean": 0.4225563909774436,
+          "n": 5,
+          "standard_deviation": 0.07582437434874413,
+          "standard_error": 0.033909691079036644,
+          "unbounded_high": 0.5167047867926043,
+          "unbounded_low": 0.3284079951622828,
+          "values": [
+            0.3533834586466165,
+            0.42105263157894735,
+            0.37593984962406013,
+            0.5488721804511278,
+            0.41353383458646614
+          ]
+        }
+      },
+      "selection_supervision": "task labels + fixed CLIP water-vs-land nuisance score; no group annotations",
+      "source": "lambda_grid"
+    },
+    {
+      "key": "group_supervised_val_comparator",
+      "label": "Group-supervised validation comparator",
+      "lambda_counts": {
+        "0": 1,
+        "0.1": 1,
+        "0.3": 3
+      },
+      "metrics": {
+        "test_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.010890026730631263,
+          "high": 0.7876590981838587,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7658790447225963,
+          "mean": 0.7767690714532275,
+          "n": 5,
+          "standard_deviation": 0.008770510175365596,
+          "standard_error": 0.003922291389894215,
+          "unbounded_high": 0.7876590981838587,
+          "unbounded_low": 0.7658790447225963,
+          "values": [
+            0.788574387297204,
+            0.7795995857783914,
+            0.7782188470831896,
+            0.7649292371418709,
+            0.7725232999654815
+          ]
+        },
+        "test_balanced_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.019134391171981464,
+          "high": 0.7505645463826245,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.7122957640386616,
+          "mean": 0.731430155210643,
+          "n": 5,
+          "standard_deviation": 0.015410281041942045,
+          "standard_error": 0.0068916871924317395,
+          "unbounded_high": 0.7505645463826245,
+          "unbounded_low": 0.7122957640386616,
+          "values": [
+            0.7232477498946612,
+            0.7383735347548888,
+            0.7207740155141569,
+            0.7554116501232981,
+            0.7193438257662101
+          ]
+        },
+        "test_hidden_certificate": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.006334924141141597,
+          "high": 0.01758995359130247,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.004920105309019275,
+          "mean": 0.011255029450160872,
+          "n": 5,
+          "standard_deviation": 0.005101963293053447,
+          "standard_error": 0.0022816673483952374,
+          "unbounded_high": 0.01758995359130247,
+          "unbounded_low": 0.004920105309019275,
+          "values": [
+            0.012289433190653377,
+            0.009583653266619797,
+            0.01844441195679184,
+            0.004297631087254982,
+            0.011660017749484367
+          ]
+        },
+        "test_inverse_fisher": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 86.89111258376661,
+          "high": 198.5672516674053,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 24.78502649987206,
+          "mean": 111.67613908363867,
+          "n": 5,
+          "standard_deviation": 69.9795699234787,
+          "standard_error": 31.29581507701963,
+          "unbounded_high": 198.5672516674053,
+          "unbounded_low": 24.78502649987206,
+          "values": [
+            81.37065158172022,
+            104.3442337423344,
+            54.21693357171148,
+            232.6857873184395,
+            85.76308920398773
+          ]
+        },
+        "test_nll": {
+          "bounds": null,
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.08825612020926542,
+          "high": 0.5960670072971396,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.4195547668786087,
+          "mean": 0.5078108870878741,
+          "n": 5,
+          "standard_deviation": 0.07107890728646375,
+          "standard_error": 0.031787453691787614,
+          "unbounded_high": 0.5960670072971396,
+          "unbounded_low": 0.4195547668786087,
+          "values": [
+            0.45604266024340145,
+            0.49733493379891675,
+            0.45735438200017126,
+            0.6294397414993993,
+            0.4988827178974818
+          ]
+        },
+        "test_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.10026360077605459,
+          "high": 0.5426312020221604,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.3421040004700513,
+          "mean": 0.44236760124610586,
+          "n": 5,
+          "standard_deviation": 0.08074938221700825,
+          "standard_error": 0.03611222155566862,
+          "unbounded_high": 0.5426312020221604,
+          "unbounded_low": 0.3421040004700513,
+          "values": [
+            0.3847352024922118,
+            0.4672897196261682,
+            0.38317757009345793,
+            0.573208722741433,
+            0.40342679127725856
+          ]
+        },
+        "validation_worst_group_accuracy": {
+          "bounds": [
+            0.0,
+            1.0
+          ],
+          "confidence": 0.95,
+          "critical_value": 2.7764451051977987,
+          "half_width": 0.09715534009403673,
+          "high": 0.5287342874624578,
+          "interval": "two-sided Student-t interval across experiment seeds",
+          "interval_scope": "descriptive variation across training/partition seeds on the same dataset; not a population or dataset-sampling confidence interval",
+          "low": 0.33442360727438436,
+          "mean": 0.43157894736842106,
+          "n": 5,
+          "standard_deviation": 0.07824607964359517,
+          "standard_error": 0.03499271061118826,
+          "unbounded_high": 0.5287342874624578,
+          "unbounded_low": 0.33442360727438436,
+          "values": [
+            0.3533834586466165,
+            0.46616541353383456,
+            0.37593984962406013,
+            0.5488721804511278,
+            0.41353383458646614
+          ]
+        }
+      },
+      "selection_supervision": "validation group labels (post-hoc comparator)",
+      "source": "lambda_grid"
+    }
+  ],
+  "reportability_deviations": [],
+  "reportable_five_seed_protocol_complete": true,
+  "schema_version": 2,
+  "seeds": [
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "selected_lambda_counts": {
+    "fixed_0.03": {
+      "0.03": 5
+    },
+    "frozen_erm_reference": {
+      "n/a": 5
+    },
+    "group_free": {
+      "0": 1,
+      "0.3": 4
+    },
+    "group_supervised_val_comparator": {
+      "0": 1,
+      "0.1": 1,
+      "0.3": 3
+    },
+    "matched_erm_lambda_0": {
+      "0": 5
+    },
+    "validation_risk_minimizer": {
+      "0": 1,
+      "0.3": 4
+    }
+  },
+  "selection_agreement": {
+    "group_free_equals_validation_risk_minimizer": 5,
+    "n_seeds": 5
+  },
+  "smoke": false,
+  "stage": "group_free_lambda_reporting_aggregate"
+}

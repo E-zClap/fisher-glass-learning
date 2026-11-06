@@ -1,0 +1,4 @@
+# Exact numerical package versions recorded by the original v2 rerun.
+numpy==2.0.2
+scikit-learn==1.6.1
+scipy==1.13.1

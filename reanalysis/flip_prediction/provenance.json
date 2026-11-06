@@ -1,0 +1,58 @@
+{
+  "cohort": "Prospective Waterbirds v2 rerun, ERM training seeds 22--26",
+  "source_archive": "experiments/prospective_nuisance_shift_v2_rerun_results.tar.gz",
+  "source_archive_sha256": "f6200e749d604cd6fc2db43e2ff47ee34d36c1e8245fbeb55191dc21cf1bec0c",
+  "result_member": "build/prospective_shift_v2_rerun/predictive_validity.json",
+  "result_sha256": "186b9c0e1d0edc380915e89c9d00d28b675a379274146cc321d0efddf2fcc601",
+  "original_environment_evidence": {
+    "archive_member": "build/w1_rerun.log",
+    "member_sha256": "462e1849ddd1552acc95d07600eb1e9067ae312c4d4dc14a861fe49b8145eb3a"
+  },
+  "original_versions": {
+    "python": "3.9.25",
+    "numpy": "2.0.2",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.13.1"
+  },
+  "recovery": "The five original flip_records.npz and three source files were copied read-only from the retained v2 rerun. Private server identifiers and paths are omitted. The original results archive does not include these NPZ inputs. Source snapshots are byte-identical to the corresponding local experiment files.",
+  "recovered_files_sha256": {
+    "inputs/runs/erm_lam0_seed22/flip_records.npz": "caada5dbb860c7b4de3242da1338e820232c1d2ed425a6157f3a9abbc0bd7cf9",
+    "inputs/runs/erm_lam0_seed23/flip_records.npz": "0b64e743a665d9b09dacb4da554221e5bcaabe73c6bceeac6849a1d285fd9ec9",
+    "inputs/runs/erm_lam0_seed24/flip_records.npz": "5838f89aae9b5e3ff16f592f8e9a2354d720e24647e1740517f5dbe1d1db764a",
+    "inputs/runs/erm_lam0_seed25/flip_records.npz": "1147735ffe1b1401b5bcbbcd25747a0a52c9c0f8ef21e7eb1994d875251c7154",
+    "inputs/runs/erm_lam0_seed26/flip_records.npz": "8e4eccb0d391d4732ae20e0071f092788b41ae5370a6099299eeb94d86d788c0",
+    "source/predictive_validity.py": "b45658705c25a5555c24b28d51985d5a1b3635121467b6e2aab883b79b3a14a2",
+    "source/common.py": "89f983d51e357b2dab01b153cdcf7acf244a599824f62f1c9c81f40a58561c61",
+    "source/evaluate_shift.py": "618826ad6ddf6cc0152d1df833e0ea37591881edd3afa7a520700b9a96b2f4c2"
+  },
+  "source_linkage_limit": "The historical invocation did not log source SHA256 values; recovery hashes identify the inspected source snapshots. refit.py verifies their outputs against all archived numerical metrics.",
+  "auxiliary_model": {
+    "class": "sklearn.linear_model.LogisticRegression",
+    "explicit_arguments": {
+      "max_iter": 5000,
+      "random_state": 0
+    },
+    "resolved_sklearn_1_6_1_defaults": {
+      "penalty": "l2",
+      "C": 1.0,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "fit_intercept": true,
+      "class_weight": null
+    },
+    "hyperparameter_search": null
+  },
+  "folds": {
+    "class": "sklearn.model_selection.GroupKFold",
+    "n_splits": 5,
+    "shuffle": false,
+    "group": "CUB species",
+    "species_per_pooled_variant": 200,
+    "species_in_selected_slice": 46
+  },
+  "official_versioned_default_references": [
+    "https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LogisticRegression.html",
+    "https://scikit-learn.org/1.6/modules/generated/sklearn.model_selection.GroupKFold.html"
+  ],
+  "sanitization": "Result JSON is byte-identical to archive member; source snapshots and NPZ files are unmodified. Public artifacts contain relative paths and numeric/model-protocol records, no credentials, server paths, images, or checkpoints."
+}

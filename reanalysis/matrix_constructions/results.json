@@ -1,0 +1,1010 @@
+{
+  "ridge": 0.001,
+  "seeds": [
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "records": [
+    {
+      "seed": 22,
+      "tag": "erm_lam0_seed22",
+      "gid": 0,
+      "group": "landbird/land",
+      "n": 467,
+      "temperature": 11.13507905676596,
+      "logit_global_mean": -30.78907064650678,
+      "logit_global_std": 28.399918982613407,
+      "validation_max_abs_calibrated_logit": 9.699077972363064,
+      "mu_z": -0.41209880666329474,
+      "mu_b": -0.8395006216246481,
+      "cov_zz": 0.5014428488843042,
+      "cov_zb": 0.2291634906035478,
+      "cov_bb": 0.4065421659601404,
+      "moment_zz": 0.6712682753376159,
+      "moment_zb": 0.5751206949681594,
+      "moment_bb": 1.1113034596683107,
+      "mean_predictive_weight": 0.049791836213052526,
+      "normalized_comparator_effective_predictive_ridge": 4.979183621305253e-05,
+      "controlled_drop": 0.23325942350332596,
+      "acc_original": 0.9920177383592018,
+      "acc_same": 0.9940133037694013,
+      "acc_opposite": 0.7607538802660754,
+      "constructions": {
+        "uncentered": {
+          "raw": 0.6712682753376159,
+          "cross": 0.5751206949681594,
+          "nuisance": 1.1113034596683107,
+          "projected": 0.37389995295615663,
+          "fraction": 0.5570052491578018,
+          "beta": 0.5170537679885134,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.5014428488843042,
+          "cross": 0.2291634906035478,
+          "nuisance": 0.4065421659601404,
+          "projected": 0.3725827950985111,
+          "fraction": 0.7430214548427543,
+          "beta": 0.56230620962534,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.017488756845889974,
+          "cross": -0.0030386731437021803,
+          "nuisance": 0.027901749894684295,
+          "projected": 0.01716927672763059,
+          "fraction": 0.9817322568393724,
+          "beta": -0.10513803332929204,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 0.3512374352104219,
+          "cross": -0.061027537339657635,
+          "nuisance": 0.560367964244108,
+          "projected": 0.34460299835088676,
+          "fraction": 0.9811112478498754,
+          "beta": -0.1087121838557929,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 22,
+      "tag": "erm_lam0_seed22",
+      "gid": 3,
+      "group": "waterbird/water",
+      "n": 133,
+      "temperature": 11.13507905676596,
+      "logit_global_mean": -30.78907064650678,
+      "logit_global_std": 28.399918982613407,
+      "validation_max_abs_calibrated_logit": 9.699077972363064,
+      "mu_z": 1.4470079046592432,
+      "mu_b": 0.8122623601713435,
+      "cov_zz": 0.06355969528357266,
+      "cov_zb": 0.04703759707145911,
+      "cov_bb": 0.23770403850453467,
+      "moment_zz": 2.157391571429906,
+      "moment_zb": 1.2223876528965671,
+      "moment_bb": 0.8974741802556563,
+      "mean_predictive_weight": 0.18932073608194855,
+      "normalized_comparator_effective_predictive_ridge": 0.00018932073608194855,
+      "controlled_drop": 0.5420560747663551,
+      "acc_original": 0.9158878504672897,
+      "acc_same": 0.9228971962616822,
+      "acc_opposite": 0.3808411214953271,
+      "constructions": {
+        "uncentered": {
+          "raw": 2.157391571429906,
+          "cross": 1.2223876528965671,
+          "nuisance": 0.8974741802556563,
+          "projected": 0.4943147609991354,
+          "fraction": 0.22912612042491043,
+          "beta": 1.3605150595966407,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.06355969528357266,
+          "cross": 0.04703759707145911,
+          "nuisance": 0.23770403850453467,
+          "projected": 0.05429074637044019,
+          "fraction": 0.8541693934846777,
+          "beta": 0.1970540480427001,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.3941239043389202,
+          "cross": 0.21904931971483835,
+          "nuisance": 0.16323809752145474,
+          "projected": 0.10197119926228349,
+          "fraction": 0.2587287858962117,
+          "beta": 1.3337302551633825,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 2.081778850512822,
+          "cross": 1.1570276148726868,
+          "nuisance": 0.86223041859924,
+          "projected": 0.5309612788263403,
+          "fraction": 0.2550517211256826,
+          "beta": 1.3403462041458063,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "tag": "erm_lam0_seed23",
+      "gid": 0,
+      "group": "landbird/land",
+      "n": 467,
+      "temperature": 10.175706759338963,
+      "logit_global_mean": -25.46467022940563,
+      "logit_global_std": 24.976756107693696,
+      "validation_max_abs_calibrated_logit": 9.532507401608862,
+      "mu_z": -0.4325022099670094,
+      "mu_b": -0.8413286185584539,
+      "cov_zz": 0.5511549240532749,
+      "cov_zb": 0.21350308879913557,
+      "cov_bb": 0.4339134884107325,
+      "moment_zz": 0.7382130856796228,
+      "moment_zb": 0.577379575634158,
+      "moment_bb": 1.1417473328162089,
+      "mean_predictive_weight": 0.05892799452443059,
+      "normalized_comparator_effective_predictive_ridge": 5.892799452443059e-05,
+      "controlled_drop": 0.2678492239467849,
+      "acc_original": 0.9849223946784922,
+      "acc_same": 0.993569844789357,
+      "acc_opposite": 0.725720620842572,
+      "constructions": {
+        "uncentered": {
+          "raw": 0.7382130856796228,
+          "cross": 0.577379575634158,
+          "nuisance": 1.1417473328162089,
+          "projected": 0.4464887781391941,
+          "fraction": 0.6048237112027648,
+          "beta": 0.5052556755580015,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.5511549240532749,
+          "cross": 0.21350308879913557,
+          "nuisance": 0.4339134884107325,
+          "projected": 0.4463442659765532,
+          "fraction": 0.8098344884484953,
+          "beta": 0.49090932906983825,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.018664531487070285,
+          "cross": -0.0025255824239454145,
+          "nuisance": 0.04155186283155137,
+          "projected": 0.018514630492009444,
+          "fraction": 0.9919686708897738,
+          "beta": -0.059353040169906376,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 0.3167345442128066,
+          "cross": -0.04285878798909997,
+          "nuisance": 0.7051294239162449,
+          "projected": 0.3141332141369302,
+          "fraction": 0.991787033895082,
+          "beta": -0.0606953718928777,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "tag": "erm_lam0_seed23",
+      "gid": 3,
+      "group": "waterbird/water",
+      "n": 133,
+      "temperature": 10.175706759338963,
+      "logit_global_mean": -25.46467022940563,
+      "logit_global_std": 24.976756107693696,
+      "validation_max_abs_calibrated_logit": 9.532507401608862,
+      "mu_z": 1.4164086573985228,
+      "mu_b": 0.7873166094033052,
+      "cov_zz": 0.06810260646834117,
+      "cov_zb": 0.051253985984857225,
+      "cov_bb": 0.2529228501870554,
+      "moment_zz": 2.0743160912218284,
+      "moment_zb": 1.1664160476573493,
+      "moment_bb": 0.872790293629372,
+      "mean_predictive_weight": 0.18528561872779384,
+      "normalized_comparator_effective_predictive_ridge": 0.00018528561872779384,
+      "controlled_drop": 0.5124610591900312,
+      "acc_original": 0.9283489096573209,
+      "acc_same": 0.9306853582554517,
+      "acc_opposite": 0.4182242990654206,
+      "constructions": {
+        "uncentered": {
+          "raw": 2.0743160912218284,
+          "cross": 1.1664160476573493,
+          "nuisance": 0.872790293629372,
+          "projected": 0.5172761399292654,
+          "fraction": 0.2493718976188319,
+          "beta": 1.3348924291806081,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.06810260646834117,
+          "cross": 0.051253985984857225,
+          "nuisance": 0.2529228501870554,
+          "projected": 0.0577570582933709,
+          "fraction": 0.8480888072943346,
+          "beta": 0.20184865579092368,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.36925672704037155,
+          "cross": 0.20593048818290235,
+          "nuisance": 0.15693944924658307,
+          "projected": 0.10075277716879794,
+          "fraction": 0.27285292261657956,
+          "beta": 1.30385720075162,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 1.9929054914016435,
+          "cross": 1.111421866396648,
+          "nuisance": 0.8470136555883778,
+          "projected": 0.536256112038114,
+          "fraction": 0.26908256028787203,
+          "beta": 1.3106178881347252,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 24,
+      "tag": "erm_lam0_seed24",
+      "gid": 0,
+      "group": "landbird/land",
+      "n": 467,
+      "temperature": 8.626380160260384,
+      "logit_global_mean": -24.673846454640252,
+      "logit_global_std": 23.680729821301462,
+      "validation_max_abs_calibrated_logit": 11.650309647026551,
+      "mu_z": -0.41882917125579205,
+      "mu_b": -0.8377994522017777,
+      "cov_zz": 0.6258619064575791,
+      "cov_zb": 0.21732403431333736,
+      "cov_bb": 0.402949197113399,
+      "moment_zz": 0.8012797811523928,
+      "moment_zb": 0.5682188845575643,
+      "moment_bb": 1.1048571192229977,
+      "mean_predictive_weight": 0.05253131713056779,
+      "normalized_comparator_effective_predictive_ridge": 5.253131713056779e-05,
+      "controlled_drop": 0.2707317073170732,
+      "acc_original": 0.98980044345898,
+      "acc_same": 0.9940133037694013,
+      "acc_opposite": 0.7232815964523281,
+      "constructions": {
+        "uncentered": {
+          "raw": 0.8012797811523928,
+          "cross": 0.5682188845575643,
+          "nuisance": 1.1048571192229977,
+          "projected": 0.5093137620750812,
+          "fraction": 0.6356253758738191,
+          "beta": 0.5138266731572058,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.6258619064575791,
+          "cross": 0.21732403431333736,
+          "nuisance": 0.402949197113399,
+          "projected": 0.5089419169447246,
+          "fraction": 0.813185643180251,
+          "beta": 0.5379984311550169,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.021533924672170177,
+          "cross": -0.005032758631911033,
+          "nuisance": 0.02996257594297361,
+          "projected": 0.020715883579797083,
+          "fraction": 0.9620115188091882,
+          "beta": -0.1625432793828359,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 0.409925466339386,
+          "cross": -0.09580491993760591,
+          "nuisance": 0.570375493698377,
+          "projected": 0.3938614545196975,
+          "fraction": 0.9608123594683217,
+          "beta": -0.16767418447977803,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 24,
+      "tag": "erm_lam0_seed24",
+      "gid": 3,
+      "group": "waterbird/water",
+      "n": 133,
+      "temperature": 8.626380160260384,
+      "logit_global_mean": -24.673846454640252,
+      "logit_global_std": 23.680729821301462,
+      "validation_max_abs_calibrated_logit": 11.650309647026551,
+      "mu_z": 1.3884045329349441,
+      "mu_b": 0.771805864635294,
+      "cov_zz": 0.06592946266189917,
+      "cov_zb": 0.05540117941301414,
+      "cov_bb": 0.2826987807091176,
+      "moment_zz": 1.9935966097361995,
+      "moment_zb": 1.1269799404184309,
+      "moment_bb": 0.8783830733945517,
+      "mean_predictive_weight": 0.18564008265085907,
+      "normalized_comparator_effective_predictive_ridge": 0.00018564008265085908,
+      "controlled_drop": 0.5241433021806854,
+      "acc_original": 0.926791277258567,
+      "acc_same": 0.9306853582554517,
+      "acc_opposite": 0.40654205607476634,
+      "constructions": {
+        "uncentered": {
+          "raw": 1.9935966097361995,
+          "cross": 1.1269799404184309,
+          "nuisance": 0.8783830733945517,
+          "projected": 0.5493070566034395,
+          "fraction": 0.27553570964194507,
+          "beta": 1.2815574628564521,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.06592946266189917,
+          "cross": 0.05540117941301414,
+          "nuisance": 0.2826987807091176,
+          "projected": 0.05511062631483714,
+          "fraction": 0.8359028587485475,
+          "beta": 0.19528169727954578,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.35685980806610856,
+          "cross": 0.19760275169113087,
+          "nuisance": 0.15603418955458065,
+          "projected": 0.10820792157781522,
+          "fraction": 0.3032224955906764,
+          "beta": 1.2583422263114856,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 1.9223208855022407,
+          "cross": 1.0644401191243298,
+          "nuisance": 0.8405199315066055,
+          "projected": 0.5759086084063136,
+          "fraction": 0.2995902571468172,
+          "beta": 1.264901851128614,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 25,
+      "tag": "erm_lam0_seed25",
+      "gid": 0,
+      "group": "landbird/land",
+      "n": 467,
+      "temperature": 10.969121605495301,
+      "logit_global_mean": -27.094444082377475,
+      "logit_global_std": 25.49425880542289,
+      "validation_max_abs_calibrated_logit": 11.486790331221838,
+      "mu_z": -0.419600502924578,
+      "mu_b": -0.8217028912556745,
+      "cov_zz": 0.5958041501767085,
+      "cov_zb": 0.273788973043131,
+      "cov_bb": 0.5050878665749037,
+      "moment_zz": 0.771868732231267,
+      "moment_zb": 0.6185759194685918,
+      "moment_bb": 1.1802835080728395,
+      "mean_predictive_weight": 0.0608865586092711,
+      "normalized_comparator_effective_predictive_ridge": 6.08865586092711e-05,
+      "controlled_drop": 0.2864745011086475,
+      "acc_original": 0.9893569844789357,
+      "acc_same": 0.9929046563192905,
+      "acc_opposite": 0.706430155210643,
+      "constructions": {
+        "uncentered": {
+          "raw": 0.771868732231267,
+          "cross": 0.6185759194685918,
+          "nuisance": 1.1802835080728395,
+          "projected": 0.4479531221922754,
+          "fraction": 0.5803488384577546,
+          "beta": 0.5236472999421995,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.5958041501767085,
+          "cross": 0.273788973043131,
+          "nuisance": 0.5050878665749037,
+          "projected": 0.44768678417991326,
+          "fraction": 0.751399237563442,
+          "beta": 0.5409909842258761,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.020650183293092667,
+          "cross": -0.00039544944912174075,
+          "nuisance": 0.03705350296334424,
+          "projected": 0.020646073808954998,
+          "fraction": 0.9998009952706306,
+          "beta": -0.010391932892555645,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 0.33915832598803336,
+          "cross": -0.00649485630579762,
+          "nuisance": 0.6085662223271421,
+          "projected": 0.33908912405904207,
+          "fraction": 0.9997959598108356,
+          "beta": -0.010654882222643826,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 25,
+      "tag": "erm_lam0_seed25",
+      "gid": 3,
+      "group": "waterbird/water",
+      "n": 133,
+      "temperature": 10.969121605495301,
+      "logit_global_mean": -27.094444082377475,
+      "logit_global_std": 25.49425880542289,
+      "validation_max_abs_calibrated_logit": 11.486790331221838,
+      "mu_z": 1.4135617073219033,
+      "mu_b": 0.7920324454242049,
+      "cov_zz": 0.06876419614616423,
+      "cov_zb": 0.035881026459801284,
+      "cov_bb": 0.22071752176351786,
+      "moment_zz": 2.0669208965529764,
+      "moment_zb": 1.1554677622679816,
+      "moment_bb": 0.8480329163681644,
+      "mean_predictive_weight": 0.19859353706833752,
+      "normalized_comparator_effective_predictive_ridge": 0.00019859353706833753,
+      "controlled_drop": 0.5420560747663552,
+      "acc_original": 0.9143302180685359,
+      "acc_same": 0.9306853582554517,
+      "acc_opposite": 0.3886292834890966,
+      "constructions": {
+        "uncentered": {
+          "raw": 2.0669208965529764,
+          "cross": 1.1554677622679816,
+          "nuisance": 0.8480329163681644,
+          "projected": 0.4944191432032419,
+          "fraction": 0.23920564353855503,
+          "beta": 1.3609222210260439,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.06876419614616423,
+          "cross": 0.035881026459801284,
+          "nuisance": 0.22071752176351786,
+          "projected": 0.06295749196884558,
+          "fraction": 0.9155562850618365,
+          "beta": 0.16183216452361263,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.399554097206697,
+          "cross": 0.22197717897965644,
+          "nuisance": 0.1649910552502671,
+          "projected": 0.10270757187148838,
+          "fraction": 0.2570554840746778,
+          "beta": 1.3372839798203477,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 2.0119189330376215,
+          "cross": 1.11774623815312,
+          "nuisance": 0.8307977071453864,
+          "projected": 0.5099231446709174,
+          "fraction": 0.2534511387598648,
+          "beta": 1.343771723041975,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 26,
+      "tag": "erm_lam0_seed26",
+      "gid": 0,
+      "group": "landbird/land",
+      "n": 467,
+      "temperature": 10.805637587551137,
+      "logit_global_mean": -28.29609619395203,
+      "logit_global_std": 27.15212545358752,
+      "validation_max_abs_calibrated_logit": 9.994782734933075,
+      "mu_z": -0.4313400794968264,
+      "mu_b": -0.8412138289527633,
+      "cov_zz": 0.515601602881114,
+      "cov_zb": 0.2195872987248139,
+      "cov_bb": 0.42000570170173107,
+      "moment_zz": 0.7016558670614427,
+      "moment_zb": 0.5824365385791284,
+      "moment_bb": 1.1276464077230999,
+      "mean_predictive_weight": 0.052836089057032576,
+      "normalized_comparator_effective_predictive_ridge": 5.2836089057032575e-05,
+      "controlled_drop": 0.27649667405764966,
+      "acc_original": 0.9875831485587583,
+      "acc_same": 0.9924611973392461,
+      "acc_opposite": 0.7159645232815964,
+      "constructions": {
+        "uncentered": {
+          "raw": 0.7016558670614427,
+          "cross": 0.5824365385791284,
+          "nuisance": 1.1276464077230999,
+          "projected": 0.4010902345030629,
+          "fraction": 0.5716338355194573,
+          "beta": 0.5160487240234254,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.515601602881114,
+          "cross": 0.2195872987248139,
+          "nuisance": 0.42000570170173107,
+          "projected": 0.4010697056494182,
+          "fraction": 0.7778674531038953,
+          "beta": 0.5215779687477591,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.017242627820885596,
+          "cross": 0.0003042546211142463,
+          "nuisance": 0.03241953447293653,
+          "projected": 0.01723985785787057,
+          "fraction": 0.9998393537781016,
+          "beta": 0.009104095132163936,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 0.32634186459700826,
+          "cross": 0.005758462190224307,
+          "nuisance": 0.6135869450507982,
+          "projected": 0.32628790984404243,
+          "fraction": 0.9998346680005875,
+          "beta": 0.00936964612834128,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "seed": 26,
+      "tag": "erm_lam0_seed26",
+      "gid": 3,
+      "group": "waterbird/water",
+      "n": 133,
+      "temperature": 10.805637587551137,
+      "logit_global_mean": -28.29609619395203,
+      "logit_global_std": 27.15212545358752,
+      "validation_max_abs_calibrated_logit": 9.994782734933075,
+      "mu_z": 1.3984452685823352,
+      "mu_b": 0.8637449335197763,
+      "cov_zz": 0.06837772316234765,
+      "cov_zb": 0.0620318129440103,
+      "cov_bb": 0.3097381525961029,
+      "moment_zz": 2.024026892382666,
+      "moment_zb": 1.2699318284867052,
+      "moment_bb": 1.0557934627771863,
+      "mean_predictive_weight": 0.19126680881450364,
+      "normalized_comparator_effective_predictive_ridge": 0.00019126680881450365,
+      "controlled_drop": 0.5085669781931464,
+      "acc_original": 0.9143302180685359,
+      "acc_same": 0.9454828660436138,
+      "acc_opposite": 0.4369158878504673,
+      "constructions": {
+        "uncentered": {
+          "raw": 2.024026892382666,
+          "cross": 1.2699318284867052,
+          "nuisance": 1.0557934627771863,
+          "projected": 0.49797009338861997,
+          "fraction": 0.24602938590525056,
+          "beta": 1.2016840311913028,
+          "ridge": 0.001
+        },
+        "centered": {
+          "raw": 0.06837772316234765,
+          "cross": 0.0620318129440103,
+          "nuisance": 0.3097381525961029,
+          "projected": 0.055994480921340184,
+          "fraction": 0.8188994650844659,
+          "beta": 0.19962728241047112,
+          "ridge": 0.001
+        },
+        "predictive_fisher": {
+          "raw": 0.3721945021716175,
+          "cross": 0.22764060565937969,
+          "nuisance": 0.19057101586826855,
+          "projected": 0.10169301158807975,
+          "fraction": 0.2732254533442557,
+          "beta": 1.1882831263781257,
+          "ridge": 0.001
+        },
+        "normalized_weight_comparator": {
+          "raw": 1.945944016520833,
+          "cross": 1.1901730732599427,
+          "nuisance": 0.9963621866723886,
+          "projected": 0.5256856958809812,
+          "fraction": 0.2701443060118751,
+          "beta": 1.1933208308516796,
+          "ridge": 0.001
+        }
+      }
+    }
+  ],
+  "selections": [
+    {
+      "seed": 22,
+      "construction": "uncentered",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.22912612042491043,
+      "controlled_drop": 0.5420560747663551,
+      "same_as_original": true
+    },
+    {
+      "seed": 22,
+      "construction": "centered",
+      "group": "landbird/land",
+      "gid": 0,
+      "fraction": 0.7430214548427543,
+      "controlled_drop": 0.23325942350332596,
+      "same_as_original": false
+    },
+    {
+      "seed": 22,
+      "construction": "predictive_fisher",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2587287858962117,
+      "controlled_drop": 0.5420560747663551,
+      "same_as_original": true
+    },
+    {
+      "seed": 22,
+      "construction": "normalized_weight_comparator",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2550517211256826,
+      "controlled_drop": 0.5420560747663551,
+      "same_as_original": true
+    },
+    {
+      "seed": 23,
+      "construction": "uncentered",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2493718976188319,
+      "controlled_drop": 0.5124610591900312,
+      "same_as_original": true
+    },
+    {
+      "seed": 23,
+      "construction": "centered",
+      "group": "landbird/land",
+      "gid": 0,
+      "fraction": 0.8098344884484953,
+      "controlled_drop": 0.2678492239467849,
+      "same_as_original": false
+    },
+    {
+      "seed": 23,
+      "construction": "predictive_fisher",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.27285292261657956,
+      "controlled_drop": 0.5124610591900312,
+      "same_as_original": true
+    },
+    {
+      "seed": 23,
+      "construction": "normalized_weight_comparator",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.26908256028787203,
+      "controlled_drop": 0.5124610591900312,
+      "same_as_original": true
+    },
+    {
+      "seed": 24,
+      "construction": "uncentered",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.27553570964194507,
+      "controlled_drop": 0.5241433021806854,
+      "same_as_original": true
+    },
+    {
+      "seed": 24,
+      "construction": "centered",
+      "group": "landbird/land",
+      "gid": 0,
+      "fraction": 0.813185643180251,
+      "controlled_drop": 0.2707317073170732,
+      "same_as_original": false
+    },
+    {
+      "seed": 24,
+      "construction": "predictive_fisher",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.3032224955906764,
+      "controlled_drop": 0.5241433021806854,
+      "same_as_original": true
+    },
+    {
+      "seed": 24,
+      "construction": "normalized_weight_comparator",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2995902571468172,
+      "controlled_drop": 0.5241433021806854,
+      "same_as_original": true
+    },
+    {
+      "seed": 25,
+      "construction": "uncentered",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.23920564353855503,
+      "controlled_drop": 0.5420560747663552,
+      "same_as_original": true
+    },
+    {
+      "seed": 25,
+      "construction": "centered",
+      "group": "landbird/land",
+      "gid": 0,
+      "fraction": 0.751399237563442,
+      "controlled_drop": 0.2864745011086475,
+      "same_as_original": false
+    },
+    {
+      "seed": 25,
+      "construction": "predictive_fisher",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2570554840746778,
+      "controlled_drop": 0.5420560747663552,
+      "same_as_original": true
+    },
+    {
+      "seed": 25,
+      "construction": "normalized_weight_comparator",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2534511387598648,
+      "controlled_drop": 0.5420560747663552,
+      "same_as_original": true
+    },
+    {
+      "seed": 26,
+      "construction": "uncentered",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.24602938590525056,
+      "controlled_drop": 0.5085669781931464,
+      "same_as_original": true
+    },
+    {
+      "seed": 26,
+      "construction": "centered",
+      "group": "landbird/land",
+      "gid": 0,
+      "fraction": 0.7778674531038953,
+      "controlled_drop": 0.27649667405764966,
+      "same_as_original": false
+    },
+    {
+      "seed": 26,
+      "construction": "predictive_fisher",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2732254533442557,
+      "controlled_drop": 0.5085669781931464,
+      "same_as_original": true
+    },
+    {
+      "seed": 26,
+      "construction": "normalized_weight_comparator",
+      "group": "waterbird/water",
+      "gid": 3,
+      "fraction": 0.2701443060118751,
+      "controlled_drop": 0.5085669781931464,
+      "same_as_original": true
+    }
+  ],
+  "summary": {
+    "uncentered": {
+      "selection_counts": {
+        "waterbird/water": 5
+      },
+      "same_as_original_count": 5,
+      "selected_controlled_drop": {
+        "mean": 0.5258566978193147,
+        "ci95_halfwidth": 0.013901864883024197,
+        "n_seeds": 5
+      },
+      "fractions_by_group": {
+        "landbird/land": {
+          "mean": 0.5898874020423195,
+          "ci95_halfwidth": 0.027089399755146546,
+          "n_seeds": 5
+        },
+        "waterbird/water": {
+          "mean": 0.24785375142589858,
+          "ci95_halfwidth": 0.015165878038006621,
+          "n_seeds": 5
+        }
+      }
+    },
+    "centered": {
+      "selection_counts": {
+        "landbird/land": 5
+      },
+      "same_as_original_count": 0,
+      "selected_controlled_drop": {
+        "mean": 0.26696230598669624,
+        "ci95_halfwidth": 0.017653656080288748,
+        "n_seeds": 5
+      },
+      "fractions_by_group": {
+        "landbird/land": {
+          "mean": 0.7790616554277676,
+          "ci95_halfwidth": 0.028325035910355834,
+          "n_seeds": 5
+        },
+        "waterbird/water": {
+          "mean": 0.8545233619347723,
+          "ci95_halfwidth": 0.03215335542229525,
+          "n_seeds": 5
+        }
+      }
+    },
+    "predictive_fisher": {
+      "selection_counts": {
+        "waterbird/water": 5
+      },
+      "same_as_original_count": 5,
+      "selected_controlled_drop": {
+        "mean": 0.5258566978193147,
+        "ci95_halfwidth": 0.013901864883024197,
+        "n_seeds": 5
+      },
+      "fractions_by_group": {
+        "landbird/land": {
+          "mean": 0.9870705591174133,
+          "ci95_halfwidth": 0.013897703332339261,
+          "n_seeds": 5
+        },
+        "waterbird/water": {
+          "mean": 0.27301702830448027,
+          "ci95_halfwidth": 0.01622996809292297,
+          "n_seeds": 5
+        }
+      }
+    },
+    "normalized_weight_comparator": {
+      "selection_counts": {
+        "waterbird/water": 5
+      },
+      "same_as_original_count": 5,
+      "selected_controlled_drop": {
+        "mean": 0.5258566978193147,
+        "ci95_halfwidth": 0.013901864883024197,
+        "n_seeds": 5
+      },
+      "fractions_by_group": {
+        "landbird/land": {
+          "mean": 0.9866682538049403,
+          "ci95_halfwidth": 0.014344874483668165,
+          "n_seeds": 5
+        },
+        "waterbird/water": {
+          "mean": 0.26946399666642235,
+          "ci95_halfwidth": 0.016235646658736985,
+          "n_seeds": 5
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "seed": 22,
+      "group": "landbird/land",
+      "moment_decomposition_max_error": 4.440892098500626e-16,
+      "archived_uncentered_max_error": 1.1102230246251565e-16,
+      "archived_normalized_weight_max_error": 1.1102230246251565e-16,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 0.0
+    },
+    {
+      "seed": 22,
+      "group": "waterbird/water",
+      "moment_decomposition_max_error": 6.661338147750939e-16,
+      "archived_uncentered_max_error": 1.1102230246251565e-15,
+      "archived_normalized_weight_max_error": 8.881784197001252e-16,
+      "ridge_equivalence_error": 5.551115123125783e-17,
+      "reverse_ridge_equivalence_error": 5.551115123125783e-17
+    },
+    {
+      "seed": 23,
+      "group": "landbird/land",
+      "moment_decomposition_max_error": 7.771561172376096e-16,
+      "archived_uncentered_max_error": 3.3306690738754696e-16,
+      "archived_normalized_weight_max_error": 4.996003610813204e-16,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 0.0
+    },
+    {
+      "seed": 23,
+      "group": "waterbird/water",
+      "moment_decomposition_max_error": 1.3322676295501878e-15,
+      "archived_uncentered_max_error": 1.7763568394002505e-15,
+      "archived_normalized_weight_max_error": 6.661338147750939e-16,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 0.0
+    },
+    {
+      "seed": 24,
+      "group": "landbird/land",
+      "moment_decomposition_max_error": 1.1102230246251565e-16,
+      "archived_uncentered_max_error": 4.440892098500626e-16,
+      "archived_normalized_weight_max_error": 7.216449660063518e-16,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 1.1102230246251565e-16
+    },
+    {
+      "seed": 24,
+      "group": "waterbird/water",
+      "moment_decomposition_max_error": 6.661338147750939e-16,
+      "archived_uncentered_max_error": 1.1102230246251565e-15,
+      "archived_normalized_weight_max_error": 3.1086244689504383e-15,
+      "ridge_equivalence_error": 2.220446049250313e-16,
+      "reverse_ridge_equivalence_error": 2.220446049250313e-16
+    },
+    {
+      "seed": 25,
+      "group": "landbird/land",
+      "moment_decomposition_max_error": 8.881784197001252e-16,
+      "archived_uncentered_max_error": 4.440892098500626e-16,
+      "archived_normalized_weight_max_error": 0.0,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 0.0
+    },
+    {
+      "seed": 25,
+      "group": "waterbird/water",
+      "moment_decomposition_max_error": 2.220446049250313e-15,
+      "archived_uncentered_max_error": 1.3322676295501878e-15,
+      "archived_normalized_weight_max_error": 6.661338147750939e-16,
+      "ridge_equivalence_error": 2.220446049250313e-16,
+      "reverse_ridge_equivalence_error": 2.220446049250313e-16
+    },
+    {
+      "seed": 26,
+      "group": "landbird/land",
+      "moment_decomposition_max_error": 2.220446049250313e-16,
+      "archived_uncentered_max_error": 3.3306690738754696e-16,
+      "archived_normalized_weight_max_error": 5.551115123125783e-16,
+      "ridge_equivalence_error": 0.0,
+      "reverse_ridge_equivalence_error": 0.0
+    },
+    {
+      "seed": 26,
+      "group": "waterbird/water",
+      "moment_decomposition_max_error": 1.3322676295501878e-15,
+      "archived_uncentered_max_error": 1.3322676295501878e-15,
+      "archived_normalized_weight_max_error": 2.6645352591003757e-15,
+      "ridge_equivalence_error": 1.6653345369377348e-16,
+      "reverse_ridge_equivalence_error": 0.0
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+\subsection{Extended Training and Selection Results}
+\label{app:extended-training}
+
+We examine four settings with distinct training budgets, information targets, and selection rules: an end-to-end penalty sweep, the prospective background intervention, constrained repair of discovered slices, and coefficient selection without group annotations. Each comparison records information and predictive performance under its own evaluation protocol.
+
+\paragraph{End-to-end penalty frontier.}
+ImageNet-initialized MobileNetV3-small~\cite{howard2019searching} is fine-tuned on Waterbirds for 10 epochs with training batch size 128, evaluation batch size 512, and seeds 17--21. The reported configuration uses CUDA bf16 automatic mixed precision, TF32, channels-last tensors, and eight data-loader workers on an NVIDIA H100 MIG slice with approximately 47\,GB memory. AdamW uses learning rate $10^{-4}$ and weight decay $10^{-4}$; the final epoch supplies the evaluated model. The nuisance coordinate is the binary background annotation standardized by training moments. The minibatch task logit is standardized by its mean and population standard deviation plus $10^{-6}$. Groups with fewer than two batch observations are omitted from the information penalty, and the remaining groups' upper-tail loss is computed at $\alpha=0.95$. The nuisance ridge is $10^{-3}$; projected information is clamped below at $10^{-8}$ before another $10^{-8}$ is added in the reciprocal.
+
+The six Group DRO + FG coefficients are
+\begin{equation}
+\lambda_{\FG}\in\{5\!\times\!10^{-5},10^{-4},3\!\times\!10^{-4},10^{-3},3\!\times\!10^{-3},10^{-2}\}.
+\end{equation}
+Tables~\ref{tab:e-frontier-performance} and~\ref{tab:e-frontier-information} report the full frontier. FG entries are means $\pm$ standard deviations over five seeds. The Group DRO reference reproduces the reported comparison at $\lambda_{\FG}=10^{-4}$; each sweep file reran its own Group DRO baseline, so this single reference is not a common paired baseline for every coefficient.
+
+\begin{table}[htbp]
+\centering\small
+\caption{End-to-end Waterbirds: predictive performance over the penalty frontier.}
+\label{tab:e-frontier-performance}
+\begin{tabular}{@{}p{32mm}>{\raggedleft\arraybackslash}p{27mm}>{\raggedleft\arraybackslash}p{31mm}>{\raggedleft\arraybackslash}p{28mm}@{}}
+\toprule
+Objective / $\lambda_{\FG}$ & Average acc. (\%) & Worst-group acc. (\%) & Loss-CVaR$_{0.95}$\\
+\midrule
+Group DRO reference & $85.4$ & $53.2$ & $0.925$\\
+$5\times10^{-5}$ & $79.7\pm6.2$ & $56.6\pm5.8$ & $0.733\pm0.061$\\
+$10^{-4}$ & $79.5\pm10.2$ & $57.7\pm8.3$ & $0.733\pm0.110$\\
+$3\times10^{-4}$ & $69.9\pm9.7$ & $58.8\pm8.7$ & $0.653\pm0.064$\\
+$10^{-3}$ & $62.7\pm7.9$ & $49.9\pm1.8$ & $0.710\pm0.012$\\
+$3\times10^{-3}$ & $57.7\pm4.5$ & $48.6\pm6.6$ & $0.717\pm0.036$\\
+$10^{-2}$ & $47.9\pm16.5$ & $22.7\pm16.7$ & $1.031\pm0.416$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\caption{End-to-end Waterbirds: ridge information over the penalty frontier.}
+\label{tab:e-frontier-information}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Objective / $\lambda_{\FG}$ & Ridge certificate & Inverse-information p95\\
+\midrule
+Group DRO reference & $0.259$ & $3.68$\\
+$5\times10^{-5}$ & $0.393\pm0.059$ & $2.49\pm0.34$\\
+$10^{-4}$ & $0.502\pm0.166$ & $2.10\pm0.58$\\
+$3\times10^{-4}$ & $0.614\pm0.189$ & $1.71\pm0.46$\\
+$10^{-3}$ & $0.786\pm0.124$ & $1.29\pm0.20$\\
+$3\times10^{-3}$ & $0.817\pm0.068$ & $1.22\pm0.10$\\
+$10^{-2}$ & $0.809\pm0.076$ & $1.23\pm0.12$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At $\lambda_{\FG}=10^{-4}$, the mean certificate is $0.502$ and inverse-information p95 is $2.10$, compared with $0.259$ and $3.68$ for its reference; mean average and worst-group accuracies are $79.5\%$ and $57.7\%$. Larger coefficients increase the certificate over much of the grid while average accuracy decreases. The largest coefficient yields $22.7\%$ mean worst-group accuracy. Figure~\ref{fig:training-frontier} presents this frontier, making coefficient choice an explicit decision about information and performance.
+
+{\raggedright
+The runs use \path{experiments/end_to_end_deep_suite.py}, launched by \path{experiments/run_full_end_to_end_suite.sh}. The reported batch sizes override that launcher's defaults of 32 and 256. Historical sweep summaries are retained in \path{reports/fisher_glass_results_report.md}; Appendix~\ref{app:estimation-certification}'s fresh audit runs form a separate cohort.
+\par}
+\FloatBarrier
+
+\paragraph{Training in the prospective intervention study.}
+The prospective protocol in Appendix~\ref{app:prospective-intervention} uses ImageNet-initialized MobileNetV3-small models fully fine-tuned for 50 epochs, batch size 32, AdamW learning rate $10^{-4}$ and weight decay $10^{-4}$, bf16 on an H100, and seeds 22--26. The FG arm evaluates coefficients $\{0.003,0.01,0.03\}$. During training, a linear background probe is fitted by AdamW at learning rate $10^{-3}$ on detached current features; its continuous score is detached before entering the penalty. Its optimizer uses the library's default weight decay $0.01$. The penalty is disabled for the first epoch. Batch-standardized task and nuisance scores use a $10^{-6}$ standard-deviation guard. A group contributes only with at least six examples and nuisance standard deviation at least $0.05$. The training Schur value is floored at $0.05$ and its reciprocal is taken directly; this optimization floor is separate from the audit's $\varepsilon=10^{-8}$. Training uses tail level $0.75$ over available groups, with ridge $10^{-3}$.
+
+The final trained checkpoint is audited on validation data. For each seed, coefficient selection maximizes the validation certificate among candidates with overall validation accuracy at least the ERM value minus $0.01$. If that set is empty, the implementation maximizes the certificate over all candidates and records a fallback. The selected coefficients for seeds 22--26 are $[0.01,0.03,0.01,0.003,0.01]$; seeds 22 and 24 fall back. The audit uses $\alpha=0.95$, ridge $10^{-3}$, and $\varepsilon=10^{-8}$. The checkpoint, calibration, independent audit probe, selected slice, and audit constants are fixed before intervention scoring.
+
+In the current rerun, FG training increases the model-level validation certificate from $0.289$ to $0.330$. Its selected slice has a controlled same-type-minus-opposite-type accuracy drop of $52.9$ percentage points, compared with $52.6$ for ERM. Among predictions correct on original images, $57.7\%$ flip under the opposite-type intervention in the FG arm, compared with $56.4\%$ for ERM. Accuracy matching fails in two seeds. The information increase therefore accompanies persistent sensitivity to the audited background change. Appendix~\ref{app:prospective-intervention} gives the preserved-foreground construction, artifact control, and selection history; these values use \texttt{reports/prospective\_nuisance\_shift\_report\_v2\_rerun.md}, whose ERM opposite-type accuracy is $40.6\%$.
+
+\paragraph{Constrained repair of discovered slices.}
+The hidden-slice study evaluates predictive-loss, Fisher-information, and combined pseudo-group repair. Candidates must keep overall, balanced, and each task-class validation accuracy within $0.02$ of the base model. These screens use task labels, while background and group annotations remain sealed. Every arm includes an exact unchanged-model candidate. Loss coefficients are $\{0.1,0.3,1\}$, Fisher coefficients $\{0.01,0.03,0.1\}$, and combined repair uses their Cartesian product.
+
+Each active candidate starts from the same ERM head and uses a fresh AdamW optimizer, learning rate $0.01$, weight decay $10^{-4}$, gradient-norm clipping at 10, and at most 1,200 additional full-batch steps. Binary NLL at temperature one on the held-out training-calibration partition is checked every 25 steps; improvement must exceed $10^{-5}$, patience is 12 checks, and the best checkpoint is restored with step zero eligible. The ERM calibration temperature remains fixed for Fisher training, validation selection, rediscovery, and test auditing. The matched ERM continuation has the same warm start, extra-step budget, optimizer, and checkpoint rule with both penalties zero.
+
+The Fisher term is dimensionless. Writing $F_{\mathrm{init}}$ for the predictive projected information on the frozen training slice at the warm start, the implemented penalty is
+\begin{equation}
+P_{\mathrm{FG}}(w)=
+\frac{\max\{F_{\mathrm{init}},\varepsilon\}}{F(w)+\varepsilon},
+\qquad \varepsilon=10^{-8}.
+\label{eq:e-dimensionless-penalty}
+\end{equation}
+It is approximately one at the warm start when $F_{\mathrm{init}}\gg\varepsilon$; stabilization prevents exact equality. The scalar predictive matrix retains shrinkage $0.1$ and ridge $10^{-3}$, with negative numerical projected values clipped to zero.
+
+Within the accuracy envelope, loss repair minimizes fixed-temperature loss on the frozen original slice, and Fisher repair maximizes its predictive projected information. Combined repair retains the loss--information Pareto frontier, then maximizes the smaller relative improvement over the base slice; ties use the mean relative improvement, smaller normalized coefficient sum, and earlier candidate index. Single-criterion ties similarly favor smaller penalties and earlier indices. After selection, each head receives fresh slice rediscovery with matched gate-initialization and fold seeds. Thus the slice evaluated below can change after training.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Constrained hidden-slice repair: predictive performance and selected action.}
+\label{tab:e-repair-performance}
+\begin{tabular}{@{}p{38mm}>{\raggedleft\arraybackslash}p{25mm}>{\raggedleft\arraybackslash}p{28mm}>{\raggedleft\arraybackslash}p{27mm}@{}}
+\toprule
+Training arm & Average acc. (\%) & Worst-group acc. (\%) & Unchanged selections\\
+\midrule
+Matched ERM continuation & $76.3\pm0.7$ & $57.3\pm1.3$ & ---\\
+Loss repair & $76.3\pm0.6$ & $56.9\pm1.3$ & $3/5$\\
+Fisher repair & $76.3\pm0.7$ & $57.3\pm1.3$ & $5/5$\\
+Combined repair & $76.4\pm0.9$ & $56.7\pm1.6$ & $4/5$\\
+Oracle Group DRO & $80.0\pm0.3$ & $64.8\pm0.9$ & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\caption{Constrained repair: the CLIP-defined slice rediscovered after each arm. Information and NLL are evaluated on that arm's rediscovered slice.}
+\label{tab:e-repair-slices}
+\begin{tabular}{@{}p{38mm}>{\raggedleft\arraybackslash}p{24mm}>{\raggedleft\arraybackslash}p{29mm}>{\raggedleft\arraybackslash}p{27mm}@{}}
+\toprule
+Training arm & Slice NLL & Predictive projected info. & Landbird/land mass\\
+\midrule
+Matched ERM continuation & $0.031\pm0.017$ & $0.005\pm0.001$ & $97.0\%$\\
+Loss repair & $0.023\pm0.017$ & $0.005\pm0.002$ & $97.8\%$\\
+Fisher repair & $0.031\pm0.017$ & $0.005\pm0.001$ & $97.0\%$\\
+Combined repair & $0.031\pm0.017$ & $0.005\pm0.001$ & $97.2\%$\\
+Oracle Group DRO & $0.033\pm0.018$ & $0.005\pm0.002$ & $95.9\%$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Accuracy, NLL, and information entries are means $\pm95\%$ Student-$t$ interval half-widths across five paired seeds; composition entries are mean percentages. The oracle uses group annotations during training. Fisher repair selects the unchanged model in all five seeds; loss-only and combined repair do so in three and four. Paired worst-group accuracy changes relative to matched continuation are $-0.4$, $0.0$, and $-0.6$ percentage points for loss, Fisher, and combined repair, with intervals containing zero. The oracle reaches $64.8\%$ worst-group accuracy while rediscovered projected information remains $0.005$. These results record both the action and the population on which information is assessed. The implementation is \texttt{experiments/waterbirds\_hidden\_slice}.
+
+{\raggedright
+The matching retained cohort is \path{experiments/waterbirds_hidden_slice_v2_corrected_results.tar.gz}, rooted at \path{waterbirds_hidden_slice_v2/}, with \path{main_table.csv} and \path{waterbirds_hidden_slice_report.md} as described in Appendix~\ref{app:discovery-results}.
+\par}
+\FloatBarrier
+
+\paragraph{Post hoc coefficient selection without group labels.}
+This sensitivity analysis uses $\Lambda_{\mathrm{hidden}}=\{0,0.01,0.03,0.1,0.3\}$ with the dimensionless normalization in Equation~\ref{eq:e-dimensionless-penalty}. Fixed $0.03$ is a reference within this protocol and does not reproduce the known-group objective's numerical scale. Training and selection use task labels and the fixed CLIP water-versus-land nuisance coordinate. Training data are partitioned into $70\%$ fitting, $15\%$ calibration, and $15\%$ gate discovery. A frozen train-only slice supplies the candidate penalty. Every candidate, including $\lambda=0$, receives the same warm start, head-training seed, AdamW settings, maximum 1,200-step budget, and calibration-NLL checkpoint rule described above. One base ERM temperature is frozen across candidates. Official validation observations are used only after candidate heads are fixed. Background and group metadata remain sealed through blind test evaluation.
+
+Let $n_v$ denote validation size and $\ell_{i,\lambda}$ the fixed-temperature per-example validation NLL. Define
+\begin{equation}
+\widehat R_\lambda=\frac{1}{n_v}\sum_i\ell_{i,\lambda},\qquad
+s_\lambda=\sqrt{\frac{\sum_i(\ell_{i,\lambda}-\widehat R_\lambda)^2}{n_v(n_v-1)}}.
+\end{equation}
+The risk minimizer $\lambda_R$ minimizes $(\widehat R_\lambda,\lambda)$ lexicographically. The rule uses the standard error of this minimizer for every candidate:
+\begin{equation}
+\Lambda_{\mathrm{risk}}=\{\lambda:\widehat R_\lambda\leq
+\widehat R_{\lambda_R}+s_{\lambda_R}\}.
+\end{equation}
+The numerical eligibility check allows $10^{-15}$ slack. Candidate-specific hidden slices are rediscovered in five task-stratified validation folds. Let $V_{k,\lambda}$ be the held-out inverse predictive information in fold $k$, and let $s_{V,\lambda}$ be their sample standard deviation. With five coefficients and nominal confidence $0.95$, the adjusted score is
+\begin{equation}
+\begin{split}
+U_\lambda^{\mathrm{adj}}
+&=\overline V_\lambda+t_{4,\,1-0.05/5}\frac{s_{V,\lambda}}{\sqrt5},\\
+\underline I_{\mathrm{hidden}}^{\mathrm{adj}}(\lambda)&=(U_\lambda^{\mathrm{adj}})^{-1},\\
+\widehat\lambda_{\mathrm{hidden}}&=
+\min\arg\max_{\lambda\in\Lambda_{\mathrm{risk}}}
+\underline I_{\mathrm{hidden}}^{\mathrm{adj}}(\lambda).
+\end{split}
+\end{equation}
+Here $t_{4,0.99}=3.74695$. The superscript identifies Bonferroni adjustment over the coefficient grid. Because gate-training folds overlap, this Student-$t$-shaped quantity is a validation ranking score, without a formal independent-fold coverage claim. Overall, balanced, and per-class two-percentage-point accuracy screens and the four positive-coefficient paired inverse-information comparisons are diagnostics only and do not alter the choice. The analysis was designed after earlier group/test outcomes had been inspected on this benchmark.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Post hoc group-free coefficient selection: test predictive performance. Brackets are two-sided 95\% Student-$t$ intervals over five paired seeds.}
+\label{tab:e-groupfree-performance}
+\begin{tabular}{@{}p{47mm}>{\raggedleft\arraybackslash}p{35mm}>{\raggedleft\arraybackslash}p{35mm}@{}}
+\toprule
+Policy & Average accuracy (\%) & Worst-group accuracy (\%)\\
+\midrule
+Frozen ERM reference & $75.5\ [74.3,76.6]$ & $55.7\ [53.3,58.2]$\\
+Matched continuation, $\lambda=0$ & $75.5\ [74.3,76.6]$ & $55.7\ [53.3,58.2]$\\
+Fixed $\lambda=0.03$ & $76.6\ [76.1,77.2]$ & $51.5\ [47.1,55.8]$\\
+Validation-risk only & $77.5\ [76.5,78.6]$ & $43.1\ [33.1,53.1]$\\
+Group-free selector & $77.5\ [76.5,78.6]$ & $43.1\ [33.1,53.1]$\\
+Group-supervised comparator & $77.7\ [76.6,78.8]$ & $44.2\ [34.2,54.3]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\caption{Post hoc coefficient choices and hidden information on the corresponding rediscovered test slices. Intervals describe across-seed variation on the fixed benchmark.}
+\label{tab:e-groupfree-information}
+\begin{tabular}{@{}p{47mm}p{35mm}>{\raggedleft\arraybackslash}p{35mm}@{}}
+\toprule
+Policy & Coefficients: seed counts & Hidden information\\
+\midrule
+Frozen ERM reference & --- & $0.007\ [0.005,0.009]$\\
+Matched continuation, $\lambda=0$ & $0:5$ & $0.007\ [0.005,0.009]$\\
+Fixed $\lambda=0.03$ & $0.03:5$ & $0.007\ [0.004,0.010]$\\
+Validation-risk only & $0:1,\ 0.3:4$ & $0.012\ [0.006,0.019]$\\
+Group-free selector & $0:1,\ 0.3:4$ & $0.012\ [0.006,0.019]$\\
+Group-supervised comparator & $0:1,\ 0.1:1,\ 0.3:3$ & $0.011\ [0.005,0.018]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The group-supervised comparator accesses validation group annotations after group-free decisions and blind test artifacts are fixed; it is a diagnostic comparator, not an upper bound. The selector chooses $0.3$ in four seeds and zero in one, exactly matching plain validation-NLL minimization in every seed. Relative to matched continuation, the paired mean changes are $+2.1$ percentage points in average accuracy (95\% interval $[+0.2,+4.0]$), $+0.006$ hidden information ($[+0.001,+0.010]$), and $-12.6$ points in worst-group accuracy ($[-21.6,-3.7]$). These contrasts describe the complete tested protocol; its information criterion does not change the risk-only choices. The matched zero-coefficient continuation restores step zero in all five seeds and consequently agrees with the frozen ERM reference. The study makes the validation objective central to information-directed training. Its implementation is \texttt{experiments/waterbirds\_group\_free\_lambda}.
+
+{\raggedright
+Both tables use \path{experiments/waterbirds_group_free_lambda_v2_results_full.tar.gz}, rooted at \path{waterbirds_group_free_lambda_v2/}, specifically \path{main_table.csv} and \path{report.md}.
+\par}
+\FloatBarrier

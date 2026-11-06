@@ -1,0 +1,43 @@
+\documentclass[tikz,border=0pt]{standalone}
+\input{figure_style}
+% Compact main-text version of figA01_prospective, panels A--B only.
+% Source: reports/prospective_nuisance_shift_report_v2_rerun.md, tables 1--2.
+% All values are percentages; intervals are mean +/- 1.96*SE, seeds 22--26.
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=1mm]
+\path[use as bounding box] (0,0) rectangle (140,54);
+\node[panel label] at (0,54) {A};
+\node[panel title] at (5,54) {Validation selection};
+\node[anchor=north west,font=\fontsize{8}{10}\selectfont] at (5,48.5)
+  {Eligible slices (class/background)};
+\node[panel label] at (74,54) {B};
+\node[panel title] at (79,54) {Held-out outcome};
+\node[anchor=north west,font=\fontsize{8}{10}\selectfont,text=fgblue] at (79,48.5)
+  {Frozen slice: waterbird/water};
+\begin{axis}[fg axis,at={(25mm,12mm)},anchor=south west,
+ width=42mm,height=29mm,scale only axis,
+ xmin=0,xmax=80,xtick={0,40,80},ymin=.45,ymax=2.55,ytick={1,2},
+ yticklabels={\textcolor{fgblue}{Waterbird/water},Landbird/land},
+ yticklabel style={font=\fontsize{8}{10}\selectfont},
+ xlabel={Surviving fraction (\%)},xmajorgrids=true,
+ y axis line style={draw=none},ytick style={draw=none}]
+\addplot[only marks,fgslate,mark=square*,error bars/.cd,x dir=both,x explicit]
+ coordinates {(59,2) +- (2.7,0)};
+\addplot[only marks,fgblue,mark=*,error bars/.cd,x dir=both,x explicit]
+ coordinates {(24.8,1) +- (1.5,0)};
+\end{axis}
+\begin{axis}[fg axis,at={(102mm,12mm)},anchor=south west,
+ width=34mm,height=29mm,scale only axis,
+ xmin=0,xmax=100,xtick={0,50,100},ymin=.5,ymax=3.5,ytick={1,2,3},
+ yticklabels={Opposite type,Same type,Original},
+ xlabel={Accuracy (\%)},xmajorgrids=true,
+ y axis line style={draw=none},ytick style={draw=none}]
+\addplot[only marks,fgslate,mark=square*,error bars/.cd,x dir=both,x explicit]
+ coordinates {(91.99,3) +- (.62,0)};
+\addplot[only marks,fgblue,mark=*,error bars/.cd,x dir=both,x explicit]
+ coordinates {(93.21,2) +- (.72,0)};
+\addplot[only marks,fgorange,mark=triangle*,error bars/.cd,x dir=both,x explicit]
+ coordinates {(40.62,1) +- (1.98,0)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

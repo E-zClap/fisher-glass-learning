@@ -1,0 +1,73 @@
+\section{Tail Identifiability and Local Learning Difficulty}
+\label{sec:tail-identifiability}
+
+The frequency of near-null environments determines the inverse-information tail. Its classification consequence additionally depends on how weak task alternatives change the Bayes decision. We separate these ingredients before defining the certificate.
+
+\subsection{Collapse Geometry Determines Information Tails}
+\label{sec:collapse-geometry}
+
+In the tangency construction, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law of \citet{mansouri_arai_2026_fisher_glasses} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass. We state the law with explicit regularity and localization assumptions.
+
+\begin{theorem}[Geometric tail law {\citep{mansouri_arai_2026_fisher_glasses}}]
+\label{thm:inverse-information-geometry}
+Let $z\in\R^d$ parameterize environments with density $p$, and let the Fisher-null set $\mathcal Z=\{z:\lambda(z)=0\}$ be a nonempty compact $C^2$ embedded submanifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Suppose $\lambda$ is continuous on the closure of a fixed tubular neighborhood of $\mathcal Z$ and bounded away from zero outside it. In normal coordinates $z=s+r\omega$, let $s\in\mathcal Z$, $r$ be normal distance, and $\omega$ a unit normal direction. As $r\downarrow0$, assume uniformly that information vanishes as $a(s,\omega)r^{2m}(1+o(1))$ and density as $b(s,\omega)r^\nu(1+o(1))$, where $m>0$, $\nu>-c$, and the continuous coefficients are uniformly positive and bounded. Then, for some $C>0$,
+\begin{equation}
+\Pr(\lambda(z)^{-1}>x)\sim Cx^{-\beta},
+\qquad \beta=\frac{c+\nu}{2m}.
+\label{eq:inverse-information-tail-exponent}
+\end{equation}
+\end{theorem}
+
+An information threshold defines a narrow tube around $\mathcal Z$; integrating its probability mass determines the exponent. Greater codimension makes simultaneous collapse rarer, whereas higher-order vanishing produces a heavier tail. Quadratic collapse with positive density gives $\beta=c/2$, and the exact inverse-information moment is finite precisely when $\beta>1$. Thus substantial information across most environments can coexist with divergent average inverse information. Appendix~\ref{app:theory-tails} gives a complete proof under these assumptions, including the asymptotic constant.
+
+\subsection{Efficient Information and Local Classification Difficulty}
+\label{sec:classification-difficulty}
+
+The geometric tail acquires a classification consequence when nearby nuisance-adjusted alternatives induce quantitatively different optimal decisions. Define classification risk $R_P(g)=P\{g(X)\ne Y\}$, Bayes risk $R_P^\star=\inf_g R_P(g)$, and excess risk $\mathcal E_P(g)=R_P(g)-R_P^\star$. For a specified local family, let $\mathfrak R_e(n)$ denote minimax expected excess classification risk based on $n$ independent observations from environment $e$.
+
+\begin{theorem}[Local classification difficulty]
+\label{thm:local-classification-difficulty}
+Fix $\lambda_e>0$ and a unit weakest efficient-information direction $u_e$. For every $0<t\le t_{0,e}$, suppose the local family contains $P_{e,+t},P_{e,-t}$ with task coordinates $\pm tu_e$ and nuisance coordinates allowed to vary. Assume, for constants $K_e,c_e,t_{0,e}>0$ and $q>0$,
+\begin{equation}
+\KL(P_{e,+t}\Vert P_{e,-t})\le K_et^2\lambda_e,
+\qquad
+\inf_g\{\mathcal E_{P_{e,+t}}(g)+\mathcal E_{P_{e,-t}}(g)\}\ge c_et^q.
+\label{eq:local-classification-assumptions}
+\end{equation}
+Then, for a universal constant $c_0>0$,
+\begin{equation}
+\mathfrak R_e(n)\ge c_0c_e
+\min\{t_{0,e}^q,(nK_e\lambda_e)^{-q/2}\}.
+\label{eq:local-classification-lower-bound}
+\end{equation}
+\end{theorem}
+
+The KL condition limits distinguishability after nuisance adjustment; decision separation specifies the cost of confusing the alternatives. Both must hold over the environment-specific radius $t_{0,e}$. For quadratic separation, $q=2$, the interior bound scales as $c_e/(nK_e\lambda_e)$. The minimum retains the finite scale of the local problem as information decreases. This is a conditional local result: efficient information sets the testing scale, while boundary geometry supplies its classification meaning. The complete testing proof and its tail-aggregation implication are in Appendix~\ref{app:theory-classification}.
+
+\begin{samepage}
+\subsection{The Fisher-Glass Certificate}
+\label{sec:fg-certificate}
+
+Upper-tail conditional value-at-risk, $\CVaR_\alpha$, averages the largest $1-\alpha$ fraction of a quantity, with fractional weighting at atoms \citep{rockafellar2000optimization,rockafellar2002conditional}. Following \citet{mansouri_arai_2026_fisher_glasses}, we apply the Fisher-glass certificate to classification environments $e\sim\Pi$, using the weakest task information $\lambda_e$ and stabilization $\varepsilon$:
+\begin{equation}
+L_e^{(\varepsilon)}=(\lambda_e+\varepsilon)^{-1},
+\qquad
+I_\alpha^{\FG}=\bigl[\CVaR_{\alpha,e\sim\Pi}(L_e^{(\varepsilon)})\bigr]^{-1},
+\quad 0<\alpha<1.
+\label{eq:fisher-glass-certificate}
+\end{equation}
+\end{samepage}
+A larger certificate means a smaller inverse-information tail, expressed in information units. Stabilization $\varepsilon>0$ caps inverse loss at $1/\varepsilon$; it does not remove the underlying null geometry. Under the theorem's power-law regime, the exact limit $\varepsilon\downarrow0$ is positive for $\beta>1$ and vanishes for $\beta\le1$.
+
+\begin{proposition}[Information coverage]
+\label{prop:information-coverage}
+For $\rho>\varepsilon$,
+\begin{equation}
+I_\alpha^{\FG}\ge\rho
+\quad\Longrightarrow\quad
+\Pr_{e\sim\Pi}(\lambda_e\ge\rho-\varepsilon)\ge\alpha.
+\label{eq:information-coverage}
+\end{equation}
+\end{proposition}
+
+The certificate therefore establishes an absolute information floor on at least an $\alpha$-fraction of the specified environment distribution. Its connection to classification retains the local-radius and decision-separation factors in the preceding bound. The CVaR representation, coverage proof, and limiting interpretation appear in Appendix~\ref{app:theory-certificate}. The operational audit estimates this information target on independently evaluated populations.

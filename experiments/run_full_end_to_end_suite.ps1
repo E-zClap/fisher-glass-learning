@@ -1,0 +1,12 @@
+python experiments\end_to_end_deep_suite.py `
+  --root-dir data/wilds `
+  --benchmarks waterbirds civilcomments celeba multinli `
+  --methods erm group_dro loss_cvar fisher_glass group_dro_fisher_glass `
+  --seeds 17 18 19 20 21 `
+  --epochs 10 `
+  --batch-size 32 `
+  --text-batch-size 16 `
+  --device cuda `
+  --download `
+  --allow-model-download `
+  --output build/results/end_to_end_deep_suite_results.json

@@ -1,0 +1,3288 @@
+{
+  "schema_version": 2,
+  "note": "Paper-scale use should run this harness on GPU without sample caps when feasible.",
+  "device": "cuda",
+  "parameters": {
+    "root_dir": "[private-path-removed]",
+    "output": "build/results/w2_ridge_exact_audit/end_to_end/waterbirds_lambda_1em3.json",
+    "benchmarks": [
+      "waterbirds"
+    ],
+    "methods": [
+      "group_dro_fisher_glass"
+    ],
+    "seeds": [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "epochs": 10,
+    "batch_size": 128,
+    "text_batch_size": 16,
+    "eval_batch_size": 512,
+    "text_eval_batch_size": 32,
+    "device": "cuda",
+    "num_workers": 8,
+    "text_num_workers": 0,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 4,
+    "amp": true,
+    "tf32": true,
+    "channels_last": true,
+    "compile_model": false,
+    "download": false,
+    "allow_model_download": false,
+    "lr": 0.0001,
+    "text_lr": 2e-05,
+    "weight_decay": 0.0001,
+    "alpha": 0.95,
+    "ridge": 0.001,
+    "eps": 1e-08,
+    "audit_bootstrap_replicates": 100000,
+    "audit_confidence": 0.95,
+    "audit_seed": 20260729,
+    "fg_lambda": 0.001,
+    "freeze_backbone": false,
+    "max_train": null,
+    "max_val": null,
+    "max_test": null,
+    "waterbirds_max_train": null,
+    "waterbirds_max_val": null,
+    "waterbirds_max_test": null,
+    "civilcomments_max_train": null,
+    "civilcomments_max_val": null,
+    "civilcomments_max_test": null,
+    "resume": true,
+    "text_model": "distilbert-base-cased",
+    "max_length": 128
+  },
+  "summary": [
+    {
+      "benchmark": "waterbirds",
+      "method": "group_dro_fisher_glass",
+      "lambda_fg": 0.001,
+      "n": 5,
+      "test_overall_accuracy": 0.6412495685191578,
+      "test_worst_group_accuracy": 0.475135489842579,
+      "test_loss_cvar": 0.7142347812652587,
+      "test_fisher_glass_certificate": 0.8193576809498394,
+      "test_exact_fisher_glass_certificate": 0.8190333831852584,
+      "test_exact_fisher_glass_certificate_min": 0.5822065491688532,
+      "test_conservative_lower_certificate": 0.6875360514209874,
+      "test_conservative_lower_certificate_min": 0.48095426634879307,
+      "test_minimum_nuisance_eigenvalue": 0.3491840176144649,
+      "test_maximum_ridge_to_exact_gap": 0.0014031288452525104,
+      "test_inverse_loss_p95": 1.245841911560465
+    }
+  ],
+  "runs": [
+    {
+      "benchmark": "waterbirds",
+      "backbone": "MobileNetV3-small",
+      "method": "group_dro_fisher_glass",
+      "seed": 17,
+      "lambda_fg": 0.001,
+      "ridge": 0.001,
+      "eps": 1e-08,
+      "alpha": 0.95,
+      "audit_schema_version": 2,
+      "epochs": 10,
+      "freeze_backbone": false,
+      "max_train": null,
+      "max_val": null,
+      "max_test": null,
+      "elapsed_seconds": 113.4066367149353,
+      "val": {
+        "overall_accuracy": 0.6113427856547122,
+        "overall_loss": 0.6588518023490906,
+        "worst_group_accuracy": 0.5995717344753747,
+        "group_loss_cvar": 0.664726734161377,
+        "fisher_glass_certificate": 0.8514904254922174,
+        "exact_fisher_glass_certificate": 0.8514023008568409,
+        "conservative_lower_certificate": 0.5388282407798712,
+        "inverse_loss_p95": 1.168823493785337,
+        "weakest_slice": {
+          "group": "waterbird/water",
+          "n": 133,
+          "accuracy": 0.6541353383458647,
+          "loss": 0.6390429139137268,
+          "projected_feature_fisher": 0.8514904154922174,
+          "exact_projected_feature_fisher": 0.8514022887593826,
+          "feature_ridge_to_exact_gap": 8.812673283475903e-05,
+          "feature_j_tn": 0.85030597448349,
+          "feature_j_nn": 2.863819122314453,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1744113263774332
+        },
+        "worst_accuracy_slice": {
+          "group": "landbird/land",
+          "n": 467,
+          "accuracy": 0.5995717344753747,
+          "loss": 0.664726734161377,
+          "projected_feature_fisher": 0.8793844068335127,
+          "exact_projected_feature_fisher": 0.8793253112270781,
+          "feature_ridge_to_exact_gap": 5.909560643457823e-05,
+          "feature_j_tn": 0.08500664681196213,
+          "feature_j_nn": 0.34918397665023804,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1371591090967927
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 467,
+            "accuracy": 0.5995717344753747,
+            "loss": 0.664726734161377,
+            "projected_feature_fisher": 0.8793844068335127,
+            "exact_projected_feature_fisher": 0.8793253112270781,
+            "feature_ridge_to_exact_gap": 5.909560643457823e-05,
+            "feature_j_tn": 0.08500664681196213,
+            "feature_j_nn": 0.34918397665023804,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1371591090967927
+          },
+          {
+            "group": "landbird/water",
+            "n": 466,
+            "accuracy": 0.6115879828326181,
+            "loss": 0.6575351357460022,
+            "projected_feature_fisher": 0.8959230875044789,
+            "exact_projected_feature_fisher": 0.895910580525019,
+            "feature_ridge_to_exact_gap": 1.2506979459869783e-05,
+            "feature_j_tn": -0.32033005356788635,
+            "feature_j_nn": 2.8638195991516113,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1161672277290526
+          },
+          {
+            "group": "waterbird/land",
+            "n": 133,
+            "accuracy": 0.6090225563909775,
+            "loss": 0.662645697593689,
+            "projected_feature_fisher": 0.9043532859020545,
+            "exact_projected_feature_fisher": 0.9039804770392458,
+            "feature_ridge_to_exact_gap": 0.0003728088628087711,
+            "feature_j_tn": -0.21351012587547302,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.10576254272678
+          },
+          {
+            "group": "waterbird/water",
+            "n": 133,
+            "accuracy": 0.6541353383458647,
+            "loss": 0.6390429139137268,
+            "projected_feature_fisher": 0.8514904154922174,
+            "exact_projected_feature_fisher": 0.8514022887593826,
+            "feature_ridge_to_exact_gap": 8.812673283475903e-05,
+            "feature_j_tn": 0.85030597448349,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1744113263774332
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260729,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9000196257865658,
+              "j_tn": 0.08500663993737913,
+              "j_nn": 0.3491840176144626,
+              "ridge_information": 0.8793843926806424,
+              "exact_information": 0.8793252970976118,
+              "operator_gap": 5.909558303063278e-05,
+              "eigenvalue_gap": 5.909558303063278e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 467,
+              "effective_n": 467.00000000000006,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.003915576759562214,
+                  0.0003149891258429044,
+                  -8.63324825237046e-34
+                ],
+                [
+                  0.0003149891258429044,
+                  0.0006588977253874997,
+                  -7.169150693346564e-35
+                ],
+                [
+                  -8.63324825237046e-34,
+                  -7.169150693346564e-35,
+                  6.6126350021879105e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446255,
+              "ridge_information_lcb": 0.714590554813188,
+              "exact_information_direct_lcb": 0.7145472220870673,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0001898902451592311,
+              "eigenvalue_gap_ucb": 0.0001898902451592311,
+              "eta": 0.16479383786745438,
+              "conservative_information": 0.7144006645680288
+            },
+            {
+              "j_tt": 0.9317408437360494,
+              "j_tn": -0.32033002062667726,
+              "j_nn": 2.863819447433244,
+              "ridge_information": 0.8959231163024329,
+              "exact_information": 0.8959106093242205,
+              "operator_gap": 1.2506978212423192e-05,
+              "eigenvalue_gap": 1.2506978212423192e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 466,
+              "effective_n": 465.9999999999999,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.00391454949903566,
+                  -0.0012394647800447042,
+                  -2.8442815989266374e-35
+                ],
+                [
+                  -0.0012394647800447042,
+                  0.00551769080891284,
+                  2.1167395935971134e-34
+                ],
+                [
+                  -2.8442815989266374e-35,
+                  2.1167395935971134e-34,
+                  4.24118766247857e-34
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433244,
+              "ridge_information_lcb": 0.7363174478614926,
+              "exact_information_direct_lcb": 0.7362996086235828,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 3.269591467508303e-05,
+              "eigenvalue_gap_ucb": 3.269591467508303e-05,
+              "eta": 0.15960566844094037,
+              "conservative_information": 0.7362847519468175
+            },
+            {
+              "j_tt": 1.0345322725924713,
+              "j_tn": -0.21351013961301848,
+              "j_nn": 0.3491840176144619,
+              "ridge_information": 0.904353345444061,
+              "exact_information": 0.9039805364935318,
+              "operator_gap": 0.00037280895052915763,
+              "eigenvalue_gap": 0.00037280895052915763,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.01987566243672251,
+                  -0.003952596377648347,
+                  5.958949888144758e-34
+                ],
+                [
+                  -0.003952596377648347,
+                  0.00239132996650067,
+                  -2.86771180633153e-35
+                ],
+                [
+                  5.958949888144758e-34,
+                  -2.86771180633153e-35,
+                  2.101014484786077e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446183,
+              "ridge_information_lcb": 0.5902504604383815,
+              "exact_information_direct_lcb": 0.589749887024654,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0009579818458327376,
+              "eigenvalue_gap_ucb": 0.0009579818458327376,
+              "eta": 0.3141028850056795,
+              "conservative_information": 0.5892924785925487
+            },
+            {
+              "j_tt": 1.103869399474491,
+              "j_tn": 0.8503059540521091,
+              "j_nn": 2.8638194474332432,
+              "ridge_information": 0.8514904175654346,
+              "exact_information": 0.8514022908568408,
+              "operator_gap": 8.812670859381644e-05,
+              "eigenvalue_gap": 8.812670859381644e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.02188428830145887,
+                  0.012732447622926028,
+                  -6.193698411253744e-35
+                ],
+                [
+                  0.012732447622926028,
+                  0.018471685137462394,
+                  -4.190733674223701e-34
+                ],
+                [
+                  -6.193698411253744e-35,
+                  -4.190733674223701e-34,
+                  1.4940547447367616e-33
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474332432,
+              "ridge_information_lcb": 0.5390061209684817,
+              "exact_information_direct_lcb": 0.5389519456887897,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00017789018861050554,
+              "eigenvalue_gap_ucb": 0.00017789018861050554,
+              "eta": 0.312484296596953,
+              "conservative_information": 0.5388282307798712
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144619,
+            "min_nuisance_eigenvalue_lcb": 0.34918401761446183,
+            "max_operator_gap": 0.00037280895052915763,
+            "max_eigenvalue_gap": 0.00037280895052915763,
+            "max_operator_gap_ucb": 0.0009579818458327376,
+            "max_eigenvalue_gap_ucb": 0.0009579818458327376,
+            "ridge_certificate": 0.8514904275654347,
+            "exact_certificate": 0.8514023008568409,
+            "conservative_lower_certificate": 0.5388282407798712,
+            "certificate_gap": 8.812670859381644e-05,
+            "weakest_ridge_environment": "waterbird/water",
+            "weakest_exact_environment": "waterbird/water",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8514023008568409
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8514023890142912
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.8514031824285728
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8514111162971232
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.8514904275654347
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.8522808080603576
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.859920603442253
+            }
+          ]
+        }
+      },
+      "test": {
+        "overall_accuracy": 0.6054539178460476,
+        "overall_loss": 0.6629272699356079,
+        "worst_group_accuracy": 0.5560747663551402,
+        "group_loss_cvar": 0.688110888004303,
+        "fisher_glass_certificate": 0.8705463332105334,
+        "exact_fisher_glass_certificate": 0.8704261888994268,
+        "conservative_lower_certificate": 0.7258811068455259,
+        "inverse_loss_p95": 1.1459573872578868,
+        "weakest_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.5560747663551402,
+          "loss": 0.688110888004303,
+          "projected_feature_fisher": 0.8705463232105335,
+          "exact_projected_feature_fisher": 0.8704261154762057,
+          "feature_ridge_to_exact_gap": 0.00012020773432774856,
+          "feature_j_tn": -0.12123878300189972,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.148703936655557
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.5560747663551402,
+          "loss": 0.688110888004303,
+          "projected_feature_fisher": 0.8705463232105335,
+          "exact_projected_feature_fisher": 0.8704261154762057,
+          "feature_ridge_to_exact_gap": 0.00012020773432774856,
+          "feature_j_tn": -0.12123878300189972,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.148703936655557
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 2255,
+            "accuracy": 0.5982261640798227,
+            "loss": 0.6650538444519043,
+            "projected_feature_fisher": 0.8846475972658868,
+            "exact_projected_feature_fisher": 0.8845897051945315,
+            "feature_ridge_to_exact_gap": 5.789207135531438e-05,
+            "feature_j_tn": 0.08413658291101456,
+            "feature_j_nn": 0.3491840064525604,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1303936073377556
+          },
+          {
+            "group": "landbird/water",
+            "n": 2255,
+            "accuracy": 0.6137472283813747,
+            "loss": 0.6597830653190613,
+            "projected_feature_fisher": 0.9299796513420986,
+            "exact_projected_feature_fisher": 0.9299685207721708,
+            "feature_ridge_to_exact_gap": 1.1130569927741973e-05,
+            "feature_j_tn": -0.30219000577926636,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0752923333364641
+          },
+          {
+            "group": "waterbird/land",
+            "n": 642,
+            "accuracy": 0.5560747663551402,
+            "loss": 0.688110888004303,
+            "projected_feature_fisher": 0.8705463232105335,
+            "exact_projected_feature_fisher": 0.8704261154762057,
+            "feature_ridge_to_exact_gap": 0.00012020773432774856,
+            "feature_j_tn": -0.12123878300189972,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.148703936655557
+          },
+          {
+            "group": "waterbird/water",
+            "n": 642,
+            "accuracy": 0.6510903426791277,
+            "loss": 0.6413183212280273,
+            "projected_feature_fisher": 0.9419857898097337,
+            "exact_projected_feature_fisher": 0.9418998057907921,
+            "feature_ridge_to_exact_gap": 8.598401894155394e-05,
+            "feature_j_tn": 0.8399052619934082,
+            "feature_j_nn": 2.8638193607330322,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.061587128173253
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260730,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9048625743923737,
+              "j_tn": 0.08413658789554249,
+              "j_nn": 0.3491840176144652,
+              "ridge_information": 0.8846475872238333,
+              "exact_information": 0.8845896951493144,
+              "operator_gap": 5.789207451889489e-05,
+              "eigenvalue_gap": 5.789207451889489e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0007344559894902909,
+                  8.638575046107922e-05,
+                  1.2340446849493895e-33
+                ],
+                [
+                  8.638575046107922e-05,
+                  0.00013703841335074968,
+                  -1.4285474760256226e-34
+                ],
+                [
+                  1.2340446849493895e-33,
+                  -1.4285474760256226e-34,
+                  4.4417720598501004e-33
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446505,
+              "ridge_information_lcb": 0.8140002829911172,
+              "exact_information_direct_lcb": 0.8139530971825348,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00010894991294520513,
+              "eigenvalue_gap_ucb": 0.00010894991294520513,
+              "eta": 0.07064730423271615,
+              "conservative_information": 0.813891333078172
+            },
+            {
+              "j_tt": 0.9618557116297313,
+              "j_tn": -0.3021900173895504,
+              "j_nn": 2.8638194474331904,
+              "ridge_information": 0.9299797737964706,
+              "exact_information": 0.9299686432282143,
+              "operator_gap": 1.113056825630121e-05,
+              "eigenvalue_gap": 1.113056825630121e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0007787095664535114,
+                  -0.00023499227372345355,
+                  -2.1922954315894366e-32
+                ],
+                [
+                  -0.00023499227372345355,
+                  0.0011815715554481252,
+                  2.624609321575973e-33
+                ],
+                [
+                  -2.1922954315894366e-32,
+                  2.624609321575973e-33,
+                  1.2599375593592469e-30
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474331873,
+              "ridge_information_lcb": 0.8580993607458015,
+              "exact_information_direct_lcb": 0.8580867499920177,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.879927515279815e-05,
+              "eigenvalue_gap_ucb": 1.879927515279815e-05,
+              "eta": 0.07188041305066906,
+              "conservative_information": 0.8580805614706487
+            },
+            {
+              "j_tt": 0.9125210029907923,
+              "j_tn": -0.12123877183886843,
+              "j_nn": 0.3491840176144649,
+              "ridge_information": 0.8705463866244341,
+              "exact_information": 0.8704261788994268,
+              "operator_gap": 0.00012020772500731525,
+              "eigenvalue_gap": 0.00012020772500731525,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.003100782667837559,
+                  -0.00032324604059953547,
+                  -1.1430819415688395e-33
+                ],
+                [
+                  -0.00032324604059953547,
+                  0.00047416366643511087,
+                  -2.059511921714466e-34
+                ],
+                [
+                  -1.1430819415688395e-33,
+                  -2.059511921714466e-34,
+                  1.2503822241126347e-32
+                ]
+              ],
+              "j_nn_lcb": 0.3491840176144646,
+              "ridge_information_lcb": 0.7261429360193513,
+              "exact_information_direct_lcb": 0.7259796767619663,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0002618391738255254,
+              "eigenvalue_gap_ucb": 0.0002618391738255254,
+              "eta": 0.14440345060508275,
+              "conservative_information": 0.7258810968455258
+            },
+            {
+              "j_tt": 1.1882283763108312,
+              "j_tn": 0.8399052632735198,
+              "j_nn": 2.8638194474332357,
+              "ridge_information": 0.9419856848537457,
+              "exact_information": 0.9418997008397473,
+              "operator_gap": 8.598401399839695e-05,
+              "eigenvalue_gap": 8.598401399839695e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.005073484241086392,
+                  0.0028180688886924408,
+                  9.270507245057457e-33
+                ],
+                [
+                  0.0028180688886924408,
+                  0.004208160188449955,
+                  4.9044409311710064e-33
+                ],
+                [
+                  9.270507245057457e-33,
+                  4.9044409311710064e-33,
+                  9.968445136178207e-32
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433235,
+              "ridge_information_lcb": 0.7898813967438179,
+              "exact_information_direct_lcb": 0.7898100749514919,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00012502258426483912,
+              "eigenvalue_gap_ucb": 0.00012502258426483912,
+              "eta": 0.15210428810992782,
+              "conservative_information": 0.789756374159553
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144649,
+            "min_nuisance_eigenvalue_lcb": 0.3491840176144646,
+            "max_operator_gap": 0.00012020772500731525,
+            "max_eigenvalue_gap": 0.00012020772500731525,
+            "max_operator_gap_ucb": 0.0002618391738255254,
+            "max_eigenvalue_gap_ucb": 0.0002618391738255254,
+            "ridge_certificate": 0.8705463966244341,
+            "exact_certificate": 0.8704261888994268,
+            "conservative_lower_certificate": 0.7258811068455259,
+            "certificate_gap": 0.00012020772500731525,
+            "weakest_ridge_environment": "waterbird/land",
+            "weakest_exact_environment": "waterbird/land",
+            "weakest_conservative_environment": "waterbird/land",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8704261888994268
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8704263094510597
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.8704273943846863
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8704382406458476
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.8705463966244341
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.8715981459472638
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.8797975873554367
+            }
+          ]
+        }
+      }
+    },
+    {
+      "benchmark": "waterbirds",
+      "backbone": "MobileNetV3-small",
+      "method": "group_dro_fisher_glass",
+      "seed": 18,
+      "lambda_fg": 0.001,
+      "ridge": 0.001,
+      "eps": 1e-08,
+      "alpha": 0.95,
+      "audit_schema_version": 2,
+      "epochs": 10,
+      "freeze_backbone": false,
+      "max_train": null,
+      "max_val": null,
+      "max_test": null,
+      "elapsed_seconds": 24.141290187835693,
+      "val": {
+        "overall_accuracy": 0.5371142618849041,
+        "overall_loss": 0.6931156516075134,
+        "worst_group_accuracy": 0.5160599571734475,
+        "group_loss_cvar": 0.7095067501068115,
+        "fisher_glass_certificate": 0.8127948986131317,
+        "exact_fisher_glass_certificate": 0.8127946397088125,
+        "conservative_lower_certificate": 0.46373021249016266,
+        "inverse_loss_p95": 1.2135697947735935,
+        "weakest_slice": {
+          "group": "waterbird/water",
+          "n": 133,
+          "accuracy": 0.556390977443609,
+          "loss": 0.6758461594581604,
+          "projected_feature_fisher": 0.8127948886131316,
+          "exact_projected_feature_fisher": 0.8127947048013179,
+          "feature_ridge_to_exact_gap": 1.8381181376980749e-07,
+          "feature_j_tn": 0.03883364051580429,
+          "feature_j_nn": 2.863819122314453,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.230322682519656
+        },
+        "worst_accuracy_slice": {
+          "group": "landbird/land",
+          "n": 467,
+          "accuracy": 0.5160599571734475,
+          "loss": 0.7095067501068115,
+          "projected_feature_fisher": 0.8939452204733758,
+          "exact_projected_feature_fisher": 0.8938997579069725,
+          "feature_ridge_to_exact_gap": 4.5462566403253746e-05,
+          "feature_j_tn": 0.07455937564373016,
+          "feature_j_nn": 0.34918397665023804,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.118636764212573
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 467,
+            "accuracy": 0.5160599571734475,
+            "loss": 0.7095067501068115,
+            "projected_feature_fisher": 0.8939452204733758,
+            "exact_projected_feature_fisher": 0.8938997579069725,
+            "feature_ridge_to_exact_gap": 4.5462566403253746e-05,
+            "feature_j_tn": 0.07455937564373016,
+            "feature_j_nn": 0.34918397665023804,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.118636764212573
+          },
+          {
+            "group": "landbird/water",
+            "n": 466,
+            "accuracy": 0.5386266094420601,
+            "loss": 0.6933795213699341,
+            "projected_feature_fisher": 0.9487083503860987,
+            "exact_projected_feature_fisher": 0.9486903326008885,
+            "feature_ridge_to_exact_gap": 1.8017785210155957e-05,
+            "feature_j_tn": -0.3844785988330841,
+            "feature_j_nn": 2.8638195991516113,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.054064707085565
+          },
+          {
+            "group": "waterbird/land",
+            "n": 133,
+            "accuracy": 0.5864661654135338,
+            "loss": 0.6519073247909546,
+            "projected_feature_fisher": 1.1700046623769964,
+            "exact_projected_feature_fisher": 1.1698868492201044,
+            "feature_ridge_to_exact_gap": 0.00011781315689196603,
+            "feature_j_tn": -0.1200251504778862,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 0.854697441479774
+          },
+          {
+            "group": "waterbird/water",
+            "n": 133,
+            "accuracy": 0.556390977443609,
+            "loss": 0.6758461594581604,
+            "projected_feature_fisher": 0.8127948886131316,
+            "exact_projected_feature_fisher": 0.8127947048013179,
+            "feature_ridge_to_exact_gap": 1.8381181376980749e-07,
+            "feature_j_tn": 0.03883364051580429,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.230322682519656
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260729,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9098200375484544,
+              "j_tn": 0.07455937231350822,
+              "j_nn": 0.3491840176144626,
+              "ridge_information": 0.8939452410981359,
+              "exact_information": 0.8938997785464453,
+              "operator_gap": 4.5462551690578223e-05,
+              "eigenvalue_gap": 4.5462551690578223e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 467,
+              "effective_n": 467.00000000000006,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.00304034317556219,
+                  -7.90999447544039e-05,
+                  1.4730952307803393e-33
+                ],
+                [
+                  -7.90999447544039e-05,
+                  0.0006698187039002682,
+                  -6.683559974883954e-36
+                ],
+                [
+                  1.4730952307803393e-33,
+                  -6.683559974883954e-36,
+                  6.6126350021879105e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446255,
+              "ridge_information_lcb": 0.7403310797718431,
+              "exact_information_direct_lcb": 0.7403032875246325,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00016688112401463926,
+              "eigenvalue_gap_ucb": 0.00016688112401463926,
+              "eta": 0.1536141613262928,
+              "conservative_information": 0.7401641986478285
+            },
+            {
+              "j_tt": 1.0003079722783224,
+              "j_tn": -0.38447856547130316,
+              "j_nn": 2.863819447433244,
+              "ridge_information": 0.9487082920823103,
+              "exact_information": 0.9486902742983183,
+              "operator_gap": 1.8017783992019254e-05,
+              "eigenvalue_gap": 1.8017783992019254e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 466,
+              "effective_n": 465.9999999999999,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.004844519950638913,
+                  -0.001419173241841972,
+                  4.299153861753803e-34
+                ],
+                [
+                  -0.001419173241841972,
+                  0.005842747649733982,
+                  2.0152366345678705e-34
+                ],
+                [
+                  4.299153861753803e-34,
+                  2.0152366345678705e-34,
+                  4.24118766247857e-34
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433244,
+              "ridge_information_lcb": 0.7708524254188223,
+              "exact_information_direct_lcb": 0.7708343115949075,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 4.2169685837781304e-05,
+              "eigenvalue_gap_ucb": 4.2169685837781304e-05,
+              "eta": 0.17785586666348807,
+              "conservative_information": 0.7708102557329845
+            },
+            {
+              "j_tt": 1.2111430680456559,
+              "j_tn": -0.12002515019394631,
+              "j_nn": 0.3491840176144619,
+              "ridge_information": 1.1700045924030016,
+              "exact_information": 1.1698867792341066,
+              "operator_gap": 0.00011781316889503124,
+              "eigenvalue_gap": 0.00011781316889503124,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.01748301066582254,
+                  -0.002907001381469218,
+                  -1.0946887284413072e-34
+                ],
+                [
+                  -0.002907001381469218,
+                  0.0030947406494470364,
+                  -3.809352846510484e-35
+                ],
+                [
+                  -1.0946887284413072e-34,
+                  -3.809352846510484e-35,
+                  2.101014484786077e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446183,
+              "ridge_information_lcb": 0.8402964965792709,
+              "exact_information_direct_lcb": 0.8402476834290296,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0005802318542625091,
+              "eigenvalue_gap_ucb": 0.0005802318542625091,
+              "eta": 0.32970809582373073,
+              "conservative_information": 0.8397162647250084
+            },
+            {
+              "j_tt": 0.8133212168363446,
+              "j_tn": 0.038833625334166476,
+              "j_nn": 2.8638194474332432,
+              "ridge_information": 0.8127948135204409,
+              "exact_information": 0.8127946297088126,
+              "operator_gap": 1.8381162836256237e-07,
+              "eigenvalue_gap": 1.8381162836256237e-07,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.016748773389863157,
+                  0.003942729265737426,
+                  1.9421317322101068e-34
+                ],
+                [
+                  0.003942729265737426,
+                  0.017634068691889385,
+                  -1.8243320200471558e-34
+                ],
+                [
+                  1.9421317322101068e-34,
+                  -1.8243320200471558e-34,
+                  1.4940547447367616e-33
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474332432,
+              "ridge_information_lcb": 0.4637490174529467,
+              "exact_information_direct_lcb": 0.4637485686968123,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.8814962784063408e-05,
+              "eigenvalue_gap_ucb": 1.8814962784063408e-05,
+              "eta": 0.3490457960674942,
+              "conservative_information": 0.46373020249016267
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144619,
+            "min_nuisance_eigenvalue_lcb": 0.34918401761446183,
+            "max_operator_gap": 0.00011781316889503124,
+            "max_eigenvalue_gap": 0.00011781316889503124,
+            "max_operator_gap_ucb": 0.0005802318542625091,
+            "max_eigenvalue_gap_ucb": 0.0005802318542625091,
+            "ridge_certificate": 0.812794823520441,
+            "exact_certificate": 0.8127946397088125,
+            "conservative_lower_certificate": 0.46373021249016266,
+            "certificate_gap": 1.8381162847358468e-07,
+            "weakest_ridge_environment": "waterbird/water",
+            "weakest_exact_environment": "waterbird/water",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8127946397088125
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8127946398926883
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.8127946415475643
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8127946580957518
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.812794823520441
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.812796472068629
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.8128124068885235
+            }
+          ]
+        }
+      },
+      "test": {
+        "overall_accuracy": 0.5362443907490507,
+        "overall_loss": 0.6939354538917542,
+        "worst_group_accuracy": 0.4815964523281596,
+        "group_loss_cvar": 0.7178934812545776,
+        "fisher_glass_certificate": 0.8867813580169587,
+        "exact_fisher_glass_certificate": 0.8867648991096497,
+        "conservative_lower_certificate": 0.7376854484826982,
+        "inverse_loss_p95": 1.1270822761695782,
+        "weakest_slice": {
+          "group": "landbird/land",
+          "n": 2255,
+          "accuracy": 0.4815964523281596,
+          "loss": 0.7178934812545776,
+          "projected_feature_fisher": 0.8867813480169586,
+          "exact_projected_feature_fisher": 0.8867648974774583,
+          "feature_ridge_to_exact_gap": 1.645053950027897e-05,
+          "feature_j_tn": 0.04485030472278595,
+          "feature_j_nn": 0.3491840064525604,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1276736829879053
+        },
+        "worst_accuracy_slice": {
+          "group": "landbird/land",
+          "n": 2255,
+          "accuracy": 0.4815964523281596,
+          "loss": 0.7178934812545776,
+          "projected_feature_fisher": 0.8867813480169586,
+          "exact_projected_feature_fisher": 0.8867648974774583,
+          "feature_ridge_to_exact_gap": 1.645053950027897e-05,
+          "feature_j_tn": 0.04485030472278595,
+          "feature_j_nn": 0.3491840064525604,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1276736829879053
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 2255,
+            "accuracy": 0.4815964523281596,
+            "loss": 0.7178934812545776,
+            "projected_feature_fisher": 0.8867813480169586,
+            "exact_projected_feature_fisher": 0.8867648974774583,
+            "feature_ridge_to_exact_gap": 1.645053950027897e-05,
+            "feature_j_tn": 0.04485030472278595,
+            "feature_j_nn": 0.3491840064525604,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1276736829879053
+          },
+          {
+            "group": "landbird/water",
+            "n": 2255,
+            "accuracy": 0.5317073170731708,
+            "loss": 0.6947688460350037,
+            "projected_feature_fisher": 0.941267604224629,
+            "exact_projected_feature_fisher": 0.9412509819682368,
+            "feature_ridge_to_exact_gap": 1.6622256392206936e-05,
+            "feature_j_tn": -0.36928901076316833,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0623971173423956
+          },
+          {
+            "group": "waterbird/land",
+            "n": 642,
+            "accuracy": 0.661993769470405,
+            "loss": 0.6382569074630737,
+            "projected_feature_fisher": 1.123814227167487,
+            "exact_projected_feature_fisher": 1.1235811230971608,
+            "feature_ridge_to_exact_gap": 0.00023310407032606228,
+            "feature_j_tn": -0.1688302606344223,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 0.8898267764612469
+          },
+          {
+            "group": "waterbird/water",
+            "n": 642,
+            "accuracy": 0.618380062305296,
+            "loss": 0.6625353097915649,
+            "projected_feature_fisher": 0.8898927009124684,
+            "exact_projected_feature_fisher": 0.8898883253779394,
+            "feature_ridge_to_exact_gap": 4.375534529033054e-06,
+            "feature_j_tn": 0.18946848809719086,
+            "feature_j_nn": 2.8638193607330322,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1237309708657248
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260730,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.8925256040799259,
+              "j_tn": 0.04485030209098741,
+              "j_nn": 0.3491840176144652,
+              "ridge_information": 0.8867813396461691,
+              "exact_information": 0.8867648891096497,
+              "operator_gap": 1.6450536519441172e-05,
+              "eigenvalue_gap": 1.6450536519441172e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0007172037008472117,
+                  9.247774741358833e-06,
+                  1.7026383814131253e-33
+                ],
+                [
+                  9.247774741358833e-06,
+                  0.00013737538893467154,
+                  1.0605024502711685e-34
+                ],
+                [
+                  1.7026383814131253e-33,
+                  1.0605024502711685e-34,
+                  4.4417720598501004e-33
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446505,
+              "ridge_information_lcb": 0.8147514403739962,
+              "exact_information_direct_lcb": 0.8147420372646982,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 4.71187971840912e-05,
+              "eigenvalue_gap_ucb": 4.71187971840912e-05,
+              "eta": 0.07202989927217296,
+              "conservative_information": 0.814704321576812
+            },
+            {
+              "j_tt": 0.9888707715821798,
+              "j_tn": -0.3692890289502034,
+              "j_nn": 2.8638194474331904,
+              "ridge_information": 0.9412676365835074,
+              "exact_information": 0.9412510143292514,
+              "operator_gap": 1.6622254256026814e-05,
+              "eigenvalue_gap": 1.6622254256026814e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0009391745964877574,
+                  -0.0002639169750165239,
+                  1.213090774394108e-32
+                ],
+                [
+                  -0.0002639169750165239,
+                  0.0011959063707863264,
+                  1.0703389864555996e-32
+                ],
+                [
+                  1.213090774394108e-32,
+                  1.0703389864555996e-32,
+                  1.2599375593592469e-30
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474331873,
+              "ridge_information_lcb": 0.8626102411050315,
+              "exact_information_direct_lcb": 0.8625881441884374,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 2.580646057887502e-05,
+              "eigenvalue_gap_ucb": 2.580646057887502e-05,
+              "eta": 0.07865739547847594,
+              "conservative_information": 0.8625844346444526
+            },
+            {
+              "j_tt": 1.2052105224504832,
+              "j_tn": -0.16883024677640576,
+              "j_nn": 0.3491840176144649,
+              "ridge_information": 1.1238143113362364,
+              "exact_information": 1.123581207279326,
+              "operator_gap": 0.0002331040569103493,
+              "eigenvalue_gap": 0.0002331040569103493,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.005227577516317266,
+                  -0.0007846031169601753,
+                  1.6912342483361185e-33
+                ],
+                [
+                  -0.0007846031169601753,
+                  0.000612069578898443,
+                  7.190248561882774e-34
+                ],
+                [
+                  1.6912342483361185e-33,
+                  7.190248561882774e-34,
+                  1.2503822241126347e-32
+                ]
+              ],
+              "j_nn_lcb": 0.3491840176144646,
+              "ridge_information_lcb": 0.9475808684630186,
+              "exact_information_direct_lcb": 0.9473796945267401,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00044655047734559235,
+              "eigenvalue_gap_ucb": 0.00044655047734559235,
+              "eta": 0.17623344287321785,
+              "conservative_information": 0.947134317985673
+            },
+            {
+              "j_tt": 0.9024234805007613,
+              "j_tn": 0.18946849768109278,
+              "j_nn": 2.8638194474332357,
+              "ridge_information": 0.8898927391147051,
+              "exact_information": 0.8898883635799983,
+              "operator_gap": 4.37553470677976e-06,
+              "eigenvalue_gap": 4.37553470677976e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.003456921397805694,
+                  0.0010631274013620973,
+                  8.872301340436548e-33
+                ],
+                [
+                  0.0010631274013620973,
+                  0.003975787210085722,
+                  -6.312004093275981e-34
+                ],
+                [
+                  8.872301340436548e-33,
+                  -6.312004093275981e-34,
+                  9.968445136178207e-32
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433235,
+              "ridge_information_lcb": 0.73770102810119,
+              "exact_information_direct_lcb": 0.7377001343387283,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.5589618491809074e-05,
+              "eigenvalue_gap_ucb": 1.5589618491809074e-05,
+              "eta": 0.15219171101351514,
+              "conservative_information": 0.7376854384826982
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144649,
+            "min_nuisance_eigenvalue_lcb": 0.3491840176144646,
+            "max_operator_gap": 0.0002331040569103493,
+            "max_eigenvalue_gap": 0.0002331040569103493,
+            "max_operator_gap_ucb": 0.00044655047734559235,
+            "max_eigenvalue_gap_ucb": 0.00044655047734559235,
+            "ridge_certificate": 0.8867813496461692,
+            "exact_certificate": 0.8867648991096497,
+            "conservative_lower_certificate": 0.7376854484826982,
+            "certificate_gap": 1.6450536519441172e-05,
+            "weakest_ridge_environment": "landbird/land",
+            "weakest_exact_environment": "landbird/land",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8867648991096497
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8867649156072503
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.8867650640814041
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8867665484021109
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.8867813496461692
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.8869252824977676
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.8880473835134516
+            }
+          ]
+        }
+      }
+    },
+    {
+      "benchmark": "waterbirds",
+      "backbone": "MobileNetV3-small",
+      "method": "group_dro_fisher_glass",
+      "seed": 19,
+      "lambda_fg": 0.001,
+      "ridge": 0.001,
+      "eps": 1e-08,
+      "alpha": 0.95,
+      "audit_schema_version": 2,
+      "epochs": 10,
+      "freeze_backbone": false,
+      "max_train": null,
+      "max_val": null,
+      "max_test": null,
+      "elapsed_seconds": 24.16463565826416,
+      "val": {
+        "overall_accuracy": 0.7464553794829024,
+        "overall_loss": 0.5634242296218872,
+        "worst_group_accuracy": 0.6466165413533834,
+        "group_loss_cvar": 0.6498554348945618,
+        "fisher_glass_certificate": 0.598578110905669,
+        "exact_fisher_glass_certificate": 0.5974366284378467,
+        "conservative_lower_certificate": 0.3656386120797592,
+        "inverse_loss_p95": 1.6702793832719744,
+        "weakest_slice": {
+          "group": "waterbird/land",
+          "n": 133,
+          "accuracy": 0.6466165413533834,
+          "loss": 0.6498554348945618,
+          "projected_feature_fisher": 0.598578100905669,
+          "exact_projected_feature_fisher": 0.5974365807012567,
+          "feature_ridge_to_exact_gap": 0.0011415202044122719,
+          "feature_j_tn": -0.37360885739326477,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.670625740869418
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 133,
+          "accuracy": 0.6466165413533834,
+          "loss": 0.6498554348945618,
+          "projected_feature_fisher": 0.598578100905669,
+          "exact_projected_feature_fisher": 0.5974365807012567,
+          "feature_ridge_to_exact_gap": 0.0011415202044122719,
+          "feature_j_tn": -0.37360885739326477,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.670625740869418
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 467,
+            "accuracy": 0.8137044967880086,
+            "loss": 0.5240906476974487,
+            "projected_feature_fisher": 0.662707826284757,
+            "exact_projected_feature_fisher": 0.6624715489715732,
+            "feature_ridge_to_exact_gap": 0.00023627731318376366,
+            "feature_j_tn": 0.16997548937797546,
+            "feature_j_nn": 0.34918397665023804,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.5089605784747546
+          },
+          {
+            "group": "landbird/water",
+            "n": 466,
+            "accuracy": 0.6738197424892703,
+            "loss": 0.5867292284965515,
+            "projected_feature_fisher": 0.8819015854127551,
+            "exact_projected_feature_fisher": 0.881898161559347,
+            "feature_ridge_to_exact_gap": 3.4238534081243444e-06,
+            "feature_j_tn": -0.16760194301605225,
+            "feature_j_nn": 2.8638195991516113,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1339133585895957
+          },
+          {
+            "group": "waterbird/land",
+            "n": 133,
+            "accuracy": 0.6466165413533834,
+            "loss": 0.6498554348945618,
+            "projected_feature_fisher": 0.598578100905669,
+            "exact_projected_feature_fisher": 0.5974365807012567,
+            "feature_ridge_to_exact_gap": 0.0011415202044122719,
+            "feature_j_tn": -0.37360885739326477,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.670625740869418
+          },
+          {
+            "group": "waterbird/water",
+            "n": 133,
+            "accuracy": 0.8646616541353384,
+            "loss": 0.5334486365318298,
+            "projected_feature_fisher": 0.5994065690160344,
+            "exact_projected_feature_fisher": 0.5990331536231825,
+            "feature_ridge_to_exact_gap": 0.0003734153928518502,
+            "feature_j_tn": 1.7503201961517334,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.668316690219794
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260729,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.7452120927197315,
+              "j_tn": 0.1699754801804755,
+              "j_nn": 0.3491840176144626,
+              "ridge_information": 0.6627078594900138,
+              "exact_information": 0.6624715822577585,
+              "operator_gap": 0.00023627723225527753,
+              "eigenvalue_gap": 0.00023627723225527753,
+              "status": "ok",
+              "reasons": [],
+              "n": 467,
+              "effective_n": 467.00000000000006,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.003147828135386697,
+                  0.0007191017139368006,
+                  -3.828786825628593e-34
+                ],
+                [
+                  0.0007191017139368006,
+                  0.0004964044820776261,
+                  -1.3880804192151706e-35
+                ],
+                [
+                  -3.828786825628593e-34,
+                  -1.3880804192151706e-35,
+                  6.6126350021879105e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446255,
+              "ridge_information_lcb": 0.5363752400189231,
+              "exact_information_direct_lcb": 0.5361940758227407,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00042464908660458665,
+              "eigenvalue_gap_ucb": 0.00042464908660458665,
+              "eta": 0.12633261947109065,
+              "conservative_information": 0.5359505909323186
+            },
+            {
+              "j_tt": 0.8917068852425087,
+              "j_tn": -0.16760196828397309,
+              "j_nn": 2.863819447433244,
+              "ridge_information": 0.8819015832721421,
+              "exact_information": 0.881898159417339,
+              "operator_gap": 3.423854803119575e-06,
+              "eigenvalue_gap": 3.423854803119575e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 466,
+              "effective_n": 465.9999999999999,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.00364601024536657,
+                  -0.0016320290855048793,
+                  -2.2777849493929548e-34
+                ],
+                [
+                  -0.0016320290855048793,
+                  0.005431391612032169,
+                  -1.1129813493016824e-35
+                ],
+                [
+                  -2.2777849493929548e-34,
+                  -1.1129813493016824e-35,
+                  4.24118766247857e-34
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433244,
+              "ridge_information_lcb": 0.7274907267811971,
+              "exact_information_direct_lcb": 0.7274902562368609,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.609633481276686e-05,
+              "eigenvalue_gap_ucb": 1.609633481276686e-05,
+              "eta": 0.154410856490945,
+              "conservative_information": 0.7274746304463843
+            },
+            {
+              "j_tt": 0.9971787646699195,
+              "j_tn": -0.3736088444230716,
+              "j_nn": 0.3491840176144619,
+              "ridge_information": 0.5985781386847021,
+              "exact_information": 0.5974366184378467,
+              "operator_gap": 0.001141520246855432,
+              "eigenvalue_gap": 0.001141520246855432,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.00838337266780959,
+                  -0.0022912613616802727,
+                  3.9326029119504505e-34
+                ],
+                [
+                  -0.0022912613616802727,
+                  0.0015804190810312564,
+                  -1.900839399584974e-34
+                ],
+                [
+                  3.9326029119504505e-34,
+                  -1.900839399584974e-34,
+                  2.101014484786077e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446183,
+              "ridge_information_lcb": 0.3897767755734107,
+              "exact_information_direct_lcb": 0.3882253458657692,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0018677297652734133,
+              "eigenvalue_gap_ucb": 0.0018677297652734133,
+              "eta": 0.20880136311129138,
+              "conservative_information": 0.3879090458081373
+            },
+            {
+              "j_tt": 1.668800691587555,
+              "j_tn": 1.750320335355125,
+              "j_nn": 2.8638194474332432,
+              "ridge_information": 0.599406500235443,
+              "exact_information": 0.5990330848679657,
+              "operator_gap": 0.0003734153674772589,
+              "eigenvalue_gap": 0.0003734153674772589,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.029834934992428393,
+                  0.01710823153013676,
+                  1.94023642569645e-33
+                ],
+                [
+                  0.01710823153013676,
+                  0.01299638331894554,
+                  -1.9996450374972808e-34
+                ],
+                [
+                  1.94023642569645e-33,
+                  -1.9996450374972808e-34,
+                  1.4940547447367616e-33
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474332432,
+              "ridge_information_lcb": 0.36615106424172317,
+              "exact_information_direct_lcb": 0.36579005644363183,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.000512462161964006,
+              "eigenvalue_gap_ucb": 0.000512462161964006,
+              "eta": 0.23325543599371978,
+              "conservative_information": 0.3656386020797592
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144619,
+            "min_nuisance_eigenvalue_lcb": 0.34918401761446183,
+            "max_operator_gap": 0.001141520246855432,
+            "max_eigenvalue_gap": 0.001141520246855432,
+            "max_operator_gap_ucb": 0.0018677297652734133,
+            "max_eigenvalue_gap_ucb": 0.0018677297652734133,
+            "ridge_certificate": 0.5985781486847022,
+            "exact_certificate": 0.5974366284378467,
+            "conservative_lower_certificate": 0.3656386120797592,
+            "certificate_gap": 0.001141520246855432,
+            "weakest_ridge_environment": "waterbird/land",
+            "weakest_exact_environment": "waterbird/land",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.5974366284378467
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.597437773223923
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.5974480760035571
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.5975510745980124
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.5985781486847022
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.6027555542161861
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.6351273180719481
+            }
+          ]
+        }
+      },
+      "test": {
+        "overall_accuracy": 0.74283741801864,
+        "overall_loss": 0.5548846125602722,
+        "worst_group_accuracy": 0.6682242990654206,
+        "group_loss_cvar": 0.6277268528938293,
+        "fisher_glass_certificate": 0.5836095905854445,
+        "exact_fisher_glass_certificate": 0.5822065491688532,
+        "conservative_lower_certificate": 0.48095426634879307,
+        "inverse_loss_p95": 1.6880158322146386,
+        "weakest_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.6682242990654206,
+          "loss": 0.6277268528938293,
+          "projected_feature_fisher": 0.5836095805854444,
+          "exact_projected_feature_fisher": 0.5822064517777338,
+          "feature_ridge_to_exact_gap": 0.0014031288077106518,
+          "feature_j_tn": -0.4142133891582489,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.7134742405395633
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.6682242990654206,
+          "loss": 0.6277268528938293,
+          "projected_feature_fisher": 0.5836095805854444,
+          "exact_projected_feature_fisher": 0.5822064517777338,
+          "feature_ridge_to_exact_gap": 0.0014031288077106518,
+          "feature_j_tn": -0.4142133891582489,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.7134742405395633
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 2255,
+            "accuracy": 0.7955654101995565,
+            "loss": 0.5222377777099609,
+            "projected_feature_fisher": 0.6477726322278551,
+            "exact_projected_feature_fisher": 0.6475279645009513,
+            "feature_ridge_to_exact_gap": 0.00024466772690379113,
+            "feature_j_tn": 0.17296716570854187,
+            "feature_j_nn": 0.3491840064525604,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.5437515183733992
+          },
+          {
+            "group": "landbird/water",
+            "n": 2255,
+            "accuracy": 0.7015521064301552,
+            "loss": 0.5690621137619019,
+            "projected_feature_fisher": 0.8904296842127803,
+            "exact_projected_feature_fisher": 0.8904202840279121,
+            "feature_ridge_to_exact_gap": 9.400184868280093e-06,
+            "feature_j_tn": -0.2777087688446045,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1230532926960501
+          },
+          {
+            "group": "waterbird/land",
+            "n": 642,
+            "accuracy": 0.6682242990654206,
+            "loss": 0.6277268528938293,
+            "projected_feature_fisher": 0.5836095805854444,
+            "exact_projected_feature_fisher": 0.5822064517777338,
+            "feature_ridge_to_exact_gap": 0.0014031288077106518,
+            "feature_j_tn": -0.4142133891582489,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.7134742405395633
+          },
+          {
+            "group": "waterbird/water",
+            "n": 642,
+            "accuracy": 0.7772585669781932,
+            "loss": 0.5469151735305786,
+            "projected_feature_fisher": 0.7447643111719071,
+            "exact_projected_feature_fisher": 0.7444053099348167,
+            "feature_ridge_to_exact_gap": 0.0003590012370904283,
+            "feature_j_tn": 1.7162059545516968,
+            "feature_j_nn": 2.8638193607330322,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.3427066409766684
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260730,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.7332066984875273,
+              "j_tn": 0.1729671648413722,
+              "j_nn": 0.3491840176144652,
+              "ridge_information": 0.64777264493743,
+              "exact_information": 0.6475279772285991,
+              "operator_gap": 0.0002446677088309146,
+              "eigenvalue_gap": 0.0002446677088309146,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0005520742711775191,
+                  0.00012819207550299812,
+                  2.416149495658958e-34
+                ],
+                [
+                  0.00012819207550299812,
+                  0.00010031340754500775,
+                  -5.606597636288951e-35
+                ],
+                [
+                  2.416149495658958e-34,
+                  -5.606597636288951e-35,
+                  4.4417720598501004e-33
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446505,
+              "ridge_information_lcb": 0.5943072019543162,
+              "exact_information_direct_lcb": 0.5941014673726351,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0003253148307299751,
+              "eigenvalue_gap_ucb": 0.0003253148307299751,
+              "eta": 0.05346544298311384,
+              "conservative_information": 0.5939818871235862
+            },
+            {
+              "j_tt": 0.9173501047805637,
+              "j_tn": -0.27770879812768756,
+              "j_nn": 2.8638194474331904,
+              "ridge_information": 0.890429672979312,
+              "exact_information": 0.8904202727945952,
+              "operator_gap": 9.40018471673465e-06,
+              "eigenvalue_gap": 9.40018471673465e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0007545929211686549,
+                  -0.0003730216414544332,
+                  -2.61937341972465e-32
+                ],
+                [
+                  -0.0003730216414544332,
+                  0.0011313233778251918,
+                  -6.742406929407755e-33
+                ],
+                [
+                  -2.61937341972465e-32,
+                  -6.742406929407755e-33,
+                  1.2599375593592469e-30
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474331873,
+              "ridge_information_lcb": 0.8230036735726032,
+              "exact_information_direct_lcb": 0.8229930159534165,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.6334807044484982e-05,
+              "eigenvalue_gap_ucb": 1.6334807044484982e-05,
+              "eta": 0.06742599940670879,
+              "conservative_information": 0.8229873387655587
+            },
+            {
+              "j_tt": 1.0735598354301468,
+              "j_tn": -0.4142133726192685,
+              "j_nn": 0.3491840176144649,
+              "ridge_information": 0.5836096680141056,
+              "exact_information": 0.5822065391688531,
+              "operator_gap": 0.0014031288452525104,
+              "eigenvalue_gap": 0.0014031288452525104,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0031601886384996676,
+                  -0.0007390423814209043,
+                  -2.883845465321639e-33
+                ],
+                [
+                  -0.0007390423814209043,
+                  0.0003171563470021695,
+                  2.5545626843807225e-34
+                ],
+                [
+                  -2.883845465321639e-33,
+                  2.5545626843807225e-34,
+                  1.2503822241126347e-32
+                ]
+              ],
+              "j_nn_lcb": 0.3491840176144646,
+              "ridge_information_lcb": 0.4826929468158758,
+              "exact_information_direct_lcb": 0.4812865758330309,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0017386904670827316,
+              "eigenvalue_gap_ucb": 0.0017386904670827316,
+              "eta": 0.10091672119822981,
+              "conservative_information": 0.4809542563487931
+            },
+            {
+              "j_tt": 1.7728790516753672,
+              "j_tn": 1.7162059972720904,
+              "j_nn": 2.8638194474332357,
+              "ridge_information": 0.7447643382990605,
+              "exact_information": 0.7444053370658306,
+              "operator_gap": 0.0003590012332299608,
+              "eigenvalue_gap": 0.0003590012332299608,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.005085812797040675,
+                  0.003211955397639812,
+                  -1.9101457558303678e-32
+                ],
+                [
+                  0.003211955397639812,
+                  0.0033258073027491917,
+                  -1.5229816185193712e-32
+                ],
+                [
+                  -1.9101457558303678e-32,
+                  -1.5229816185193712e-32,
+                  9.968445136178207e-32
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433235,
+              "ridge_information_lcb": 0.6204705751048885,
+              "exact_information_direct_lcb": 0.6201149355084037,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0004261118586803201,
+              "eigenvalue_gap_ucb": 0.0004261118586803201,
+              "eta": 0.12429376319417207,
+              "conservative_information": 0.6200444632462081
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144649,
+            "min_nuisance_eigenvalue_lcb": 0.3491840176144646,
+            "max_operator_gap": 0.0014031288452525104,
+            "max_eigenvalue_gap": 0.0014031288452525104,
+            "max_operator_gap_ucb": 0.0017386904670827316,
+            "max_eigenvalue_gap_ucb": 0.0017386904670827316,
+            "ridge_certificate": 0.5836096780141058,
+            "exact_certificate": 0.5822065491688532,
+            "conservative_lower_certificate": 0.48095426634879307,
+            "certificate_gap": 0.0014031288452526214,
+            "weakest_ridge_environment": "waterbird/land",
+            "weakest_exact_environment": "waterbird/land",
+            "weakest_conservative_environment": "waterbird/land",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.5822065491688532
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.5822079563119763
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.5822206202374132
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.5823472235975364
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.5836096780141058
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.5958862585146262
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.6666022903870135
+            }
+          ]
+        }
+      }
+    },
+    {
+      "benchmark": "waterbirds",
+      "backbone": "MobileNetV3-small",
+      "method": "group_dro_fisher_glass",
+      "seed": 20,
+      "lambda_fg": 0.001,
+      "ridge": 0.001,
+      "eps": 1e-08,
+      "alpha": 0.95,
+      "audit_schema_version": 2,
+      "epochs": 10,
+      "freeze_backbone": false,
+      "max_train": null,
+      "max_val": null,
+      "max_test": null,
+      "elapsed_seconds": 24.377750635147095,
+      "val": {
+        "overall_accuracy": 0.6171809841534612,
+        "overall_loss": 0.6615786552429199,
+        "worst_group_accuracy": 0.5815450643776824,
+        "group_loss_cvar": 0.6727261543273926,
+        "fisher_glass_certificate": 0.895776683948405,
+        "exact_fisher_glass_certificate": 0.8951531237934617,
+        "conservative_lower_certificate": 0.5881734069675053,
+        "inverse_loss_p95": 1.1118905351193602,
+        "weakest_slice": {
+          "group": "waterbird/land",
+          "n": 133,
+          "accuracy": 0.6240601503759399,
+          "loss": 0.654054582118988,
+          "projected_feature_fisher": 0.895776673948405,
+          "exact_projected_feature_fisher": 0.8951531837195403,
+          "feature_ridge_to_exact_gap": 0.0006234902288646538,
+          "feature_j_tn": -0.2761151194572449,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1163496638383121
+        },
+        "worst_accuracy_slice": {
+          "group": "landbird/water",
+          "n": 466,
+          "accuracy": 0.5815450643776824,
+          "loss": 0.6727261543273926,
+          "projected_feature_fisher": 0.920283098605347,
+          "exact_projected_feature_fisher": 0.9202822181602831,
+          "feature_ridge_to_exact_gap": 8.804450638555394e-07,
+          "feature_j_tn": -0.08499093353748322,
+          "feature_j_nn": 2.8638195991516113,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.0866221390452997
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 467,
+            "accuracy": 0.6573875802997858,
+            "loss": 0.6513497829437256,
+            "projected_feature_fisher": 0.9648979613794725,
+            "exact_projected_feature_fisher": 0.9647975066454948,
+            "feature_ridge_to_exact_gap": 0.00010045473397768401,
+            "feature_j_tn": 0.11083080619573593,
+            "feature_j_nn": 0.34918397665023804,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0363790055132396
+          },
+          {
+            "group": "landbird/water",
+            "n": 466,
+            "accuracy": 0.5815450643776824,
+            "loss": 0.6727261543273926,
+            "projected_feature_fisher": 0.920283098605347,
+            "exact_projected_feature_fisher": 0.9202822181602831,
+            "feature_ridge_to_exact_gap": 8.804450638555394e-07,
+            "feature_j_tn": -0.08499093353748322,
+            "feature_j_nn": 2.8638195991516113,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0866221390452997
+          },
+          {
+            "group": "waterbird/land",
+            "n": 133,
+            "accuracy": 0.6240601503759399,
+            "loss": 0.654054582118988,
+            "projected_feature_fisher": 0.895776673948405,
+            "exact_projected_feature_fisher": 0.8951531837195403,
+            "feature_ridge_to_exact_gap": 0.0006234902288646538,
+            "feature_j_tn": -0.2761151194572449,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1163496638383121
+          },
+          {
+            "group": "waterbird/water",
+            "n": 133,
+            "accuracy": 0.5939849624060151,
+            "loss": 0.6659612059593201,
+            "projected_feature_fisher": 0.9241366431026339,
+            "exact_projected_feature_fisher": 0.9240822528449384,
+            "feature_ridge_to_exact_gap": 5.439025769549133e-05,
+            "feature_j_tn": 0.6680084466934204,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.082091048594023
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260729,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9999751149813743,
+              "j_tn": 0.11083080879457083,
+              "j_nn": 0.3491840176144626,
+              "ridge_information": 0.9648979339559904,
+              "exact_information": 0.9647974792408376,
+              "operator_gap": 0.00010045471515285342,
+              "eigenvalue_gap": 0.00010045471515285342,
+              "status": "ok",
+              "reasons": [],
+              "n": 467,
+              "effective_n": 467.00000000000006,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.005419551994608577,
+                  3.9284634522548835e-05,
+                  2.463201369569333e-34
+                ],
+                [
+                  3.9284634522548835e-05,
+                  0.000722943905548543,
+                  5.580347217288323e-35
+                ],
+                [
+                  2.463201369569333e-34,
+                  5.580347217288323e-35,
+                  6.6126350021879105e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446255,
+              "ridge_information_lcb": 0.7622809974521028,
+              "exact_information_direct_lcb": 0.7621258069069112,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0002690407919964719,
+              "eigenvalue_gap_ucb": 0.0002690407919964719,
+              "eta": 0.20261693650388768,
+              "conservative_information": 0.7620119566601062
+            },
+            {
+              "j_tt": 0.9228045953374506,
+              "j_tn": -0.08499093127926563,
+              "j_nn": 2.863819447433244,
+              "ridge_information": 0.9202831595079819,
+              "exact_information": 0.9202822790628716,
+              "operator_gap": 8.804451102628619e-07,
+              "eigenvalue_gap": 8.804451102628619e-07,
+              "status": "ok",
+              "reasons": [],
+              "n": 466,
+              "effective_n": 465.9999999999999,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.00349639146315709,
+                  -0.00029462312726989735,
+                  5.9863744661064695e-34
+                ],
+                [
+                  -0.00029462312726989735,
+                  0.005667789866469761,
+                  8.01180034597576e-36
+                ],
+                [
+                  5.9863744661064695e-34,
+                  8.01180034597576e-36,
+                  4.24118766247857e-34
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433244,
+              "ridge_information_lcb": 0.763178971268853,
+              "exact_information_direct_lcb": 0.7631775117685986,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 9.933561687863404e-06,
+              "eigenvalue_gap_ucb": 9.933561687863404e-06,
+              "eta": 0.15710418823912886,
+              "conservative_information": 0.7631690377071652
+            },
+            {
+              "j_tt": 1.113489454122557,
+              "j_tn": -0.2761151218375263,
+              "j_nn": 0.3491840176144619,
+              "ridge_information": 0.8957766040995483,
+              "exact_information": 0.8951531137934616,
+              "operator_gap": 0.0006234903060866603,
+              "eigenvalue_gap": 0.0006234903060866603,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.012403871217331854,
+                  -0.0027935389528365865,
+                  3.878658478507616e-34
+                ],
+                [
+                  -0.0027935389528365865,
+                  0.0023679784898067943,
+                  -6.120922753892725e-35
+                ],
+                [
+                  3.878658478507616e-34,
+                  -6.120922753892725e-35,
+                  2.101014484786077e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446183,
+              "ridge_information_lcb": 0.6326869800571362,
+              "exact_information_direct_lcb": 0.631970483620841,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.001336315066210755,
+              "eigenvalue_gap_ucb": 0.001336315066210755,
+              "eta": 0.2630896240424121,
+              "conservative_information": 0.6313506649909254
+            },
+            {
+              "j_tt": 1.0799004920265545,
+              "j_tn": 0.6680084684183165,
+              "j_nn": 2.8638194474332432,
+              "ridge_information": 0.9241366395162705,
+              "exact_information": 0.9240822492673846,
+              "operator_gap": 5.439024888587163e-05,
+              "eigenvalue_gap": 5.439024888587163e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.02141007742712576,
+                  0.011238686687805912,
+                  1.2582751657377227e-35
+                ],
+                [
+                  0.011238686687805912,
+                  0.020048520579392347,
+                  6.093989968477824e-37
+                ],
+                [
+                  1.2582751657377227e-35,
+                  6.093989968477824e-37,
+                  1.4940547447367616e-33
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474332432,
+              "ridge_information_lcb": 0.5883053230995614,
+              "exact_information_direct_lcb": 0.5882631735210233,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00013192613205609708,
+              "eigenvalue_gap_ucb": 0.00013192613205609708,
+              "eta": 0.33583131641670905,
+              "conservative_information": 0.5881733969675053
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144619,
+            "min_nuisance_eigenvalue_lcb": 0.34918401761446183,
+            "max_operator_gap": 0.0006234903060866603,
+            "max_eigenvalue_gap": 0.0006234903060866603,
+            "max_operator_gap_ucb": 0.001336315066210755,
+            "max_eigenvalue_gap_ucb": 0.001336315066210755,
+            "ridge_certificate": 0.8957766140995483,
+            "exact_certificate": 0.8951531237934617,
+            "conservative_lower_certificate": 0.5881734069675053,
+            "certificate_gap": 0.0006234903060866603,
+            "weakest_ridge_environment": "waterbird/land",
+            "weakest_exact_environment": "waterbird/land",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8951531237934617
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8951537490675409
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.895159376373097
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8952156334787946
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.8957766140995483
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.9012318001716366
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.920367392636801
+            }
+          ]
+        }
+      },
+      "test": {
+        "overall_accuracy": 0.6102865032792544,
+        "overall_loss": 0.665989875793457,
+        "worst_group_accuracy": 0.5358255451713395,
+        "group_loss_cvar": 0.686744749546051,
+        "fisher_glass_certificate": 0.8495666276573711,
+        "exact_fisher_glass_certificate": 0.8494904345942139,
+        "conservative_lower_certificate": 0.7213871314667734,
+        "inverse_loss_p95": 1.1707543869141774,
+        "weakest_slice": {
+          "group": "waterbird/water",
+          "n": 642,
+          "accuracy": 0.6464174454828661,
+          "loss": 0.6533975005149841,
+          "projected_feature_fisher": 0.8495666176573711,
+          "exact_projected_feature_fisher": 0.8494904102822886,
+          "feature_ridge_to_exact_gap": 7.62073750825154e-05,
+          "feature_j_tn": 0.7907149195671082,
+          "feature_j_nn": 2.8638193607330322,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.1770707175226973
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.5358255451713395,
+          "loss": 0.686744749546051,
+          "projected_feature_fisher": 1.1163010354695009,
+          "exact_projected_feature_fisher": 1.1160730768124856,
+          "feature_ridge_to_exact_gap": 0.0002279586570153036,
+          "feature_j_tn": -0.16695652902126312,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 0.8958156977980916
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 2255,
+            "accuracy": 0.6301552106430155,
+            "loss": 0.6578305959701538,
+            "projected_feature_fisher": 0.9022393995806984,
+            "exact_projected_feature_fisher": 0.9021822690681963,
+            "feature_ridge_to_exact_gap": 5.713051250211265e-05,
+            "feature_j_tn": 0.0835813507437706,
+            "feature_j_nn": 0.3491840064525604,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.108353270075771
+          },
+          {
+            "group": "landbird/water",
+            "n": 2255,
+            "accuracy": 0.601330376940133,
+            "loss": 0.6718254089355469,
+            "projected_feature_fisher": 0.8810868765946069,
+            "exact_projected_feature_fisher": 0.8810859148646084,
+            "feature_ridge_to_exact_gap": 9.617299985276162e-07,
+            "feature_j_tn": -0.08882761001586914,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1349618467992313
+          },
+          {
+            "group": "waterbird/land",
+            "n": 642,
+            "accuracy": 0.5358255451713395,
+            "loss": 0.686744749546051,
+            "projected_feature_fisher": 1.1163010354695009,
+            "exact_projected_feature_fisher": 1.1160730768124856,
+            "feature_ridge_to_exact_gap": 0.0002279586570153036,
+            "feature_j_tn": -0.16695652902126312,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 0.8958156977980916
+          },
+          {
+            "group": "waterbird/water",
+            "n": 642,
+            "accuracy": 0.6464174454828661,
+            "loss": 0.6533975005149841,
+            "projected_feature_fisher": 0.8495666176573711,
+            "exact_projected_feature_fisher": 0.8494904102822886,
+            "feature_ridge_to_exact_gap": 7.62073750825154e-05,
+            "feature_j_tn": 0.7907149195671082,
+            "feature_j_nn": 2.8638193607330322,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.1770707175226973
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260730,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9221883850690595,
+              "j_tn": 0.08358136510495404,
+              "j_nn": 0.3491840176144652,
+              "ridge_information": 0.9022393176033402,
+              "exact_information": 0.9021821870748526,
+              "operator_gap": 5.713052848754785e-05,
+              "eigenvalue_gap": 5.713052848754785e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0007830459189839102,
+                  5.128928672648399e-05,
+                  -2.453939016644306e-33
+                ],
+                [
+                  5.128928672648399e-05,
+                  0.00013976379800488003,
+                  6.629606430875184e-37
+                ],
+                [
+                  -2.453939016644306e-33,
+                  6.629606430875184e-37,
+                  4.4417720598501004e-33
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446505,
+              "ridge_information_lcb": 0.8275674688650482,
+              "exact_information_direct_lcb": 0.8274968831538139,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00010811152542419745,
+              "eigenvalue_gap_ucb": 0.00010811152542419745,
+              "eta": 0.07467184873829202,
+              "conservative_information": 0.827459357339624
+            },
+            {
+              "j_tt": 0.8838410621585799,
+              "j_tn": -0.08882761918267608,
+              "j_nn": 2.8638194474331904,
+              "ridge_information": 0.8810868411424067,
+              "exact_information": 0.8810858794124279,
+              "operator_gap": 9.617299787656464e-07,
+              "eigenvalue_gap": 9.617299787656464e-07,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0006836439216327805,
+                  1.2534127325174188e-05,
+                  -2.3399832642239368e-33
+                ],
+                [
+                  1.2534127325174188e-05,
+                  0.00111946356535942,
+                  -6.124725940981948e-34
+                ],
+                [
+                  -2.3399832642239368e-33,
+                  -6.124725940981948e-34,
+                  1.2599375593592469e-30
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474331873,
+              "ridge_information_lcb": 0.8103334229774153,
+              "exact_information_direct_lcb": 0.8103320687671811,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 3.7894274717338777e-06,
+              "eigenvalue_gap_ucb": 3.7894274717338777e-06,
+              "eta": 0.07075341816499137,
+              "conservative_information": 0.8103296335499436
+            },
+            {
+              "j_tt": 1.195900568096771,
+              "j_tn": -0.16695654015517167,
+              "j_nn": 0.3491840176144649,
+              "ridge_information": 1.1163010292872246,
+              "exact_information": 1.116073070575502,
+              "operator_gap": 0.00022795871172265336,
+              "eigenvalue_gap": 0.00022795871172265336,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.006023986383484608,
+                  -0.0008383038884467009,
+                  2.676161312234569e-33
+                ],
+                [
+                  -0.0008383038884467009,
+                  0.0006079795300075865,
+                  -3.41310762849425e-34
+                ],
+                [
+                  2.676161312234569e-33,
+                  -3.41310762849425e-34,
+                  1.2503822241126347e-32
+                ]
+              ],
+              "j_nn_lcb": 0.3491840176144646,
+              "ridge_information_lcb": 0.9261568728791141,
+              "exact_information_direct_lcb": 0.9259612205788057,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0004386537604328223,
+              "eigenvalue_gap_ucb": 0.0004386537604328223,
+              "eta": 0.19014415640811055,
+              "conservative_information": 0.9257182191186812
+            },
+            {
+              "j_tt": 1.067810781244591,
+              "j_tn": 0.7907149190105811,
+              "j_nn": 2.8638194474332357,
+              "ridge_information": 0.8495666319645757,
+              "exact_information": 0.8494904245942139,
+              "operator_gap": 7.62073703618471e-05,
+              "eigenvalue_gap": 7.62073703618471e-05,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.003413118623883188,
+                  0.0020516111502135717,
+                  1.0154965961243989e-32
+                ],
+                [
+                  0.0020516111502135717,
+                  0.0037952998414371836,
+                  3.827148300085926e-33
+                ],
+                [
+                  1.0154965961243989e-32,
+                  3.827148300085926e-33,
+                  9.968445136178207e-32
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433235,
+              "ridge_information_lcb": 0.7214983243200253,
+              "exact_information_direct_lcb": 0.7214178944357337,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.0001112028532519432,
+              "eigenvalue_gap_ucb": 0.0001112028532519432,
+              "eta": 0.12806830764455046,
+              "conservative_information": 0.7213871214667733
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144649,
+            "min_nuisance_eigenvalue_lcb": 0.3491840176144646,
+            "max_operator_gap": 0.00022795871172265336,
+            "max_eigenvalue_gap": 0.00022795871172265336,
+            "max_operator_gap_ucb": 0.0004386537604328223,
+            "max_eigenvalue_gap_ucb": 0.0004386537604328223,
+            "ridge_certificate": 0.8495666419645757,
+            "exact_certificate": 0.8494904345942139,
+            "conservative_lower_certificate": 0.7213871314667734,
+            "certificate_gap": 7.620737036173608e-05,
+            "weakest_ridge_environment": "waterbird/water",
+            "weakest_exact_environment": "waterbird/water",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.8494904345942139
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.8494905108281681
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.8494911969313597
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.8494980577261021
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.8495666419645757
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.8502501216958005
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.8568566173365346
+            }
+          ]
+        }
+      }
+    },
+    {
+      "benchmark": "waterbirds",
+      "backbone": "MobileNetV3-small",
+      "method": "group_dro_fisher_glass",
+      "seed": 21,
+      "lambda_fg": 0.001,
+      "ridge": 0.001,
+      "eps": 1e-08,
+      "alpha": 0.95,
+      "audit_schema_version": 2,
+      "epochs": 10,
+      "freeze_backbone": false,
+      "max_train": null,
+      "max_val": null,
+      "max_test": null,
+      "elapsed_seconds": 24.08280301094055,
+      "val": {
+        "overall_accuracy": 0.707256046705588,
+        "overall_loss": 0.6250269412994385,
+        "worst_group_accuracy": 0.15037593984962405,
+        "group_loss_cvar": 0.8552047610282898,
+        "fisher_glass_certificate": 0.9353606311209076,
+        "exact_fisher_glass_certificate": 0.9353605173513083,
+        "conservative_lower_certificate": 0.6514527993013262,
+        "inverse_loss_p95": 1.064001159173059,
+        "weakest_slice": {
+          "group": "landbird/water",
+          "n": 466,
+          "accuracy": 0.8648068669527897,
+          "loss": 0.5642273426055908,
+          "projected_feature_fisher": 0.9353606211209075,
+          "exact_projected_feature_fisher": 0.9353605688423938,
+          "feature_ridge_to_exact_gap": 5.227851362921143e-08,
+          "feature_j_tn": -0.020710142329335213,
+          "feature_j_nn": 2.8638195991516113,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.0691063604009403
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 133,
+          "accuracy": 0.15037593984962405,
+          "loss": 0.8552047610282898,
+          "projected_feature_fisher": 0.9661166502873336,
+          "exact_projected_feature_fisher": 0.9661145839536626,
+          "feature_ridge_to_exact_gap": 2.0663336710580182e-06,
+          "feature_j_tn": -0.015895551070570946,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.0350716855483986
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 467,
+            "accuracy": 0.8650963597430407,
+            "loss": 0.5597133040428162,
+            "projected_feature_fisher": 1.0061137211946654,
+            "exact_projected_feature_fisher": 1.0061045351752667,
+            "feature_ridge_to_exact_gap": 9.18601939869923e-06,
+            "feature_j_tn": 0.03351498022675514,
+            "feature_j_nn": 0.34918397665023804,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 0.9939234193857927
+          },
+          {
+            "group": "landbird/water",
+            "n": 466,
+            "accuracy": 0.8648068669527897,
+            "loss": 0.5642273426055908,
+            "projected_feature_fisher": 0.9353606211209075,
+            "exact_projected_feature_fisher": 0.9353605688423938,
+            "feature_ridge_to_exact_gap": 5.227851362921143e-08,
+            "feature_j_tn": -0.020710142329335213,
+            "feature_j_nn": 2.8638195991516113,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0691063604009403
+          },
+          {
+            "group": "waterbird/land",
+            "n": 133,
+            "accuracy": 0.15037593984962405,
+            "loss": 0.8552047610282898,
+            "projected_feature_fisher": 0.9661166502873336,
+            "exact_projected_feature_fisher": 0.9661145839536626,
+            "feature_ridge_to_exact_gap": 2.0663336710580182e-06,
+            "feature_j_tn": -0.015895551070570946,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0350716855483986
+          },
+          {
+            "group": "waterbird/water",
+            "n": 133,
+            "accuracy": 0.15789473684210525,
+            "loss": 0.8372104167938232,
+            "projected_feature_fisher": 1.0275861989791801,
+            "exact_projected_feature_fisher": 1.0275786951799535,
+            "feature_ridge_to_exact_gap": 7.503799226649122e-06,
+            "feature_j_tn": 0.24812012910842896,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 0.9731543604437971
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260729,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 1.0093214029802127,
+              "j_tn": 0.03351498103071249,
+              "j_nn": 0.3491840176144626,
+              "ridge_information": 1.006113792418369,
+              "exact_information": 1.006104606400682,
+              "operator_gap": 9.18601768695737e-06,
+              "eigenvalue_gap": 9.18601768695737e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 467,
+              "effective_n": 467.00000000000006,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.003684046392574255,
+                  -0.0001465921204156779,
+                  -6.400866937567397e-34
+                ],
+                [
+                  -0.0001465921204156779,
+                  0.0007538962416382138,
+                  4.234112844532068e-35
+                ],
+                [
+                  -6.400866937567397e-34,
+                  4.234112844532068e-35,
+                  6.6126350021879105e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446255,
+              "ridge_information_lcb": 0.8403003768589665,
+              "exact_information_direct_lcb": 0.8402383231947795,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 9.181490488862409e-05,
+              "eigenvalue_gap_ucb": 9.181490488862409e-05,
+              "eta": 0.16581341555940243,
+              "conservative_information": 0.8402085619540779
+            },
+            {
+              "j_tt": 0.9355102759428077,
+              "j_tn": -0.020710147390839758,
+              "j_nn": 2.863819447433244,
+              "ridge_information": 0.9353605596298531,
+              "exact_information": 0.9353605073513084,
+              "operator_gap": 5.227854471545612e-08,
+              "eigenvalue_gap": 5.227854471545612e-08,
+              "status": "ok",
+              "reasons": [],
+              "n": 466,
+              "effective_n": 465.9999999999999,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0036096996466615616,
+                  -0.00033399544106696465,
+                  -1.0411496802185004e-34
+                ],
+                [
+                  -0.00033399544106696465,
+                  0.005760652927556347,
+                  5.776731619041834e-35
+                ],
+                [
+                  -1.0411496802185004e-34,
+                  5.776731619041834e-35,
+                  4.24118766247857e-34
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433244,
+              "ridge_information_lcb": 0.7750431577707438,
+              "exact_information_direct_lcb": 0.7750413441106964,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 6.276858794840096e-06,
+              "eigenvalue_gap_ucb": 6.276858794840096e-06,
+              "eta": 0.16031740185910925,
+              "conservative_information": 0.775036880911949
+            },
+            {
+              "j_tt": 0.9668381727599775,
+              "j_tn": -0.015895547705319573,
+              "j_nn": 0.3491840176144619,
+              "ridge_information": 0.9661166422955854,
+              "exact_information": 0.9661145759625689,
+              "operator_gap": 2.066333016470523e-06,
+              "eigenvalue_gap": 2.066333016470523e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.012489177494129438,
+                  -0.0005076979915438659,
+                  4.6671528868695875e-34
+                ],
+                [
+                  -0.0005076979915438659,
+                  0.0025556952205341064,
+                  -2.2888090994749055e-36
+                ],
+                [
+                  4.6671528868695875e-34,
+                  -2.2888090994749055e-36,
+                  2.101014484786077e-34
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446183,
+              "ridge_information_lcb": 0.6660591989249915,
+              "exact_information_direct_lcb": 0.66605584252071,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 0.00018585259594102675,
+              "eigenvalue_gap_ucb": 0.00018585259594102675,
+              "eta": 0.3000574433705938,
+              "conservative_information": 0.6658733463290505
+            },
+            {
+              "j_tt": 1.0490756256549134,
+              "j_tn": 0.24812010699643508,
+              "j_nn": 2.8638194474332432,
+              "ridge_information": 1.027586108208681,
+              "exact_information": 1.0275786044124953,
+              "operator_gap": 7.503796185748257e-06,
+              "eigenvalue_gap": 7.503796185748257e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 133,
+              "effective_n": 132.99999999999997,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.021172281519270596,
+                  0.008023871051830146,
+                  3.703639468055724e-34
+                ],
+                [
+                  0.008023871051830146,
+                  0.022293936296081947,
+                  -6.043084795655312e-34
+                ],
+                [
+                  3.703639468055724e-34,
+                  -6.043084795655312e-34,
+                  1.4940547447367616e-33
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474332432,
+              "ridge_information_lcb": 0.6515027886079771,
+              "exact_information_direct_lcb": 0.6514987796651933,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 4.999930665098459e-05,
+              "eigenvalue_gap_ucb": 4.999930665098459e-05,
+              "eta": 0.37608331960070396,
+              "conservative_information": 0.6514527893013261
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144619,
+            "min_nuisance_eigenvalue_lcb": 0.34918401761446183,
+            "max_operator_gap": 9.18601768695737e-06,
+            "max_eigenvalue_gap": 9.18601768695737e-06,
+            "max_operator_gap_ucb": 0.00018585259594102675,
+            "max_eigenvalue_gap_ucb": 0.00018585259594102675,
+            "ridge_certificate": 0.9353605696298531,
+            "exact_certificate": 0.9353605173513083,
+            "conservative_lower_certificate": 0.6514527993013262,
+            "certificate_gap": 5.2278544826478424e-08,
+            "weakest_ridge_environment": "landbird/water",
+            "weakest_exact_environment": "landbird/water",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.9353605173513083
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.9353605174036054
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.9353605178742747
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.9353605225808058
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.9353605696298531
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.9353610384995372
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.9353655705805674
+            }
+          ]
+        }
+      },
+      "test": {
+        "overall_accuracy": 0.711425612702796,
+        "overall_loss": 0.6245349049568176,
+        "worst_group_accuracy": 0.13395638629283488,
+        "group_loss_cvar": 0.850697934627533,
+        "fisher_glass_certificate": 0.9062844952788887,
+        "exact_fisher_glass_certificate": 0.9062788441541478,
+        "conservative_lower_certificate": 0.7717723039611467,
+        "inverse_loss_p95": 1.0973996752460444,
+        "weakest_slice": {
+          "group": "waterbird/water",
+          "n": 642,
+          "accuracy": 0.1526479750778816,
+          "loss": 0.8391510844230652,
+          "projected_feature_fisher": 0.9062844852788886,
+          "exact_projected_feature_fisher": 0.9062788751699479,
+          "feature_ridge_to_exact_gap": 5.610108940734548e-06,
+          "feature_j_tn": 0.21453940868377686,
+          "feature_j_nn": 2.8638193607330322,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.103406276074791
+        },
+        "worst_accuracy_slice": {
+          "group": "waterbird/land",
+          "n": 642,
+          "accuracy": 0.13395638629283488,
+          "loss": 0.850697934627533,
+          "projected_feature_fisher": 0.9404132693642822,
+          "exact_projected_feature_fisher": 0.9404048575130995,
+          "feature_ridge_to_exact_gap": 8.411851182610341e-06,
+          "feature_j_tn": -0.032071638852357864,
+          "feature_j_nn": 0.3491840362548828,
+          "feature_audit_status": "ok",
+          "inverse_feature_loss": 1.0633622705498142
+        },
+        "groups": [
+          {
+            "group": "landbird/land",
+            "n": 2255,
+            "accuracy": 0.8713968957871396,
+            "loss": 0.5604773759841919,
+            "projected_feature_fisher": 0.9782550148688913,
+            "exact_projected_feature_fisher": 0.9782484977767136,
+            "feature_ridge_to_exact_gap": 6.517092177693584e-06,
+            "feature_j_tn": 0.02822943963110447,
+            "feature_j_nn": 0.3491840064525604,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0222283296055883
+          },
+          {
+            "group": "landbird/water",
+            "n": 2255,
+            "accuracy": 0.8749445676274945,
+            "loss": 0.5631023049354553,
+            "projected_feature_fisher": 0.9528817800444914,
+            "exact_projected_feature_fisher": 0.9528815916129492,
+            "feature_ridge_to_exact_gap": 1.8843154225844927e-07,
+            "feature_j_tn": -0.03931861370801926,
+            "feature_j_nn": 2.863819122314453,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0494481167000878
+          },
+          {
+            "group": "waterbird/land",
+            "n": 642,
+            "accuracy": 0.13395638629283488,
+            "loss": 0.850697934627533,
+            "projected_feature_fisher": 0.9404132693642822,
+            "exact_projected_feature_fisher": 0.9404048575130995,
+            "feature_ridge_to_exact_gap": 8.411851182610341e-06,
+            "feature_j_tn": -0.032071638852357864,
+            "feature_j_nn": 0.3491840362548828,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.0633622705498142
+          },
+          {
+            "group": "waterbird/water",
+            "n": 642,
+            "accuracy": 0.1526479750778816,
+            "loss": 0.8391510844230652,
+            "projected_feature_fisher": 0.9062844852788886,
+            "exact_projected_feature_fisher": 0.9062788751699479,
+            "feature_ridge_to_exact_gap": 5.610108940734548e-06,
+            "feature_j_tn": 0.21453940868377686,
+            "feature_j_nn": 2.8638193607330322,
+            "feature_audit_status": "ok",
+            "inverse_feature_loss": 1.103406276074791
+          }
+        ],
+        "ridge_exact_audit": {
+          "schema_version": 2,
+          "definition": "scalar held-out feature Schur audit",
+          "conditional_on_fitted_model": true,
+          "environment_weighting": "uniform",
+          "alpha": 0.95,
+          "eps": 1e-08,
+          "ridge": 0.001,
+          "sampling_audit": {
+            "method": "Bonferroni simultaneous Gaussian/Wald simulation of Fisher moments",
+            "replicates": 100000,
+            "confidence": 0.95,
+            "seed": 20260730,
+            "bonferroni_tail_probability": 0.00416666666666667,
+            "scope": "fixed fitted model and fixed evaluated environment set"
+          },
+          "environments": [
+            {
+              "j_tt": 0.9805306278634073,
+              "j_tn": 0.02822944317396699,
+              "j_nn": 0.3491840176144652,
+              "ridge_information": 0.9782549630077096,
+              "exact_information": 0.9782484459143121,
+              "operator_gap": 6.517093397495621e-06,
+              "eigenvalue_gap": 6.517093397495621e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0008898229823671868,
+                  3.5087894357680154e-07,
+                  -1.098889024688427e-33
+                ],
+                [
+                  3.5087894357680154e-07,
+                  0.00015154779173445594,
+                  3.37396399415997e-35
+                ],
+                [
+                  -1.098889024688427e-33,
+                  3.37396399415997e-35,
+                  4.4417720598501004e-33
+                ]
+              ],
+              "j_nn_lcb": 0.34918401761446505,
+              "ridge_information_lcb": 0.8979980080164832,
+              "exact_information_direct_lcb": 0.897982719798612,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 3.0155499980487393e-05,
+              "eigenvalue_gap_ucb": 3.0155499980487393e-05,
+              "eta": 0.08025695499122643,
+              "conservative_information": 0.8979678525165027
+            },
+            {
+              "j_tt": 0.9534214581091982,
+              "j_tn": -0.03931862165338109,
+              "j_nn": 2.8638194474331904,
+              "ridge_information": 0.9528818240983683,
+              "exact_information": 0.9528816356667927,
+              "operator_gap": 1.8843157556514e-07,
+              "eigenvalue_gap": 1.8843157556514e-07,
+              "status": "ok",
+              "reasons": [],
+              "n": 2255,
+              "effective_n": 2255.0,
+              "name": "landbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0008179552856785258,
+                  -4.3538634678668794e-05,
+                  -1.4708382924039052e-32
+                ],
+                [
+                  -4.3538634678668794e-05,
+                  0.001210683655423494,
+                  -2.258513737257964e-33
+                ],
+                [
+                  -1.4708382924039052e-32,
+                  -2.258513737257964e-33,
+                  1.2599375593592469e-30
+                ]
+              ],
+              "j_nn_lcb": 2.8638194474331873,
+              "ridge_information_lcb": 0.8764919717206796,
+              "exact_information_direct_lcb": 0.8764917820262512,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 2.072202731224218e-06,
+              "eigenvalue_gap_ucb": 2.072202731224218e-06,
+              "eta": 0.0763898523776887,
+              "conservative_information": 0.8764898995179484
+            },
+            {
+              "j_tt": 0.9433505035276123,
+              "j_tn": -0.032071635626038604,
+              "j_nn": 0.3491840176144649,
+              "ridge_information": 0.940413219813934,
+              "exact_information": 0.9404048079635471,
+              "operator_gap": 8.4118503869135e-06,
+              "eigenvalue_gap": 8.4118503869135e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/land",
+              "moment_covariance_of_mean": [
+                [
+                  0.0028633156167704238,
+                  -0.0001546127773181534,
+                  -4.1558051989200365e-33
+                ],
+                [
+                  -0.0001546127773181534,
+                  0.0005122844446625085,
+                  2.3795800414364315e-34
+                ],
+                [
+                  -4.1558051989200365e-33,
+                  2.3795800414364315e-34,
+                  1.2503822241126347e-32
+                ]
+              ],
+              "j_nn_lcb": 0.3491840176144646,
+              "ridge_information_lcb": 0.798089377147652,
+              "exact_information_direct_lcb": 0.7980880702621594,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 6.939511161195112e-05,
+              "eigenvalue_gap_ucb": 6.939511161195112e-05,
+              "eta": 0.14232384266628195,
+              "conservative_information": 0.7980199820360401
+            },
+            {
+              "j_tt": 0.922350781123826,
+              "j_tn": 0.21453940032050076,
+              "j_nn": 2.8638194474332357,
+              "ridge_information": 0.9062844442623115,
+              "exact_information": 0.9062788341541478,
+              "operator_gap": 5.610108163689453e-06,
+              "eigenvalue_gap": 5.610108163689453e-06,
+              "status": "ok",
+              "reasons": [],
+              "n": 642,
+              "effective_n": 641.9999999999999,
+              "name": "waterbird/water",
+              "moment_covariance_of_mean": [
+                [
+                  0.0026975690480989696,
+                  0.0007319216517972035,
+                  6.666547327740697e-33
+                ],
+                [
+                  0.0007319216517972035,
+                  0.004049015522695443,
+                  2.719992929012541e-33
+                ],
+                [
+                  6.666547327740697e-33,
+                  2.719992929012541e-33,
+                  9.968445136178207e-32
+                ]
+              ],
+              "j_nn_lcb": 2.863819447433235,
+              "ridge_information_lcb": 0.7717902974884832,
+              "exact_information_direct_lcb": 0.7717883052681835,
+              "gaussian_singular_fraction": 0.0,
+              "operator_gap_ucb": 1.8003527336546788e-05,
+              "eigenvalue_gap_ucb": 1.8003527336546788e-05,
+              "eta": 0.13449414677382832,
+              "conservative_information": 0.7717722939611467
+            }
+          ],
+          "aggregate": {
+            "min_nuisance_eigenvalue": 0.3491840176144649,
+            "min_nuisance_eigenvalue_lcb": 0.3491840176144646,
+            "max_operator_gap": 8.4118503869135e-06,
+            "max_eigenvalue_gap": 8.4118503869135e-06,
+            "max_operator_gap_ucb": 6.939511161195112e-05,
+            "max_eigenvalue_gap_ucb": 6.939511161195112e-05,
+            "ridge_certificate": 0.9062844542623115,
+            "exact_certificate": 0.9062788441541478,
+            "conservative_lower_certificate": 0.7717723039611467,
+            "certificate_gap": 5.610108163689453e-06,
+            "weakest_ridge_environment": "waterbird/water",
+            "weakest_exact_environment": "waterbird/water",
+            "weakest_conservative_environment": "waterbird/water",
+            "status": "audited",
+            "reasons": []
+          },
+          "ridge_sweep": [
+            {
+              "ridge": 0.0,
+              "certificate": 0.9062788441541478
+            },
+            {
+              "ridge": 1e-06,
+              "certificate": 0.9062788497662131
+            },
+            {
+              "ridge": 1e-05,
+              "certificate": 0.9062789002746232
+            },
+            {
+              "ridge": 0.0001,
+              "certificate": 0.9062794053412646
+            },
+            {
+              "ridge": 0.001,
+              "certificate": 0.9062844542623115
+            },
+            {
+              "ridge": 0.01,
+              "certificate": 0.9063347695428636
+            },
+            {
+              "ridge": 0.1,
+              "certificate": 0.9068211156134839
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

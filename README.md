@@ -1,0 +1,92 @@
+# Fisher-Glass Learning: Classification Bounds and Subpopulation Audits
+
+This is the **camera-ready-v1** numerical reproducibility release for the paper. The versioned artifact is [camera-ready-v1 on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v1); the [repository](https://github.com/E-zClap/fisher-glass-learning) contains the same code and retained numeric inputs. Use the versioned release when citing or reproducing the reported results.
+
+The final manuscript source is `tex/camera_ready_v2/main.tex`. The release includes experiment implementations, per-seed numeric records, compact reanalysis inputs, source/input hashes, and the historical reports for cohorts whose original outputs were not recovered. It excludes datasets, image previews, generated intervention images, feature caches, model weights, private machine paths, logs, and old manuscript/build backups.
+
+## Reproduce the retained numerical results
+
+From the repository root, in a Python environment with NumPy and SciPy:
+
+```shell
+python -m pip install -r requirements-replay.txt
+python scripts/reproduce_retained_tables.py
+python scripts/reproduce_w2_audit.py
+python reanalysis/flip_prediction/aggregate.py
+python experiments/prospective_nuisance_shift/make_report.py --out-dir artifacts/prospective_v2 --report build/reproduced_tables/prospective_v2_report.md
+```
+
+These commands need no datasets, weights, GPU, or server access. The first script checks the published SHA256 manifest, recomputes 60 matched selector decisions, 40 matrix/seed/group records, and 736 retained hidden-slice/group-free seed summaries, and compares the regenerated main tables with the retained CSVs. The W2 script checks 260 audit rows and 37 aggregate rows. The flip-prediction aggregation verifies all 15 seed/variant records against the archived result. Generated tables go under `build/reproduced_tables/`, except the flip-prediction exports, which are regenerated beside their inputs.
+
+To refit Table D.9's auxiliary logistic predictors from the original retained donor rows, use a separate environment with the recorded numerical library versions:
+
+```shell
+python -m pip install -r reanalysis/flip_prediction/requirements-refit.txt
+python reanalysis/flip_prediction/refit.py
+```
+
+This refit was checked against every archived metric, with maximum absolute difference `2.73e-12`. See [the detailed flip-prediction protocol](reanalysis/flip_prediction/README.md). It does not retrain the image classifier or score new images.
+
+## Manuscript-to-artifact map
+
+Table numbers refer to this manuscript version; semantic LaTeX labels are included where useful.
+
+| Manuscript result | Exact retained evidence | Reproduction route and limits |
+|---|---|---|
+| Prospective validation, intervention and confident-flip tables, Appendix D.2 (D.2–D.5) | `artifacts/prospective_v2/frozen_selection.json`, `runs/erm_lam0_seed22` through `seed26`, `shift_summary.json`; all 20 ERM/FG run records retained | `make_report.py` command above reconstructs the report. `experiments/prospective_nuisance_shift/evaluate_shift.py` is the original evaluation implementation. [Checkpoint identifiers](artifacts/checkpoint_identifiers.csv) give cohort, tag, seed, method, coefficient, full checkpoint SHA256 and frozen-selection hash. Checkpoints and intervention images are not distributed. |
+| Matched selectors, Table D.6 (`tab:d-selection-comparison`) | `reanalysis/matched_selectors/` plus the same per-seed selection/outcome JSONs | `scripts/reproduce_retained_tables.py` recomputes eligibility separately in each seed, applies all selectors to the same eligible set, and associates each selected group with its existing intervention outcome. |
+| Centering and predictive Fisher, Tables D.7–D.8 (`tab:d-matrix-sensitivity`, `tab:d-matrix-per-seed`) | `reanalysis/matrix_constructions/validation_inputs/erm_lam0_seed22.npz` through `seed26.npz`, full-precision CSV/JSON outputs and `source_provenance.json` | The same replay command recalculates uncentered, centered, unnormalized predictive-Fisher and normalized-weight matrices from exact retained coordinates and raw logits. Original input/checkpoint hashes remain in provenance. No checkpoint refitting or new intervention. |
+| Added-coordinate flip prediction, Table D.9 (`tab:d-flip-prediction`) | `reanalysis/flip_prediction/`: five original `flip_records.npz`, exact output JSON, source snapshots, paired per-seed changes, protocol and hashes | `aggregate.py` recreates reported changes; `refit.py` refits all 15 seed/variant comparisons. |
+| Hidden-slice discovery and paired selector contrasts, Appendix D.4 | `artifacts/hidden_slice_corrected_v2/aggregate.json`, `main_table.csv`, `paired_comparisons.csv`, `sensitivity.csv`, and per-seed `blind_test_results.json`, `posthoc.json`, `discovery.json` | The replay command recomputes retained seed-vector summaries and the main table. This is the **corrected v2** cohort, source archive `waterbirds_hidden_slice_v2_corrected_results.tar.gz`, SHA256 `427620ed2213c133fce6fca9ca07a02983dbfa70f20311abd7a6bbdcc2605463`. The older root-level `waterbirds_hidden_slice_v2_results_full.tar.gz` is excluded and must not be substituted. |
+| Constrained hidden-slice repair, Appendix E.3 (`tab:e-repair-performance`, `tab:e-repair-slices`) | Same corrected cohort, with `runs/seed_17` through `seed_21/repair.json`, selected-arm specifications and `aggregate.json` seed vectors | Same replay command. Fitted coefficient arrays were omitted; the retained records establish selected arms, no-op counts, protocol and numerical outcomes. Full gate/model recomputation requires new dataset/model preparation. |
+| Post hoc group-free coefficient selection, Appendix E.3 (`tab:e-groupfree-performance`, `tab:e-groupfree-information`) | `artifacts/group_free_v2/`: schema-v2 per-seed selection/blind/posthoc records, `aggregate.json`, `main_table.csv`, `frontier.csv` | Same replay command recreates the main and frontier tables. This is the version-2 post hoc cohort, not independent held-out confirmation. |
+| Prospective training comparison, Appendix E.3 | `artifacts/prospective_v2/` includes all candidate training histories, selected coefficients, ERM/FG outcomes and per-seed selections | Prospective report command above; `train_end_to_end.py`, `select_slice.py` and `evaluate_shift.py` implement fitting, validation selection and frozen evaluation. |
+| Fresh ridge/exact audits, Appendix B.4, including later frozen-training/end-to-end replications | `artifacts/w2_audit/`: diagnostic seed JSONs, `waterbirds_frozen_training.json`, `training_ridge_sensitivity/`, `end_to_end/`, and original `report/` | `scripts/reproduce_w2_audit.py` calls `experiments/make_ridge_exact_audit_report.py` on all 19 retained input files and verifies the reported numerical rows. These fresh W2 runs are a separate cohort from the original training summaries. |
+| Original frozen-feature training and end-to-end penalty frontier, Appendix E.2–E.3 (`tab:e-frozen-*`, `tab:e-frontier-*`) | `reports/fisher_glass_results_report.md`, Sections 5 and 7–8; manuscript numerical tables | Original per-seed output files and checkpoints were not recovered. No command can reconstruct those historical seed outputs from the reports. Current experiment scripts support fresh reruns; the separate W2 files must not be relabeled as the original cohort. |
+| Acquisition tables, Appendix E.5 (`tab:acquisition-budget`, `tab:acquisition-products`, `tab:acquisition-strength`) | `reports/waterbirds_tail_transverse_influence_report.md` and `reports/waterbirds_counterfactual_antidote_report.md`; retained descriptive acquisition reports | Only aggregate reports were retained. Per-seed acquisition JSON/CSV, selected indices, fitted coefficients and historical uncertainty are unavailable. `waterbirds_counterfactual_antidote.py` and `waterbirds_antidote_acquisition.py` support fresh reruns, not recovery of those missing outputs. |
+| Original synthetic and predefined-group diagnostic summaries, Appendix D.3/D.5 | `reports/fisher_glass_results_report.md`; current generator/diagnostic source | Original multiseed raw outputs were not recovered. Figure regeneration and fresh W2 diagnostics are distinguished from those historical summaries. |
+
+The prospective v1 development cohort (seeds 17–21, absolute projected-information selection) is retained separately under `artifacts/prospective_v1/`; it is not the primary prospective v2 cohort (seeds 22–26, projected/raw selection). Both checkpoint sets are identified in the checkpoint CSV.
+
+## Provenance and exact versions
+
+[ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) identifies every original source archive, its SHA256 and size, each included source member, and the published file SHA256. Original archive hashes identify historical provenance; the original tarballs are not distributed because they mix numeric results with images, logs, caches or fitted coefficients. The release distributes their curated numeric members in the directories above.
+
+Most numeric members are byte-identical to the originals. Six W2 JSON files had private dataset-root paths removed. Hidden-slice and group-free fitted weight/bias arrays were omitted. The manifest records every such transformation and preserves the SHA256 of the original member. Embedded original canonical artifact hashes remain historical identifiers, not checksums of the modified release files. Verify distributed files with:
+
+```shell
+python scripts/reproduce_retained_tables.py --verify-only
+```
+
+The full hidden-slice aggregator (`experiments/waterbirds_hidden_slice/aggregate.py --out-dir ...`) and group-free aggregator (`experiments/waterbirds_group_free_lambda/aggregate.py --out-dir ...`) are included for **fresh complete pipeline outputs**. They enforce original artifact/model/score integrity. Use the release replay script for the curated retained records, because this release deliberately omits the model and feature artifacts those full aggregators require.
+
+The compact matrix NPZs retain validation rows, labels/group IDs, original standardized coordinates, raw logits, temperature and global task scales. The full redundant feature/score caches are excluded. The flip NPZs retain the numeric donor-row records needed to refit the auxiliary prediction experiment. Neither analysis reconstructs coordinates from aggregate statistics.
+
+## Build the paper
+
+The compiled paper is `tex/camera_ready_v2/main.pdf`. With a LaTeX distribution and latexmk installed:
+
+```shell
+cd tex/camera_ready_v2
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+Editable TikZ/PGFPlots sources and their required data are under `figures/`. Each standalone figure can be rebuilt with `pdflatex` from that directory. The main document includes the funding and competing-interest declarations and the completed official NeurIPS checklist.
+
+## Run new experiments
+
+Install `requirements.txt` for the full implementations and obtain external data and model assets separately. A compatible CUDA-enabled PyTorch installation is needed for the GPU workflows. Individual pipeline READMEs describe their verified CLI options and input contracts:
+
+- [Prospective nuisance shift](experiments/prospective_nuisance_shift/README.md)
+- [Metadata-blind hidden-slice discovery and constrained repair](experiments/waterbirds_hidden_slice/README.md)
+- [Group-free coefficient selection](experiments/waterbirds_group_free_lambda/README.md)
+
+The source defaults are not a substitute for historical run settings; the retained per-run JSONs and manuscript protocols identify the reported settings. Fresh fitting can vary with software and hardware. The historically recorded prospective auxiliary environment was Python 3.9.25, NumPy 2.0.2, scikit-learn 1.6.1 and SciPy 1.13.1; the exact-source refit verification used Python 3.12.4 with those numerical package versions.
+
+## Statistical conventions and scope
+
+Prospective, matched-selector and matrix summaries retain the historical **nominal normal-approximation** interval `mean +/- 1.96 * sample_SD / sqrt(5)`. Corrected hidden-slice and group-free summaries use Student-t intervals across five paired seeds. Per-run cluster bootstrap and the nominal Gaussian/Wald ridge/exact audit address different uncertainty calculations. Acquisition report means have no recovered seed-level intervals. Seed intervals describe fitting/partition variability on a fixed benchmark, not five independent datasets.
+
+Historical reports preserve their original prose and can contain interpretations superseded by the final manuscript. In particular, matched validation accuracy/NLL selectors agree with the original prospective selector in all five seeds, within-slice centering reverses its selection, and the specified predictive-Fisher reanalysis preserves it. The release distinguishes those post hoc analyses from the original prospective selection.
+
+See [DATA_LICENSES.md](DATA_LICENSES.md) for external asset sources and rights status. No repository-wide software license has been assigned.

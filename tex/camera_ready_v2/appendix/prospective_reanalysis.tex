@@ -1,0 +1,61 @@
+% Exact frozen-coordinate reanalysis: reanalysis/matrix_constructions/.
+\paragraph{Centering and predictive-Fisher checks.}
+This post hoc reanalysis retains the five frozen checkpoints, validation coordinates $v_i=(z_i,b_i)^\top$, global scales, temperatures, original eligible sets, and existing intervention outcomes. No model or probe is refitted. Task coordinate $z$ retains training-logit normalization; nuisance coordinate $b$ retains the global validation normalization of the out-of-fold probe. Write $\langle\cdot\rangle_g=n_g^{-1}\sum_{i\in g}(\cdot)$ and compare
+\[
+J_g=\langle vv^\top\rangle_g,\qquad
+\Sigma_g=\langle(v-\mu_g)(v-\mu_g)^\top\rangle_g,\qquad
+\mu_g=\langle v\rangle_g.
+\]
+Centering uses divisor $n_g$ and does not rescale the coordinates. For the predictive check, specify the local Bernoulli model
+\[
+\operatorname{logit}p_{\theta,\xi}(x)=f_w(x)/\widehat T+\theta z(x)+\xi b(x),
+\qquad (\theta,\xi)=(0,0).
+\]
+Its likelihood score is $(Y-p(x))v(x)$, with conditional predictive mean zero even when $v$ has nonzero slice mean. The resulting predictive Fisher and common surviving fraction are
+\[
+I_g=\langle qvv^\top\rangle_g,\quad q=p(1-p),\qquad
+r_\rho(A)=1-\frac{A_{zb}^2}{A_{zz}(A_{bb}+\rho)},\quad \rho=10^{-3}.
+\]
+The perturbations are applied after temperature calibration, and only the declared background coordinate is profiled. The archived probability-weighted comparator divides weights by their within-group sum, giving $K_g=I_g/\bar q_g$, where $\bar q_g=\langle q\rangle_g$. Thus $r_\rho(K_g)=r_{\bar q_g\rho}(I_g)$: normalization preserves the unregularized fraction but changes the effective ridge when its numerical value is fixed. We reproduce the archived comparator separately from the predictive Fisher with fixed ridge.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Frozen-coordinate sensitivity within the original eligible set, evaluated separately in each seed. LL denotes landbird/land and WW waterbird/water. Fractions and controlled drops are means with nominal 95\% normal-approximation intervals ($\pm1.96$ standard errors) over five seeds; drops use the existing interventions and are in percentage points.}
+\label{tab:d-matrix-sensitivity}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Construction & LL fraction & WW fraction & Selected, seeds & Drop \\
+\midrule
+Uncentered $J_g$ & $0.590\pm0.027$ & $0.248\pm0.015$ & WW, 5/5 & $52.6\pm1.4$ \\
+Centered $\Sigma_g$ & $0.779\pm0.028$ & $0.855\pm0.032$ & LL, 5/5 & $26.7\pm1.8$ \\
+Predictive Fisher $I_g$ & $0.987\pm0.014$ & $0.273\pm0.016$ & WW, 5/5 & $52.6\pm1.4$ \\
+Normalized weights $K_g$ & $0.987\pm0.014$ & $0.269\pm0.016$ & WW, 5/5 & $52.6\pm1.4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Centering selects landbird/land in all five seeds, while predictive Fisher retains waterbird/water (Table~\ref{tab:d-matrix-sensitivity}). The original ranking therefore depends in part on slice means. For example, for waterbird/water in seed 22, $\mu_z^2=2.094$ and $\Sigma_{zz}=0.0636$, so most of the uncentered task moment is contributed by the squared mean. Table~\ref{tab:d-matrix-per-seed} records the moments and fractions; full-precision matrices, weights, per-seed selections, matched outcomes, and input hashes accompany the reproducible reanalysis.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Per-seed validation means, covariance entries, and fractions, using the original global scales. LL and WW are defined in Table~\ref{tab:d-matrix-sensitivity}. Values are rounded; $J_g=\Sigma_g+\mu_g\mu_g^\top$. The selected group minimizes the fraction within each seed's two eligible groups.}
+\label{tab:d-matrix-per-seed}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}rlrrrrrrrr@{}}
+\toprule
+Seed & Group & $\mu_z$ & $\mu_b$ & $\Sigma_{zz}$ & $\Sigma_{zb}$ & $\Sigma_{bb}$ & $r_\rho(J_g)$ & $r_\rho(\Sigma_g)$ & $r_\rho(I_g)$ \\
+\midrule
+22 & LL & $-0.412$ & $-0.840$ & 0.501 & 0.229 & 0.407 & 0.5570 & 0.7430 & 0.9817 \\
+22 & WW & 1.447 & 0.812 & 0.064 & 0.047 & 0.238 & 0.2291 & 0.8542 & 0.2587 \\
+23 & LL & $-0.433$ & $-0.841$ & 0.551 & 0.214 & 0.434 & 0.6048 & 0.8098 & 0.9920 \\
+23 & WW & 1.416 & 0.787 & 0.068 & 0.051 & 0.253 & 0.2494 & 0.8481 & 0.2729 \\
+24 & LL & $-0.419$ & $-0.838$ & 0.626 & 0.217 & 0.403 & 0.6356 & 0.8132 & 0.9620 \\
+24 & WW & 1.388 & 0.772 & 0.066 & 0.055 & 0.283 & 0.2755 & 0.8359 & 0.3032 \\
+25 & LL & $-0.420$ & $-0.822$ & 0.596 & 0.274 & 0.505 & 0.5803 & 0.7514 & 0.9998 \\
+25 & WW & 1.414 & 0.792 & 0.069 & 0.036 & 0.221 & 0.2392 & 0.9156 & 0.2571 \\
+26 & LL & $-0.431$ & $-0.841$ & 0.516 & 0.220 & 0.420 & 0.5716 & 0.7779 & 0.9998 \\
+26 & WW & 1.398 & 0.864 & 0.068 & 0.062 & 0.310 & 0.2460 & 0.8189 & 0.2732 \\
+\bottomrule
+\end{tabular}
+\end{table}

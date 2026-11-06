@@ -1,0 +1,3 @@
+# No datasets, neural-network weights, GPU or network access are needed for table replay.
+numpy>=1.24
+scipy>=1.10

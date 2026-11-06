@@ -1,0 +1,4 @@
+budget,tti_accuracy,tti_certificate,loss_accuracy,loss_certificate,tail_accuracy,tail_certificate
+1,4.52,0.0317,3.27,0.0603,0.62,0.0045
+2,6.85,0.0452,5.76,0.0581,2.80,0.0098
+5,7.94,0.0606,7.01,0.0630,3.58,0.0340

@@ -1,0 +1,6 @@
+seed,left,left_class,left_top_size,right,right_class,right_top_size,same_selected_class,score_correlation_within_shared_class,top_slice_intersection,top_slice_jaccard
+17,hidden_fisher,0,451,high_loss,0,451,True,-0.09354324300163339,2,0.0022222222222222222
+18,hidden_fisher,0,451,high_loss,0,451,True,-0.09014699292798678,1,0.0011098779134295228
+19,hidden_fisher,0,451,high_loss,1,129,False,,0,0.0
+20,hidden_fisher,0,451,high_loss,1,129,False,,0,0.0
+21,hidden_fisher,0,451,high_loss,0,451,True,-0.09446447407332861,0,0.0

@@ -1,0 +1,26 @@
+seed,selector,class_id,class_name,test_class_count,class_choice_rule,source_member,source_key
+17,"Fisher search, fixed CLIP direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json,arms.erm.fisher_selector.class_id
+17,High loss,0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json,arms.erm.high_loss_selector.class_id
+17,Random slice,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json,arms.erm.random_slice_baseline.class_id
+17,Constant class-conditional gate,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json,arms.erm.fisher_selector.class_id (inherited; aggregate.py::_uniform_slice_metrics)
+17,"Fisher search, random direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_17/blind_test_results.json,arms.erm.random_nuisance_selector.class_id
+18,"Fisher search, fixed CLIP direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json,arms.erm.fisher_selector.class_id
+18,High loss,0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json,arms.erm.high_loss_selector.class_id
+18,Random slice,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json,arms.erm.random_slice_baseline.class_id
+18,Constant class-conditional gate,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json,arms.erm.fisher_selector.class_id (inherited; aggregate.py::_uniform_slice_metrics)
+18,"Fisher search, random direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_18/blind_test_results.json,arms.erm.random_nuisance_selector.class_id
+19,"Fisher search, fixed CLIP direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json,arms.erm.fisher_selector.class_id
+19,High loss,1,waterbird,1284,independently selected,waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json,arms.erm.high_loss_selector.class_id
+19,Random slice,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json,arms.erm.random_slice_baseline.class_id
+19,Constant class-conditional gate,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json,arms.erm.fisher_selector.class_id (inherited; aggregate.py::_uniform_slice_metrics)
+19,"Fisher search, random direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_19/blind_test_results.json,arms.erm.random_nuisance_selector.class_id
+20,"Fisher search, fixed CLIP direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json,arms.erm.fisher_selector.class_id
+20,High loss,1,waterbird,1284,independently selected,waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json,arms.erm.high_loss_selector.class_id
+20,Random slice,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json,arms.erm.random_slice_baseline.class_id
+20,Constant class-conditional gate,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json,arms.erm.fisher_selector.class_id (inherited; aggregate.py::_uniform_slice_metrics)
+20,"Fisher search, random direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_20/blind_test_results.json,arms.erm.random_nuisance_selector.class_id
+21,"Fisher search, fixed CLIP direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json,arms.erm.fisher_selector.class_id
+21,High loss,0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json,arms.erm.high_loss_selector.class_id
+21,Random slice,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json,arms.erm.random_slice_baseline.class_id
+21,Constant class-conditional gate,0,landbird,4510,inherits CLIP Fisher class,waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json,arms.erm.fisher_selector.class_id (inherited; aggregate.py::_uniform_slice_metrics)
+21,"Fisher search, random direction",0,landbird,4510,independently selected,waterbirds_hidden_slice_v2/runs/seed_21/blind_test_results.json,arms.erm.random_nuisance_selector.class_id

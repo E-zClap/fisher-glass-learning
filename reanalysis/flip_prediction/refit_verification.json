@@ -1,0 +1,270 @@
+{
+  "scope": "Refit only auxiliary flip predictors from recovered original donor rows; no neural training or image scoring",
+  "versions": {
+    "python": "3.12.4",
+    "numpy": "2.0.2",
+    "scipy": "1.13.1",
+    "scikit-learn": "1.6.1"
+  },
+  "absolute_tolerance": 1e-08,
+  "relative_tolerance": 1e-08,
+  "all_archived_metrics_matched": true,
+  "largest_absolute_difference": [
+    2.7284841053187847e-12,
+    "erm_lam0_seed24",
+    "pooled_with_group",
+    "lr_statistic"
+  ],
+  "runs": [
+    {
+      "tag": "erm_lam0_seed22",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9506,
+          "n_species": 200,
+          "base_rate": 0.1845150431306543,
+          "heldout_loglik_per_row_baseline": -0.30968964472741567,
+          "heldout_loglik_per_row_with_fisher": -0.3089200478276136,
+          "heldout_loglik_gain_per_row": 0.0007695968998020509,
+          "auprc_baseline": 0.611444545035198,
+          "auprc_with_fisher": 0.6018826486047791,
+          "auroc_baseline": 0.884639841353333,
+          "auroc_with_fisher": 0.8874465617730017,
+          "lr_statistic": 29.47074573939335,
+          "lr_df": 2,
+          "lr_p_value": 3.985739162586331e-07
+        },
+        "pooled_no_group": {
+          "n_rows": 9506,
+          "n_species": 200,
+          "base_rate": 0.1845150431306543,
+          "heldout_loglik_per_row_baseline": -0.4498981786403255,
+          "heldout_loglik_per_row_with_fisher": -0.4361972514983684,
+          "heldout_loglik_gain_per_row": 0.013700927141957114,
+          "auprc_baseline": 0.3064524405067828,
+          "auprc_with_fisher": 0.35100462787310327,
+          "auroc_baseline": 0.6555471615520121,
+          "auroc_with_fisher": 0.7625724718261548,
+          "lr_statistic": 276.39830801052995,
+          "lr_df": 2,
+          "lr_p_value": 9.569076175042316e-61
+        },
+        "selected_slice": {
+          "n_rows": 1176,
+          "n_species": 46,
+          "base_rate": 0.5901360544217688,
+          "heldout_loglik_per_row_baseline": -0.619257639775833,
+          "heldout_loglik_per_row_with_fisher": -0.6072001244230539,
+          "heldout_loglik_gain_per_row": 0.012057515352779062,
+          "auprc_baseline": 0.743288751682243,
+          "auprc_with_fisher": 0.7714977595615471,
+          "auroc_baseline": 0.6982643165484831,
+          "auroc_with_fisher": 0.7133342102431034,
+          "lr_statistic": 29.529550975762277,
+          "lr_df": 2,
+          "lr_p_value": 3.8702540971987696e-07
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed23",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9454,
+          "n_species": 200,
+          "base_rate": 0.19631901840490798,
+          "heldout_loglik_per_row_baseline": -0.3316097808117537,
+          "heldout_loglik_per_row_with_fisher": -0.3305492325459972,
+          "heldout_loglik_gain_per_row": 0.0010605482657564346,
+          "auprc_baseline": 0.5964926914145174,
+          "auprc_with_fisher": 0.5894329181524826,
+          "auroc_baseline": 0.871272981319948,
+          "auroc_with_fisher": 0.8736224539579382,
+          "lr_statistic": 31.363264198324032,
+          "lr_df": 2,
+          "lr_p_value": 1.5472258478619727e-07
+        },
+        "pooled_no_group": {
+          "n_rows": 9454,
+          "n_species": 200,
+          "base_rate": 0.19631901840490798,
+          "heldout_loglik_per_row_baseline": -0.4780707538720479,
+          "heldout_loglik_per_row_with_fisher": -0.46001057852578714,
+          "heldout_loglik_gain_per_row": 0.018060175346260747,
+          "auprc_baseline": 0.2879553254346541,
+          "auprc_with_fisher": 0.31859942004808156,
+          "auroc_baseline": 0.6256214061549772,
+          "auroc_with_fisher": 0.7234022848571766,
+          "lr_statistic": 360.9282436677786,
+          "lr_df": 2,
+          "lr_p_value": 4.221120071598192e-79
+        },
+        "selected_slice": {
+          "n_rows": 1192,
+          "n_species": 46,
+          "base_rate": 0.5562080536912751,
+          "heldout_loglik_per_row_baseline": -0.6305827474404281,
+          "heldout_loglik_per_row_with_fisher": -0.6195662794484059,
+          "heldout_loglik_gain_per_row": 0.011016467992022194,
+          "auprc_baseline": 0.7324461157490129,
+          "auprc_with_fisher": 0.750564038600419,
+          "auroc_baseline": 0.6920496568556169,
+          "auroc_with_fisher": 0.705416178395162,
+          "lr_statistic": 31.457615367543667,
+          "lr_df": 2,
+          "lr_p_value": 1.4759295094114037e-07
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed24",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9384,
+          "n_species": 200,
+          "base_rate": 0.20193947144075022,
+          "heldout_loglik_per_row_baseline": -0.3312427284013303,
+          "heldout_loglik_per_row_with_fisher": -0.33115476223022067,
+          "heldout_loglik_gain_per_row": 8.79661711095955e-05,
+          "auprc_baseline": 0.6117528830837908,
+          "auprc_with_fisher": 0.6074347475288753,
+          "auroc_baseline": 0.8756801444229019,
+          "auroc_with_fisher": 0.8762530162972535,
+          "lr_statistic": 4.9856117559347695,
+          "lr_df": 2,
+          "lr_p_value": 0.08267765739470159
+        },
+        "pooled_no_group": {
+          "n_rows": 9384,
+          "n_species": 200,
+          "base_rate": 0.20193947144075022,
+          "heldout_loglik_per_row_baseline": -0.4828388402097688,
+          "heldout_loglik_per_row_with_fisher": -0.4656236969863126,
+          "heldout_loglik_gain_per_row": 0.017215143223456186,
+          "auprc_baseline": 0.29553556904235184,
+          "auprc_with_fisher": 0.3340074029460395,
+          "auroc_baseline": 0.6349354250790341,
+          "auroc_with_fisher": 0.7310806597257331,
+          "lr_statistic": 328.8999060107635,
+          "lr_df": 2,
+          "lr_p_value": 3.804458582745815e-72
+        },
+        "selected_slice": {
+          "n_rows": 1190,
+          "n_species": 46,
+          "base_rate": 0.5672268907563025,
+          "heldout_loglik_per_row_baseline": -0.6094805936049487,
+          "heldout_loglik_per_row_with_fisher": -0.5979875603116422,
+          "heldout_loglik_gain_per_row": 0.011493033293306455,
+          "auprc_baseline": 0.7477970161831567,
+          "auprc_with_fisher": 0.7723474600907585,
+          "auroc_baseline": 0.7221877022653722,
+          "auroc_with_fisher": 0.7334642215030565,
+          "lr_statistic": 38.01825217909959,
+          "lr_df": 2,
+          "lr_p_value": 5.551897423262214e-09
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed25",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9238,
+          "n_species": 200,
+          "base_rate": 0.2149815977484304,
+          "heldout_loglik_per_row_baseline": -0.353699651614346,
+          "heldout_loglik_per_row_with_fisher": -0.3533435383980797,
+          "heldout_loglik_gain_per_row": 0.0003561132162663139,
+          "auprc_baseline": 0.6061505120086642,
+          "auprc_with_fisher": 0.598574325300523,
+          "auroc_baseline": 0.8620152845983662,
+          "auroc_with_fisher": 0.8643827254099156,
+          "lr_statistic": 22.80238045344413,
+          "lr_df": 2,
+          "lr_p_value": 1.1182167604203456e-05
+        },
+        "pooled_no_group": {
+          "n_rows": 9238,
+          "n_species": 200,
+          "base_rate": 0.2149815977484304,
+          "heldout_loglik_per_row_baseline": -0.5016993257084255,
+          "heldout_loglik_per_row_with_fisher": -0.48982374998920813,
+          "heldout_loglik_gain_per_row": 0.011875575719217352,
+          "auprc_baseline": 0.3163870751894654,
+          "auprc_with_fisher": 0.3401356014195148,
+          "auroc_baseline": 0.6373112893397745,
+          "auroc_with_fisher": 0.722362244481364,
+          "lr_statistic": 272.257984713262,
+          "lr_df": 2,
+          "lr_p_value": 7.584549541828798e-60
+        },
+        "selected_slice": {
+          "n_rows": 1174,
+          "n_species": 46,
+          "base_rate": 0.5809199318568995,
+          "heldout_loglik_per_row_baseline": -0.6072122221995484,
+          "heldout_loglik_per_row_with_fisher": -0.5908909794835657,
+          "heldout_loglik_gain_per_row": 0.016321242715982603,
+          "auprc_baseline": 0.7566400603221632,
+          "auprc_with_fisher": 0.7817898792731305,
+          "auroc_baseline": 0.7177717378346804,
+          "auroc_with_fisher": 0.7381148224971986,
+          "lr_statistic": 43.74382891362711,
+          "lr_df": 2,
+          "lr_p_value": 3.170649552743161e-10
+        }
+      }
+    },
+    {
+      "tag": "erm_lam0_seed26",
+      "variants": {
+        "pooled_with_group": {
+          "n_rows": 9406,
+          "n_species": 200,
+          "base_rate": 0.19902190091431002,
+          "heldout_loglik_per_row_baseline": -0.3452776819381488,
+          "heldout_loglik_per_row_with_fisher": -0.3429841762696921,
+          "heldout_loglik_gain_per_row": 0.0022935056684566866,
+          "auprc_baseline": 0.5671739652666143,
+          "auprc_with_fisher": 0.5623183965824409,
+          "auroc_baseline": 0.8596535449551777,
+          "auroc_with_fisher": 0.8649342354545434,
+          "lr_statistic": 50.60923446657762,
+          "lr_df": 2,
+          "lr_p_value": 1.0241047226955957e-11
+        },
+        "pooled_no_group": {
+          "n_rows": 9406,
+          "n_species": 200,
+          "base_rate": 0.19902190091431002,
+          "heldout_loglik_per_row_baseline": -0.4846843346563976,
+          "heldout_loglik_per_row_with_fisher": -0.46335855705860857,
+          "heldout_loglik_gain_per_row": 0.021325777597789017,
+          "auprc_baseline": 0.2767874565198729,
+          "auprc_with_fisher": 0.31655045576946284,
+          "auroc_baseline": 0.6269856564769626,
+          "auroc_with_fisher": 0.7231795631881908,
+          "lr_statistic": 416.6765517554668,
+          "lr_df": 2,
+          "lr_p_value": 3.310064199184043e-91
+        },
+        "selected_slice": {
+          "n_rows": 1174,
+          "n_species": 46,
+          "base_rate": 0.5264054514480409,
+          "heldout_loglik_per_row_baseline": -0.6229494476804315,
+          "heldout_loglik_per_row_with_fisher": -0.6096688693743693,
+          "heldout_loglik_gain_per_row": 0.013280578306062303,
+          "auprc_baseline": 0.6944669493111155,
+          "auprc_with_fisher": 0.7267798615336916,
+          "auroc_baseline": 0.7100707783287932,
+          "auroc_with_fisher": 0.7248899909198854,
+          "lr_statistic": 34.51564553236085,
+          "lr_df": 2,
+          "lr_p_value": 3.199063074679602e-08
+        }
+      }
+    }
+  ]
+}

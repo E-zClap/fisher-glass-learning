@@ -1,0 +1,399 @@
+% Appendix D: supplied B--D draft checked against local implementation/results.
+% Numerical provenance and cohort distinctions: d_experiments_provenance.md.
+This appendix gives the protocols and numerical results underlying Section~\ref{sec:experiments}. It identifies the operational quantities, records selection and evaluation stages, and presents controls alongside the primary comparisons. Training, repair, and acquisition outcomes appear in Appendix~\ref{app:information-interventions}.
+
+\subsection{Experimental Quantities and Aggregation}
+\label{app:experimental-conventions}
+
+\paragraph{Operational quantities and data roles.}
+The experiments evaluate complementary information quantities (Table~\ref{tab:d-experiment-overview}). Prospective selection uses uncentered feature--Schur geometry. Hidden discovery uses temperature-calibrated predictive Fisher with same-class shrinkage $\eta=0.10$ during discovery and evaluation. Appendix~\ref{app:operational-matrices} defines the matrix constructions and normalization conventions.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Diagnostic experiments and replication units.}
+\label{tab:d-experiment-overview}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{.26\linewidth}p{.61\linewidth}c@{}}
+\toprule
+Experiment & Representation and reported quantity & Seeds \\
+\midrule
+Prospective Waterbirds & Fine-tuned MobileNetV3-small; background-probe surviving fraction & 22--26 \\
+Synthetic & Normalized task/nuisance coordinates; inverse-information tail and certificate & 11--15 \\
+Hidden Waterbirds slices & Frozen MobileNetV3-small and fixed CLIP direction; shrunken predictive information & 17--21 \\
+CivilComments groups & TF-IDF logistic classifier; feature--Schur certificate & 13--17 \\
+Waterbirds groups & Frozen MobileNetV3-small and logistic fitting; feature--Schur certificate & 17--21 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Real-data computations use ridge $\lambda_{\rid}=10^{-3}$ and stabilization $\varepsilon=10^{-8}$; synthetic computations use $\varepsilon=10^{-12}$. Tail certificates use $\alpha=0.95$. Primary task and probe coordinates in the predefined-group diagnostics use training-split normalization. Prospective normalization and the nuisance stress controls have the distinct rules specified below. Prospective and hidden-slice selection rules are frozen before final evaluation.
+
+\paragraph{Uncertainty and replication.}
+Prospective results and multi-seed synthetic summaries use nominal 95\% normal-approximation intervals $\bar z\pm1.96s_z/\sqrt{5}$. Hidden-slice results use two-sided Student-$t$ intervals across five paired seeds; paired contrasts first form within-seed differences. Each hidden-slice test evaluation also includes a bootstrap conditional on the frozen gate, with evaluation weights recomputed as described in Appendix~\ref{app:hidden-slice-discovery}.
+
+For the original predefined-group aggregates, each seeded run supplies one summary $z_j$, and the reported nominal 95\% normal-approximation interval half-width is
+\begin{equation}
+h=1.96\frac{s_z}{\sqrt n},\qquad
+s_z^2=\frac{1}{n-1}\sum_{j=1}^n(z_j-\bar z)^2,
+\qquad n=5.
+\end{equation}
+The seeds are 13--17 for CivilComments and 17--21 for Waterbirds. The implementation returns zero half-width for a single run. These are across-run normal approximations, not resampling intervals over examples or groups. The Waterbirds fitted classifier and primary feature diagnostic are deterministic after frozen-feature extraction and logistic fitting; repeated seeds vary the random controls and reserve anchor. Seed intervals summarize variation with benchmark splits fixed. In the prospective experiment the interval unit is the training seed, not a composite: the 23,176 composites share 5,794 source birds, with two donors per bird and arm.
+
+Appendix~\ref{app:information-interventions} distinguishes other conventions: frozen-feature training uses nominal normal-approximation intervals with 1.96 standard errors, the end-to-end sweep reports standard deviations, and the group-free coefficient comparison uses paired Student-$t$ intervals. Appendix~\ref{app:implemented-audit} separately reports the conditional Gaussian/Wald audit. Accuracy changes use percentage points; information changes retain their original units.
+
+\FloatBarrier
+\subsection{Prospective Nuisance Intervention}
+\label{app:prospective-intervention}
+
+\paragraph{Training and frozen selection.}
+ImageNet-initialized MobileNetV3-small models~\citep{russakovsky2015imagenet,howard2019searching} are fully fine-tuned on Waterbirds~\cite{sagawa2019distributionally} for 50 epochs, with batch size 32, learning rate $10^{-4}$, and bf16 computation on an H100, for seeds 22--26. Validation data fit a temperature and a cross-fitted logistic background probe on the pooled representation. Five probe folds are stratified by validation group; the class-balanced logistic fit allows 3,000 iterations. Features are standardized on validation data. Validation nuisance scores are out of fold and normalized using validation moments; test scores use the full-validation probe and are separately normalized using test moments. Task-logit normalization uses training moments. Test normalization does not feed slice selection. Define
+\begin{equation}
+\begin{aligned}
+\mathcal G_{\mathrm{eligible}}=\{g:\;&\operatorname{Acc}_{\mathrm{val}}(g)\ge\operatorname{Acc}_{\mathrm{val}},\\
+&\operatorname{NLL}_{\mathrm{val}}(g)\le\operatorname{median}_{h}\operatorname{NLL}_{\mathrm{val}}(h)\},\\
+g^\star&\in\underset{g\in\mathcal G_{\mathrm{eligible}}}{\arg\min}
+\frac{\lambda_{\min}(\widehat F_g^{\rid})}{\widehat J_{TT,g}}.
+\end{aligned}
+\label{eq:d-prospective-selection}
+\end{equation}
+Temperature scaling~\citep{guo2017calibration} is fitted once per checkpoint on the full validation split of $n_v$ observations by minimizing mean binary NLL:
+\begin{equation}
+\begin{aligned}
+\widehat T&=\arg\min_{T\in\mathcal T}\frac{1}{n_v}\sum_{i=1}^{n_v}
+\loss\bigl(f_w(x_i)/T,y_i\bigr),\\
+\mathcal T&=\left\{\exp\!\left[\log(0.05)+\frac{j}{399}\log(400)\right]:j=0,\ldots,399\right\}.
+\end{aligned}
+\end{equation}
+Here $f_w$ is the binary logit and $\loss$ is binary cross-entropy. The implementation clips sigmoid arguments to $[-60,60]$ and logarithm arguments below at $10^{-12}$. It evaluates all 400 logarithmically spaced temperatures in $[0.05,20]$ and takes the first minimum, so an exact tie favors the smaller temperature. The fitted temperature supplies calibrated probabilities and NLLs; it is frozen before held-out intervention scoring. Eligibility and Table~\ref{tab:d-validation-performance} use uncalibrated NLL; calibrated NLL is stored separately.
+
+Checkpoint hashes, temperature, probe coefficients, slice definition, and audit constants are recorded and hashed before intervention scoring. Evaluation aborts if a checkpoint differs from its recorded value. Tables~\ref{tab:d-validation-performance} and~\ref{tab:d-validation-information} show validation statistics. Landbird/land and waterbird/water pass the filter; waterbird/water is selected in every seed.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Validation performance and eligibility. Means $\pm$ nominal 95\% normal-approximation interval half-widths over seeds 22--26; accuracy is a fraction.}
+\label{tab:d-validation-performance}
+\begin{tabular}{@{}lrccc@{}}
+\toprule
+Group & $n$ & Accuracy & NLL & Eligible \\
+\midrule
+Landbird/land & 467 & $0.990\pm0.005$ & $0.038\pm0.016$ & Yes \\
+Landbird/water & 466 & $0.703\pm0.019$ & $1.670\pm0.156$ & No \\
+Waterbird/land & 133 & $0.390\pm0.021$ & $7.718\pm0.800$ & No \\
+Waterbird/water & 133 & $0.920\pm0.013$ & $0.638\pm0.038$ & Yes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Validation information quantities from uncentered feature moments; the same aggregation as Table~\ref{tab:d-validation-performance}.}
+\label{tab:d-validation-information}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Group & Raw information & Projected information & Surviving fraction \\
+\midrule
+Landbird/land & $0.737\pm0.046$ & $0.436\pm0.045$ & $0.590\pm0.027$ \\
+Landbird/water & $0.794\pm0.032$ & $0.289\pm0.014$ & $0.365\pm0.026$ \\
+Waterbird/land & $0.973\pm0.033$ & $0.764\pm0.031$ & $0.786\pm0.036$ \\
+Waterbird/water & $2.063\pm0.054$ & $0.511\pm0.021$ & $0.248\pm0.015$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Intervention construction.}
+Waterbirds images combine CUB birds~\cite{wah2011cub} and Places backgrounds~\cite{zhou2018places} under soft CUB mattes. For each held-out bird, its own background is recovered verbatim outside the dilated foreground mask and Telea inpainting~\cite{telea2004image} is used inside it. The extracted bird layer is recomposed onto a donor background of the same or opposite type. The same-type arm undergoes the same recomposition and supplies the artifact control. Inpainting uses radius 5 and mask dilation 2. Donors are training images with foreground fraction at most $0.08$. For each draw the deterministic candidate sequence considers at most four donors, taking the first with visibly inpainted area at most $0.03$, or the least-inpainted of four if none qualifies.
+
+Two donors per bird and arm produce 23,176 composites from 5,794 held-out birds. Visibly inpainted area has mean $4.13\%$, 95th percentile $8.45\%$, and maximum $20.37\%$; arm means are $4.13\%$ and $4.12\%$. Both arms use the same extracted foreground layer, matte, and label. Fully opaque foreground pixels are unchanged before JPEG encoding; soft-edge mixtures change with the background. Composites are stored as JPEG at quality 95 with chroma subsampling disabled. All four groups are generated, and both arms evaluate the same source birds.
+
+\paragraph{Held-out outcomes and confidence-conditioned flips.}
+The controlled drop is same-type minus opposite-type accuracy (Table~\ref{tab:d-intervention-outcomes}). Correctness is averaged over two donor draws per bird before averaging over birds. Among originally correct predictions in the selected slice, $56.4\%$ flip under opposite-type backgrounds versus $3.3\%$ under the same-type control. Within the most confident half of correct predictions, the rates are $41.8\%$ and $0.7\%$. Confidence is calibrated true-label probability; the half-sample rule uses the within-slice median among originally correct predictions and includes ties. The fixed threshold $p\ge0.9$ selects none on this slice. Table~\ref{tab:d-confident-flips} gives all-group results.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Held-out intervention outcomes. Accuracies are seed means in percent. Controlled drops are percentage points with nominal 95\% normal-approximation intervals over seeds 22--26.}
+\label{tab:d-intervention-outcomes}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrcccc@{}}
+\toprule
+Group & Birds & Original & Same type & Opposite type & Controlled drop \\
+\midrule
+Landbird/land & 2,255 & 98.9 & 99.3 & 72.6 & $26.7\pm1.8$ \\
+Landbird/water & 2,255 & 71.3 & 72.3 & 99.2 & $-26.9\pm2.0$ \\
+Waterbird/land & 642 & 42.3 & 40.6 & 92.3 & $-51.7\pm2.0$ \\
+\textbf{Waterbird/water} & 642 & \textbf{92.0} & \textbf{93.2} & \textbf{40.6} & $\mathbf{52.6\pm1.4}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Opposite-type flip rates among originally correct predictions. Rates are seed means in percent; counts are reported mean confident-half counts.}
+\label{tab:d-confident-flips}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Group & \shortstack{All originally\\correct} & \shortstack{Confident\\half} & \shortstack{Confident-half\\count} \\
+\midrule
+Landbird/land & 26.8 & 14.8 & 1,122 \\
+Landbird/water & 0.2 & 0.1 & 805 \\
+Waterbird/land & 1.2 & 0.3 & 136 \\
+Waterbird/water & 56.4 & 41.8 & 299 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Selection comparisons.}
+Table~\ref{tab:d-selection-comparison} compares selectors within their stated candidate sets. Reapplying the original eligibility rule to the archived validation records leaves landbird/land and waterbird/water in each seed. Within this set, minimum validation accuracy and maximum uncalibrated validation NLL are evaluated separately and agree with the original surviving-fraction selector in all five seeds. The all-group comparisons answer a different selection question. Landbird/water determines the model-level certificate.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Selection comparisons. Eligibility and selection are evaluated separately within each training seed. ``Eligible'' uses Equation~\eqref{eq:d-prospective-selection}; drops are seed means in percentage points.}
+\label{tab:d-selection-comparison}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{.39\linewidth}p{.13\linewidth}p{.30\linewidth}r@{}}
+\toprule
+Statistic & Candidates & Selected group, seeds & Drop \\
+\midrule
+Minimum raw task information & Eligible & Landbird/land, 5/5 & 26.7 \\
+Minimum absolute projected information & Eligible & Landbird/land, 5/5 & 26.7 \\
+Minimum surviving fraction & Eligible & Waterbird/water, 5/5 & 52.6 \\
+Minimum validation accuracy or maximum validation NLL & Eligible & Waterbird/water, 5/5 & 52.6 \\
+Minimum normalized-weight fraction & Eligible & Waterbird/water, 5/5 & 52.6 \\
+Maximum NLL or minimum accuracy & All four & Waterbird/land, 5/5 & $-51.7$ \\
+Group determining $I_{0.95}^{\FG}$ & All four & Landbird/water, 5/5 & $-26.9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\input{appendix/prospective_reanalysis.tex}
+
+\paragraph{Individual flip prediction.}
+We predict whether an originally correct prediction flips under opposite-type intervention, retaining two donor rows per bird. The baseline uses uncalibrated NLL, calibrated true-label confidence, absolute raw logit (margin), and standardized task logit $z$; the augmented design adds $\beta_g b$ and $|z-\beta_g b|$, where $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ is frozen from the validation uncentered block. The auxiliary predictor is logistic regression with intercept and $\ell_2$ penalty (scikit-learn 1.6.1: $C=1$, L-BFGS, tolerance $10^{-4}$, at most 5,000 iterations, random state 0, no class weighting). Five nonshuffled CUB-species \texttt{GroupKFold} folds keep each species and both donor rows together, using identical folds for both predictors. Every auxiliary design column, including group indicators when present, is centered and scaled using only training-fold means and population standard deviations; standard deviations below $10^{-9}$ are replaced by one. The fixed upstream $z,b$ normalization is as specified above. There is no hyperparameter tuning or inner cross-validation. For seed $s$, with $N_s$ donor rows, flip indicators $y_{si}$, and out-of-fold probabilities $q^{A}_{si},q^{B}_{si}$ for augmented and baseline predictors, define
+\begin{equation}
+\begin{aligned}
+G_s&=\frac{1}{N_s}\sum_{i=1}^{N_s}
+\bigl[\operatorname{LL}(y_{si},q^{A}_{si})-\operatorname{LL}(y_{si},q^{B}_{si})\bigr],\\
+\operatorname{LL}(y,q)&=y\log q+(1-y)\log(1-q).
+\end{aligned}
+\label{eq:d-flip-loglik-gain}
+\end{equation}
+Probabilities are clipped to $[10^{-12},1-10^{-12}]$; $G_s$ is a natural-log gain in nats per donor row. Predictions from all five held-out folds are pooled within each seed before computing log likelihood, average precision (AUPRC), and AUROC. Table~\ref{tab:d-flip-prediction} averages within-seed paired changes equally over seeds 22--26; counts and flip rates are also seed means. The added coordinates improve prediction across groups without indicators and within the selected slice. With group indicators, AUPRC changes by $-0.007$ and AUROC by $+0.003$. This comparison measures the incremental predictive value of the nuisance-related coordinates; attribution to the scalar information statistic remains unresolved. Recovered inputs, original code, paired seed results, and the executable \path{refit.py} and \path{aggregate.py} commands are provided under \path{reanalysis/flip_prediction/}.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Incremental flip prediction. Parentheses count seeds with improvement; changes are paired within seed.}
+\label{tab:d-flip-prediction}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{.24\linewidth}rrccc@{}}
+\toprule
+Analysis & Rows & \shortstack{Flip\\rate} & \shortstack{Log-likelihood\\gain} & $\Delta$AUPRC & $\Delta$AUROC \\
+\midrule
+All groups, no indicators & 9,398 & 0.199 & $+0.016$ & $+0.035$ (5/5) & $+0.096$ (5/5) \\
+All groups, with indicators & 9,398 & 0.199 & $+0.001$ & $-0.007$ (0/5) & $+0.003$ (5/5) \\
+Selected slice & 1,181 & 0.564 & $+0.013$ & $+0.026$ (5/5) & $+0.015$ (5/5) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Development and run history.}
+The surviving-fraction rule was adopted after a pilot on seeds 17--21. Its absolute-information rule selected landbird/land, whose accuracy changed from $99.2\%$ under same-type intervention to $70.0\%$ under opposite-type intervention. Among originally correct predictions with calibrated confidence $p\ge0.9$, flip rates were $22.2\%$ and $0.3\%$ for opposite-type and control arms.
+
+The revised rule was frozen for newly trained seeds 22--26 on the same benchmark. Documented reruns with the same code, seeds, and rules give a pilot drop of $29.2$ points versus the original $28.9$, and a subsequent-run drop of $52.6$ versus $52.7$ points. The latter opposite-type accuracies are $40.6\%$ and $40.3\%$. Tables here consistently use the current rerun. The experiment measures sensitivity along the background attribute encoded by the probe. Figure~\ref{fig:prospective-controls} assembles selection and outcomes. The Fisher-Glass training arm uses the same construction; Appendix~\ref{app:extended-training} reports its coefficient selection and behavioral outcomes.
+
+\FloatBarrier
+\subsection{Synthetic Classification and Tail Checks}
+\label{app:synthetic-checks}
+
+\paragraph{Generator and measured quantities.}
+For each environment draw $U_e\sim\operatorname{Uniform}(0,1)$ and set $\delta_e=\delta_{\max}U_e^{1/\gamma}$. Conditional on $e$, each observation draws independent standard normal $s$ and $r$, defines task coordinate $z=s+\delta_e r$ and label $Y=\mathbf1\{z>0\}$, and is scored by nuisance-only logit $4s$. Thus
+\begin{equation}
+\Pr(\delta_e<t)=\left(\frac{t}{\delta_{\max}}\right)^\gamma
+\quad(0\le t\le\delta_{\max}),\qquad
+J_{TT,e}=1+\delta_e^2,\qquad F_e^0=\delta_e^2.
+\label{eq:d-synthetic-generator}
+\end{equation}
+The Gaussian coordinates give population second moments exactly; classifier loss and accuracy use 256 independent observations per environment. The reported $\gamma=1$ runs use $\delta_{\max}=0.35$ and 300,000 environments. Seeds 11--15 give Table~\ref{tab:d-synthetic-summary}. The exponent is fitted by log-survival regression over the largest 5\% of inverse-information values. Empirical CVaR averages values at or above the empirical $\alpha$-quantile.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Synthetic summaries over seeds 11--15. Means $\pm$ nominal 95\% normal-approximation interval half-widths; zero half-widths reflect reported rounding.}
+\label{tab:d-synthetic-summary}
+\begin{tabular}{@{}lc@{}}
+\toprule
+Quantity & Estimate \\
+\midrule
+Mean accuracy & $94.54\pm0.00\%$ \\
+Fifth-percentile environment accuracy & $88.67\pm0.00\%$ \\
+Loss-$\CVaR_{0.95}$ & $0.262\pm0.000$ \\
+$I_{0.95}^{\FG}$ & $(1.22\pm0.53)\times10^{-8}$ \\
+Inverse-information exponent $\widehat\beta$ & $0.498\pm0.003$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:geometry-tails} regenerates the initial environment draw from documented seed 11. It uses $\delta_e\sim\operatorname{Uniform}(0,0.35)$ and $L_e=(\delta_e^2+10^{-12})^{-1}$. This is a regeneration from the documented generator, not recovered raw output. Its survival curve and the five-seed exponent summarize different replication levels.
+
+\paragraph{Structural comparisons.}
+Table~\ref{tab:d-structural-comparisons} separates the reported single-seed mass sweep from the five-seed independent-branch experiment. These numerically check the geometric tail law in Theorem~\ref{thm:inverse-information-geometry} and the scalar portfolio law of \citet{mansouri_arai_2026_fisher_glasses}, respectively. For $K$ branches, independent draws $\delta_{e,1},\ldots,\delta_{e,K}$ give projected information $K^{-1}\sum_{j=1}^K\delta_{e,j}^2$. Equal positive weights change the tail constant but not the exponent. The mass sweep follows $\beta=\gamma/2$; at $\gamma=1$, independent branches follow $\beta=K/2$.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Structural tail comparisons. Mass-sweep estimates are reported single-seed values; branch estimates are five-seed means $\pm$ nominal 95\% normal-approximation interval half-widths.}
+\label{tab:d-structural-comparisons}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Construction & Setting & Predicted $\beta$ & Estimated $\beta$ \\
+\midrule
+Mass near the null & $\gamma=1$ & 0.5 & 0.509 \\
+Mass near the null & $\gamma=2$ & 1 & 0.985 \\
+Mass near the null & $\gamma=4$ & 2 & 2.001 \\
+Independent branches & $K=1$ & 0.5 & $0.499\pm0.003$ \\
+Independent branches & $K=2$ & 1 & $1.000\pm0.009$ \\
+Independent branches & $K=3$ & 1.5 & $1.508\pm0.015$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The reserve experiment checks the Fisher-reserve principle of \citet{mansouri_arai_2026_fisher_glasses}. An anchor with residual amplitude $\delta_0=0.5$ supplies information $\rho_0=0.25$. Reserve mass $r=0.05$ produces mixed information $(1-r)\delta_e^2+r\rho_0$, floor $r\rho_0=0.0125$, and measured certificate $0.01260\pm0.000001$ across five seeds. Figure~\ref{fig:structural-checks} displays both exponent comparisons and this evaluated point; the reserve line is the analytic floor. Appendix~\ref{app:information-reserves} gives the guarantee.
+
+\FloatBarrier
+\subsection{Hidden-Slice Discovery Results}
+\label{app:discovery-results}
+
+\paragraph{Information available to discovery.}
+The blind procedure receives images, task labels, official split membership, frozen ImageNet MobileNetV3-small features~\cite{howard2019searching}, and a linear head trained on the official training split. Its nuisance coordinate is the image cosine score along a fixed CLIP ViT-B/32~\cite{radford2021learning} water-background-minus-land-background text direction from a predeclared prompt ensemble. Background and four-way group annotations remain sealed until all seeds complete certification, then enter post hoc analysis.
+
+Appendix~\ref{app:hidden-slice-discovery} specifies class-conditional gates, support constraints, shrinkage, and five-fold cross-fitting. The final gate is refitted on full validation data, frozen, and applied to the untouched test split for seeds 17--21. The gate is fixed, while the prescribed admissibility transformation of its weights is recomputed on each evaluation sample; Appendix~\ref{app:hidden-slice-discovery} distinguishes this from a simple fixed-gate ratio.
+
+{\raggedright
+The numerical cohort comes from \path{waterbirds_hidden_slice_v2_corrected_results.tar.gz}. The public release provides its numerical records under \path{artifacts/hidden_slice_corrected_v2/}, with original archive/member hashes in \path{ARTIFACT_MANIFEST.json}. The retained \path{main_table.csv}, \path{aggregate.json}, and per-seed records support the tables below. This is the corrected v2 cohort; the older \path{waterbirds_hidden_slice_v2_results_full.tar.gz} contains different results and is excluded from the release.
+\par}
+
+\paragraph{Reported slice metrics.}
+Accuracy, uncalibrated NLL, and metadata composition use normalized support-corrected membership weights on the selected task class, without the same-class pooling used for information. The primary five CLIP gates need no support correction, so those weights equal normalized raw membership weights there. The high-loss and random selectors have the same target within-class discovery mass $0.10$; held-out gate mass can drift. Appendix~\ref{app:reported-slice-metrics} defines these conventions for each control and gives the raw-membership top-count Jaccard rule, its treatment of ties, and the separate fold-overlap statistic.
+
+\paragraph{Selector comparisons.}
+All five selectors use the same fitted classifiers, with average accuracy $76.3\pm0.7\%$ and post hoc oracle worst-group accuracy $57.3\pm1.3\%$. The CLIP search finds a slice with $98.8\%$ accuracy and Jaccard overlap $0.001$ with the high-loss slice. Table~\ref{tab:d-hidden-selectors} reports the information/loss comparison; Table~\ref{tab:d-hidden-contrasts} gives paired contrasts.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Held-out hidden-slice selectors. Means $\pm$ 95\% Student-$t$ interval half-widths over five paired seeds; predictive information retains calibration and same-class shrinkage $\eta=0.10$.}
+\label{tab:d-hidden-selectors}
+\begin{tabular}{@{}p{.53\linewidth}cc@{}}
+\toprule
+Selector & \shortstack{Predictive\\projected information} & Slice NLL \\
+\midrule
+Fisher search, fixed CLIP direction & $0.005\pm0.001$ & $0.031\pm0.017$ \\
+High loss, same target within-class mass & $0.019\pm0.006$ & $5.779\pm0.496$ \\
+Random, same target within-class mass & $0.013\pm0.001$ & $1.025\pm0.059$ \\
+Constant class-conditional gate & $0.013\pm0.001$ & $1.027\pm0.049$ \\
+Fisher search, random direction & $0.006\pm0.001$ & $0.031\pm0.015$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{CLIP-direction Fisher-search information minus the comparator. Negative values indicate lower information; intervals are paired 95\% Student-$t$ intervals.}
+\label{tab:d-hidden-contrasts}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Information & Comparison & Difference & 95\% interval \\
+\midrule
+Predictive & High-loss slice & $-0.014$ & $[-0.020,-0.008]$ \\
+Predictive & Random slice & $-0.008$ & $[-0.009,-0.007]$ \\
+Predictive & Constant gate & $-0.008$ & $[-0.009,-0.007]$ \\
+Predictive & Random direction & $-0.0004$ & $[-0.0015,0.0007]$ \\
+Unweighted feature & High-loss slice & $-0.034$ & $[-0.106,0.039]$ \\
+Centered unweighted & High-loss slice & $-0.071$ & $[-0.166,0.024]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The CLIP Fisher, random-direction Fisher, random-slice, and constant-gate selectors use landbirds in all five seeds. High-loss selection uses landbirds in seeds 17, 18, and 21, and waterbirds in seeds 19 and 20. The latter two comparisons have zero Jaccard overlap with the CLIP slice by construction; the three same-class overlaps are $0.00222$, $0.00111$, and $0$. The mean $0.000666$ (reported as $0.001$) therefore combines class-selection differences and within-class population differences.
+
+Predictive information is lower than for high-loss, random, and constant-gate selection. The unweighted and centered-unweighted rows reevaluate the frozen gates selected by the predictive-Fisher and high-loss procedures; they do not rediscover gates under alternative matrix objectives. The random-direction contrast and both feature-geometry intervals include zero. Figure~\ref{fig:discovery-controls} displays these comparisons on separate scales.
+
+\paragraph{Support, stability, and sensitivity.}
+Gate-score correlation and top-slice overlap are evaluated on the common same-class training-calibration reference set. Across validation folds, their values are $0.419\,[0.353,0.485]$ and $0.258\,[0.225,0.291]$, respectively. Held-out effective sample size is $414\,[383,445]$. Reported mass $0.083\,[0.077,0.089]$ is mean raw sigmoid membership \emph{within the selected task class}, against target $0.10$; it is not the fraction of the full test set. Effective sample size uses normalized admissible weights. The primary CLIP gate selects the landbird class in all seeds, containing 4,510 test examples.
+
+The sensitivity sweeps use validation cross-fitting, not the final test evaluation. On mass grid $\{0.05,0.10,0.20\}$, Fisher-selector information ranges from $0.004$ to $0.005$, versus $0.012$--$0.027$ for high-loss selection. On shrinkage grid $\{0.05,0.10,0.20\}$, its information ranges from $0.004$ to $0.006$.
+
+Post-certification metadata identify the CLIP slice as $97.0\%$ landbird/land, the random-direction slice as $94.4\%$ landbird/land, and the high-loss slice as $58.4\%$ landbird/water. CLIP-slice predictive information is below the weakest predefined group's in every seed. An oracle sensitivity analysis using a metadata-trained background probe after blind freeze gives projected information $0.003\pm0.000$, NLL $0.009\pm0.004$, and $99.1\%$ landbird/land composition. The information half-width rounds to zero at the shown precision. These comparisons locate the population and quantify nuisance-coordinate sensitivity; matched-continuation and repair results appear in Appendix~\ref{app:extended-training}.
+
+\FloatBarrier
+\subsection{Predefined-Group Diagnostics}
+\label{app:predefined-diagnostics}
+
+\paragraph{Models and fitting.}
+CivilComments-WILDS~\citep{borkan2019nuanced,koh2021wilds} uses TF-IDF unigram/bigram features (50,000 maximum features, minimum document frequency 5, sublinear term frequency) and class-balanced stochastic-gradient logistic fitting with $\ell_2$ penalty coefficient $10^{-5}$, at most 50 passes, and tolerance $10^{-3}$. A toxicity model supplies the task score; an identity-any probe supplies the nuisance score. Identity-by-label groups with fewer than 100 examples are excluded. The single run uses seed 13; the aggregate uses seeds 13--17. The diagnostic fits log survival over the largest 50\% of group inverse-information values, requiring at least eight groups and four fitted tail points.
+
+Waterbirds uses the Waterbirds loader supplied by the WILDS package~\citep{koh2021wilds}, frozen ImageNet MobileNetV3-small features~\cite{howard2019searching}, extraction batch size 64, and class-balanced logistic fitting by L-BFGS with at most 1,000 iterations for task and background models. It reports four group information values directly; no tail exponent is fitted to four groups. The classifier and primary diagnostic remain fixed across repeated seeds, while random controls and the reserve anchor vary. Primary task/probe scores and metadata nuisance scores use training-moment standardization.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Original predefined-group diagnostics. Means $\pm$ nominal 95\% normal-approximation interval half-widths $1.96s_z/\sqrt5$ over seeded runs; Waterbirds zero half-widths reflect its fixed-model protocol. These summaries are separate from fresh audit replications in Appendix~\ref{app:implemented-audit}.}
+\label{tab:d-predefined-diagnostics}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Dataset & \shortstack{Average\\accuracy (\%)} & \shortstack{Worst-group\\accuracy (\%)} & \shortstack{Loss-\\$\CVaR_{0.95}$} & $I_{0.95}^{\FG}$ \\
+\midrule
+CivilComments & $86.10\pm0.22$ & $43.75\pm0.64$ & $0.998\pm0.012$ & $0.500\pm0.001$ \\
+Waterbirds & $77.11\pm0.00$ & $56.54\pm0.00$ & $1.741\pm0.000$ & $0.165\pm0.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the fixed CivilComments diagnostic, the weakest-information group is \texttt{muslim}/$y=0$ with $60.1\%$ accuracy, while \texttt{black}/$y=0$ has the lowest accuracy, $44.0\%$. For Waterbirds, landbird/land is weakest in information with $97.3\%$ accuracy; waterbird/land has lowest accuracy, $56.5\%$. Its reported inverse-information 95th percentile is $5.90$. Information and accuracy rankings identify different populations in both datasets.
+
+\paragraph{Nuisance-specification sensitivity.}
+Table~\ref{tab:d-nuisance-sensitivity} holds each fitted classifier and its groups fixed while varying the nuisance coordinate. The reported robust family is the prespecified semantic family $\mathcal B_{\mathrm{sem}}=\{b_{\mathrm{meta}},b_{\mathrm{probe}}\}$: the standardized binary \texttt{identity\_any} annotation and its fitted identity probe on CivilComments, or the standardized background annotation and its fitted background probe on Waterbirds. Both probes are trained only on the official training split, without cross-fitting, with the fitting settings above. The family minimum is $0.499$ on CivilComments and $0.165$ on Waterbirds. Remaining rows are stress controls. Table~\ref{tab:d-nuisance-evidence} records the evidence and the checks not performed; membership in this family does not assert passage of a formal task-preservation admission test.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Documented specification procedure for the predefined-group nuisance family.}
+\label{tab:d-nuisance-evidence}
+\begin{tabular}{@{}p{.22\linewidth}p{.73\linewidth}@{}}
+\toprule
+Check & Evidence and status \\
+\midrule
+Semantic relevance & Metadata directly names identity presence or background; supervised probes fit those annotations. No held-out relevance threshold selects family members. \\
+Task preservation & No anchor-distribution preservation statistic, acceptance tolerance, or pass/fail outcome is documented. \\
+Fold stability & No fold-based admission screen is performed for these two-member diagnostic families. Hidden-gate fold stability in Appendix~\ref{app:discovery-results} is a separate analysis. \\
+Conditioning & A $10^{-3}$ nuisance ridge is used; no nuisance-block conditioning threshold admits or rejects a specification. Fresh exact/ridge diagnostics in Appendix~\ref{app:implemented-audit} form a separate cohort. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The reserve anchors used elsewhere are construction inputs, not task-preservation admission samples: CivilComments balances training examples with \texttt{identity\_any}$=1$ across task labels, while Waterbirds balances training examples across its four label/background groups. No task-preservation acceptance rule was applied to those anchors.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Nuisance sensitivity in the original fixed-model diagnostics. Entries are $I_{0.95}^{\FG}$; worst-group accuracy stays at $44.0\%$ on CivilComments and $56.5\%$ on Waterbirds.}
+\label{tab:d-nuisance-sensitivity}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccp{.27\linewidth}@{}}
+\toprule
+Specification & CivilComments & Waterbirds & Role \\
+\midrule
+Metadata & 0.587 & 0.266 & Semantic-family member \\
+Learned probe & 0.499 & 0.165 & Semantic-family minimum \\
+Random & 0.588 & 0.482 & Negative control \\
+Under-projected & 0.588 & 0.482 & Under-projection control \\
+Over-projected & 0.001 & 0.012 & Task-erasure control \\
+Hidden-loss & 0.060 & 0.177 & Loss-coordinate stress control \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The random control is an independent standard-normal coordinate; under-projection sets the nuisance score to zero. Over-projection uses the standardized task score plus Gaussian noise of standard deviation $0.01$, deliberately erasing task information. The implementation's ``hidden-loss'' coordinate is observed test loss, with original groups unchanged. Random, over-projected, and loss coordinates are standardized on their evaluated arrays. They are diagnostic controls, not independently learned nuisance scores. CivilComments metadata and random certificates are nearly equal ($0.587$ versus $0.588$), whereas Waterbirds probe and random values differ ($0.165$ versus $0.482$), exposing dependence on the specification.
+
+The implementations are:\par
+{\raggedright
+\path{experiments/civilcomments_fisher_glass.py},\\
+\path{experiments/waterbirds_fisher_glass.py},\\
+\path{experiments/synthetic_fisher_glass.py}, and\\
+\path{experiments/multiseed_fisher_glass_diagnostics.py}.\par}
+Original diagnostic runs used an Intel i9-11900F workstation with 32 GB RAM. Reported times were approximately one minute for CivilComments and three minutes for the first Waterbirds extraction/fitting run, with later runs reusing cached features.
+\FloatBarrier

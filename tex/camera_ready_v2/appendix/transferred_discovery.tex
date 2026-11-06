@@ -1,0 +1,196 @@
+This appendix specifies discovery and independent evaluation in Section~\ref{sec:hidden-slice-method} and Algorithm~\ref{alg:fisher-glass-audit}. The predictor, representation, nuisance coordinate, and matrix construction are fixed for the audit. A learned per-example membership rule is transferred to new observations; the implementation additionally applies a declared support correction to its normalized weights. We distinguish that correction from fitting the gate, and from the fixed-gate ratio target used below. Appendix~\ref{app:discovery-results} reports the populations and controls.
+
+\subsection{Gate Family and Support Constraints}
+\label{app:gate-support}
+
+Let $\psi(x)$ be the frozen, standardized representation. For task class $c$, a linear gate assigns membership
+\[
+h_{\phi,c}(x)=\sigma(a_c^\top\psi(x)+b_c),
+\qquad \sigma(t)=(1+\exp(-t))^{-1}.
+\]
+The class index and gate specify a class-conditional slice. Task labels remain available throughout discovery and evaluation. On a discovery sample $\mathcal D_c$ of size $n_c$, the normalized membership weights are
+\[
+q_i^0(\phi)=\frac{h_{\phi,c}(x_i)}{\sum_{j\in\mathcal D_c}h_{\phi,c}(x_j)},
+\qquad i\in\mathcal D_c.
+\]
+A general support-constrained family is
+\[
+\mathcal Q_c(m,c_q)=\left\{q\in\R_+^{n_c}:\sum_iq_i=1,
+\quad \sum_iq_i^2\le\frac1m,\quad\max_iq_i\le\frac{c_q}{m}\right\},
+\qquad m>d_T+d_N.
+\]
+The effective sample size is $n_{\mathrm{eff}}(q)=(\sum_iq_i^2)^{-1}$. These constraints limit concentration on a few observations; they do not by themselves guarantee nuisance conditioning.
+
+\paragraph{Implemented mass and support conventions.}
+The Waterbirds target is $\tau_{\mathrm{slice}}=0.10$ within a task class. During discovery, the sigmoid intercept is solved so that $n_c^{-1}\sum_i h_{\phi,c}(x_i)=\tau_{\mathrm{slice}}$, to numerical tolerance. The saved intercept is the calibrated intercept of the selected checkpoint. Evaluation uses it without re-centering gate scores or recalibrating membership mass.
+
+The code distinguishes the nominal count $m_{\mathrm{nom}}=\tau_{\mathrm{slice}}n_c$ from the ESS floor:
+\[
+m_{\mathrm{ESS}}=\min\{n_c,\max\{1,0.8m_{\mathrm{nom}}\}\},
+\qquad b_{\max}=\min\{1,2/m_{\mathrm{nom}}\}.
+\]
+Thus the denominator in the reported $2/m$ cap is the nominal slice size, not the ESS floor. In the unclipped regime, the displayed family represents these settings with $m=m_{\mathrm{ESS}}$ and $c_q=1.6$.
+
+The function \texttt{admissible\_weights} first forms $q^0=h/\sum_i h_i$. If its maximum exceeds $b_{\max}$, it computes the Euclidean projection onto the capped simplex, using 64 bisection iterations and active-set refinement; otherwise the cap step is the identity. Write the result as $q^{\mathrm{cap}}$ and $u_i=1/n_c$. The final weights are $\widetilde q=u+t(q^{\mathrm{cap}}-u)$, with the largest $t\in[0,1]$ satisfying $\sum_i\widetilde q_i^2\le1/m_{\mathrm{ESS}}$. This radial mixing preserves the cap and unit sum. Discovery and held-out evaluation both apply this support correction using their own class sample size. Consequently, $h_{\phi,c}$ is a frozen per-example function, whereas $\widetilde q$ can depend on the full evaluation batch beyond normalization.
+
+Reported held-out membership mass is the mean of raw sigmoid memberships over the selected task class. It is not the fraction of all test images, the fraction of positive weights, or the sum of normalized weights. ESS is computed from $\widetilde q$.
+
+\paragraph{Reported slice metrics.}
+\label{app:reported-slice-metrics}
+For selected-class rows, let $l_i$ be the frozen head's logit, $\widehat y_i=\mathbf1\{l_i\ge0\}$, and $\ell_i$ its binary NLL at temperature one (with the implementation's probability clipping). Reported accuracy, NLL, and post-hoc metadata composition are
+\[
+\mathrm{Acc}=\sum_i\widetilde q_i\mathbf1\{\widehat y_i=y_i\},\qquad
+\mathrm{NLL}=\sum_i\widetilde q_i\ell_i,\qquad
+\mathrm{Comp}_g=\sum_i\widetilde q_i\mathbf1\{G_i=g\}.
+\]
+They use support-corrected weights, not a hard subset, and receive no same-class pooling; shrinkage applies only to the information matrices. Temperature-calibrated NLL is stored separately. The Fisher and high-loss gates use these same conventions. Random subsets use uniform weights on $k=\lceil\tau_{\mathrm{slice}}n_c\rceil$ sampled rows of the Fisher-selected class; the constant-gate comparator uses $1/n_c$. Their performance and information use the same formulas and matrix settings. Unweighted and centered-unweighted controls reevaluate the predictive-Fisher-selected and high-loss-selected gates; they do not rediscover gates with alternative matrix objectives.
+
+For selector distinctness, each frozen gate contributes the $k=\max\{1,\lceil\tau_{\mathrm{slice}}n_c\rceil\}$ test rows with largest raw membership in its selected class. Jaccard is $|A\cap B|/|A\cup B|$ on original row identities, with zero overlap for different selected classes. Selection uses NumPy's \texttt{argpartition}, without a secondary tie rule; all ten archived Fisher/high-loss cutoffs are untied. The five-seed mean is $0.0006664$, reported as $0.001$. Separately, fold stability uses this top-count Jaccard on a common same-class training-calibration reference sample, averaged over pairs of fold-selected gates. Class averages are weighted by selected-fold counts, excluding classes with fewer than two selected gates, then averaged over seeds. Its reported mean is $0.258$. Neither overlap uses positive-membership supports or support-corrected weight ranks.
+
+\subsection{Discovery Objective and Shrinkage}
+\label{app:discovery-objective}
+
+Let $M_i$ be the declared per-example matrix from Appendix~\ref{app:operational-matrices}, and set $\widehat J_{\mathrm{pool},c}=n_c^{-1}\sum_{i\in\mathcal D_c}M_i$. The constrained information objective is
+\begin{equation}
+\begin{aligned}
+\widehat J_{\phi,c}^{(\eta)}
+&=(1-\eta)\sum_{i\in\mathcal D_c}q_i(\phi)M_i
++\eta\widehat J_{\mathrm{pool},c},\\
+\phi^\star&\in\argmax_{\phi:\,q(\phi)\in\mathcal Q_c}
+\frac{1}{\lambda_{\min}\!\left(S_{\lambda_{\rid}}
+(\widehat J_{\phi,c}^{(\eta)})\right)+\varepsilon},
+\qquad 0\le\eta<1.
+\end{aligned}
+\label{eq:hidden-slice-discovery}
+\end{equation}
+In the implementation, $q(\phi)=\widetilde q(\phi)$. A separate search is fitted within each task class; the class and restart with largest discovery utility are selected without evaluation outcomes. The operational geometry is scalar task versus scalar nuisance, so projected information is the scalar Schur complement.
+
+\paragraph{Optimization and numerical settings.}
+The archived protocol uses ten restarts and 1,000 AdamW steps, learning rate $0.03$, weight decay $10^{-4}$, $\eta=0.10$, $\lambda_{\rid}=10^{-3}$, and reciprocal stabilization $\varepsilon=10^{-8}$. Gate weights start from independent zero-mean Gaussian draws with standard deviation $0.02$. The intercept is recalibrated during discovery; AdamW updates the weight vector. The optimized utility is $-\log(\widehat F^{\rid}+\varepsilon)$ minus ten times the squared relative membership-mass error. The logarithm preserves the inverse-information ranking at fixed mass. The best feasible finite checkpoint is retained, with the constant gate included as a baseline candidate. The high-loss control uses the same gate architecture, mass calibration, and support restrictions, replacing information utility by weighted prediction loss.
+
+The primary matrix is $M_i=p_i(1-p_i)v_iv_i^\top$, where $v_i$ contains the normalized task and nuisance coordinates and $p_i$ is the temperature-calibrated probability. The factor $p_i(1-p_i)$ is not normalized away. Shrinkage mixes the complete moment block before taking its Schur complement. Its pool is uniform over the same task class in the sample currently evaluated: the discovery fold during optimization, the held-out fold during cross-fitting, and the test class at final evaluation. Evaluation retains $\eta=0.10$. Unweighted and centered-unweighted calculations are separate robustness targets; the latter additionally estimate weighted coordinate means within the evaluated sample.
+
+\paragraph{Fixed semantic nuisance direction.}
+The CLIP ViT-B/32 coordinate uses the model:\par
+{\raggedright\texttt{openai/clip-vit-base-patch32}.\par}
+Each prompt embedding is normalized, the five embeddings within a concept are averaged and normalized, and the water-minus-land difference is normalized. Its dot product with the normalized image embedding gives the raw score. The predeclared prompts are:
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.48\linewidth}>{\raggedright\arraybackslash}p{0.48\linewidth}@{}}
+\toprule
+Water concept & Land concept \\
+\midrule
+a photo with a water background & a photo with a land background \\
+a natural scene with ocean water in the background & a natural scene with forest in the background \\
+a natural scene with lake or river water in the background & a natural scene with grass or ground in the background \\
+a photo taken over open water & a photo taken over dry land \\
+a watery landscape behind the main subject & a terrestrial landscape behind the main subject \\
+\bottomrule
+\end{tabular}
+\end{center}
+The preparation manifest records model revision:\par
+{\raggedright\texttt{3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268}.\par}
+This direction uses no background or four-way group annotations.
+
+\subsection{Cross-Fitting and Final Evaluation}
+\label{app:discovery-crossfit}
+
+The representation consists of 576 frozen ImageNet MobileNetV3-small features. For each seed, the official training split is stratified by task label into an 85\% fitting subset and a 15\% calibration subset. The linear head is trained on fitting rows for 1,200 steps with learning rate $0.01$ and weight decay $10^{-4}$. Feature standardization, task-logit mean and standard deviation, and final nuisance standardization are fitted on that subset and reused unchanged. Preparation also standardizes the raw CLIP score on the official training split; the discovery-stage fit-subset transformation is then applied consistently to every split. Temperature scaling~\citep{guo2017calibration} minimizes calibration-subset NLL over 400 logarithmically spaced values from $0.05$ to $20$.
+
+The blind procedure receives images, task labels, split membership, frozen features, and the nuisance coordinate. Background and group annotations remain sealed until all seeds complete certification. The sequence is:
+\begin{enumerate}
+\item \textbf{Assess validation transfer.} Five task-label-stratified validation folds rotate complementary discovery and held-out roles, sharing the same assignment across selectors within a seed. Each gate is evaluated on its held-out fold. Pairwise gate stability uses same-class training-calibration reference rows; these comparisons do not refit gates.
+\item \textbf{Refit the final rule.} With protocol and settings fixed, refit on full validation data for seeds 17--21. Fold fits supply stability and transfer diagnostics and are not ensembled into the final gate.
+\item \textbf{Freeze fitted objects.} Store the classifier, normalizers, temperature, nuisance direction, gate weight, calibrated intercept, selected class, and support settings before opening the test archive. Membership remains $\sigma(a_c^\top\psi(x)+b_c)$; the declared normalization and support correction of its weight vector use the evaluation batch.
+\item \textbf{Evaluate independently.} Compute membership, support, moment blocks, and information before revealing metadata. The same-class shrinkage pool is estimated from the test observations.
+\end{enumerate}
+
+The matching archived test vectors show inactive support correction for all five primary Fisher gates: stored weights equal normalized raw memberships to numerical precision. It is active for the high-loss control in seed 19, whose ESS rises from $94.48$ to the declared floor $102.72$. Freezing the membership rule and freezing numerical evaluation weights are therefore different statements. The next subsection gives both the ratio bound and an allowance for the implemented support correction.
+
+\subsection{Held-Out Targets and Uncertainty}
+\label{app:heldout-ratio}
+
+Condition on all fitting data and fitted objects, and fix the selected class-conditional evaluation distribution $P_c$. Let $h$ be the resulting per-example gate and $M(Z)$ the frozen per-example matrix map. The unshrunk target is
+\begin{equation}
+p=\E_{P_c}[h(Z)]>0,\qquad
+A=\E_{P_c}[h(Z)M(Z)],\qquad J_h=\frac{A}{p}.
+\label{eq:hidden-slice-population-target}
+\end{equation}
+For $n$ independent evaluation observations from $P_c$, define
+\[
+\widehat p=\frac1n\sum_{i=1}^n h(Z_i),\qquad
+\widehat A=\frac1n\sum_{i=1}^n h(Z_i)M(Z_i),\qquad
+\widehat J_h=\frac{\widehat A}{\widehat p}.
+\]
+Even with a frozen gate, normalized weights share a random denominator. Concentration must therefore control numerator and membership mass jointly. Here $\widehat J_h$ denotes the unprojected ratio; the support-corrected implementation is denoted $\widetilde J_h$ below.
+
+\begin{appendixproposition}[Frozen-gate ratio bound]
+\label{prop:frozen-gate-ratio}
+Assume $0\le h\le1$ and $0\preceq M(Z)\preceq M_{\max}I_d$ almost surely, where finite $M_{\max}$ is specified independently of evaluation observations. For $0<\delta<1$, set
+\[
+u=\log\frac{4d}{\delta},\qquad
+r_A=M_{\max}\left(\sqrt{\frac{2u}{n}}+\frac{2u}{3n}\right),
+\qquad r_p=\sqrt{\frac{\log(4/\delta)}{2n}}.
+\]
+With conditional probability at least $1-\delta$, both $\lVert\widehat A-A\rVert_{\op}\le r_A$ and $|\widehat p-p|\le r_p$. On that event, if $r_p<p$,
+\[
+\lVert\widehat J_h-J_h\rVert_{\op}
+\le\frac{r_A+\lVert J_h\rVert_{\op}r_p}{p-r_p}.
+\]
+Since $\lVert J_h\rVert_{\op}\le M_{\max}$, this is at most $2(r_A+M_{\max}r_p)/p$ when $r_p\le p/2$. An observable bound, whenever $\underline p=\widehat p-r_p>0$, is
+\begin{equation}
+\lVert\widehat J_h-J_h\rVert_{\op}
+\le r_J:=\frac{r_A+\lVert\widehat J_h\rVert_{\op}r_p}{\widehat p-r_p}.
+\label{eq:frozen-gate-ratio-radius}
+\end{equation}
+\end{appendixproposition}
+
+\begin{proof}
+The centered matrices $h(Z_i)M(Z_i)-A$ have norm at most $M_{\max}$ and variance bounded by $M_{\max}^2I_d$. Matrix Bernstein gives the matrix event with failure probability at most $\delta/2$ \citep{tropp2012user}. Hoeffding's inequality gives the scalar event with failure probability at most $\delta/2$; a union bound gives simultaneous occurrence. The identities
+\[
+\begin{aligned}
+\widehat J_h-J_h
+&=\frac{(\widehat A-A)-J_h(\widehat p-p)}{\widehat p}\\
+&=\frac{(\widehat A-A)-\widehat J_h(\widehat p-p)}{p}
+\end{aligned}
+\]
+give the bounds using $\widehat p\ge p-r_p$ and $p\ge\widehat p-r_p$, respectively. Finally, $A\preceq M_{\max}pI_d$, hence $\lVert J_h\rVert_{\op}\le M_{\max}$.
+\end{proof}
+
+\paragraph{Shrinkage and projected information.}
+When evaluation supplies the same-class pool, set $J_{\mathrm{pool},c}=\E_{P_c}[M]$ and $\widehat J_{\mathrm{pool},c}=n^{-1}\sum_iM(Z_i)$. For failure probability $\delta_{\mathrm{pool}}$, a matrix Bernstein radius is
+\[
+r_{\mathrm{pool}}=M_{\max}\left[
+\sqrt{\frac{2\log(2d/\delta_{\mathrm{pool}})}{n}}
++\frac{2\log(2d/\delta_{\mathrm{pool}})}{3n}\right].
+\]
+Use $\delta_{\mathrm{ratio}}$ in Proposition~\ref{prop:frozen-gate-ratio}, with $\delta_{\mathrm{ratio}}+\delta_{\mathrm{pool}}=\delta$. On the simultaneous event, whenever $\widehat p-r_p>0$,
+\[
+\begin{aligned}
+J_h^{(\eta)}&=(1-\eta)J_h+\eta J_{\mathrm{pool},c},\\
+\lVert\widehat J_h^{(\eta)}-J_h^{(\eta)}\rVert_{\op}
+&\le(1-\eta)r_J+\eta r_{\mathrm{pool}}.
+\end{aligned}
+\]
+The estimates share observations; the simultaneous-event argument accommodates their dependence. If the pool is fixed from fitting data, its matrix is part of the conditional target with no additional evaluation error.
+
+\paragraph{Allowance for support correction.}
+Let $q_i^0=h(Z_i)/\sum_jh(Z_j)$, let $\widetilde q$ be the cap/ESS-corrected vector, and set $\widetilde J_h=\sum_i\widetilde q_iM(Z_i)$. The triangle inequality gives
+\[
+\lVert\widetilde J_h-\widehat J_h\rVert_{\op}
+\le M_{\max}\sum_i|\widetilde q_i-q_i^0|=:r_{\mathrm{proj}}.
+\]
+Consequently, on the same event,
+\begin{equation}
+\lVert\widetilde J_h^{(\eta)}-J_h^{(\eta)}\rVert_{\op}
+\le(1-\eta)(r_J+r_{\mathrm{proj}})+\eta r_{\mathrm{pool}}.
+\label{eq:gate-projection-allowance}
+\end{equation}
+This covers batch-dependent support correction without treating it as a fixed per-example transformation. The primary archived point estimates have numerically zero $r_{\mathrm{proj}}$, but that does not imply inactivity on every repeated sample or bootstrap draw.
+
+Appendix~\ref{app:lower-audit} converts these matrix allowances into Schur and eigenvalue allowances for $I_{\alpha,G}$. Issuing a finite-sample lower certificate requires a positive lower membership-mass bound and a positive lower nuisance-conditioning margin. The target retains the declared shrinkage. Evaluation-estimated centering needs additional control of first moments; the proposition concerns a frozen per-example matrix map.
+
+\paragraph{Reported uncertainty.}
+The archived experiment uses 2,000 nonparametric bootstrap replicates within each selected test class. Each replicate resamples aligned membership, task, nuisance, logit, and label rows, recomputes normalized and support-corrected weights, and recomputes the same-class pool. Gate coefficients, intercept, coordinate normalization, and temperature stay fixed. The 95\% interval uses the empirical 2.5th and 97.5th percentiles of predictive projected information, with NumPy's default linear quantile interpolation. This is a bootstrap for the implemented estimator, not a computation of the finite-sample radii above.
+
+Across five paired seeds, the interval for $\Delta_s=T_s^{\mathrm{gate}}-T_s^{\mathrm{control}}$ is $\overline\Delta\pm t_{0.975,4}s_\Delta/\sqrt5$, where $s_\Delta$ is the sample standard deviation. Single-procedure intervals apply the same formula to its five values. These intervals summarize variation across seed-specific fitting runs on the shared benchmark; within-seed bootstraps address evaluation-sampling variation conditional on fitted objects. The boundedness and independent-evaluation assumptions of Proposition~\ref{prop:frozen-gate-ratio} supply a separate finite-sample guarantee and are not inferred from bootstrap coverage.

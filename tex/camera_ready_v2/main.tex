@@ -1,0 +1,184 @@
+\documentclass{article}
+
+% Compile from this directory; the NeurIPS style is copied here unchanged.
+\usepackage[main, final]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\providecommand*{\theHalgorithm}{\arabic{algorithm}}
+
+\hypersetup{
+  colorlinks=true,
+  citecolor=blue,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\CVaR}{\operatorname{CVaR}}
+\newcommand{\VaR}{\operatorname{VaR}}
+\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\FG}{\mathrm{FG}}
+\newcommand{\res}{\mathrm{res}}
+\newcommand{\port}{\mathrm{port}}
+\newcommand{\rid}{\mathrm{rid}}
+\newcommand{\eff}{\mathrm{eff}}
+\newcommand{\TTI}{\mathrm{TTI}}
+\newcommand{\loss}{\ell}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\simiid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\newcommand{\pospart}[1]{\left(#1\right)_{+}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{appendixproposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem*{assumption}{Assumption}
+
+\title{Fisher-Glass Learning: Classification Bounds and Subpopulation Audits}
+
+\author{%
+  El Mustapha Mansouri \\
+  School of Engineering, Institute of Science Tokyo \\
+  Yokohama, Kanagawa 226-8501, Japan \\
+  \texttt{mansouri.e.2224@m.isct.ac.jp}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+High predictive accuracy can coexist with sensitivity to task-preserving nuisance changes. Building on the Fisher-glass framework, we derive local classification lower bounds and develop subpopulation audits based on nuisance-projected information. The bounds connect efficient task information to minimax excess classification risk under explicit distinguishability and decision-separation conditions. We derive regularization-aware audit bounds and evaluate frozen population gates on held-out data. A prospective Waterbirds study uses an uncentered feature--Schur diagnostic constructed from task logits and background-probe scores to select an eligible validation group. Across five training seeds, interventions preserving the extracted bird foreground and labels yield 93.2\% accuracy under same-type controls and 40.6\% under opposite-type swaps, a 52.6-percentage-point difference. Search using task labels and a fixed nuisance direction also identifies held-out populations with high accuracy and low estimated projected predictive Fisher information. Training and acquisition experiments evaluate changes in information and predictive performance together. The resulting framework pairs predictive performance with explicit measures of task information and nuisance alignment.
+\end{abstract}
+
+\input{sections/01_introduction.tex}
+\input{sections/02_geometry.tex}
+\input{sections/03_tails.tex}
+\input{sections/04_audit.tex}
+\input{sections/05_experiments.tex}
+\input{sections/06_interventions.tex}
+\input{sections/07_related.tex}
+\input{sections/08_limitations.tex}
+\input{sections/09_conclusion.tex}
+
+\FloatBarrier
+\label{end:main}
+\clearpage
+\bibliographystyle{plainnat}
+\begingroup
+\raggedright
+\microtypesetup{protrusion=false}
+\setlength{\bibsep}{2pt plus 0.3pt}
+\bibliography{references_core,references_camera_ready}
+\endgroup
+
+\clearpage
+\appendix
+% Let short appendix pages end naturally instead of stretching float/text gaps.
+\raggedbottom
+% Keep appendix float pages aligned to the text area's upper edge.
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\renewcommand{\theHfigure}{supp.\thesection.\arabic{figure}}
+\renewcommand{\theHtable}{supp.\thesection.\arabic{table}}
+
+\section{Proofs of the Core Results}
+\label{app:core-proofs}
+\input{appendix/transferred_theory.tex}
+
+\section{Estimation and Certification}
+\label{app:estimation-certification}
+\input{appendix/transferred_estimation.tex}
+\FloatBarrier
+
+\section{Hidden-Slice Discovery}
+\label{app:hidden-slice-discovery}
+\input{appendix/transferred_discovery.tex}
+\FloatBarrier
+
+\section{Experimental Protocols and Additional Results}
+\label{app:experimental-details}
+\input{appendix/transferred_experiments.tex}
+
+Figures~\ref{fig:prospective-controls}--\ref{fig:discovery-controls} show the prospective intervention controls, synthetic structural checks, and paired discovery contrasts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figA01_prospective.pdf}
+\caption[Validation selection and prospective background intervention]{\input{figures/captionA01.tex}}
+\label{fig:prospective-controls}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figA02_structural.pdf}
+\caption[Structural checks for inverse-information tails]{\input{figures/captionA02.tex}}
+\label{fig:structural-checks}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figA03_discovery_controls.pdf}
+\caption[Paired discovery contrasts and moment controls]{\input{figures/captionA03.tex}}
+\label{fig:discovery-controls}
+\end{figure}
+\FloatBarrier
+
+\section{Information-Changing Interventions}
+\label{app:information-interventions}
+\input{appendix/transferred_interventions.tex}
+
+Figures~\ref{fig:training-frontier} and~\ref{fig:acquisition} expand the training and acquisition comparisons in Section~\ref{sec:improving-information}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/figA04_training.pdf}
+\caption[Regularization changes both information and accuracy]{\input{figures/captionA04.tex}}
+\label{fig:training-frontier}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/figA05_acquisition.pdf}
+\caption[Acquisition combines a geometric score with current task loss]{\input{figures/captionA05.tex}}
+\label{fig:acquisition}
+\end{figure}
+\FloatBarrier
+
+\clearpage
+\input{declarations.tex}
+\begingroup
+\microtypesetup{protrusion=false}
+\input{checklist.tex}
+\endgroup
+
+\end{document}

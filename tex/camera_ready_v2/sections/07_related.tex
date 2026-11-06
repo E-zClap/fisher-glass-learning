@@ -1,0 +1,14 @@
+\section{Related Work}
+\label{sec:related-work}
+
+\paragraph{Efficient information and classification.}
+Efficient-score theory defines task information after projection away from nuisance tangent spaces \citep{bickel1993efficient,newey1990semiparametric,tsiatis2006semiparametric,cox1987parameter}. The Fisher-glass framework of \citet{mansouri_arai_2026_fisher_glasses} studies the environmental distribution of that information through geometric tail laws and inverse-information certification. We develop its classification consequences through local testing reductions \citep{lecam1986asymptotic,tsybakov2009introduction} and quantitative Bayes-decision separation \citep{audibert2007fast}. The operational analysis addresses Schur estimation, ridge effects, and independent evaluation of learned population gates.
+
+\paragraph{Tail risk, robust learning, and gradient geometry.}
+CVaR concentrates objectives on adverse outcomes \citep{rockafellar2000optimization,rockafellar2002conditional}; Group DRO applies robust optimization to predictive loss across groups \citep{sagawa2019distributionally}. Invariant Risk Minimization seeks shared optimal classifiers \citep{arjovsky2019invariant}, while Fishr regularizes domain-level gradient variances \citep{rame2022fishr}. We use inverse projected-information tail risk as a training penalty alongside empirical risk or Group DRO, and evaluate information and predictive performance together.
+
+\paragraph{Hidden stratification and slice discovery.}
+Hidden-stratification research motivates finer population evaluation \citep{oakdenrayner2020hidden}. GEORGE clusters representations to infer subclasses \citep{sohoni2020no}, JTT upweights initially misclassified examples \citep{liu2021just}, and AGRO learns adversarial group assignments using prediction loss \citep{paranjape2022agro}. Our search targets low predictive projected information given task labels and a fixed nuisance direction. Support constraints and an independently evaluated frozen gate make accurately classified, low-loss populations eligible audit targets.
+
+\paragraph{Information-based design and acquisition.}
+E-optimal design emphasizes the smallest information eigenvalue \citep{pukelsheim2006optimal}; BAIT uses Fisher information for neural active learning \citep{ash2021gone}. TTI measures local information gain along a weak nuisance-adjusted task direction, weights environments by tail sensitivity, and multiplies by current task loss. Acquisition experiments assess realized information and accuracy changes after retraining.

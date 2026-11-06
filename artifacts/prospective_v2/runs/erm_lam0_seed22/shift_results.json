@@ -1,0 +1,523 @@
+{
+  "tag": "erm_lam0_seed22",
+  "arch": "mobilenet_v3_small",
+  "method": "erm",
+  "fg_lambda": 0.0,
+  "seed": 22,
+  "temperature": 11.13507905676596,
+  "frozen_hash": "4c36c7529df0affc5a9f648150f3e36d462574933c39fcfd88c7731c2460615e",
+  "selected_group": {
+    "gid": 3,
+    "name": "waterbird/water",
+    "votes": 5,
+    "n_runs": 5,
+    "unanimous": true,
+    "all_votes": {
+      "waterbird/water": 5
+    }
+  },
+  "val_fisher_glass_certificate": 0.3155037016920582,
+  "val_overall_accuracy": 0.8190158465387823,
+  "headline": {
+    "slice": "waterbird/water",
+    "n": 642,
+    "confidence_threshold": 0.9,
+    "confident_quantile": 0.5,
+    "n_correct": 588,
+    "n_confident_correct": 0,
+    "n_confident_correct_quantile": 297,
+    "quantile_confidence_cut": 0.7523812075962287,
+    "acc_original": 0.9158878504672897,
+    "nll_original": 0.8583806768565215,
+    "acc_same": 0.9228971962616822,
+    "acc_opposite": 0.3808411214953271,
+    "delta_nuisance": 0.5420560747663551,
+    "delta_vs_original": 0.5350467289719626,
+    "flip_among_correct": 0.5901360544217688,
+    "flip_among_correct_same": 0.041666666666666664,
+    "confident_flip_quantile": 0.4377104377104377,
+    "confident_flip_quantile_same": 0.003367003367003367,
+    "confident_flip": NaN,
+    "confident_flip_same": NaN,
+    "bootstrap_source": {
+      "acc_same": {
+        "point": 0.9228971962616822,
+        "lo": 0.9057632398753894,
+        "hi": 0.9408294392523363,
+        "se": 0.009038952672204555,
+        "n_clusters": 642
+      },
+      "acc_opposite": {
+        "point": 0.3808411214953271,
+        "lo": 0.35046728971962615,
+        "hi": 0.411993769470405,
+        "se": 0.015542915315527763,
+        "n_clusters": 642
+      },
+      "delta_nuisance": {
+        "point": 0.5420560747663551,
+        "lo": 0.5124610591900312,
+        "hi": 0.5724493769470405,
+        "se": 0.015684551671591166,
+        "n_clusters": 642
+      },
+      "flip_among_correct": {
+        "point": 0.5901360544217688,
+        "lo": 0.5579118348192796,
+        "hi": 0.6224751183021,
+        "se": 0.016455316159104665,
+        "n_clusters": 642
+      },
+      "confident_flip_quantile": {
+        "point": 0.4377104377104377,
+        "lo": 0.3921163047702322,
+        "hi": 0.4846951746800415,
+        "se": 0.0233350791314001,
+        "n_clusters": 642
+      },
+      "confident_flip": {
+        "point": NaN,
+        "lo": NaN,
+        "hi": NaN,
+        "se": NaN,
+        "n_clusters": 642
+      }
+    },
+    "bootstrap_species": {
+      "delta_nuisance": {
+        "point": 0.5420560747663551,
+        "lo": 0.49322282775168474,
+        "hi": 0.591213813827591,
+        "se": 0.025213597584849128,
+        "n_clusters": 46
+      },
+      "flip_among_correct": {
+        "point": 0.5901360544217688,
+        "lo": 0.5358794483261343,
+        "hi": 0.6446700507614214,
+        "se": 0.028166674570285696,
+        "n_clusters": 46
+      },
+      "confident_flip_quantile": {
+        "point": 0.4377104377104377,
+        "lo": 0.3811058268650933,
+        "hi": 0.500037764350453,
+        "se": 0.030201334025897968,
+        "n_clusters": 46
+      }
+    },
+    "validation": {
+      "name": "waterbird/water",
+      "kind": "group",
+      "gid": 3,
+      "bin_index": null,
+      "n": 133,
+      "accuracy": 0.9097744360902256,
+      "nll": 0.6504555864363603,
+      "nll_calibrated": 0.37839023873069927,
+      "raw_fisher": 2.1573915714299066,
+      "projected_fisher": 0.4943147609991365,
+      "projected_over_raw": 0.2291261204249109,
+      "beta": 1.3605150595966402,
+      "projected_fisher_calibrated": 0.5309612788263394,
+      "projected_over_raw_calibrated": 0.2550517211256822,
+      "inverse_projected_fisher": 2.0230024645606774,
+      "inverse_projected_fisher_calibrated": 1.8833764740372028
+    },
+    "validation_rule": {
+      "selected": {
+        "name": "waterbird/water",
+        "kind": "group",
+        "gid": 3,
+        "bin_index": null,
+        "n": 133,
+        "accuracy": 0.9097744360902256,
+        "nll": 0.6504555864363603,
+        "nll_calibrated": 0.37839023873069927,
+        "raw_fisher": 2.1573915714299066,
+        "projected_fisher": 0.4943147609991365,
+        "projected_over_raw": 0.2291261204249109,
+        "beta": 1.3605150595966402,
+        "projected_fisher_calibrated": 0.5309612788263394,
+        "projected_over_raw_calibrated": 0.2550517211256822,
+        "inverse_projected_fisher": 2.0230024645606774,
+        "inverse_projected_fisher_calibrated": 1.8833764740372028
+      },
+      "statistic": "projected_over_raw",
+      "benign_names": [
+        "landbird/land",
+        "waterbird/water"
+      ],
+      "median_nll_threshold": 1.116876700868654,
+      "overall_accuracy_threshold": 0.8190158465387823,
+      "fell_back_to_all_slices": false,
+      "median_statistic": 0.4836915154770585,
+      "factor_below_median_slice": 2.111027387798737,
+      "loss_rule_would_select": "waterbird/land",
+      "accuracy_rule_would_select": "waterbird/land",
+      "calibrated_rule_would_select": "waterbird/water",
+      "absolute_fisher_rule_would_select": "landbird/land"
+    }
+  },
+  "by_group": [
+    {
+      "slice": "landbird/land",
+      "n": 2255,
+      "confidence_threshold": 0.9,
+      "confident_quantile": 0.5,
+      "n_correct": 2237,
+      "n_confident_correct": 1792,
+      "n_confident_correct_quantile": 1125,
+      "quantile_confidence_cut": 0.9775083709110342,
+      "acc_original": 0.9920177383592018,
+      "nll_original": 0.033403739318536976,
+      "acc_same": 0.9940133037694013,
+      "acc_opposite": 0.7607538802660754,
+      "delta_nuisance": 0.23325942350332596,
+      "delta_vs_original": 0.23126385809312644,
+      "flip_among_correct": 0.23468931604827895,
+      "flip_among_correct_same": 0.00581135449262405,
+      "confident_flip_quantile": 0.11644444444444445,
+      "confident_flip_quantile_same": 0.0008888888888888889,
+      "confident_flip": 0.16964285714285715,
+      "confident_flip_same": 0.0016741071428571428,
+      "bootstrap_source": {
+        "acc_same": {
+          "point": 0.9940133037694013,
+          "lo": 0.9915742793791574,
+          "hi": 0.996230598669623,
+          "se": 0.0011798591640703369,
+          "n_clusters": 2255
+        },
+        "acc_opposite": {
+          "point": 0.7607538802660754,
+          "lo": 0.7458980044345898,
+          "hi": 0.775609756097561,
+          "se": 0.007574416494902213,
+          "n_clusters": 2255
+        },
+        "delta_nuisance": {
+          "point": 0.23325942350332596,
+          "lo": 0.21840354767184034,
+          "hi": 0.24789356984478939,
+          "se": 0.007500325057405957,
+          "n_clusters": 2255
+        },
+        "flip_among_correct": {
+          "point": 0.23468931604827895,
+          "lo": 0.21988356471115092,
+          "hi": 0.24977620120060112,
+          "se": 0.007591571994869246,
+          "n_clusters": 2255
+        },
+        "confident_flip_quantile": {
+          "point": 0.11644444444444445,
+          "lo": 0.10122686003062131,
+          "hi": 0.1321744213324992,
+          "se": 0.007822385237426155,
+          "n_clusters": 2255
+        },
+        "confident_flip": {
+          "point": 0.16964285714285715,
+          "lo": 0.15483260660503137,
+          "hi": 0.18377350260016825,
+          "se": 0.007364273591184341,
+          "n_clusters": 2255
+        }
+      },
+      "bootstrap_species": {
+        "delta_nuisance": {
+          "point": 0.23325942350332596,
+          "lo": 0.20522311356947356,
+          "hi": 0.26339040287106397,
+          "se": 0.014427577007939119,
+          "n_clusters": 154
+        },
+        "flip_among_correct": {
+          "point": 0.23468931604827895,
+          "lo": 0.20652976852244717,
+          "hi": 0.26555209508819855,
+          "se": 0.014661818567818532,
+          "n_clusters": 154
+        },
+        "confident_flip_quantile": {
+          "point": 0.11644444444444445,
+          "lo": 0.09692546940188174,
+          "hi": 0.1366156832271485,
+          "se": 0.010275335121343581,
+          "n_clusters": 154
+        }
+      }
+    },
+    {
+      "slice": "landbird/water",
+      "n": 2255,
+      "confidence_threshold": 0.9,
+      "confident_quantile": 0.5,
+      "n_correct": 1676,
+      "n_confident_correct": 436,
+      "n_confident_correct_quantile": 838,
+      "quantile_confidence_cut": 0.7941129997742788,
+      "acc_original": 0.7432372505543238,
+      "nll_original": 1.5944086625314215,
+      "acc_same": 0.7629711751662971,
+      "acc_opposite": 0.9929046563192905,
+      "delta_nuisance": -0.2299334811529934,
+      "delta_vs_original": -0.2496674057649667,
+      "flip_among_correct": 0.0014916467780429594,
+      "flip_among_correct_same": 0.13693317422434367,
+      "confident_flip_quantile": 0.0,
+      "confident_flip_quantile_same": 0.06563245823389022,
+      "confident_flip": 0.0,
+      "confident_flip_same": 0.051605504587155966,
+      "bootstrap_source": {
+        "acc_same": {
+          "point": 0.7629711751662971,
+          "lo": 0.7481152993348116,
+          "hi": 0.7778325942350333,
+          "se": 0.007609873897494483,
+          "n_clusters": 2255
+        },
+        "acc_opposite": {
+          "point": 0.9929046563192905,
+          "lo": 0.9902439024390244,
+          "hi": 0.9953436807095344,
+          "se": 0.0013255802187508105,
+          "n_clusters": 2255
+        },
+        "delta_nuisance": {
+          "point": -0.2299334811529934,
+          "lo": -0.24434589800443463,
+          "hi": -0.21529933481152996,
+          "se": 0.007419905481956558,
+          "n_clusters": 2255
+        },
+        "flip_among_correct": {
+          "point": 0.0014916467780429594,
+          "lo": 0.00029850746268656717,
+          "hi": 0.0029833380828554125,
+          "se": 0.0006711862480500303,
+          "n_clusters": 2255
+        },
+        "confident_flip_quantile": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "se": 0.0,
+          "n_clusters": 2255
+        },
+        "confident_flip": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "se": 0.0,
+          "n_clusters": 2255
+        }
+      },
+      "bootstrap_species": {
+        "delta_nuisance": {
+          "point": -0.2299334811529934,
+          "lo": -0.2571454047512897,
+          "hi": -0.2034703841094752,
+          "se": 0.013465052194329545,
+          "n_clusters": 154
+        },
+        "flip_among_correct": {
+          "point": 0.0014916467780429594,
+          "lo": 0.00030027782273291256,
+          "hi": 0.0028987191471086062,
+          "se": 0.0006642074398494851,
+          "n_clusters": 154
+        },
+        "confident_flip_quantile": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "se": 0.0,
+          "n_clusters": 154
+        }
+      }
+    },
+    {
+      "slice": "waterbird/land",
+      "n": 642,
+      "confidence_threshold": 0.9,
+      "confident_quantile": 0.5,
+      "n_correct": 252,
+      "n_confident_correct": 0,
+      "n_confident_correct_quantile": 126,
+      "quantile_confidence_cut": 0.6305618102729826,
+      "acc_original": 0.3925233644859813,
+      "nll_original": 8.117067202838829,
+      "acc_same": 0.37616822429906543,
+      "acc_opposite": 0.911993769470405,
+      "delta_nuisance": -0.5358255451713396,
+      "delta_vs_original": -0.5194704049844237,
+      "flip_among_correct": 0.00992063492063492,
+      "flip_among_correct_same": 0.375,
+      "confident_flip_quantile": 0.0,
+      "confident_flip_quantile_same": 0.28174603174603174,
+      "confident_flip": NaN,
+      "confident_flip_same": NaN,
+      "bootstrap_source": {
+        "acc_same": {
+          "point": 0.37616822429906543,
+          "lo": 0.34579439252336447,
+          "hi": 0.4088785046728972,
+          "se": 0.016102967866616275,
+          "n_clusters": 642
+        },
+        "acc_opposite": {
+          "point": 0.911993769470405,
+          "lo": 0.8940809968847352,
+          "hi": 0.9306853582554517,
+          "se": 0.009641096235759783,
+          "n_clusters": 642
+        },
+        "delta_nuisance": {
+          "point": -0.5358255451713396,
+          "lo": -0.564661214953271,
+          "hi": -0.5031152647975079,
+          "se": 0.016073382975026376,
+          "n_clusters": 642
+        },
+        "flip_among_correct": {
+          "point": 0.00992063492063492,
+          "lo": 0.0020240874363327676,
+          "hi": 0.019154708889988423,
+          "se": 0.004454011184091211,
+          "n_clusters": 642
+        },
+        "confident_flip_quantile": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "se": 0.0,
+          "n_clusters": 642
+        },
+        "confident_flip": {
+          "point": NaN,
+          "lo": NaN,
+          "hi": NaN,
+          "se": NaN,
+          "n_clusters": 642
+        }
+      },
+      "bootstrap_species": {
+        "delta_nuisance": {
+          "point": -0.5358255451713396,
+          "lo": -0.5858727149110688,
+          "hi": -0.48468059910109923,
+          "se": 0.02561446961059878,
+          "n_clusters": 46
+        },
+        "flip_among_correct": {
+          "point": 0.00992063492063492,
+          "lo": 0.0,
+          "hi": 0.02263608305274971,
+          "se": 0.005739032917915725,
+          "n_clusters": 46
+        },
+        "confident_flip_quantile": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "se": 0.0,
+          "n_clusters": 46
+        }
+      }
+    },
+    {
+      "slice": "waterbird/water",
+      "n": 642,
+      "confidence_threshold": 0.9,
+      "confident_quantile": 0.5,
+      "n_correct": 588,
+      "n_confident_correct": 0,
+      "n_confident_correct_quantile": 297,
+      "quantile_confidence_cut": 0.7523812075962287,
+      "acc_original": 0.9158878504672897,
+      "nll_original": 0.8583806768565215,
+      "acc_same": 0.9228971962616822,
+      "acc_opposite": 0.3808411214953271,
+      "delta_nuisance": 0.5420560747663551,
+      "delta_vs_original": 0.5350467289719626,
+      "flip_among_correct": 0.5901360544217688,
+      "flip_among_correct_same": 0.041666666666666664,
+      "confident_flip_quantile": 0.4377104377104377,
+      "confident_flip_quantile_same": 0.003367003367003367,
+      "confident_flip": NaN,
+      "confident_flip_same": NaN,
+      "bootstrap_source": {
+        "acc_same": {
+          "point": 0.9228971962616822,
+          "lo": 0.9057632398753894,
+          "hi": 0.9408294392523363,
+          "se": 0.009038952672204555,
+          "n_clusters": 642
+        },
+        "acc_opposite": {
+          "point": 0.3808411214953271,
+          "lo": 0.35046728971962615,
+          "hi": 0.411993769470405,
+          "se": 0.015542915315527763,
+          "n_clusters": 642
+        },
+        "delta_nuisance": {
+          "point": 0.5420560747663551,
+          "lo": 0.5124610591900312,
+          "hi": 0.5724493769470405,
+          "se": 0.015684551671591166,
+          "n_clusters": 642
+        },
+        "flip_among_correct": {
+          "point": 0.5901360544217688,
+          "lo": 0.5579118348192796,
+          "hi": 0.6224751183021,
+          "se": 0.016455316159104665,
+          "n_clusters": 642
+        },
+        "confident_flip_quantile": {
+          "point": 0.4377104377104377,
+          "lo": 0.3921163047702322,
+          "hi": 0.4846951746800415,
+          "se": 0.0233350791314001,
+          "n_clusters": 642
+        },
+        "confident_flip": {
+          "point": NaN,
+          "lo": NaN,
+          "hi": NaN,
+          "se": NaN,
+          "n_clusters": 642
+        }
+      },
+      "bootstrap_species": {
+        "delta_nuisance": {
+          "point": 0.5420560747663551,
+          "lo": 0.49322282775168474,
+          "hi": 0.591213813827591,
+          "se": 0.025213597584849128,
+          "n_clusters": 46
+        },
+        "flip_among_correct": {
+          "point": 0.5901360544217688,
+          "lo": 0.5358794483261343,
+          "hi": 0.6446700507614214,
+          "se": 0.028166674570285696,
+          "n_clusters": 46
+        },
+        "confident_flip_quantile": {
+          "point": 0.4377104377104377,
+          "lo": 0.3811058268650933,
+          "hi": 0.500037764350453,
+          "se": 0.030201334025897968,
+          "n_clusters": 46
+        }
+      }
+    }
+  ],
+  "bins": [],
+  "bin_group": "waterbird/water",
+  "bin_group_is_selected": true
+}

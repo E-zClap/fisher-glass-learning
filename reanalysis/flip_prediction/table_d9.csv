@@ -1,0 +1,4 @@
+analysis,mean_rows,flip_rate,loglik_gain_nats_per_donor_row,delta_auprc,n_auprc_improved,delta_auroc,n_auroc_improved
+pooled_no_group,9398,0.199,+0.016,+0.035,5/5,+0.096,5/5
+pooled_with_group,9398,0.199,+0.001,-0.007,0/5,+0.003,5/5
+selected_slice,1181,0.564,+0.013,+0.026,5/5,+0.015,5/5

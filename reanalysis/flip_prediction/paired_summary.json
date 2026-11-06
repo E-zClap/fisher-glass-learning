@@ -1,0 +1,199 @@
+{
+  "source_sha256": "186b9c0e1d0edc380915e89c9d00d28b675a379274146cc321d0efddf2fcc601",
+  "aggregation": "Equal-weight mean across training seeds; paired differences within each seed",
+  "uncertainty": "Nominal normal-approximation 95% half-width = 1.96 * sample SD / sqrt(5)",
+  "variants": {
+    "pooled_no_group": {
+      "n_rows": {
+        "mean": 9397.6,
+        "nominal_normal_95_half_width": 88.37318109019274,
+        "n_seeds": 5
+      },
+      "n_species": {
+        "mean": 200,
+        "nominal_normal_95_half_width": 0.0,
+        "n_seeds": 5
+      },
+      "base_rate": {
+        "mean": 0.1993554063278106,
+        "nominal_normal_95_half_width": 0.009606224823547789,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.4794382866173931,
+        "nominal_normal_95_half_width": 0.016451901720702735,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.4630027668116571,
+        "nominal_normal_95_half_width": 0.01671093886343358,
+        "n_seeds": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.01643551980573595,
+        "nominal_normal_95_half_width": 0.0032630623292842476,
+        "n_seeds": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.2966235733386254,
+        "nominal_normal_95_half_width": 0.013558018894254573,
+        "n_seeds": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.33205950161124037,
+        "nominal_normal_95_half_width": 0.012774929187437707,
+        "n_seeds": 5
+      },
+      "delta_auprc": {
+        "mean": 0.03543592827261499,
+        "nominal_normal_95_half_width": 0.007209543460191412,
+        "n_seeds": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.6360801877205521,
+        "nominal_normal_95_half_width": 0.010499141837445406,
+        "n_seeds": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.7325194448157238,
+        "nominal_normal_95_half_width": 0.015047256161541242,
+        "n_seeds": 5
+      },
+      "delta_auroc": {
+        "mean": 0.09643925709517176,
+        "nominal_normal_95_half_width": 0.006841839491584042,
+        "n_seeds": 5
+      },
+      "n_auprc_improved": 5,
+      "n_auroc_improved": 5
+    },
+    "pooled_with_group": {
+      "n_rows": {
+        "mean": 9397.6,
+        "nominal_normal_95_half_width": 88.37318109019274,
+        "n_seeds": 5
+      },
+      "n_species": {
+        "mean": 200,
+        "nominal_normal_95_half_width": 0.0,
+        "n_seeds": 5
+      },
+      "base_rate": {
+        "mean": 0.1993554063278106,
+        "nominal_normal_95_half_width": 0.009606224823547789,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.33430389749859885,
+        "nominal_normal_95_half_width": 0.01466146609068747,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.33339035145432083,
+        "nominal_normal_95_half_width": 0.014549199738357645,
+        "n_seeds": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.0009135460442780331,
+        "nominal_normal_95_half_width": 0.0007513389793285939,
+        "n_seeds": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.5986029193617569,
+        "nominal_normal_95_half_width": 0.016322383332580813,
+        "n_seeds": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.5919286072338201,
+        "nominal_normal_95_half_width": 0.01559821354716145,
+        "n_seeds": 5
+      },
+      "delta_auprc": {
+        "mean": -0.006674312127936788,
+        "nominal_normal_95_half_width": 0.001867639195791217,
+        "n_seeds": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.8706523593299453,
+        "nominal_normal_95_half_width": 0.008948493985793695,
+        "n_seeds": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.8733277985785305,
+        "nominal_normal_95_half_width": 0.008297648258329297,
+        "n_seeds": 5
+      },
+      "delta_auroc": {
+        "mean": 0.002675439248585154,
+        "nominal_normal_95_half_width": 0.0014814848781665043,
+        "n_seeds": 5
+      },
+      "n_auprc_improved": 0,
+      "n_auroc_improved": 5
+    },
+    "selected_slice": {
+      "n_rows": {
+        "mean": 1181.2,
+        "nominal_normal_95_half_width": 7.898581138407073,
+        "n_seeds": 5
+      },
+      "n_species": {
+        "mean": 46,
+        "nominal_normal_95_half_width": 0.0,
+        "n_seeds": 5
+      },
+      "base_rate": {
+        "mean": 0.5641792764348573,
+        "nominal_normal_95_half_width": 0.02170957291886365,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_baseline": {
+        "mean": -0.6178965301402377,
+        "nominal_normal_95_half_width": 0.008467870643170197,
+        "n_seeds": 5
+      },
+      "heldout_loglik_per_row_with_fisher": {
+        "mean": -0.6050627626082071,
+        "nominal_normal_95_half_width": 0.009672103138876346,
+        "n_seeds": 5
+      },
+      "heldout_loglik_gain_per_row": {
+        "mean": 0.012833767532030485,
+        "nominal_normal_95_half_width": 0.0018627650881563984,
+        "n_seeds": 5
+      },
+      "auprc_baseline": {
+        "mean": 0.7349277786495383,
+        "nominal_normal_95_half_width": 0.021246724019913017,
+        "n_seeds": 5
+      },
+      "auprc_with_fisher": {
+        "mean": 0.7605957998119093,
+        "nominal_normal_95_half_width": 0.019354923904916378,
+        "n_seeds": 5
+      },
+      "delta_auprc": {
+        "mean": 0.025668021162371057,
+        "nominal_normal_95_half_width": 0.004578450244875356,
+        "n_seeds": 5
+      },
+      "auroc_baseline": {
+        "mean": 0.7080688383665892,
+        "nominal_normal_95_half_width": 0.011175774630575017,
+        "n_seeds": 5
+      },
+      "auroc_with_fisher": {
+        "mean": 0.7230438847116811,
+        "nominal_normal_95_half_width": 0.0119555059812707,
+        "n_seeds": 5
+      },
+      "delta_auroc": {
+        "mean": 0.014975046345092013,
+        "nominal_normal_95_half_width": 0.0029437728779096502,
+        "n_seeds": 5
+      },
+      "n_auprc_improved": 5,
+      "n_auroc_improved": 5
+    }
+  }
+}
