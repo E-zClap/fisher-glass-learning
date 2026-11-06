@@ -20,13 +20,28 @@ bash experiments/prospective_nuisance_shift/run_all.sh --smoke
 
 Smoke mode is 1 seed / 1 epoch / 40 birds per group. It exercises every step in
 ~10 minutes (after the download) and its numbers are meaningless — it exists to
-prove the pipeline runs on your machine. If it finishes cleanly:
+prove the pipeline runs on your machine. If it finishes cleanly, run the paper's
+primary v2 settings:
 
 ```bash
-bash experiments/prospective_nuisance_shift/run_all.sh
+bash experiments/prospective_nuisance_shift/run_all.sh \
+  --seeds "22 23 24 25 26" --epochs 50 --batch-size 32 --lr 0.0001 \
+  --selection-statistic projected_over_raw --device cuda \
+  --out-dir build/prospective_shift_v2_fresh \
+  --report build/prospective_shift_v2_fresh/report.md \
+  --figure-stem waterbirds_prospective_shift_v2_fresh
 ```
 
-Data downloads once and is shared by both; add `--skip-download` on later runs.
+The unqualified launcher defaults (seeds 17–21 and 20 epochs) are development
+settings; they do not reproduce the primary paper cohort. The original v1 pilot
+also used absolute `projected_fisher` selection. Use the explicit command above
+for the paper's seeds 22–26, 50 epochs, and surviving-fraction selection.
+
+See [the primary-experiment reproduction guide](../../docs/REPRODUCING_PRIMARY_EXPERIMENTS.md)
+for cross-platform data preparation, exact stage commands, and verification scope.
+Waterbirds now downloads from Stanford's download host because the historical
+CodaLab endpoint is unavailable. Data downloads once and is shared by both;
+add `--skip-download` on later runs.
 
 ```bash
 bash experiments/prospective_nuisance_shift/run_all.sh --skip-download --epochs 30
@@ -56,7 +71,7 @@ verifies the data layout, and builds one paired intervention image end to end.
 
 | What | Size | Source |
 | --- | --- | --- |
-| Waterbirds v1.0 (composited images + `metadata.csv`) | ~1.1 GB | WILDS / CodaLab |
+| Waterbirds v1.0 (composited images + `metadata.csv`) | ~1.1 GB | Original group_DRO archive on Stanford's download host |
 | CUB-200-2011 `segmentations.tgz` | 39.3 MB | `data.caltech.edu` |
 
 **Places365 is not needed.** Donor backgrounds are recovered from training-split

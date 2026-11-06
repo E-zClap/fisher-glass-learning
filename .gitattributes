@@ -1,2 +1,4 @@
 # Preserve the exact bytes checked by ARTIFACT_MANIFEST.json on every platform.
 * -text
+*.pdf binary
+*.npz binary

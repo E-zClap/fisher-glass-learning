@@ -1,6 +1,6 @@
 {
-  "release": "camera-ready-v1",
-  "scope": "Derived numerical reproduction package; excludes datasets, images, feature caches and model weights.",
+  "release": "camera-ready-v2",
+  "scope": "Experiment replication code and instructions plus retained numerical replay inputs; excludes datasets, images, feature caches and model weights.",
   "original_archives": [
     {
       "cohort": "prospective_v2",
@@ -43,9 +43,12 @@
       "path": ".gitattributes",
       "source": "release packaging",
       "source_sha256": "70a1d4a5e30c828fecbb4a7174b444b908c806010f68160879bd49deee56df18",
-      "published_sha256": "70a1d4a5e30c828fecbb4a7174b444b908c806010f68160879bd49deee56df18",
-      "bytes": 88,
-      "transformations": []
+      "published_sha256": "f54a497ea19ddf6d0c3d719e9bc95478c0e511615247e186c48257ab6540ce4f",
+      "bytes": 114,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "70a1d4a5e30c828fecbb4a7174b444b908c806010f68160879bd49deee56df18"
     },
     {
       "path": ".gitignore",
@@ -67,9 +70,12 @@
       "path": "README.md",
       "source": "camera-ready-v1 release authoring",
       "source_sha256": null,
-      "published_sha256": "b6bd92f92e2453632db57c11172c22bab93ad011813cb8988f8b8eb7f02bf5cf",
-      "bytes": 13177,
-      "transformations": []
+      "published_sha256": "24a473048289c9b4ef17a4bf05c48e7d16ff20dbdb8c78579c987c4657526f1d",
+      "bytes": 14508,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "b6bd92f92e2453632db57c11172c22bab93ad011813cb8988f8b8eb7f02bf5cf"
     },
     {
       "path": "artifacts/checkpoint_identifiers.csv",
@@ -2880,6 +2886,22 @@
       "transformations": []
     },
     {
+      "path": "docs/REPRODUCING_EXPERIMENTS.md",
+      "source": "camera-ready-v2 reproducibility correction",
+      "source_sha256": "54b52006eb963a5f49a82e3e2e3a445be96e39b28d086e66760135e379bf3eb0",
+      "published_sha256": "54b52006eb963a5f49a82e3e2e3a445be96e39b28d086e66760135e379bf3eb0",
+      "bytes": 19927,
+      "transformations": []
+    },
+    {
+      "path": "docs/REPRODUCING_PRIMARY_EXPERIMENTS.md",
+      "source": "camera-ready-v2 reproducibility correction",
+      "source_sha256": "4f7832600280a1b46827e647cef2b6b1bd2760428966a1e84830658fe5a52a0d",
+      "published_sha256": "4f7832600280a1b46827e647cef2b6b1bd2760428966a1e84830658fe5a52a0d",
+      "bytes": 11304,
+      "transformations": []
+    },
+    {
       "path": "experiments/civilcomments_fisher_glass.py",
       "source": "experiments/civilcomments_fisher_glass.py",
       "source_sha256": "c905bd64c04d92587fd21da7e9ffa3eed4227b22e9d3d1d51fcade0d9cd4e94d",
@@ -2923,9 +2945,12 @@
       "path": "experiments/prospective_nuisance_shift/README.md",
       "source": "experiments/prospective_nuisance_shift/README.md",
       "source_sha256": "66187e2d1c96b6de3ccd995a2b967c24e0444717b29ce316193a446e1189d642",
-      "published_sha256": "66187e2d1c96b6de3ccd995a2b967c24e0444717b29ce316193a446e1189d642",
-      "bytes": 13117,
-      "transformations": []
+      "published_sha256": "efc4167fd927cb9481fea87a85aea944ec4106985bc14cabeffadc29f4f85577",
+      "bytes": 14086,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "66187e2d1c96b6de3ccd995a2b967c24e0444717b29ce316193a446e1189d642"
     },
     {
       "path": "experiments/prospective_nuisance_shift/build_paired_images.py",
@@ -2963,9 +2988,12 @@
       "path": "experiments/prospective_nuisance_shift/download_data.sh",
       "source": "experiments/prospective_nuisance_shift/download_data.sh",
       "source_sha256": "f832526d65181a1c1f282ac7202bd0c343816ef31b027a1f25ea4553eabfd4cf",
-      "published_sha256": "f832526d65181a1c1f282ac7202bd0c343816ef31b027a1f25ea4553eabfd4cf",
-      "bytes": 6771,
-      "transformations": []
+      "published_sha256": "8f53f307162f8d1cc448847df78a5262e3b844f938fecd495cd1758de3580890",
+      "bytes": 857,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "f832526d65181a1c1f282ac7202bd0c343816ef31b027a1f25ea4553eabfd4cf"
     },
     {
       "path": "experiments/prospective_nuisance_shift/evaluate_shift.py",
@@ -3826,6 +3854,14 @@
       "transformations": []
     },
     {
+      "path": "scripts/prepare_waterbirds.py",
+      "source": "camera-ready-v2 reproducibility correction",
+      "source_sha256": "1cf91bc77ef616706fbef3275ef737c6b00611118b9f2a5caf957f6b7da65ab6",
+      "published_sha256": "1cf91bc77ef616706fbef3275ef737c6b00611118b9f2a5caf957f6b7da65ab6",
+      "bytes": 7667,
+      "transformations": []
+    },
+    {
       "path": "scripts/reproduce_retained_tables.py",
       "source": "camera-ready-v1 release authoring",
       "source_sha256": null,
@@ -3839,6 +3875,22 @@
       "source_sha256": null,
       "published_sha256": "7c81abb926ea84548466a0ff47b8e1e4b6c5a62131bf77d6446a13855b93e14d",
       "bytes": 1790,
+      "transformations": []
+    },
+    {
+      "path": "scripts/run_synthetic_reproduction.py",
+      "source": "camera-ready-v2 reproducibility correction",
+      "source_sha256": "bff9e8dc9e0ecd371c110f0f31c1cb51624858d3d4dbf280168e4d0f85c60fc9",
+      "published_sha256": "bff9e8dc9e0ecd371c110f0f31c1cb51624858d3d4dbf280168e4d0f85c60fc9",
+      "bytes": 2633,
+      "transformations": []
+    },
+    {
+      "path": "scripts/tests/test_prepare_waterbirds.py",
+      "source": "camera-ready-v2 reproducibility correction",
+      "source_sha256": "b2e4d475e864db95e2c493259bfe76ff85b0a74f0e978bb000ba14de87c79499",
+      "published_sha256": "b2e4d475e864db95e2c493259bfe76ff85b0a74f0e978bb000ba14de87c79499",
+      "bytes": 5239,
       "transformations": []
     },
     {
@@ -3933,17 +3985,23 @@
       "path": "tex/camera_ready_v2/checklist.tex",
       "source": "tex/camera_ready_v2/checklist.tex",
       "source_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
-      "published_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
-      "bytes": 27217,
-      "transformations": []
+      "published_sha256": "1c8da12aa14a9fae95e2fccc0596cb4d1ebb5d63dbcecc1bf7f421098a9aca02",
+      "bytes": 27726,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff"
     },
     {
       "path": "tex/camera_ready_v2/declarations.tex",
       "source": "tex/camera_ready_v2/declarations.tex",
       "source_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
-      "published_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
-      "bytes": 1272,
-      "transformations": []
+      "published_sha256": "d444c878688f988a2e1a2c471e69f2649e4ea701390b9a0d15b953ba2e911eca",
+      "bytes": 1464,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350"
     },
     {
       "path": "tex/camera_ready_v2/figures/acquisition_summary.csv",
@@ -4205,17 +4263,23 @@
       "path": "tex/camera_ready_v2/main.pdf",
       "source": "tex/camera_ready_v2/main.pdf",
       "source_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
-      "published_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
-      "bytes": 1033276,
-      "transformations": []
+      "published_sha256": "4ea6d733500d944fc48c86baf22544ac4ee2212d05aba98783b46a1a9eb7367e",
+      "bytes": 1033427,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2"
     },
     {
       "path": "tex/camera_ready_v2/main.tex",
       "source": "tex/camera_ready_v2/main.tex",
       "source_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c",
-      "published_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c",
-      "bytes": 6711,
-      "transformations": []
+      "published_sha256": "a17c504e30de61fa3132cc5a6cd92fdc3ce86470d63320086f02847694dfe96f",
+      "bytes": 6735,
+      "transformations": [
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+      ],
+      "prior_release_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c"
     },
     {
       "path": "tex/camera_ready_v2/neurips_2026.sty",
@@ -4318,8 +4382,9 @@
     "Original source SHA256 values identify historical input bytes. Published hashes identify the sanitized files actually distributed.",
     "Embedded historical artifact digests remain provenance identifiers; omitted model coefficients invalidate full-artifact canonical hash replay. Use the published hashes and numeric replay command.",
     "Legacy acquisition per-seed JSON/CSV, original legacy training checkpoints and original legacy multiseed diagnostic outputs were not recovered. Retained reports are explicitly identified.",
-    "The final manuscript and editable figure sources are included; manuscript-specific private revision notes and old backups are excluded."
+    "The final manuscript and editable figure sources are included; manuscript-specific private revision notes and old backups are excluded.",
+    "camera-ready-v2 adds paper-specific independent rerun guides, a synthetic runner, and validated Stanford Waterbirds preparation. Missing historical run files limit exact archival replay, not the availability of experiment replication workflows."
   ],
-  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v1",
+  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v2",
   "artifact_mapping": "README.md#manuscript-to-artifact-map"
 }
