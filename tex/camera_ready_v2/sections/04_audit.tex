@@ -1,16 +1,16 @@
 \section{Computing and Auditing Fisher-Glass}
 \label{sec:computing-auditing}
 
-An operational audit fixes the task contrast, nuisance hypothesis, matrix construction, and audit distribution before measuring information on independent data. We work in low-dimensional task and nuisance subspaces, so the reported information concerns these declared coordinates. Coordinate normalization is specified for each experiment; fitted nuisance probes and temperature calibration are frozen before final evaluation. The audit reports support and conditioning alongside its information values.
+An operational audit fixes the task contrast, nuisance hypothesis, matrix construction, and audit distribution before measuring information on independent data. Information concerns the declared low-dimensional task and nuisance coordinates. Each experiment specifies coordinate normalization; fitted nuisance probes and temperature calibration are frozen before final evaluation.
 
 \subsection{Operational Scores and Nuisance Coordinates}
 \label{sec:operational-scores}
 
-The audit uses a declared matrix target. Predictive Fisher is computed from likelihood scores under the fitted predictive distribution; observed-label score moments and unweighted feature moments define additional audit targets. The prospective Waterbirds experiment uses the uncentered feature--Schur fraction of fixed task-logit and background-probe coordinates. Hidden-slice discovery uses estimated temperature-calibrated predictive Fisher with class-specific shrinkage $\eta=0.10$, retained during search and held-out evaluation. Unweighted feature geometry supplies a complementary comparison. Appendix~\ref{app:operational-matrices} specifies each construction.
+The audit uses a declared matrix target: predictive Fisher under the fitted predictive distribution, observed-label score moments, or feature moments. For binary constructions, write $v_i=(z_i,b_i)^\top$ for the task and nuisance coordinates. Feature moments use $M_i=v_iv_i^\top$; predictive Fisher uses $M_i=p_i(1-p_i)v_iv_i^\top$, where $p_i$ is the model's predicted class probability. The prospective Waterbirds experiment uses the uncentered feature--Schur fraction of fixed task-logit and background-probe coordinates. Hidden-slice discovery uses temperature-calibrated predictive Fisher with shrinkage toward the same-class pooled matrix, $\eta=0.10$, during search and held-out evaluation; feature moments supply a comparison. Appendix~\ref{app:operational-matrices} specifies each construction.
 
-The experiments prespecify nuisance coordinates from metadata, fitted annotation probes, or a fixed semantic direction. Without nuisance annotations, the specified semantic direction serves as the audited nuisance hypothesis. We report fitting splits, normalization, and nuisance-block conditioning; cross-validation assesses gate stability. Appendix~\ref{app:predefined-diagnostics} records the checks performed. Formal anchor task-preservation tests and admission thresholds are criteria for extending this family, rather than implemented selection steps.
+The experiments prespecify nuisance coordinates from metadata, fitted annotation probes, or a fixed semantic direction. Without nuisance annotations, that direction is the audited nuisance hypothesis. We report fitting splits, normalization, and nuisance-block conditioning. Appendix~\ref{app:hidden-slice-discovery} describes gate stability; Appendix~\ref{app:predefined-diagnostics} records the predefined-group specification checks.
 
-\subsection{Stable Estimation and Exact-Information Audits}
+\subsection{Ridge Estimation and Lower Information Bounds}
 \label{sec:stable-estimation}
 
 Let $M_i$ be the per-example task--nuisance matrix under the chosen construction, with task and nuisance blocks indexed by $T$ and $N$. For a predefined slice $g$ of size $n_g$, form $\widehat J_g=n_g^{-1}\sum_{i\in g}M_i$ and compute the ridge Schur estimate
@@ -30,20 +30,20 @@ Real-data computations use $\lambda_{\rid}=10^{-3}$. Ridge stabilizes residualiz
 \end{aligned}
 \label{eq:lower-certificate}
 \end{equation}
-Here $[x]_+=\max\{x,0\}$. On that event, this lower-bounds the unregularized population certificate for the declared matrix and audit distribution. Certification also requires a positive lower confidence bound on nuisance conditioning. The implemented scalar audits use Bonferroni-adjusted Gaussian/Wald moment simulation at nominal 95\% confidence, conditional on the fitted model and evaluated slices. Appendix~\ref{app:estimation-certification} records the gap identity, error allowances, and numerical comparison.
+Here $[x]_+=\max\{x,0\}$. On that event, this lower-bounds the unregularized population certificate for the declared matrix and audit distribution. Certification also requires a positive lower confidence bound for $\lambda_{\min}(J_{NN,g})$. The scalar audits use Bonferroni-adjusted Gaussian/Wald moment simulation at nominal 95\% confidence, holding the fitted model, evaluated slices, and coordinate-standardization constants fixed. Appendix~\ref{app:estimation-certification} records the gap identity, error allowances, and numerical comparison.
 
 \subsection{Hidden-Slice Discovery and Held-Out Certification}
 \label{sec:hidden-slice-method}
 
-A gate $h_\phi(x,y)\in[0,1]$ assigns membership weights. Discovery maximizes inverse projected information subject to effective-sample-size, maximum-weight, and class-mass constraints, with shrinkage toward the same-class pooled matrix. Five validation folds assess transfer and stability; after fixing the protocol, a final gate is fitted on all discovery data, frozen, and evaluated on an untouched split. Its unshrunk target is the weighted ratio $J_\phi=\E[h_\phi M]/\E[h_\phi]$, with positive membership mass. Uncertainty must account for numerator, normalization, and any constraint-induced weight adjustment; the reported Waterbirds target retains the stated shrinkage. Appendix~\ref{app:hidden-slice-discovery} specifies the constraints, objective, and held-out target.
+A gate $h_\phi(x,y)\in[0,1]$ assigns membership weights. Discovery maximizes inverse projected information subject to effective-sample-size, maximum-weight, and class-mass constraints. We normalize memberships within class, cap excessive weights, and mix with uniform weights as needed to satisfy the effective-sample-size constraint. Five validation folds assess transfer and stability; a final gate is fitted on all discovery data, frozen, and evaluated on an untouched split. The support correction is recomputed on evaluation data under the frozen gate. Its unshrunk target is the weighted ratio $J_\phi=\E[h_\phi M]/\E[h_\phi]$, with positive membership mass. Uncertainty must account for the numerator, membership normalization, and adjustments used to enforce the weight constraints; the Waterbirds target retains the stated shrinkage. Appendix~\ref{app:hidden-slice-discovery} specifies the constraints, objective, and held-out target.
 
 \begin{algorithm}[t]
 \caption{Fisher-Glass audit}
 \label{alg:fisher-glass-audit}
 \begin{algorithmic}[1]
 \State \textbf{Specify:} predictor, matrix, coordinates, normalization, calibration, and audit weights.
-\State \textbf{Discover and freeze:} predefined slices or constrained gates fitted on discovery data.
-\State \textbf{Audit independently:} check support and conditioning; compute ridge, unregularized, and lower values.
+\State Fix predefined slices, or fit and freeze a constrained gate on discovery data.
+\State \textbf{Audit independently:} check support and conditioning; compute ridge estimates, unregularized estimates, and lower confidence bounds.
 \State \textbf{Report:} raw and projected information, surviving fraction, slice support, tail certificate, and uncertainty.
 \end{algorithmic}
 \end{algorithm}

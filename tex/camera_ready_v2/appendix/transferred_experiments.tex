@@ -2,7 +2,7 @@
 \subsection{Experimental Quantities and Aggregation}
 \label{app:experimental-conventions}
 
-Table~\ref{tab:d-experiment-overview} identifies the operational targets; Appendix~\ref{app:operational-matrices} defines their normalization. Real-data audits use nuisance ridge $10^{-3}$ and stabilization $10^{-8}$. Synthetic stabilization is $\varepsilon=10^{-12}$. Certificates use $\alpha=0.95$. Primary predefined-group coordinates use training moments; prospective normalization is specified below.
+Table~\ref{tab:d-experiment-overview} identifies the operational targets; Appendix~\ref{app:operational-matrices} defines the matrix constructions. Real-data audits use nuisance ridge $10^{-3}$ and stabilization $10^{-8}$; synthetic audits use $\varepsilon=10^{-12}$. Certificates use $\alpha=0.95$. Primary predefined-group coordinates use training moments; prospective normalization is specified below. Reported evaluation Loss-CVaR averages group-mean NLLs at or above their empirical 95th percentile, weighting groups equally; synthetic experiments use environment-mean NLLs. The Loss-CVaR training baseline averages the largest $\lceil0.1n\rceil$ individual-example NLLs.
 
 \begin{table}[htbp]
 \centering\small
@@ -79,7 +79,7 @@ Waterbird/water & $2.063\pm0.054$ & $0.511\pm0.021$ & $0.248\pm0.015$ \\
 
 
 \paragraph{Foreground-preserving construction.}
-Waterbirds combines CUB birds~\citep{wah2011cub} with Places backgrounds~\citep{zhou2018places} under soft CUB mattes. For each bird, we retain background pixels verbatim outside the dilated foreground and fill the covered region using Telea inpainting~\mbox{\citep{telea2004image}} (radius 5, dilation 2). Its extracted bird layer is recomposed onto training-image donors of the same or opposite background type. Donors have foreground fraction at most $0.08$; a deterministic sequence tries four, taking the first with visible inpainted area at most $0.03$, or the least-inpainted of four. The same-type arm undergoes identical recomposition.
+Waterbirds combines CUB birds~\citep{wah2011cub} with Places backgrounds~\citep{zhou2018places} under soft CUB mattes. For each bird, we retain background pixels verbatim outside the dilated foreground and fill the covered region using Telea inpainting~\mbox{\citep{telea2004image}}, with a 5-pixel inpainting radius and a $5\times5$ elliptical dilation kernel. Its extracted bird layer is recomposed onto training-image donors of the same or opposite land/water background type. Donors have foreground fraction at most $0.08$; a deterministic sequence tries four, taking the first with visible inpainted area at most $0.03$, or the least-inpainted of four. The same-type arm undergoes identical recomposition.
 
 Both arms use the same foreground layer, matte, label and source birds. Opaque foreground pixels are unchanged before JPEG encoding (quality 95, no chroma subsampling); soft-edge mixtures vary with background. Two draws per arm yield 23,176 composites. Visible inpainted area has mean $4.13\%$, p95 $8.45\%$, maximum $20.37\%$, and arm means $4.13\%$/$4.12\%$. Correctness is averaged across donors within bird, then across birds.
 
@@ -181,7 +181,7 @@ Quantity & Estimate \\
 \midrule
 Mean accuracy & $94.54\pm0.00\%$ \\
 Fifth-percentile environment accuracy & $88.67\pm0.00\%$ \\
-Loss-$\CVaR_{0.95}$ & $0.262\pm0.000$ \\
+$\CVaR_{0.95}$ of environment-mean NLL & $0.262\pm0.000$ \\
 $I_{0.95}^{\FG}$ & $(1.22\pm0.53)\times10^{-8}$ \\
 Inverse-information exponent $\widehat\beta$ & $0.498\pm0.003$ \\
 \bottomrule
@@ -208,9 +208,9 @@ Independent branches & $K=3$ & 1.5 & $1.508\pm0.015$ \\
 \subsection{Hidden-Slice Discovery Results}
 \label{app:discovery-results}
 
-Appendix~\ref{app:hidden-slice-discovery} gives the authoritative blind protocol: task labels, frozen MobileNet features and a fixed CLIP direction are available; background/group metadata remain sealed through certification. Results use the corrected v2 cohort and seeds 17--21, with final full-validation gates frozen before test. Evaluation support correction may depend on the test sample. The five primary CLIP gates require no correction. Information uses same-class pooling; accuracy, uncalibrated NLL and composition use admissible within-class weights without pooling. The corrected cohort and original hashes are identified in the artifact; the older uncorrected cohort is excluded.
+Appendix~\ref{app:hidden-slice-discovery} gives the blind protocol: task labels, frozen MobileNet features and a fixed CLIP direction are available; background/group metadata remain sealed through held-out evaluation. Results use the primary hidden-slice cohort, seeds 17--21, with full-validation gates frozen before test. Support correction may depend on the test sample but leaves all five primary CLIP gates' test weights unchanged. Information uses same-class pooling; accuracy, uncalibrated NLL and composition use admissible within-class weights without pooling. The artifact identifies this cohort as v2 and records original hashes; the older uncorrected cohort is excluded.
 
-All selectors share classifiers with average accuracy $76.3\pm0.7\%$ and post hoc worst-group accuracy $57.3\pm1.3\%$. CLIP search finds $98.8\%$ slice accuracy. Table~\ref{tab:d-hidden-selectors} includes every matched-mass comparator and paired contrast. The random-direction and both unweighted intervals contain zero; the latter reevaluate predictive-selected gates and do not rediscover them under different matrix objectives.
+All selectors share classifiers with average accuracy $76.3\pm0.7\%$ and post hoc worst-group accuracy $57.3\pm1.3\%$. CLIP search finds $98.8\%$ membership-weighted slice accuracy. Table~\ref{tab:d-hidden-selectors} includes every matched-mass comparator and paired contrast. The random-direction interval and the uncentered and centered feature-moment intervals against high-loss selection contain zero. Feature controls reevaluate gates selected using predictive Fisher without rediscovery.
 
 \begin{table}[htbp]
 \centering\small
@@ -221,7 +221,7 @@ All selectors share classifiers with average accuracy $76.3\pm0.7\%$ and post ho
 \textit{(a) Held-out selectors}\par\smallskip
 \begin{tabular}{@{}p{.53\linewidth}cc@{}}
 \toprule
-Selector & \shortstack{Predictive\\projected information} & Slice NLL \\
+Selector & \shortstack{Predictive\\projected information} & \shortstack{Uncalibrated\\slice NLL} \\
 \midrule
 Fisher search, fixed CLIP direction & $0.005\pm0.001$ & $0.031\pm0.017$ \\
 High loss, same target within-class mass & $0.019\pm0.006$ & $5.779\pm0.496$ \\
@@ -249,19 +249,19 @@ Centered unweighted & High-loss slice & $-0.071$ & $[-0.166,0.024]$ \\
 
 
 \paragraph{Class selection and overlap.}
-CLIP, random-direction, random-slice and constant-gate selectors choose landbirds in all five seeds; high loss chooses landbirds in seeds 17,18,21 and waterbirds in 19,20. The two different-class Jaccards are zero; same-class values are $0.00222$, $0.00111$, and $0$. Their mean $0.000666$, reported as $0.001$, combines between-class and within-class differences under Appendix~\ref{app:reported-slice-metrics}'s top-count rule.
+CLIP, random-direction, random-slice and constant-gate selectors choose landbirds in all five seeds; high loss chooses landbirds in seeds 17,18,21 and waterbirds in 19,20. The two different-class Jaccards are zero; same-class values are $0.00222$, $0.00111$, and $0$. Their mean $0.000666$, reported as $0.001$, combines between-class and within-class differences under Appendix~\ref{app:discovery-crossfit}'s top-count rule.
 
 \paragraph{Support and sensitivity.}
-On the common same-class training-calibration reference set, cross-fold gate-score correlation is $0.419\,[0.353,0.485]$ and overlap $0.258\,[0.225,0.291]$. Test ESS is $414\,[383,445]$ using admissible weights. Raw membership mass is $0.083\,[0.077,0.089]$ within the selected class (target $0.10$), not the full test set; landbirds contain 4,510 test examples. Validation cross-fitting, separate from final testing, gives information $0.004$--$0.005$ over masses $\{0.05,0.10,0.20\}$ versus high-loss $0.012$--$0.027$, and $0.004$--$0.006$ over shrinkages $\{0.05,0.10,0.20\}$.
+On same-class rows from the 15\% training-calibration subset, cross-fold gate-score correlation is $0.419\,[0.353,0.485]$ and overlap $0.258\,[0.225,0.291]$. Test ESS is $414\,[383,445]$ using admissible weights. Raw membership mass is $0.083\,[0.077,0.089]$ within the selected class (target $0.10$), not the full test set; landbirds contain 4,510 test examples. Validation cross-fitting, separate from final testing, gives information $0.004$--$0.005$ over masses $\{0.05,0.10,0.20\}$ versus high-loss $0.012$--$0.027$, and $0.004$--$0.006$ over shrinkages $\{0.05,0.10,0.20\}$.
 
-Post-certification composition is $97.0\%$ landbird/land for CLIP, $94.4\%$ for random direction, and $58.4\%$ landbird/water for high loss. CLIP information is below the weakest predefined group's in every seed. A metadata-trained oracle probe used only after blind freeze gives information $0.003\pm0.000$, NLL $0.009\pm0.004$, and $99.1\%$ landbird/land composition (zero width is rounding). Repair outcomes are in Appendix~\ref{app:extended-training}.
+Composition after held-out evaluation is $97.0\%$ landbird/land for CLIP, $94.4\%$ for random direction, and $58.4\%$ landbird/water for high loss. CLIP information is below the weakest predefined group's in every seed. A metadata-trained oracle probe used only after blind freeze gives information $0.003\pm0.000$, NLL $0.009\pm0.004$, and $99.1\%$ landbird/land composition (zero width is rounding). Repair outcomes are in Appendix~\ref{app:extended-training}.
 
 \FloatBarrier
 \subsection{Predefined-Group Diagnostics}
 \label{app:predefined-diagnostics}
 
 \paragraph{Fitting.}
-CivilComments-WILDS~\citep{borkan2019nuanced,koh2021wilds} uses training-fitted unigram/bigram TF-IDF (50,000 features, minimum document frequency 5, sublinear TF) and class-balanced SGD logistic task/identity-any probes ($\ell_2=10^{-5}$, 50 passes, tolerance $10^{-3}$). Identity-by-label groups require 100 examples; tail regression uses the largest 50\% of group inverse information, requiring eight groups and four tail points. Seed 13 gives the fixed diagnostic; seeds 13--17 give aggregates.
+CivilComments-WILDS~\citep{borkan2019nuanced,koh2021wilds} predicts comment toxicity, with $y=0$ denoting nontoxic comments. Identity-any indicates that at least one of the 24 original identity annotation scores is at least $0.5$. Training-fitted unigram/bigram TF-IDF (50,000 features, minimum document frequency 5, sublinear TF) feeds class-balanced SGD logistic task/identity-any probes ($\ell_2=10^{-5}$, 50 passes, tolerance $10^{-3}$). Identity-by-label groups require 100 examples; tail regression uses the largest 50\% of group inverse information, requiring eight groups and four tail points. Seed 13 gives the fixed diagnostic; seeds 13--17 give aggregates.
 
 Waterbirds uses frozen ImageNet MobileNetV3-small features (extraction batch 64) and balanced L-BFGS logistic task/background models (1,000 maximum iterations). Four groups are reported directly, without fitting a tail exponent; only controls/anchors vary over seeds 17--21. Primary task/probe and metadata coordinates use training moments. These original runs used an i9-11900F/32 GB workstation, about one minute for CivilComments and three minutes for first Waterbirds extraction/fitting, then cached features.
 

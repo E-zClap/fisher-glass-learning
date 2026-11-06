@@ -1,12 +1,12 @@
 \subsection{Extended Training and Selection Results}
 \label{app:extended-training}
 
-\paragraph{End-to-end penalty frontier.}
+\paragraph{End-to-end Group DRO + Fisher-Glass frontier.}
 MobileNetV3-small is fine-tuned for 10 epochs (batch 128, evaluation batch 512, seeds 17--21) with AdamW learning rate and weight decay $10^{-4}$; the final epoch is evaluated. The reported H100 configuration uses bf16 and TF32. The nuisance is training-standardized background annotation; task logits use minibatch population standard deviation plus $10^{-6}$. Groups with fewer than two observations are omitted. Ridge is $10^{-3}$, $\alpha=.95$, and projected information is floored at $10^{-8}$ before another $10^{-8}$ enters the reciprocal. Table~\ref{tab:e-frontier-performance} retains the complete frontier: stronger penalties can increase information while degrading prediction.
 
 \begin{table}[htbp]
 \centering\small
-\caption{End-to-end Waterbirds frontier. Each non-reference row uses Group DRO + FG. FG entries are means $\pm$ sample standard deviations over five seeds, not confidence intervals. The Group DRO reference is the reported comparator at $\lambda_{\FG}=10^{-4}$; each sweep reran its baseline, so this is not a shared paired reference for every coefficient.}
+\caption{End-to-end Waterbirds Group DRO + Fisher-Glass frontier. FG entries are means $\pm$ sample standard deviations over five seeds, not confidence intervals. The Group DRO reference is the baseline from the $\lambda_{\FG}=10^{-4}$ sweep; each sweep reran its baseline, so this is not a shared paired reference for every coefficient.}
 \label{tab:e-frontier-performance}\label{tab:e-frontier-information}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -33,15 +33,15 @@ $10^{-2}$ & $0.809\pm0.076$ & $1.23\pm0.12$ & \\
 \end{tabular}
 \end{table}
 
-At $10^{-4}$ the certificate rises from $.259$ to $.502$ and inverse p95 falls from $3.68$ to $2.10$; at $10^{-2}$ worst-group accuracy is only $22.7\%$. Historical report summaries support this table; Appendix~\ref{app:estimation-certification}'s retained fresh audits are a separate cohort.
+At $\lambda_{\FG}=10^{-4}$ the certificate rises from $.259$ to $.502$ and inverse p95 falls from $3.68$ to $2.10$; at $\lambda_{\FG}=10^{-2}$ worst-group accuracy is only $22.7\%$. Historical report summaries support this table; Appendix~\ref{app:estimation-certification}'s fresh audits are a separate cohort.
 
 \paragraph{Prospective information training.}
 Use Appendix~\ref{app:prospective-intervention}'s shared model, 50-epoch schedule and seeds 22--26. Backbone fine-tuning uses AdamW with learning rate and weight decay $10^{-4}$. FG adds coefficients $\{.003,.01,.03\}$ and a background probe trained on detached features (AdamW learning rate $.001$, default weight decay $.01$), whose scores are detached in the penalty. After one penalty-free epoch, training uses $\alpha=.75$, ridge $.001$, batch standard-deviation guard $10^{-6}$, groups of at least six observations with nuisance standard deviation at least $.05$, and a $.05$ information floor before direct inversion. This floor differs from audit stabilization.
 
-Select the final model with largest validation certificate among candidates whose overall validation accuracy is at least ERM minus $.01$; an empty set triggers a recorded unconstrained fallback. Choices are $[.01,.03,.01,.003,.01]$, with fallbacks in seeds 22 and 24. All audit objects are frozen before intervention scoring. In the current v2 rerun, FG raises the validation certificate from $.289$ to $.330$, but the controlled drop is $52.9$ versus $52.6$ percentage points for ERM and the originally-correct flip rate is $57.7\%$ versus $56.4\%$. Thus accuracy matching fails in two seeds and background sensitivity persists.
+Select the final model with largest validation certificate among candidates whose overall validation accuracy is at least ERM minus $.01$. If none qualify, maximize the certificate over all FG candidates for that seed and record the fallback. Choices are $[.01,.03,.01,.003,.01]$, with fallbacks in seeds 22 and 24. All audit quantities are frozen before intervention scoring. In the prospective replication, FG raises the validation certificate from $.289$ to $.330$, but the controlled drop is $52.9$ versus $52.6$ percentage points for ERM and the originally-correct flip rate is $57.7\%$ versus $56.4\%$. The accuracy constraint fails in two seeds and background sensitivity persists.
 
 \paragraph{Constrained hidden-slice repair.}
-The corrected cohort of Appendix~\ref{app:discovery-results} compares loss, Fisher and combined repair without opening group metadata. Each arm includes the exact unchanged model and must preserve overall, balanced and each-class validation accuracy within $.02$ of the base. Loss coefficients are $\{.1,.3,1\}$, Fisher coefficients $\{.01,.03,.1\}$, and combined candidates use their Cartesian product. The same warm start and fresh AdamW optimizer ($\mathrm{lr}=.01$, weight decay $10^{-4}$, gradient clip 10) receive at most 1,200 steps. Calibration NLL at temperature one is checked every 25 steps, with patience 12, improvement threshold $10^{-5}$, and step-zero-eligible best-checkpoint restoration. The matched ERM continuation sets both penalties to zero. Base temperature remains fixed for information training, selection and subsequent audits.
+The primary hidden-slice cohort of Appendix~\ref{app:discovery-results} compares loss, Fisher and combined repair without opening group metadata. Each arm adds its repair penalties to ERM, includes the unchanged model, and must preserve overall, balanced and each-class validation accuracy within $.02$ of the base. Loss coefficients are $\{.1,.3,1\}$, Fisher coefficients $\{.01,.03,.1\}$, and combined candidates use their Cartesian product. The same warm start and fresh AdamW optimizer ($\mathrm{lr}=.01$, weight decay $10^{-4}$, gradient clip 10) receive at most 1,200 steps. Calibration NLL at temperature one is checked every 25 steps, with patience 12, improvement threshold $10^{-5}$, and step-zero-eligible best-checkpoint restoration. The matched ERM continuation sets both penalties to zero. Base temperature remains fixed for information training, selection and subsequent audits.
 
 For the frozen training slice, the dimensionless Fisher penalty is
 \begin{equation}
@@ -49,11 +49,11 @@ P_{\mathrm{FG}}(w)=\frac{\max\{F_{\mathrm{init}},\varepsilon\}}{F(w)+\varepsilon
 \qquad \varepsilon=10^{-8},
 \label{eq:e-dimensionless-penalty}
 \end{equation}
-with predictive shrinkage $.1$, ridge $.001$, and negative numerical information clipped to zero. Within the accuracy envelope, loss/Fisher repair minimizes frozen-slice loss/maximizes information. Combined selection uses the loss--information Pareto frontier, maximizing the smaller relative improvement; ties favor mean relative improvement, smaller normalized coefficients, then earlier index. Fresh rediscovery after selection uses matched gate/fold seeds, so the reported population can change.
+Here $F(w)$ is the frozen slice's projected predictive information and $F_{\mathrm{init}}$ its value at the unchanged model, with shrinkage $.1$, ridge $.001$, and negative numerical information clipped to zero. Within the accuracy envelope, loss/Fisher repair minimizes frozen-slice loss/maximizes information. Combined selection uses the loss--information Pareto frontier, maximizing the smaller relative improvement; ties favor mean relative improvement, then the smaller coefficient sum normalized by grid maxima, $\lambda_{\mathrm{loss}}+10\lambda_{\mathrm{Fisher}}$, then earlier index. Fresh rediscovery uses matched gate/fold seeds, so the reported population can change.
 
 \begin{table}[htbp]
 \centering\small
-\caption{Corrected constrained repair, seeds 17--21. Accuracy, NLL and information are means $\pm$ 95\% Student-$t$ half-widths; composition is a mean percentage. Panel two audits each arm's rediscovered CLIP-defined slice. The oracle uses group annotations.}
+\caption{Constrained repair on the primary hidden-slice cohort, seeds 17--21. Accuracy, NLL and information are means $\pm$ 95\% Student-$t$ half-widths; composition is a mean percentage. Panel two audits each arm's rediscovered CLIP-defined slice. The oracle uses group annotations.}
 \label{tab:e-repair-performance}\label{tab:e-repair-slices}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -91,11 +91,11 @@ U_\lambda^{\mathrm{adj}}&=\overline V_\lambda+t_{4,.99}s_{V,\lambda}/\sqrt5,\\
 t_{4,.99}&=3.74695 .
 \end{aligned}
 \end{equation}
-The risk allowance uses the minimizer's SE for all candidates. Bonferroni adjustment covers five coefficients, but overlapping gate-training folds make this a ranking score without independent-fold coverage. Accuracy screens and paired inverse-information tests are diagnostics, not selection constraints.
+The risk allowance uses the minimizer's SE for all candidates. Bonferroni adjustment covers five coefficients, but overlapping gate-training folds make this a ranking score without independent-fold coverage. Accuracy screens and paired inverse-information tests are diagnostics, not selection constraints. The group-supervised comparator maximizes validation worst-group accuracy over the same $\Lambda_{\mathrm{risk}}$, breaking ties toward smaller $\lambda$.
 
 \begin{table}[htbp]
 \centering\small
-\caption{Post hoc coefficient selection, five paired seeds. Accuracies are test results; hidden information is predictive projected information on test slices defined by the corresponding validation-rediscovered, frozen gates. Brackets are 95\% Student-$t$ intervals. Policies selecting identical models across these five seeds share rows; the text explains both coincidences. Coefficient counts are $\lambda:\text{number of seeds}$.}
+\caption{Post hoc coefficient selection, five paired seeds. Accuracies are test results; information is projected predictive information in test slices defined by validation-rediscovered, frozen gates. Brackets are 95\% Student-$t$ intervals. Policies selecting identical models across these seeds share rows; the text explains both coincidences. Coefficient counts are $\lambda:\text{number of seeds}$.}
 \label{tab:e-groupfree-performance}\label{tab:e-groupfree-information}
 \begin{tabular}{@{}lrr@{}}
 \toprule
@@ -106,7 +106,7 @@ Fixed $\lambda=.03$ & $76.6\ [76.1,77.2]$ & $51.5\ [47.1,55.8]$\\
 Risk only / group-free & $77.5\ [76.5,78.6]$ & $43.1\ [33.1,53.1]$\\
 Group-supervised comparator & $77.7\ [76.6,78.8]$ & $44.2\ [34.2,54.3]$\\
 \midrule
-Policy & Coefficient counts & Hidden information\\
+Policy & Coefficient counts & Slice information\\
 \midrule
 Frozen ERM / matched zero & --- / $0:5$ & $0.007\ [0.005,0.009]$\\
 Fixed $\lambda=.03$ & $.03:5$ & $0.007\ [0.004,0.010]$\\
@@ -116,4 +116,4 @@ Group-supervised comparator & $0:1,\ .1:1,\ .3:3$ & $0.011\ [0.005,0.018]$\\
 \end{tabular}
 \end{table}
 
-Matched zero continuation restores step zero in all five seeds, explaining equality with frozen ERM despite intervening optimization. Group-free selection equals plain NLL minimization in every seed; the information criterion does not change any choice. Versus matched continuation, paired mean changes are $+2.1$ average-accuracy points ($[+.2,+4.0]$), $+.006$ information ($[+.001,+.010]$), and $-12.6$ worst-group points ($[-21.6,-3.7]$). The group-supervised comparator opens validation annotations only after blind decisions/artifacts are fixed and is not an upper bound. These schema-v2 results and the corrected repair cohort are separately identified in the artifact (see the \hyperref[sec:artifact-availability]{artifact availability statement}); extended settings and full tables are retained there.
+Matched zero continuation restores step zero in all five seeds, explaining equality with frozen ERM despite intervening optimization. Group-free selection equals plain NLL minimization in every seed; the information criterion does not change any choice. Versus matched continuation, paired mean changes are $+2.1$ average-accuracy points ($[+.2,+4.0]$), $+.006$ information ($[+.001,+.010]$), and $-12.6$ worst-group points ($[-21.6,-3.7]$). The group-supervised comparator opens validation annotations only after blind decisions and records are fixed and is not an upper bound. The post hoc coefficient-selection results and primary repair cohort have separate artifact identifiers (see the \hyperref[sec:artifact-availability]{artifact availability statement}), alongside extended settings and full tables.

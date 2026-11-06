@@ -1,16 +1,16 @@
-\section{Tail Identifiability and Local Learning Difficulty}
+\section{Information Tails and Local Classification Difficulty}
 \label{sec:tail-identifiability}
 
-The frequency of near-null environments determines the inverse-information tail. Its classification consequence additionally depends on how weak task alternatives change the Bayes decision. We separate these ingredients before defining the certificate.
+The frequency of near-null environments determines the inverse-information tail. Its classification consequence additionally depends on how weak task alternatives change the Bayes decision.
 
 \subsection{Collapse Geometry Determines Information Tails}
 \label{sec:collapse-geometry}
 
-In the tangency construction, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law in Theorem~\ref{thm:inverse-information-geometry} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass. We state the law with explicit regularity and localization assumptions.
+In the tangency construction, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law in Theorem~\ref{thm:inverse-information-geometry} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass.
 
 \begin{theorem}[Geometric tail law {\citep{mansouri_arai_2026_fisher_glasses}}]
 \label{thm:inverse-information-geometry}
-Let $z\in\R^d$ parameterize environments with density $p$, and let the Fisher-null set $\mathcal Z=\{z:\lambda(z)=0\}$ be a nonempty compact $C^2$ embedded submanifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Suppose $\lambda$ is continuous on the closure of a fixed tubular neighborhood of $\mathcal Z$ and bounded away from zero outside it. In normal coordinates $z=s+r\omega$, let $s\in\mathcal Z$, $r$ be normal distance, and $\omega$ a unit normal direction. As $r\downarrow0$, assume uniformly that information vanishes as $a(s,\omega)r^{2m}(1+o(1))$ and density as $b(s,\omega)r^\nu(1+o(1))$, where $m>0$, $\nu>-c$, and the continuous coefficients are uniformly positive and bounded. Then, for some $C>0$,
+Let $z\in\R^d$ parameterize environments with density $p$, and let the Fisher-null set $\mathcal Z=\{z:\lambda(z)=0\}$ be a nonempty compact $C^2$ embedded submanifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Suppose $\lambda$ is continuous on the closure of a fixed tubular neighborhood of $\mathcal Z$ and bounded away from zero outside it. In normal coordinates $z=s+r\omega$, let $s\in\mathcal Z$, $r$ be normal distance, and $\omega$ a unit normal direction. As $r\downarrow0$, assume uniformly that information and density have the respective asymptotic forms $a(s,\omega)r^{2m}(1+o(1))$ and $b(s,\omega)r^\nu(1+o(1))$, where $m>0$, $\nu>-c$, and the continuous coefficients are uniformly positive and bounded. Then, for some $C>0$,
 \begin{equation}
 \Pr(\lambda(z)^{-1}>x)\sim Cx^{-\beta},
 \qquad \beta=\frac{c+\nu}{2m}.
@@ -18,7 +18,7 @@ Let $z\in\R^d$ parameterize environments with density $p$, and let the Fisher-nu
 \end{equation}
 \end{theorem}
 
-An information threshold defines a narrow tube around $\mathcal Z$; integrating its probability mass determines the exponent. Greater codimension makes simultaneous collapse rarer, whereas higher-order vanishing produces a heavier tail. Quadratic collapse with positive density gives $\beta=c/2$, and the exact inverse-information moment is finite precisely when $\beta>1$. Thus substantial information across most environments can coexist with divergent average inverse information. Appendix~\ref{app:theory-tails} gives a complete proof under these assumptions, including the asymptotic constant.
+An information threshold defines a narrow tube around $\mathcal Z$; integrating its probability mass determines the exponent. Greater codimension makes simultaneous collapse rarer, whereas higher-order vanishing produces a heavier tail. Quadratic collapse with positive density gives $\beta=c/2$, and $\E[\lambda_e^{-1}]$ is finite precisely when $\beta>1$. Thus substantial information across most environments can coexist with divergent average inverse information. Appendix~\ref{app:theory-tails} gives the proof and asymptotic constant.
 
 \subsection{Efficient Information and Local Classification Difficulty}
 \label{sec:classification-difficulty}
@@ -42,7 +42,7 @@ Then, for a universal constant $c_0>0$,
 \end{equation}
 \end{theorem}
 
-The KL condition limits distinguishability after nuisance adjustment; decision separation specifies the cost of confusing the alternatives. Both must hold over the environment-specific radius $t_{0,e}$. For quadratic separation, $q=2$, the interior bound scales as $c_e/(nK_e\lambda_e)$. The minimum retains the finite scale of the local problem as information decreases. This is a conditional local result: efficient information sets the testing scale, while boundary geometry supplies its classification meaning. The complete testing proof and its tail-aggregation implication are in Appendix~\ref{app:theory-classification}.
+The KL condition limits distinguishability after nuisance adjustment; decision separation specifies the cost of confusing the alternatives. Both must hold over the environment-specific radius $t_{0,e}$. For quadratic separation, $q=2$, when $nK_e\lambda_e\ge t_{0,e}^{-2}$, the bound scales as $c_e/(nK_e\lambda_e)$. The minimum caps the bound at the scale set by the local neighborhood. This is a conditional local result: efficient information sets the testing scale, while Bayes-decision separation supplies the classification lower bound. The testing proof and tail-aggregation implication are in Appendix~\ref{app:theory-classification}.
 
 \begin{samepage}
 \subsection{The Fisher-Glass Certificate}
@@ -57,7 +57,7 @@ I_\alpha^{\FG}=\bigl[\CVaR_{\alpha,e\sim\Pi}(L_e^{(\varepsilon)})\bigr]^{-1},
 \label{eq:fisher-glass-certificate}
 \end{equation}
 \end{samepage}
-A larger certificate means a smaller inverse-information tail, expressed in information units. Stabilization $\varepsilon>0$ caps inverse loss at $1/\varepsilon$; it does not remove the underlying null geometry. Under the theorem's power-law regime, the exact limit $\varepsilon\downarrow0$ is positive for $\beta>1$ and vanishes for $\beta\le1$.
+A larger certificate means a smaller inverse-information tail, expressed in information units. Stabilization $\varepsilon>0$ caps inverse information at $1/\varepsilon$; it does not remove the underlying null geometry. Under Theorem~\ref{thm:inverse-information-geometry}'s power-law regime, the limit $\varepsilon\downarrow0$ is positive for $\beta>1$ and vanishes for $\beta\le1$.
 
 \begin{proposition}[Information coverage]
 \label{prop:information-coverage}

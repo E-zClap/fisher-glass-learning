@@ -1,18 +1,18 @@
 \section{Information-Guided Interventions}
 \label{sec:improving-information}
 
-The audit supplies objectives for data allocation, training, and acquisition. An observed-source allocation instantiates the Fisher-reserve principle \citep{mansouri_arai_2026_fisher_glasses}: assigning fraction $r$ to an anchor with unregularized projected information at least $\rho_0 I$ establishes the floor $r\rho_0$, under common coordinates and positive-definite nuisance blocks (Appendix~\ref{app:information-reserves}). Learning combines empirical task risk or Group DRO with inverse-information tail risk:
+The audit guides data allocation, training, and acquisition. An \emph{anchor} is an additional observation source with a lower bound on projected task information. When each observation's source is observed, assigning fraction $r$ to an anchor with unregularized information at least $\rho_0 I$ establishes the floor $r\rho_0$, under common coordinates and positive-definite nuisance blocks. This instantiates the Fisher-reserve principle \citep{mansouri_arai_2026_fisher_glasses} (Appendix~\ref{app:information-reserves}). For predictor parameters $w$, empirical task-risk objective $\widehat R_{\mathrm{base}}$ (ERM or group distributionally robust optimization, Group DRO), and penalty coefficient $\lambda_{\FG}$, training uses equally weighted groups in the inverse-information tail:
 \begin{equation}
 \min_w\;\widehat R_{\mathrm{base}}(w)
 +\lambda_{\FG}\operatorname{CVaR}_{\alpha,g}
 \!\left[\bigl\{\lambda_{\min}(\widehat F_g^{\rid}(w))+\varepsilon\bigr\}^{-1}\right].
 \label{eq:fg-training-compact}
 \end{equation}
-Weak projected-direction penalties complement base task risk. Coordinates follow Section~\ref{sec:computing-auditing}. Frozen-feature Waterbirds uses validation group labels to select the largest validation certificate among coefficients within two percentage points of the best validation worst-group accuracy.
+Coordinates follow Section~\ref{sec:computing-auditing}. Frozen-feature Waterbirds uses validation group labels to select the largest validation certificate among coefficients within two percentage points of the best validation worst-group accuracy.
 
 \begin{table}[htbp]
 \centering
-\caption{Frozen-feature Waterbirds training. Means with nominal 95\% normal-approximation intervals ($\pm1.96$ standard errors) across five seeds; ridge certificates use $\alpha=0.95$. Validation selection follows Section~\ref{sec:improving-information}.}
+\caption{Frozen-feature Waterbirds training. Means with nominal 95\% normal-approximation intervals ($\pm1.96$ standard errors) across five seeds; uncentered feature--Schur ridge certificates use $\alpha=0.95$. Validation selection follows Section~\ref{sec:improving-information}.}
 \label{tab:frozen-training}
 \small
 \begin{tabular}{@{}lccc@{}}
@@ -20,17 +20,17 @@ Weak projected-direction penalties complement base task risk. Coordinates follow
 Objective & \shortstack{Average\\accuracy (\%)} & \shortstack{Worst-group\\accuracy (\%)} & \shortstack{Fisher-Glass\\certificate} \\
 \midrule
 ERM & $77.2\pm0.1$ & $55.7\pm0.3$ & $0.198\pm0.001$ \\
-Fisher-Glass & $80.4\pm0.2$ & $56.3\pm0.3$ & $0.399\pm0.006$ \\
+ERM + Fisher-Glass & $80.4\pm0.2$ & $56.3\pm0.3$ & $0.399\pm0.006$ \\
 Group DRO & $80.9\pm0.3$ & $67.3\pm0.3$ & $0.233\pm0.003$ \\
 Group DRO + Fisher-Glass & $80.6\pm0.9$ & $69.4\pm1.3$ & $0.614\pm0.059$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Fisher-Glass approximately doubles ERM's certificate (Table~\ref{tab:frozen-training}); with Group DRO it raises the certificate from $0.233$ to $0.614$ and mean worst-group accuracy from $67.3\%$ to $69.4\%$. Stronger penalties can reduce accuracy (Appendix~\ref{app:extended-training}), so selecting an operating point requires task and validation criteria.
+Fisher-Glass approximately doubles ERM's certificate; with Group DRO it raises both the certificate and mean worst-group accuracy (Table~\ref{tab:frozen-training}). Stronger penalties can reduce accuracy (Appendix~\ref{app:extended-training}), requiring task and validation criteria for selection.
 
-Prospective training increases the validation certificate from $0.289$ to $0.330$, while the controlled background-swap drop is $52.9$ points versus $52.6$ for ERM. Constrained Fisher-only repair selects the unchanged model for the discovered slice in all five seeds. Post hoc selection increases hidden information but reduces worst-group accuracy by $12.6$ points; coefficients coincide with validation-NLL minimization in every seed. Appendix~\ref{app:extended-training} records the comparisons.
+In the prospective fine-tuning experiment, the validation certificate increases from $0.289$ to $0.330$, while the controlled background-swap drop is $52.9$ points versus $52.6$ for ERM. In a separate frozen-feature experiment, constrained repair with the Fisher penalty selects the unchanged model in all five seeds. A separate post hoc coefficient-selection analysis increases information in the discovered slice but reduces worst-group accuracy by $12.6$ points; its coefficients coincide with validation-NLL minimization in every seed (Appendix~\ref{app:extended-training}).
 
-For acquisition, candidate $a$ has modified feature/input $x_a^{\mathrm{cf}}$, assigned label $y_a$, and current predictive loss $\loss_w(x_a^{\mathrm{cf}},y_a)$. \emph{Tail-transverse influence} (TTI) multiplies local tail-information gain by this loss, $\TTI(a)=G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$. Gain differentiates the Schur complement along its weakest task direction, weighting environments by inverse-information CVaR sensitivity (Appendix~\ref{app:tail-transverse-influence}). Waterbirds implements $\widetilde{\TTI}_\alpha(a)=\widetilde G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$ with a normalized residual-score surrogate $\widetilde G_\alpha$; Appendix~\ref{app:feature-acquisition} specifies its weighting and allocation conventions.
+For acquisition, candidate $a$ has modified feature/input $x_a^{\mathrm{cf}}$, assigned label $y_a$, and current predictive loss $\loss_w(x_a^{\mathrm{cf}},y_a)$. Let $G_\alpha(a)$ be the first-order decrease in inverse-information CVaR along $a$'s specified allocation path. \emph{Tail-transverse influence} is $\TTI(a)=G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$. Gain differentiates the Schur complement along its weakest task direction, weighting environments by tail sensitivity (Appendix~\ref{app:tail-transverse-influence}). Waterbirds implements $\widetilde{\TTI}_\alpha(a)=\widetilde G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$ using a normalized residual-score approximation $\widetilde G_\alpha$ (Appendix~\ref{app:feature-acquisition}).
 
-Waterbirds candidates translate features by a same-label background-group mean difference, scaled by $\gamma_{\mathrm{cf}}$, using task and background annotations. Training data supply means and the nuisance probe; validation data supply candidates, selected features enter retraining, and evaluation is held out. Budgets count acquisitions relative to original training-set size. At unit feature-shift strength, $\gamma_{\mathrm{cf}}=1$, and a $1\%$ budget, $\widetilde{\TTI}_\alpha$ yields a mean worst-group accuracy gain of $4.52$ points versus $3.27$ for high-loss selection; high loss produces the larger mean certificate gain. At this strength, $\widetilde{\TTI}_\alpha$ has the larger mean worst-group accuracy gain at all three evaluated budgets; pure tail gain yields smaller improvements. See Appendix~\ref{app:feature-acquisition} for construction and budgets.
+Waterbirds candidates translate features by the difference between the two background-group mean representations within the same bird class, scaled by $\gamma_{\mathrm{cf}}$. Training data supply means and the nuisance probe; validation data supply candidates, selected features enter retraining, and evaluation is held out. Budgets count acquisitions relative to original training-set size. At $\gamma_{\mathrm{cf}}=1$ and a $1\%$ budget, $\widetilde{\TTI}_\alpha$ yields a mean worst-group accuracy gain of $4.52$ points versus $3.27$ for high-loss selection; high loss produces the larger mean certificate gain. At this strength, $\widetilde{\TTI}_\alpha$ has the larger mean worst-group accuracy gain at all three budgets; selection by $\widetilde G_\alpha$ alone yields smaller improvements (Appendix~\ref{app:feature-acquisition}).

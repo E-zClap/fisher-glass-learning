@@ -24,7 +24,7 @@ Let $(z,q)$ be the task logit and nuisance score standardized on original traini
 \end{equation}
 Every tail projector is applied to every candidate, irrespective of its assigned group; for a unique worst group the inverse-square weight cancels. The score lacks group allocation, sample-count scaling, old-information subtraction and replacement terms. Its nonnegative residual square is an unnormalized rank-one contribution at fixed coordinates, not the derivative of normalized augmentation or of the post-refit certificate. Threshold-inclusive ties also differ from the fractional/direction-dependent CVaR convention in Appendix~\ref{app:tail-transverse-influence}.
 
-High loss and pure tail use $\loss_w$ and $\widetilde G_\alpha$. Rank product multiplies ordinal rank-normalizations of these two scores; uncertainty product multiplies $\widetilde G_\alpha$ by $p(1-p)$. Equal values are not assigned averaged ranks. The acquisition baseline has $78.2\%$ average and $52.5\%$ worst-group accuracy, certificate $.209$, and weakest-information group landbird/land; it is distinct from the predefined-diagnostic cohort.
+High loss uses $\loss_w$; pure tail selects by $\widetilde G_\alpha$ alone. Rank product maps ascending \texttt{argsort} positions for each score evenly from 0 to 1, then multiplies their rank scores; equal values receive separate ranks. Uncertainty product multiplies $\widetilde G_\alpha$ by $p(1-p)$. The acquisition baseline has $78.2\%$ average and $52.5\%$ worst-group accuracy, certificate $.209$, and weakest-information group landbird/land; it is distinct from the predefined-diagnostic cohort.
 
 \begin{table}[htbp]
 \centering\small

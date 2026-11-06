@@ -5,7 +5,7 @@ Throughout, task coordinates use the common normalization of Section~\ref{sec:ge
 \subsection{Projection, Normalization, and Task--Nuisance Tangency}
 \label{app:theory-projection}
 
-Use the centered, square-integrable scores and blocks $J_{AB,e}$ of Section~\ref{sec:task-information}. Suppose the finite nuisance scores span $\mathcal T_{N,e}$ and $J_{NN,e}\succ0$. With $\Gamma_e=J_{TN,e}J_{NN,e}^{-1}$,
+Use the centered, square-integrable scores and blocks $J_{AB,e}$ of Section~\ref{sec:task-information}. Suppose the $d_N$ coordinates of the finite nuisance-score vector span $\mathcal T_{N,e}$ and $J_{NN,e}\succ0$. With $\Gamma_e=J_{TN,e}J_{NN,e}^{-1}$,
 \begin{equation}
 \begin{aligned}
 \mathbb E_{P_e}[(s_{T,e}-\Gamma_es_{N,e})s_{N,e}^{\top}]&=J_{TN,e}-\Gamma_eJ_{NN,e}=0,\\
@@ -27,7 +27,7 @@ For separate invertible transformations $\widetilde s_T=Us_T$ and $\widetilde s_
 \qquad \frac{F}{J_{TT}}=1-\rho^2\quad\text{in the scalar case}.
 \label{eq:app-coordinate-congruence}
 \end{equation}
-Here $\rho=J_{TN}/\sqrt{J_{TT}J_{NN}}$ requires positive raw task and nuisance information. Exact information is invariant to nuisance-basis changes; task congruence preserves rank but generally changes eigenvalues. The scalar surviving fraction is invariant to nonzero task rescaling and invertible nuisance-basis changes. A fixed isotropic nuisance ridge does not share the latter invariance unless its penalty is transformed accordingly (Appendix~\ref{app:estimation-certification}).
+Here $\rho=J_{TN}/\sqrt{J_{TT}J_{NN}}$ requires positive raw task and nuisance information. Exact information is invariant to nuisance-basis changes; task congruence preserves rank but generally changes eigenvalues. The scalar surviving fraction is invariant to nonzero task rescaling and invertible nuisance-basis changes. Nuisance ridge preserves the latter invariance only if $\lambda_{\rid}I$ becomes $\lambda_{\rid}VV^\top$ under $s_N\mapsto Vs_N$ (Appendix~\ref{app:estimation-certification}).
 
 For the tangency construction in Section~\ref{sec:tangency-separation}, let $b_e,r_e\in L_0^2(P_e)$ be orthogonal unit vectors, $\mathcal T_{N,e}=\operatorname{span}\{b_e\}$, and $a_e=b_e+\delta_er_e$ with $\delta_e\ge0$. The projection coefficient is $\langle a_e,b_e\rangle_e/\|b_e\|_e^2=1$, so
 \begin{equation}
@@ -35,12 +35,12 @@ a_e^{\eff}=\delta_er_e,\qquad F_e=\|\delta_er_e\|_e^2=\delta_e^2,
 \qquad J_{TT,e}=1+\delta_e^2,\qquad \frac{F_e}{J_{TT,e}}=\frac{\delta_e^2}{1+\delta_e^2}.
 \label{eq:app-tangency-identities}
 \end{equation}
-This establishes the normalized construction in Equation~\eqref{eq:tangency-identities}; coexistence with low prediction risk additionally requires a successful nuisance-based predictor.
+This establishes Equation~\eqref{eq:tangency-identities}; coexistence with low prediction risk additionally requires a successful nuisance-based predictor.
 
 \subsection{Normal Coordinates and the Inverse-Information Tail}
 \label{app:theory-tails}
 
-Under Theorem~\ref{thm:inverse-information-geometry}, the zero set $\mathcal Z=\{\lambda=0\}$ is a nonempty compact $C^2$ embedded manifold without boundary, of codimension $c\in\{1,\ldots,d\}$. The nonnegative $\lambda$ is continuous on the closure of a tube $U_{r_\star}(\mathcal Z)$ and bounded away from zero outside it. In coordinates $z=s+r\omega$, with $\omega\in S(N_s\mathcal Z)$, assume uniformly on the unit normal bundle
+Under Theorem~\ref{thm:inverse-information-geometry}, the zero set $\mathcal Z=\{\lambda=0\}$ is a nonempty compact $C^2$ embedded manifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Write $U_r(\mathcal Z)=\{z:\operatorname{dist}(z,\mathcal Z)<r\}$ for its tube, $N_s\mathcal Z$ for the normal space at $s$, $S(N_s\mathcal Z)$ for its unit sphere, and $\operatorname{vol}_{\mathcal Z}$ for induced volume. The nonnegative $\lambda$ is continuous on $\overline U_{r_\star}(\mathcal Z)$ and bounded away from zero outside it. In coordinates $z=s+r\omega$, assume uniformly over $\omega\in S(N_s\mathcal Z)$ and $s\in\mathcal Z$
 \begin{equation}
 \lambda(s+r\omega)=a(s,\omega)r^{2m}(1+o(1)),\qquad
 p(s+r\omega)=b(s,\omega)r^\nu(1+o(1)),
@@ -57,7 +57,7 @@ The sphere measure $\sigma_s$ is unnormalized; for $c=1$, each of the two normal
 
 \begin{proof}[Proof of Theorem~\ref{thm:inverse-information-geometry}]
 For any $0<r_0<r_\star$, continuity and absence of zeros on the compact annulus $r_0\le\operatorname{dist}(z,\mathcal Z)\le r_\star$ give a positive minimum of $\lambda$. Together with the bound outside the outer tube, this localizes $\{\lambda<t\}$ to $U_{r_0}(\mathcal Z)$ for all sufficiently small $t$.
-The tubular volume element is $dz=j(s,r\omega)r^{c-1}\,dr\,d\sigma_s\,d\operatorname{vol}_{\mathcal Z}$, where $j=1+O(r)$ uniformly. Thus, for any $0<\zeta<1$, uniformity permits $r_0$ small enough that
+The tubular volume element is $dz=j(s,r\omega)r^{c-1}\,dr\,d\sigma_s\,d\operatorname{vol}_{\mathcal Z}$, where the coordinate Jacobian satisfies $j=1+O(r)$ uniformly. Thus, for any $0<\zeta<1$, uniformity permits $r_0$ small enough that
 \begin{equation}
 \begin{aligned}
 (1-\zeta)ar^{2m}&\le\lambda(s+r\omega)\le(1+\zeta)ar^{2m},\\
@@ -98,7 +98,7 @@ For $\lambda=\delta^2$, $\Pr(\delta<t)\sim C_\delta t^\gamma$ gives exponent $\g
 \end{aligned}
 \label{eq:app-independent-branches}
 \end{equation}
-Here $B_K^+$ is the positive-orthant unit ball and $v_K$ the full ball's volume. Independence gives $f(0)=\prod_k f_k(0+)$; the inverse mean is finite for $K\ge3$. This calculation concerns additive scalar information or a fixed task direction. A minimum-eigenvalue conclusion instead requires applying Theorem~\ref{thm:inverse-information-geometry} to that eigenvalue.
+Here $B_K^+$ is the positive-orthant unit ball and $v_K$ the full ball's volume. Independence gives $f(0)=\prod_k f_k(0+)$ for branch marginal densities $f_k$; the inverse mean is finite for $K\ge3$. This calculation concerns additive scalar information or a fixed task direction. A minimum-eigenvalue conclusion instead requires applying Theorem~\ref{thm:inverse-information-geometry} to that eigenvalue.
 
 \subsection{Local Classification: Testing Reduction and Tail Aggregation}
 \label{app:theory-classification}
@@ -145,7 +145,7 @@ Independent learner randomization has the same law under both alternatives and l
 \end{proof}
 
 \paragraph{Quadratic decision separation.}
-Suppose the binary alternatives share a feature marginal $Q_e$, with regression functions $\eta_{\pm,t}(x)=P_{e,\pm t}(Y=1\mid X=x)$. Let $D_{e,t}=\{g_{+,t}^\star\ne g_{-,t}^\star\}$ be their Bayes-rule disagreement set. Applying the binary excess-risk identity \citep[Eq.~(1.1)]{audibert2007fast} to the two alternatives gives
+Suppose the binary alternatives share a feature marginal $Q_e$, with regression functions $\eta_{\pm,t}(x)=P_{e,\pm t}(Y=1\mid X=x)$ and Bayes rules $g_{\pm,t}^\star(x)=\mathbf1\{\eta_{\pm,t}(x)\ge1/2\}$. Let $D_{e,t}=\{g_{+,t}^\star\ne g_{-,t}^\star\}$ be their disagreement set. Applying the binary excess-risk identity \citep[Eq.~(1.1)]{audibert2007fast} gives
 \begin{equation}
 \begin{aligned}
 &\inf_g\{\mathcal E_{P_{e,+t}}(g)+\mathcal E_{P_{e,-t}}(g)\}\\
@@ -180,7 +180,7 @@ For $0<\alpha<1$ and nonnegative $Z$, the CVaR minimization formula holds for in
 \end{aligned}
 \label{eq:app-cvar-dual}
 \end{equation}
-Both values are $+\infty$ if $\mathbb EZ=+\infty$. For integrable $Z$, a maximizing weight equals $(1-\alpha)^{-1}$ above $v_\alpha=\inf\{v:\Pr(Z\le v)\ge\alpha\}$, zero below it, and fills the remaining mass at the threshold. Such fractional weighting is possible because $\Pr(Z>v_\alpha)\le1-\alpha\le\Pr(Z\ge v_\alpha)$. The dual gives monotonicity, positive homogeneity, and $v_\alpha\le\operatorname{CVaR}_\alpha(Z)$. For a finite audit with $\pi_g\ge0$, $\sum_g\pi_g=1$,
+Both values are $+\infty$ if $\mathbb EZ=+\infty$. For integrable $Z$, a maximizing weight equals $(1-\alpha)^{-1}$ above $v_\alpha=\inf\{v:\Pr(Z\le v)\ge\alpha\}$, zero below it, and fills the remaining mass at the threshold. Such fractional weighting is possible because $\Pr(Z>v_\alpha)\le1-\alpha\le\Pr(Z\ge v_\alpha)$. The dual gives monotonicity, positive homogeneity, and $v_\alpha\le\operatorname{CVaR}_\alpha(Z)$. For the finite audit distribution $\Pi_G$, let $\pi_g=\Pi_G(\{g\})\ge0$, $\sum_g\pi_g=1$. Then
 \begin{equation}
 \operatorname{CVaR}_{\alpha,\pi}(Z_g)
 =\max_{\substack{\sum_g\omega_g=1\\0\le\omega_g\le\pi_g/(1-\alpha)}}\sum_g\omega_gZ_g.

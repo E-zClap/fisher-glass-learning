@@ -1,12 +1,14 @@
-# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6
+# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7
 
-The current PDF has 43 pages: main text 1–10, references 11–12, scientific appendices 13–35, and declarations/checklist 36–43. The main text is unchanged. The scientific appendix reduction (41 to 23 pages) consolidates presentation while preserving the proofs, assumptions, essential controls and uncertainty.
+The current PDF has 43 pages: main text 1–10, references 11–12, scientific appendices 13–35, and declarations/checklist 36–43. The section structure and ten-page main-text budget are retained. The scientific appendix reduction (41 to 23 pages) consolidates presentation while preserving the proofs, assumptions, essential controls and uncertainty.
 
 Camera-ready-v4 applies seven wording clarifications to v3. Table and equation numbering, numerical values, the page budget, and the crosswalk below are unchanged. The revised caption of Table E.2 now appears on page 31.
 
 Camera-ready-v5 refines citation placement and attribution, with all 29 printed references retained. The two bibliography pages are unchanged. Table/equation numbering and the 43-page budget remain unchanged.
 
 Camera-ready-v6 consolidates Mansouri–Arai attribution to six manuscript locations (five main-text citations and one in Appendix A.2), replacing seven repeated citations with internal references. The bibliography, table/equation numbering, results and 43-page budget are unchanged.
+
+Camera-ready-v7 clarifies definitions, loss aggregation, matrix and calibration conventions, gate weighting, uncertainty statistics, and training/acquisition procedures. Numerical results, bibliography entries, table/equation numbering and figure artwork remain unchanged. The overlap and fold-stability definition is in Appendix C.3; Table C.2 now keeps its support-correction note together.
 
 ## Table crosswalk
 

@@ -1,7 +1,7 @@
 \section{Task--Nuisance Geometry and Information Collapse}
 \label{sec:geometry}
 
-Let $e\sim\Pi$ index an observed group or a latent subpopulation. We fix the task contrast, admissible nuisance variations, and a common normalization of task coordinates throughout the audit. Information then describes the task distinction remaining after adjustment for those nuisance variations.
+Let $e\sim\Pi$ index an observed group or latent subpopulation. The audit fixes the task contrast, admissible nuisance variations, and common task-coordinate normalization. Information describes the task distinction remaining after nuisance adjustment.
 
 \subsection{Task Information After Nuisance Profiling}
 \label{sec:task-information}
@@ -25,12 +25,12 @@ F_e=J_{TT,e}(1-\rho_e^2),
 \underbrace{F_e/J_{TT,e}}_{\text{surviving-information fraction}}=1-\rho_e^2.
 \label{eq:surviving-information-fraction}
 \end{equation}
-Absolute information measures remaining curvature in the declared coordinates. The fraction measures the proportion retained, lies in $[0,1]$, and is invariant to nonzero scalar rescaling of either score. It compares alignment across slices with different raw information; its feature--Schur analogue supplies the prospective selection statistic. The model-level Fisher-Glass certificate, defined below, instead summarizes absolute information across environments.
+Absolute information measures remaining curvature in the declared coordinates. The fraction measures the proportion retained, lies in $[0,1]$, and is invariant to nonzero scalar rescaling of either score. It compares alignment across slices with different raw information; its feature--Schur analogue supplies the prospective selection statistic. The Fisher-Glass certificate summarizes absolute information across environments.
 
-\subsection{Task--Nuisance Tangency and Loss--Information Separation}
+\subsection{Task--Nuisance Alignment and Loss--Information Separation}
 \label{sec:tangency-separation}
 
-Let $b_e,r_e$ be centered, orthogonal, unit-norm scores, with nuisance span $\operatorname{span}\{b_e\}$. For $\delta_e\ge0$, the normalized construction gives
+Let $b_e,r_e$ be centered, orthogonal, unit-norm scores, with nuisance span $\operatorname{span}\{b_e\}$. For $\delta_e\ge0$, define the task score $a_e=b_e+\delta_e r_e$. Then
 \begin{equation}
 a_e=b_e+\delta_e r_e,
 \quad J_{TT,e}=1+\delta_e^2,
@@ -38,7 +38,7 @@ a_e=b_e+\delta_e r_e,
 \quad \frac{F_e}{J_{TT,e}}=\frac{\delta_e^2}{1+\delta_e^2}.
 \label{eq:tangency-identities}
 \end{equation}
-Projection removes $b_e$, leaving $\delta_e r_e$. Raw information stays above one as efficient information vanishes quadratically; $\delta_e$ measures distance from the nuisance span. When the nuisance feature also supports small observed prediction risk, low loss coexists with arbitrarily weak efficient information. This separation concerns the evidence supporting prediction, even within accurately classified populations. The formal construction and proof appear in Appendix~\ref{app:theory-projection}. Figure~\ref{fig:geometry-tails} illustrates the geometry's population consequence: frequent near-tangencies produce a heavy inverse-information tail.
+Projection removes $b_e$, leaving $\delta_e r_e$. Raw information stays at least one as efficient information vanishes quadratically; $\delta_e$ measures distance from the nuisance span. When nuisance features support low observed risk, low loss coexists with arbitrarily weak efficient information, even in accurately classified populations. Appendix~\ref{app:theory-projection} gives the construction and proof. Figure~\ref{fig:geometry-tails} illustrates the population consequence: frequent near-alignment of task scores with nuisance spans produces a heavy inverse-information tail.
 
 \begin{figure}[t]
 \centering

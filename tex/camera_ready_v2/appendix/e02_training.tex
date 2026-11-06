@@ -7,16 +7,16 @@ For a declared group matrix $\widehat J_g(w)$, put $\widehat L_g(w)=[\lambda_{\m
 \left[\tau+\frac{1}{1-\alpha}\sum_g\pi_g(\widehat L_g(w)-\tau)_+\right],
 \label{eq:fisher-glass-training-objective}
 \end{equation}
-where the base risk is ERM or Group DRO. Frozen-feature Waterbirds uses unweighted second moments of the standardized task logit and fixed background-probe score, ridge $10^{-3}$ and $\varepsilon=10^{-8}$, rather than the hidden-slice predictive-$p(1-p)$ matrix. Training $\alpha=.75$ and audit $\alpha=.95$ both give the maximum inverse information over four equally weighted groups.
+Here $w$ denotes predictor parameters, $\widehat R_{\mathrm{base}}$ is the ERM or Group DRO task-risk objective, and $\lambda_{\FG}$ its information-penalty coefficient. Frozen-feature Waterbirds uses uncentered second moments of standardized task logits and fixed background-probe scores, ridge $10^{-3}$ and $\varepsilon=10^{-8}$. Training $\alpha=.75$ and audit $\alpha=.95$ both give the maximum inverse information over four equally weighted groups.
 
 \paragraph{Protocol and selection.}
 ImageNet MobileNetV3-small features and background-probe scores use training-moment standardization. A linear head receives 1,200 full-batch AdamW updates ($\mathrm{lr}=.01$, weight decay $10^{-4}$, seeds 17--21), Gaussian $N(0,.01^2)$ initial weights and zero intercept. Current logits use full-training population standard deviation plus $10^{-6}$; training projected information is floored at $\varepsilon$ before reciprocal stabilization. Evaluation uses fitted training-logit moments. Group DRO minimizes the maximum group mean cross-entropy; Loss-CVaR uses the largest $\lceil.1n\rceil$ training losses, and JTT refits with weight 20 on initial ERM mistakes.
 
-For each FG family and seed, search $\Lambda_{\FG}=\{.01,.03,.1,.3\}$. Among candidates whose validation worst-group accuracy is within $.02$ of the family's best, maximize the validation certificate, breaking ties by higher validation worst-group accuracy. This uses validation group annotations. Historical choices are $.03$ for standalone FG in all seeds and $.1$ or $.3$ for Group DRO+FG. Table~\ref{tab:e-frozen-performance} retains all six methods; official test data enter only final evaluation.
+For each FG family and seed, search $\Lambda_{\FG}=\{.01,.03,.1,.3\}$. Among candidates whose validation worst-group accuracy is within $.02$ of the family's best, maximize the validation certificate, breaking ties by higher validation worst-group accuracy. This uses validation group annotations. Historical choices are $.03$ for ERM + FG in all seeds and $.1$ or $.3$ for Group DRO + FG. Table~\ref{tab:e-frozen-performance} retains all six methods; official test data enter only final evaluation.
 
 \begin{table}[htbp]
 \centering\small
-\caption{Original frozen-feature training cohort, seeds 17--21. Both panels give means $\pm$ nominal 95\% normal-approximation half-widths; accuracy is percent and the ridge certificate uses $\alpha=.95$.}
+\caption{Original frozen-feature training cohort, seeds 17--21. Both panels give means $\pm$ nominal 95\% normal-approximation half-widths; accuracy is percent and the uncentered feature--Schur ridge certificate uses $\alpha=.95$.}
 \label{tab:e-frozen-performance}\label{tab:e-frozen-information}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -26,7 +26,7 @@ ERM & $77.2\pm0.1$ & $55.7\pm0.3$ & $1.969\pm0.007$\\
 Group DRO & $80.9\pm0.3$ & $67.3\pm0.3$ & $1.143\pm0.021$\\
 JTT & $77.4\pm0.1$ & $54.1\pm0.2$ & $2.167\pm0.004$\\
 Loss-CVaR & $78.2\pm0.1$ & $52.1\pm0.3$ & $2.427\pm0.041$\\
-Fisher-Glass & $80.4\pm0.2$ & $56.3\pm0.3$ & $1.866\pm0.025$\\
+ERM + Fisher-Glass & $80.4\pm0.2$ & $56.3\pm0.3$ & $1.866\pm0.025$\\
 Group DRO + FG & $80.6\pm0.9$ & $69.4\pm1.3$ & $0.855\pm0.082$\\
 \midrule
 Method & Ridge certificate & Inverse p95 & \\
@@ -35,7 +35,7 @@ ERM & $0.198\pm0.001$ & $4.86\pm0.02$ & \\
 Group DRO & $0.233\pm0.003$ & $4.10\pm0.06$ & \\
 JTT & $0.234\pm0.001$ & $4.13\pm0.01$ & \\
 Loss-CVaR & $0.233\pm0.002$ & $4.17\pm0.03$ & \\
-Fisher-Glass & $0.399\pm0.006$ & $2.46\pm0.04$ & \\
+ERM + Fisher-Glass & $0.399\pm0.006$ & $2.46\pm0.04$ & \\
 Group DRO + FG & $0.614\pm0.059$ & $1.63\pm0.17$ & \\
 \bottomrule
 \end{tabular}

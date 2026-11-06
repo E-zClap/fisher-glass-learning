@@ -21,7 +21,7 @@ h_{g,a}:=D_a\lambda_g=p_g^\top H_{g,a}p_g,
 \qquad p_g=p_g(u_g).
 \label{eq:directional-schur-derivative}
 \end{equation}
-For allocation rate $\eta_g\ge0$, additive and normalized contributions have different derivatives:
+Let $s_a$ be the candidate's score vector and $M_{g,a}$ its matrix contribution to group $g$. For allocation rate $\eta_g\ge0$, additive and normalized contributions have different derivatives:
 \begin{equation}
 \begin{aligned}
 H_{g,a}=\eta_gs_as_a^\top
@@ -33,7 +33,7 @@ J_g(t,a)=\frac{J_g+t\eta_gM_{g,a}}{1+t\eta_g}
 \end{aligned}
 \label{eq:influence-ridge-normalized-gain}
 \end{equation}
-Indeed $Q_gC_gQ_g=Q_g-\rho Q_g^2$, so $p_g^\top J_gp_g=\lambda_g-\rho\lVert Q_gB_g^\top u_g\rVert^2$; the correction vanishes at $\rho=0$. The additive rank-one gain is $\eta_g$ times the squared residual $[u_g^\top(s_{T,a}-B_gQ_gs_{N,a})]^2$. This is the efficient residual for $\rho=0$ and the corresponding ridge residual for $\rho>0$. Replacement instead uses the allocated new-minus-removed contribution. For one observation appended to group $g$, its indicator and original sample-count scaling enter $\eta_g$; they cannot be omitted when claiming a normalized-augmentation derivative.
+Indeed $Q_gC_gQ_g=Q_g-\rho Q_g^2$, so $p_g^\top J_gp_g=\lambda_g-\rho\lVert Q_gB_g^\top u_g\rVert^2$; the correction vanishes at $\rho=0$. Per unit allocation, the additive rank-one contribution is the squared nuisance-adjusted residual $[u_g^\top(s_{T,a}-B_gQ_gs_{N,a})]^2$; at $\rho=0$, this is the efficient-score residual. Replacement uses the allocated new-minus-removed contribution. For one observation appended to group $g$, its indicator and original sample-count scaling enter $\eta_g$; they cannot be omitted when claiming a normalized-augmentation derivative.
 
 \paragraph{Tail sensitivity, including nonsmooth cases.}
 Fix $\varepsilon>0$ and $0<\alpha<1$, and put $L_g=(\lambda_g+\varepsilon)^{-1}$. Appendix~\ref{app:theory-certificate}'s finite CVaR dual uses
@@ -45,7 +45,7 @@ G_\alpha(a):=-D_a\CVaR_{\alpha,\pi}(L)
 \qquad D_a I_{\alpha,\pi}=I_{\alpha,\pi}^{\,2}G_\alpha(a).
 \label{eq:tail-information-gain}
 \end{equation}
-This follows from $D_aL_g=-h_{g,a}/(\lambda_g+\varepsilon)^2$ and differentiation of the unique active linear functional. The dual weights include fractional threshold mass and the upper-tail normalization.
+Thus $G_\alpha(a)$ is the first-order decrease in inverse-information CVaR along action $a$'s specified allocation path. It follows from $D_aL_g=-h_{g,a}/(\lambda_g+\varepsilon)^2$; the dual weights include fractional threshold mass and upper-tail normalization.
 
 For a repeated minimum eigenvalue with eigenspace $\mathcal E_g$, symmetric eigenvalue perturbation gives the first formula below. At a CVaR tie, the right derivative of a maximum is the maximum of its active directional derivatives; negation gives the second:
 \begin{equation}
