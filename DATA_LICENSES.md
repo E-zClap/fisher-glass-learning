@@ -9,7 +9,7 @@ No repository-wide software license has been assigned. The absence of a license 
 | WILDS | Dataset interfaces and benchmark definitions | [WILDS datasets](https://wilds.stanford.edu/datasets/) and [software repository](https://github.com/p-lambda/wilds) |
 | CivilComments-WILDS | Text diagnostics | [Official WILDS dataset information](https://wilds.stanford.edu/datasets/#civilcomments) |
 | Waterbirds | Image classification, nuisance interventions, discovery and training | [Original group DRO/Waterbirds repository](https://github.com/kohpangwei/group_DRO) |
-| CUB-200-2011 and its segmentations | Bird images, labels, species grouping, foreground masks | [Caltech CUB dataset](https://www.vision.caltech.edu/datasets/cub_200_2011/) |
+| CUB-200-2011 and its segmentations | Bird images, labels, species grouping, foreground masks | [Caltech CUB dataset](https://www.vision.caltech.edu/datasets/cub_200_2011/); the official project credits the segmentations to Ryan Farrell |
 | Places | Waterbirds background images | [Places project](http://places2.csail.mit.edu/) and original Waterbirds documentation |
 | ImageNet-pretrained MobileNetV3-small | Feature extraction and initialization | [Torchvision MobileNetV3-small documentation](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.mobilenet_v3_small.html) and associated upstream model/data terms |
 | CLIP ViT-B/32 | Fixed water-versus-land text nuisance direction | [OpenAI CLIP source and license](https://github.com/openai/CLIP) and [model card](https://huggingface.co/openai/clip-vit-base-patch32) |

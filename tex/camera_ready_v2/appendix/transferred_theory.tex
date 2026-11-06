@@ -35,7 +35,7 @@ a_e^{\eff}=\delta_er_e,\qquad F_e=\|\delta_er_e\|_e^2=\delta_e^2,
 \qquad J_{TT,e}=1+\delta_e^2,\qquad \frac{F_e}{J_{TT,e}}=\frac{\delta_e^2}{1+\delta_e^2}.
 \label{eq:app-tangency-identities}
 \end{equation}
-This proves the normalized transverse-information construction of \citet{mansouri_arai_2026_fisher_glasses}; coexistence with low prediction risk additionally requires a successful nuisance-based predictor.
+This construction realizes the transverse-information geometry of \citet{mansouri_arai_2026_fisher_glasses}; coexistence with low prediction risk additionally requires a successful nuisance-based predictor.
 
 \subsection{Normal Coordinates and the Inverse-Information Tail}
 \label{app:theory-tails}
@@ -122,7 +122,7 @@ Fix an admissible $t$ and abbreviate $P_\pm=P_{e,\pm t}$. For any learning rule,
 \end{aligned}
 \label{eq:app-risk-to-testing}
 \end{equation}
-The standard exponential two-point testing inequality \citep{lecam1986asymptotic,tsybakov2009introduction}, together with product additivity of KL and the assumed KL bound, gives
+The standard exponential two-point testing inequality \citep[Lemma~2.6]{tsybakov2009introduction}, together with product additivity of KL and the assumed KL bound, gives
 \begin{equation}
 \begin{aligned}
 P_+^{\otimes n}(\psi_t=-)+P_-^{\otimes n}(\psi_t=+)
@@ -145,7 +145,7 @@ Independent learner randomization has the same law under both alternatives and l
 \end{proof}
 
 \paragraph{Quadratic decision separation.}
-Suppose the binary alternatives share a feature marginal $Q_e$, with regression functions $\eta_{\pm,t}(x)=P_{e,\pm t}(Y=1\mid X=x)$. Let $D_{e,t}=\{g_{+,t}^\star\ne g_{-,t}^\star\}$ be their Bayes-rule disagreement set. The binary excess-risk identity gives
+Suppose the binary alternatives share a feature marginal $Q_e$, with regression functions $\eta_{\pm,t}(x)=P_{e,\pm t}(Y=1\mid X=x)$. Let $D_{e,t}=\{g_{+,t}^\star\ne g_{-,t}^\star\}$ be their Bayes-rule disagreement set. Applying the binary excess-risk identity \citep[Eq.~(1.1)]{audibert2007fast} to the two alternatives gives
 \begin{equation}
 \begin{aligned}
 &\inf_g\{\mathcal E_{P_{e,+t}}(g)+\mathcal E_{P_{e,-t}}(g)\}\\
@@ -170,7 +170,7 @@ Separation $c_e$, distinguishability $K_e$, and radius $t_{0,e}$ remain inside t
 \subsection{CVaR, Information Coverage, and Stabilization}
 \label{app:theory-certificate}
 
-For $0<\alpha<1$ and nonnegative $Z$, upper-tail CVaR has the standard variational and dual forms \citep{rockafellar2000optimization,rockafellar2002conditional}
+For $0<\alpha<1$ and nonnegative $Z$, the CVaR minimization formula holds for integrable $Z$ \citep[Theorem~10]{rockafellar2002conditional}; the threshold-weight argument below gives its dual:
 \begin{equation}
 \begin{aligned}
 \operatorname{CVaR}_\alpha(Z)
