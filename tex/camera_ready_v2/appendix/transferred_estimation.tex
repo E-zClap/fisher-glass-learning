@@ -1,250 +1,148 @@
-% Complete user-supplied Appendix B; implementation details verified against
-% audit code and retained W2 outputs. See b_estimation_provenance.md.
-This appendix specifies the operational information targets, quantifies ridge bias and sampling error, and constructs a lower certificate for a declared finite audit distribution. The mathematical analysis conditions on the fitted predictor, coordinate maps, calibration, and slice definitions, treating them as fixed independently of the evaluation observations. Appendix~\ref{app:hidden-slice-discovery} supplies the matrix-estimation argument for learned soft slices evaluated with a frozen gate. Data-dependent normalization in an empirical protocol requires separate treatment; the bounds below do not automatically include its estimation error.
+% Compressed Appendix B; full execution record retained in the versioned artifact.
+The bounds condition on a predictor, coordinates, calibration, and slices fixed independently of evaluation data. Evaluation-fitted normalization requires additional error control. Expanded implementation details and numerical records are preserved in the artifact (see the \hyperref[sec:artifact-availability]{artifact availability statement}), under \path{docs/extended_appendix_details/}.
 
 \subsection{Operational Models and Matrix Targets}
 \label{app:operational-matrices}
-
-Let $P_g$ denote the evaluation distribution of $(X,Y)$ in slice $g$. For a fixed predictor with logits $\ell_w(x)$ under the declared calibration convention, introduce
+For evaluation distribution $P_g$ and calibrated logits $\ell_w$, declare task and nuisance perturbations
 \begin{equation}
 \ell_{\theta,\mu}(x)=\ell_w(x)+\Phi_T(x)\theta+\Phi_N(x)\mu,
-\qquad D(x)=\bigl(\Phi_T(x)\ \Phi_N(x)\bigr).
+\qquad D=(\Phi_T\ \Phi_N),\quad d=d_T+d_N.
 \label{eq:operational-perturbations}
 \end{equation}
-The columns of $\Phi_T$ specify the task contrast, and those of $\Phi_N$ specify the nuisance hypothesis. All matrix operations take place in dimension $d=d_T+d_N$. Write $p(x)=\operatorname{softmax}(\ell_w(x))$ and $H(x)=\diag(p(x))-p(x)p(x)^\top$. Three positive-semidefinite per-example constructions define distinct targets:
+With $p=\operatorname{softmax}(\ell_w)$, $H=\diag(p)-pp^\top$, and normalized feature coordinates $v=(v_T^\top\ v_N^\top)^\top$, distinguish
 \begin{equation}
 \begin{aligned}
-M^{\mathrm{pred}}(x)&=D(x)^\top H(x)D(x),\\
-M^{\mathrm{obs}}(x,y)&=s(x,y)s(x,y)^\top,
-\qquad s(x,y)=D(x)^\top(\mathbf e_y-p(x)),\\
-M^{\mathrm{feat}}(x)&=v(x)v(x)^\top,
-\qquad v(x)=(v_T(x)^\top\ v_N(x)^\top)^\top.
+M^{\mathrm{pred}}&=D^\top HD,\qquad M^{\mathrm{obs}}=ss^\top,
+\quad s=D^\top(\mathbf e_Y-p),\\
+M^{\mathrm{feat}}&=vv^\top,\qquad J_g=\E_{P_g}[M].
 \end{aligned}
 \label{eq:appB-matrix-targets}
 \end{equation}
-Here $\mathbf e_y$ is the class-indicator vector, and $v$ contains the declared normalized coordinates. Each construction defines $J_g=\E_{P_g}[M]$.
+Predictive Fisher averages likelihood-score outer products under the fitted conditional label distribution; its scores have conditional mean zero even when features do not. Its Schur complement is efficient information for this operational model. Observed-label moments equal predictive Fisher under conditional correct specification, $P_g(Y=\cdot\mid X)=p(X)$; otherwise they are second moments, whose centered covariance subtracts $\E[s]\E[s]^\top$. Feature geometry instead satisfies $J_g=\Sigma_g+\mu_g\mu_g^\top$, with $\mu_g=\E[v]$ and $\Sigma_g=\operatorname{Cov}(v)$. The prospective centered comparison uses within-slice covariance $\Sigma_g$ with divisor $n_g$ and unchanged global scales, removing the mean contribution without rescaling.
 
-\paragraph{Predictive Fisher.}
-$M^{\mathrm{pred}}$ is the likelihood Fisher of the local conditional model with covariate marginal $P_g^X$ and conditional probabilities $\operatorname{softmax}(\ell_{\theta,\mu}(x))$. Averaging its likelihood-score outer product over the fitted conditional label distribution gives $M^{\mathrm{pred}}$. Its Schur complement therefore has the efficient-information interpretation established in Appendix~\ref{app:theory-projection} for that operational model. Predictive Fisher does not require centered features: its likelihood scores have conditional mean zero under the predictive label distribution.
-
-\paragraph{Observed-label score moment.}
-$M^{\mathrm{obs}}$ evaluates the score at the observed label. Conditional correct specification within the audited distribution, $P_g(Y=\cdot\mid X)=p(X)$, implies $\E_{P_g}[M^{\mathrm{obs}}\mid X]=M^{\mathrm{pred}}(X)$. More generally, the target is a second moment. Its centered covariance subtracts $\E[s]\E[s]^\top$.
-
-\paragraph{Unweighted feature geometry.}
-$M^{\mathrm{feat}}$ measures the second-moment geometry of the chosen coordinates. With $\mu_g=\E_{P_g}[v]$ and $\Sigma_g=\E_{P_g}[(v-\mu_g)(v-\mu_g)^\top]$,
-\[
-J_g=\Sigma_g+\mu_g\mu_g^\top.
-\]
-The original prospective statistic uses $J_g$; its centered comparison uses $\Sigma_g$, estimated with divisor $n_g$ and the same global coordinate scales. This comparison removes within-slice means without rescaling the coordinates.
-
-Normalization is protocol-specific, as recorded in Appendix~\ref{app:experimental-details}; fitted model weights, probes, and temperatures are fixed before final scoring. Some reported score normalizations use the evaluated sample, rather than training moments. Those implementations are not automatically covered by a concentration argument for independent evaluations of a fixed matrix map. The experiments use prespecified nuisance families; Appendix~\ref{app:predefined-diagnostics} records the available semantic evidence, fitting protocols, and conditioning audits. Anchor task-preservation tests and formal admission thresholds describe possible extensions of this protocol, not completed admission checks.
-
-Prospective Waterbirds selection uses the uncentered feature--Schur fraction. Appendix~\ref{app:prospective-intervention} compares it with within-slice covariance and predictive Fisher at the same fixed nuisance ridge. The legacy probability-weighted comparator normalizes $p(1-p)$ weights within each group; this rescales the effective ridge relative to the predictive moment. Hidden-slice discovery uses the predictive moment without that weight normalization and retains same-class shrinkage $\eta=0.10$ (Appendix~\ref{app:hidden-slice-discovery}). Removing the nuisance ridge targets the unregularized Schur complement of the declared matrix, including retained shrinkage.
+Prospective selection uses uncentered feature--Schur fractions; Appendix~\ref{app:prospective-intervention} compares centered and predictive targets. Normalizing $p(1-p)$ weights within a group rescales the effective nuisance ridge and is distinct from the predictive moment. Hidden discovery uses the unnormalized predictive factor and retains same-class shrinkage $\eta=0.10$. Removing ridge targets the unregularized Schur complement of the declared matrix, including any retained shrinkage. Normalization conventions and nuisance-specification checks appear in Appendices~\ref{app:experimental-details} and~\ref{app:predefined-diagnostics}.
 
 \subsection{Ridge Regularization and the Unregularized Target}
 \label{app:ridge-unregularized}
-
-Partition $J=\begin{psmallmatrix}A&B\\B^\top&C\end{psmallmatrix}\succeq0$, with $C\succ0$, and define
+For $J=\begin{psmallmatrix}A&B\\B^\top&C\end{psmallmatrix}\succeq0$, $C\succ0$, and $\lambda_{\rid}>0$, define
 \begin{equation}
-\begin{aligned}
-S_0(J)&=A-BC^{-1}B^\top,\\
-S_{\rid}(J)&=A-B(C+\lambda_{\rid}I)^{-1}B^\top,
-\qquad\lambda_{\rid}>0.
-\end{aligned}
+S_0(J)=A-BC^{-1}B^\top,\qquad
+S_{\rid}(J)=A-B(C+\lambda_{\rid}I)^{-1}B^\top.
 \label{eq:appB-schur-operators}
 \end{equation}
-Both operators are positive semidefinite. The identity
-$C^{-1}-(C+\lambda_{\rid}I)^{-1}=\lambda_{\rid}C^{-1}(C+\lambda_{\rid}I)^{-1}$ gives the exact gap
+Both are positive semidefinite. The resolvent identity, whose inverse factors commute, gives
 \begin{equation}
-\Delta_{\rid}(J):=S_{\rid}(J)-S_0(J)
-=\lambda_{\rid}BC^{-1}(C+\lambda_{\rid}I)^{-1}B^\top\succeq0.
+\begin{aligned}
+\Delta_{\rid}(J)&:=S_{\rid}(J)-S_0(J)
+=\lambda_{\rid}BC^{-1}(C+\lambda_{\rid}I)^{-1}B^\top\succeq0,\\
+\lVert\Delta_{\rid}(J)\rVert_{\op}
+&\le\frac{\lambda_{\rid}M^2}{\kappa(\kappa+\lambda_{\rid})}
+\quad\text{if }C\succeq\kappa I,\ \lVert B\rVert_{\op}\le M.
+\end{aligned}
 \label{eq:ridge-exact-gap}
 \end{equation}
-The inverse factors commute and have a positive-semidefinite product. If $C\succeq\kappa I$ and $\lVert B\rVert_{\op}\le M$, then
-\begin{equation}
-\lVert\Delta_{\rid}(J)\rVert_{\op}
-\le\frac{\lambda_{\rid}M^2}{\kappa(\kappa+\lambda_{\rid})}.
-\label{eq:appB-gap-bound}
-\end{equation}
-The conditioning requirement is substantive. Scalar blocks $A=1$, $B=\sqrt c$, $C=c>0$ form a positive-semidefinite joint matrix, with $S_0(J)=0$ but $S_{\rid}(J)=\lambda_{\rid}/(c+\lambda_{\rid})$. The ridge value approaches one as $c/\lambda_{\rid}\downarrow0$. Nuisance conditioning therefore determines how closely ridge tracks its unregularized target. The isotropic ridge is defined in the declared standardized nuisance coordinates; comparisons retain the same normalization and ridge value.
+Conditioning is essential: scalar blocks $A=1$, $B=\sqrt c$, $C=c>0$ give a positive-semidefinite joint matrix with $S_0=0$ and $S_{\rid}=\lambda_{\rid}/(c+\lambda_{\rid})\to1$ as $c/\lambda_{\rid}\downarrow0$. Comparisons therefore retain the declared standardized nuisance coordinates and ridge value.
 
 \subsection{Error Allowances and Lower Certificates}
 \label{app:lower-audit}
-
-Fix $G$ audit groups and weights $\pi_g>0$ summing to one. Within group $g$, let $M_{g1},\ldots,M_{gn_g}$ be independent, identically distributed matrices with mean $J_g$, satisfying $0\preceq M_{gi}\preceq R_gI_d$ almost surely for a specified finite bound $R_g$. Set $\widehat J_g=n_g^{-1}\sum_iM_{gi}$. Sampling is conditional on the frozen audit specification. The union bound below accommodates dependence between group estimates.
-
-\paragraph{Simultaneous matrix-estimation event.}
-For $\delta\in(0,1)$, define
+\begin{appendixproposition}[Simultaneous lower certificate]
+\label{prop:appB-lower-certificate}
+Fix $G$ groups and weights $\pi_g>0$ summing to one. Within each group, let $M_{gi}$ be i.i.d. with mean $J_g$, $0\preceq M_{gi}\preceq R_gI_d$, for specified finite $R_g$, and $\widehat J_g=n_g^{-1}\sum_iM_{gi}$. For $0<\delta<1$, set
 \begin{equation}
 \begin{aligned}
-u_\delta&=\log\frac{2dG}{\delta},
-&t_g&=R_g\left(\sqrt{\frac{2u_\delta}{n_g}}+\frac{2u_\delta}{3n_g}\right),\\
-\mathcal E_\delta&=\bigcap_{g=1}^G
-\{\lVert\widehat J_g-J_g\rVert_{\op}\le t_g\}.
+u_\delta&=\log(2dG/\delta),\qquad
+ t_g=R_g\left(\sqrt{2u_\delta/n_g}+2u_\delta/(3n_g)\right),\\
+\mathcal E_\delta&=\bigcap_g\{\lVert\widehat J_g-J_g\rVert_{\op}\le t_g\},
+\qquad \Pr(\mathcal E_\delta)\ge1-\delta.
 \end{aligned}
 \label{eq:appB-matrix-event}
 \end{equation}
-Then $\Pr(\mathcal E_\delta)\ge1-\delta$. Put $X_{gi}=M_{gi}-J_g$. Since $M_{gi}$ and $J_g$ lie between $0$ and $R_gI$, $\lVert X_{gi}\rVert_{\op}\le R_g$ and $\E[X_{gi}^2]=\E[M_{gi}^2]-J_g^2\preceq R_g^2I$. The two-sided self-adjoint matrix Bernstein inequality \citep{tropp2012user} yields
-\begin{equation}
-\Pr(\lVert\widehat J_g-J_g\rVert_{\op}>t)
-\le2d\exp\!\left(-\frac{n_gt^2}{2R_g^2+(2/3)R_gt}\right).
-\label{eq:appB-bernstein}
-\end{equation}
-The stated $t_g$ makes this probability at most $\delta/G$; a union bound establishes $\mathcal E_\delta$. For score outer products, $\lVert s\rVert_2\le r_g$ supplies $R_g=r_g^2$.
-
-\paragraph{Deterministic Schur perturbation.}
-Let $J,\widehat J\succeq0$ have the same block partition, with $\lVert\widehat J-J\rVert_{\op}\le t$ and $\lVert B\rVert_{\op}\le M$. Then
-\begin{equation}
-\lVert S_{\rid}(\widehat J)-S_{\rid}(J)\rVert_{\op}
-\le h_{\rid}(t,M):=
-t+\frac{2Mt+t^2}{\lambda_{\rid}}+\frac{M^2t}{\lambda_{\rid}^2}.
-\label{eq:appB-schur-perturbation}
-\end{equation}
-Set $Q=(C+\lambda_{\rid}I)^{-1}$ and $\widehat Q=(\widehat C+\lambda_{\rid}I)^{-1}$. Positive semidefiniteness gives $\lVert Q\rVert_{\op},\lVert\widehat Q\rVert_{\op}\le\lambda_{\rid}^{-1}$, and the resolvent identity gives $\lVert\widehat Q-Q\rVert_{\op}\le t/\lambda_{\rid}^2$. With $\Delta B=\widehat B-B$,
-\begin{equation}
-\widehat B\widehat Q\widehat B^\top-BQB^\top
-=\Delta B\widehat Q\widehat B^\top+B\widehat Q\Delta B^\top
-+B(\widehat Q-Q)B^\top.
-\label{eq:appB-schur-decomposition}
-\end{equation}
-The terms have norms at most $t(M+t)/\lambda_{\rid}$, $Mt/\lambda_{\rid}$, and $M^2t/\lambda_{\rid}^2$. Adding the task-block error proves~\eqref{eq:appB-schur-perturbation}.
-
-\paragraph{Allowances from the same event.}
-Assume $C_g\succ0$. On $\mathcal E_\delta$, the observable quantities
-\begin{equation}
-\overline M_g=\lVert\widehat B_g\rVert_{\op}+t_g,
-\qquad \underline\kappa_g=\lambda_{\min}(\widehat C_g)-t_g
-\label{eq:appB-observable-bounds}
-\end{equation}
-satisfy $\lVert B_g\rVert_{\op}\le\overline M_g$ and $C_g\succeq\underline\kappa_gI$. When every $\underline\kappa_g>0$, set
-\begin{equation}
-a_g=h_{\rid}(t_g,\overline M_g),
-\qquad d_g=\frac{\lambda_{\rid}\overline M_g^2}
-{\underline\kappa_g(\underline\kappa_g+\lambda_{\rid})}.
-\label{eq:appB-allowances}
-\end{equation}
-Here $a_g$ bounds ridge estimation error and $d_g$ bounds the population ridge gap. Both follow from the same simultaneous event.
-
-\paragraph{Lower-certificate guarantee.}
-Let $F_g^0=S_0(J_g)$, $\lambda_g^0=\lambda_{\min}(F_g^0)$, and $\widehat F_g^{\rid}=S_{\rid}(\widehat J_g)$. For $\varepsilon>0$, define
+Assume each $C_g\succ0$. Define observable bounds and allowances by
 \begin{equation}
 \begin{aligned}
-\underline\lambda_g&=[\lambda_{\min}(\widehat F_g^{\rid})-a_g-d_g]_+,\\
-\underline I_{\alpha,\pi}
-&=\left[\CVaR_{\alpha,g\sim\pi}
-\bigl((\underline\lambda_g+\varepsilon)^{-1}\bigr)\right]^{-1}.
+\overline M_g&=\lVert\widehat B_g\rVert_{\op}+t_g,
+&\underline\kappa_g&=\lambda_{\min}(\widehat C_g)-t_g,\\
+h_{\rid}(t,M)&=t+(2Mt+t^2)/\lambda_{\rid}+M^2t/\lambda_{\rid}^2,
+&a_g&=h_{\rid}(t_g,\overline M_g),\\
+d_g&=\frac{\lambda_{\rid}\overline M_g^2}
+{\underline\kappa_g(\underline\kappa_g+\lambda_{\rid})}
+&&\text{when all }\underline\kappa_g>0.
 \end{aligned}
-\label{eq:appB-lower-certificate}
+\label{eq:appB-allowances}
 \end{equation}
-The audit issues this bound when all lower conditioning margins are positive; otherwise it records a conditioning failure. On $\mathcal E_\delta$, Weyl's inequality gives
+Issue~\eqref{eq:lower-certificate} with audit distribution $\pi$ only when these conditioning margins are positive; otherwise record conditioning failure. Its probability of exceeding the unregularized population certificate is at most $\delta$. On $\mathcal E_\delta$, an issued level $\underline I_{\alpha,\pi}\ge\rho>\varepsilon$ also implies $\sum_{g:\lambda_{\min}(S_0(J_g))\ge\rho-\varepsilon}\pi_g\ge\alpha$.
+\end{appendixproposition}
+\begin{proof}
+For $X_{gi}=M_{gi}-J_g$, $\lVert X_{gi}\rVert_{\op}\le R_g$ and $\E[X_{gi}^2]=\E[M_{gi}^2]-J_g^2\preceq R_g^2I$. Matrix Bernstein~\citep{tropp2012user} with the displayed $t_g$ gives failure at most $\delta/G$ per group; the union bound allows dependence between group estimates. On this event, block extraction and Weyl give $\lVert B_g\rVert_{\op}\le\overline M_g$ and $C_g\succeq\underline\kappa_gI$, so~\eqref{eq:ridge-exact-gap} bounds the ridge gap by $d_g$.
+
+For the estimation error, write $Q=(C+\lambda_{\rid}I)^{-1}$, $\widehat Q=(\widehat C+\lambda_{\rid}I)^{-1}$, and $\Delta B=\widehat B-B$. Positive semidefiniteness and the resolvent identity give $\lVert Q\rVert,\lVert\widehat Q\rVert\le\lambda_{\rid}^{-1}$ and $\lVert\widehat Q-Q\rVert\le t/\lambda_{\rid}^2$. Decompose the quadratic-block difference as $\Delta B\widehat Q\widehat B^\top+B\widehat Q\Delta B^\top+B(\widehat Q-Q)B^\top$. If $\lVert B\rVert\le M$, its three norms are bounded by $t(M+t)/\lambda_{\rid}$, $Mt/\lambda_{\rid}$, and $M^2t/\lambda_{\rid}^2$. Adding the task-block error $t$ proves the bound $h_{\rid}(t,M)$ and hence $a_g$.
+
+Writing $\lambda_g^0=\lambda_{\min}(S_0(J_g))$, Weyl now yields
 \begin{equation}
 \lambda_g^0\ge\lambda_{\min}(S_{\rid}(J_g))-d_g
-\ge\lambda_{\min}(\widehat F_g^{\rid})-a_g-d_g.
+\ge\lambda_{\min}(S_{\rid}(\widehat J_g))-a_g-d_g.
 \label{eq:appB-weyl}
 \end{equation}
-Since $F_g^0\succeq0$, clipping preserves $\underline\lambda_g\le\lambda_g^0$. Monotonicity of CVaR and reciprocation imply
+Since $S_0(J_g)\succeq0$, clipping in~\eqref{eq:lower-certificate} preserves $\underline\lambda_g\le\lambda_g^0$. Thus monotonicity of CVaR and reciprocation give
 \begin{equation}
-\underline I_{\alpha,\pi}\le I^0_{\alpha,\pi}
-:=\left[\CVaR_{\alpha,g\sim\pi}
-\bigl((\lambda_g^0+\varepsilon)^{-1}\bigr)\right]^{-1}.
+\underline I_{\alpha,\pi}\le
+I^0_{\alpha,\pi}:=\left[\CVaR_{\alpha,g\sim\pi}
+((\lambda_g^0+\varepsilon)^{-1})\right]^{-1}.
 \label{eq:appB-certificate-guarantee}
 \end{equation}
-The probability of issuing an invalid lower certificate is at most $\delta$. On the same event, an issued level $\underline I_{\alpha,\pi}\ge\rho>\varepsilon$ implies
-$\sum_{g:\lambda_g^0\ge\rho-\varepsilon}\pi_g\ge\alpha$ by Appendix~\ref{app:theory-certificate}.
-
-Confidence probability concerns held-out observations; information coverage concerns the finite weights $\pi$. For a finite, predeclared nuisance family, the union bound can include every group--specification pair. An infimum of certificates preserves coverage separately for each specification. Appendix~\ref{app:hidden-slice-discovery} supplies the ratio and shrinkage bounds for soft slices used in these deterministic steps.
+The information-coverage conclusion follows from Appendix~\ref{app:theory-certificate}.
+\end{proof}
+Confidence concerns held-out observations; coverage concerns the fixed weights $\pi$. A finite predeclared nuisance family can be included in the union bound over group--specification pairs; the infimum of certificates preserves coverage separately for each specification. Appendix~\ref{app:heldout-ratio} supplies matrix allowances for frozen soft gates, including random normalization, pooling, and support correction, to which the same deterministic argument applies.
 
 \subsection{Implemented Audit and Numerical Comparison}
 \label{app:implemented-audit}
-
-The reported scalar audits use approximate Gaussian/Wald simulation of the three Fisher moments $(A,B,C)$, with $10^5$ draws per environment and nominal $95\%$ confidence. These numerical results use the procedure below. Appendix~\ref{app:lower-audit} supplies a separate finite-sample guarantee under its bounded-matrix assumptions.
-
-\paragraph{Moment covariance and simulation.}
-For score pairs $(z_i,b_i)$ and normalized weights $w_i$ summing to one, put $u_i=(z_i^2,z_ib_i,b_i^2)^\top$. The implementation uses
+The reported scalar audit uses $10^5$ Gaussian/Wald moment draws per environment at \emph{nominal} 95\% confidence, separately from the finite-sample proposition. For $u_i=(z_i^2,z_ib_i,b_i^2)^\top$ and normalized weights $w_i$, it draws $m^*\sim N(\widehat m,\widehat\Sigma_{\widehat m})$, where
 \begin{equation}
-\begin{aligned}
-\widehat m&=\sum_iw_iu_i,
-\qquad n_{\eff}=\left(\sum_iw_i^2\right)^{-1},\\
-\widehat\Sigma_{\widehat m}
-&=\frac{\sum_iw_i^2(u_i-\widehat m)(u_i-\widehat m)^\top}
-{1-\sum_iw_i^2}.
-\end{aligned}
+\widehat m=\sum_iw_iu_i,\qquad
+\widehat\Sigma_{\widehat m}=
+\frac{\sum_iw_i^2(u_i-\widehat m)(u_i-\widehat m)^\top}{1-\sum_iw_i^2}.
 \label{eq:appB-wald-covariance}
 \end{equation}
-For uniform weights this is the usual sample covariance of $u_i$ divided by $n$. The covariance is symmetrized before drawing $m^*\sim N(\widehat m,\widehat\Sigma_{\widehat m})$. The simulation holds the realized coordinate and weight conventions fixed; it does not propagate uncertainty from evaluation-fitted normalization. The random-normalization analysis for frozen learned gates is specified separately in Appendix~\ref{app:hidden-slice-discovery}.
+Uniform weights give sample covariance divided by $n$. Simulation holds realized coordinates and weights fixed and does not propagate evaluation-fitted normalization error. Bonferroni tail $0.05/(3G)$ covers nuisance conditioning, ridge lower information, and an upper ridge gap within a run ($G=4$ Waterbirds; $18$ CivilComments).
 
-Within a run with $G$ environments, the one-sided Bonferroni tail is $\delta_{\mathrm W}=0.05/(3G)$. Its three essential events concern nuisance conditioning, a ridge-information lower value, and a ridge-gap upper value. Waterbirds uses $G=4$ and $\delta_{\mathrm W}=0.0041667$; CivilComments uses $G=18$ and $\delta_{\mathrm W}=0.000925926$. The code requires at least 50 expected draws in this tail. Lower quantiles use NumPy's \texttt{method="lower"}; upper gap quantiles use \texttt{method="higher"}, without interpolation.
-
-For each draw, ridge and exact Schur values are clipped at zero, with zero assigned when their respective denominators fail the $10^{-12}$ tolerance. A draw with $C^*\le10^{-12}$ or $C^*+\lambda_{\rid}\le10^{-12}$ contributes an infinite gap, rather than being discarded. Otherwise its gap is computed directly as $\lambda_{\rid}(B^*)^2/[C^*(C^*+\lambda_{\rid})]$. This closed form is retained even for a non-positive-semidefinite Gaussian draw; subtracting separately clipped Schur values would understate the gap.
-
-Nuisance, ridge, and direct exact lower quantiles are clipped to $[0,\widehat C]$, $[0,\widehat F^{\rid}]$, and $[0,\widehat F^0]$. Denote them $C_g^L,L_g^{\rid},L_g^0$, and let $U_g^\Delta$ be the upper gap quantile, enlarged to at least the plug-in gap. The implemented lower information is
+Let $C_g^L,L_g^{\rid},L_g^0$ be lower quantiles clipped to their nonnegative empirical ranges, and $U_g^\Delta$ the upper gap quantile enlarged to at least its plug-in value. The implemented lower information is
 \begin{equation}
 \underline\lambda_g^{\mathrm W}
-=\min\{[L_g^{\rid}-U_g^\Delta]_+,\ L_g^0,\ \widehat F_g^0\}.
+=\min\{[L_g^{\rid}-U_g^\Delta]_+,L_g^0,\widehat F_g^0\}.
 \label{eq:appB-wald-lower}
 \end{equation}
-The direct exact caps only decrease the decomposed lower value and require no extra event for its validity. An infinite upper gap or $C_g^L\le10^{-12}$ sets the lower value to zero and flags the audit as uncertifiable. Insufficient effective sample size, invalid empirical blocks, and failed numerical identities also prevent a positive certification status.
-
-Calculations use float64, with slack $100\epsilon_{\mathrm{mach}}\max\{|A|,|C|,1\}^2$ for empirical positive semidefiniteness. Gap identities and certificate ordering use relative tolerance $10^{-10}$ with scale at least one. A lower certificate at or below $\varepsilon(1+10^{-6})$ is flagged as reaching the numerical floor. Finite-distribution CVaR uses uniform environment weights and includes threshold atoms fractionally. Reported settings are $\lambda_{\rid}=10^{-3}$, $\varepsilon=10^{-8}$, and $\alpha=0.95$. The base audit seed is 20260729; training test audits use 20260730.
-
-\paragraph{Held-out comparisons.}
-Tables~\ref{tab:appB-conditioning}--\ref{tab:appB-certificates} summarize 75 default-ridge held-out test audits. Parentheses report nominal simultaneous lower conditioning or upper group-gap values within a run. They do not constitute a joint confidence statement across seeds and methods.
+The exact caps only decrease the decomposed value. Invalid draw denominators ($\le10^{-12}$) give infinite gaps; otherwise the closed-form gap~\eqref{eq:ridge-exact-gap} is used even for non-PSD Gaussian draws. An infinite upper gap or $C_g^L\le10^{-12}$ forces zero and an uncertifiable status; support, empirical-PSD, and identity checks can also prevent certification. Settings are $\lambda_{\rid}=10^{-3}$, $\varepsilon=10^{-8}$, $\alpha=0.95$, uniform environment weights, and fractional threshold-atom mass in CVaR. Quantile rules and numerical tolerances are retained in the executable specification.
 
 \begin{table}[htbp]
-\centering
-\caption{Conditioning and ridge gaps. Parentheses contain within-run Wald lower/upper values; entries summarize extrema across runs.}
+\centering\small
+\caption{Same-cohort summaries of 75 default-ridge held-out audits. Conditioning/gap parentheses are within-run nominal Wald lower/upper values; entries are extrema across runs, not joint confidence statements across seeds or methods. Inflation is ridge minus exact plug-in certificate.}
 \label{tab:appB-conditioning}
-\small
-\begin{tabular}{@{}p{.35\linewidth}rcc@{}}
-\toprule
-Scope & Audits & Minimum $J_{NN}$ & Maximum group gap\\
-\midrule
-CivilComments diagnostics & 5 & 1.456 (1.417) & 0.00116 (0.00133)\\
-Waterbirds diagnostics & 5 & 0.211 (0.178) & 0.00125 (0.00166)\\
-Frozen-feature training & 30 & 0.227 (0.192) & 0.00144 (0.00199)\\
-End-to-end training & 35 & 0.349 (0.349) & 0.00252 (0.00300)\\
-\midrule
-All audits & 75 & 0.211 (0.178) & 0.00252 (0.00300)\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\caption{Certificate summaries for the same 75 audits. Inflation is the ridge-minus-unregularized plug-in difference.}
 \label{tab:appB-certificates}
-\small
-\begin{tabular}{@{}p{.35\linewidth}ccc@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{.27\linewidth}rccccc@{}}
 \toprule
-Scope & \shortstack{Maximum\\inflation} & \shortstack{Minimum exact\\plug-in} & \shortstack{Minimum Wald\\lower value}\\
+& & \multicolumn{2}{c}{Conditioning and ridge gap} & \multicolumn{3}{c}{Certificates}\\
+Scope & Audits & \shortstack{Minimum\\$J_{NN}$} & \shortstack{Maximum\\group gap} & \shortstack{Maximum\\inflation} & \shortstack{Minimum\\exact} & \shortstack{Minimum\\Wald lower}\\
 \midrule
-CivilComments diagnostics & 0.00018 & 0.4970 & 0.4618\\
-Waterbirds diagnostics & 0.00071 & 0.1639 & 0.1504\\
-Frozen-feature training & 0.00062 & 0.1972 & 0.1814\\
-End-to-end training & 0.00140 & 0.2185 & 0.2004\\
+CivilComments diagnostics & 5 & \shortstack{1.456\\(1.417)} & \shortstack{0.00116\\(0.00133)} & 0.00018 & 0.4970 & 0.4618\\
+Waterbirds diagnostics & 5 & \shortstack{0.211\\(0.178)} & \shortstack{0.00125\\(0.00166)} & 0.00071 & 0.1639 & 0.1504\\
+Frozen-feature training & 30 & \shortstack{0.227\\(0.192)} & \shortstack{0.00144\\(0.00199)} & 0.00062 & 0.1972 & 0.1814\\
+End-to-end training & 35 & \shortstack{0.349\\(0.349)} & \shortstack{0.00252\\(0.00300)} & 0.00140 & 0.2185 & 0.2004\\
 \midrule
-All audits & 0.00140 & 0.1639 & 0.1504\\
+All audits & 75 & \shortstack{0.211\\(0.178)} & \shortstack{0.00252\\(0.00300)} & 0.00140 & 0.1639 & 0.1504\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Every reported run passed the conditioning check and satisfied
-\begin{equation}
-\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid},
-\label{eq:appB-observed-ordering}
-\end{equation}
-where $\mathrm W$ identifies Wald allowances and hats identify plug-in certificates. For the Waterbirds diagnostic these values are $0.1504$, $0.1639$, and $0.1646$. The lower-value caps explicitly enforce the first ordering; numerical ordering does not itself establish confidence coverage.
-
-Training audits use fresh models under the manuscript's frozen-feature and end-to-end protocols. Original training runs did not retain the environment-level blocks needed for this audit, so checkpoint-specific conclusions attach to the fresh runs. Table~\ref{tab:appB-training} gives descriptive five-seed means at manuscript-aligned settings.
+Every run passed conditioning and satisfied $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid}$; Waterbirds diagnostic values are $0.1504$, $0.1639$, and $0.1646$. The first ordering is enforced by the caps and does not establish confidence coverage. Training audits use fresh models: original training runs lacked the retained environment blocks needed for checkpoint-specific auditing.
 
 \begin{table}[htbp]
-\centering
-\caption{Fresh training audits at manuscript-aligned settings: descriptive five-seed means, with selection qualifications below.}
+\centering\small
+\caption{Separate fresh training audits at manuscript-aligned settings: descriptive five-seed means. These differ from full-grid selected runs in the 75-audit extrema.}
 \label{tab:appB-training}
-\small
 \begin{tabular}{@{}p{.43\linewidth}ccc@{}}
 \toprule
-Training setting & \shortstack{Ridge\\plug-in} & \shortstack{Exact\\plug-in} & \shortstack{Wald\\lower value}\\
+Training setting & Ridge plug-in & Exact plug-in & Wald lower\\
 \midrule
 Frozen-feature Fisher-Glass & 0.4002 & 0.3999 & 0.3663\\
 Frozen-feature Group DRO + FG & 0.6254 & 0.6252 & 0.5664\\
@@ -252,14 +150,4 @@ End-to-end Group DRO + FG & 0.5447 & 0.5442 & 0.4890\\
 \bottomrule
 \end{tabular}
 \end{table}
-
-The frozen-feature FG row fixes $\lambda_{\FG}=0.03$. The frozen Group DRO + FG row restricts candidates to $\{0.1,0.3\}$, then selects the largest validation certificate within two percentage points of the best validation worst-group accuracy in that set. Choices for seeds 17--21 are $(0.3,0.1,0.3,0.3,0.3)$. The end-to-end row fixes $\lambda_{\FG}=10^{-4}$. These summaries differ from the full-grid selected runs included in the 75-audit extrema.
-
-With the frozen-feature protocol fixed, runs at ridges $10^{-4},10^{-3},10^{-2}$ have maximum group gaps $0.0001443$, $0.0014374$, and $0.0138286$, with Wald upper values $0.0001996$, $0.0019880$, and $0.0191165$. These are repeated training-and-audit runs at the stated ridges.
-
-The implementation, report generator, and experiment driver are:\par
-{\raggedright
-\path{experiments/ridge_exact_audit.py},\\
-\path{experiments/make_ridge_exact_audit_report.py}, and\\
-\path{experiments/run_w2_ridge_exact_audit.sh}.\par}
-Retained run configurations and machine-readable summaries support these numerical values.
+The frozen-feature FG and end-to-end rows fix $\lambda_{\FG}=0.03$ and $10^{-4}$, respectively. Frozen Group DRO + FG selects the largest validation certificate within two percentage points of the best validation worst-group accuracy among $\{0.1,0.3\}$; seeds 17--21 select $(0.3,0.1,0.3,0.3,0.3)$. Repeated frozen-feature training/audit runs at ridges $10^{-4},10^{-3},10^{-2}$ give maximum group gaps $0.0001443$, $0.0014374$, $0.0138286$ and Wald upper values $0.0001996$, $0.0019880$, $0.0191165$.

@@ -1,5 +1,5 @@
 {
-  "release": "camera-ready-v2",
+  "release": "camera-ready-v3",
   "scope": "Experiment replication code and instructions plus retained numerical replay inputs; excludes datasets, images, feature caches and model weights.",
   "original_archives": [
     {
@@ -70,12 +70,16 @@
       "path": "README.md",
       "source": "camera-ready-v1 release authoring",
       "source_sha256": null,
-      "published_sha256": "24a473048289c9b4ef17a4bf05c48e7d16ff20dbdb8c78579c987c4657526f1d",
-      "bytes": 14508,
+      "published_sha256": "a5427c0e557912f63af1c46957250cfd7b303e333f81cd8781801cb0938ba5d8",
+      "bytes": 15109,
       "transformations": [
-        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
       ],
-      "prior_release_sha256": "b6bd92f92e2453632db57c11172c22bab93ad011813cb8988f8b8eb7f02bf5cf"
+      "prior_release_sha256": "b6bd92f92e2453632db57c11172c22bab93ad011813cb8988f8b8eb7f02bf5cf",
+      "prior_release_hashes": {
+        "camera-ready-v2": "24a473048289c9b4ef17a4bf05c48e7d16ff20dbdb8c78579c987c4657526f1d"
+      }
     },
     {
       "path": "artifacts/checkpoint_identifiers.csv",
@@ -2886,20 +2890,134 @@
       "transformations": []
     },
     {
+      "path": "docs/MANUSCRIPT_MAP.md",
+      "source": "camera-ready-v3 release documentation",
+      "source_sha256": null,
+      "transformations": [],
+      "published_sha256": "700d484b05a8929bc12e192de08315f46e02cc31df33b10258fdedae9b8d4e16",
+      "bytes": 5120
+    },
+    {
       "path": "docs/REPRODUCING_EXPERIMENTS.md",
       "source": "camera-ready-v2 reproducibility correction",
       "source_sha256": "54b52006eb963a5f49a82e3e2e3a445be96e39b28d086e66760135e379bf3eb0",
-      "published_sha256": "54b52006eb963a5f49a82e3e2e3a445be96e39b28d086e66760135e379bf3eb0",
+      "published_sha256": "a5e39ccabba4adfc7e50ddbe4dd7cd8d5a4445f3d5d49d1102aa43bbde61e7c9",
       "bytes": 19927,
-      "transformations": []
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "54b52006eb963a5f49a82e3e2e3a445be96e39b28d086e66760135e379bf3eb0"
+      }
     },
     {
       "path": "docs/REPRODUCING_PRIMARY_EXPERIMENTS.md",
       "source": "camera-ready-v2 reproducibility correction",
       "source_sha256": "4f7832600280a1b46827e647cef2b6b1bd2760428966a1e84830658fe5a52a0d",
-      "published_sha256": "4f7832600280a1b46827e647cef2b6b1bd2760428966a1e84830658fe5a52a0d",
+      "published_sha256": "427048968c8f7908eb31059bd25e42ad4759c178a286d94360648260f301c67c",
       "bytes": 11304,
-      "transformations": []
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "4f7832600280a1b46827e647cef2b6b1bd2760428966a1e84830658fe5a52a0d"
+      }
+    },
+    {
+      "path": "docs/extended_appendix_details/README.md",
+      "source": "camera-ready-v3 release documentation",
+      "source_sha256": null,
+      "transformations": [],
+      "published_sha256": "6c32d17a6fb457f0635f42062b276e55084662aa549e2956258338c9ae210947",
+      "bytes": 1036
+    },
+    {
+      "path": "docs/extended_appendix_details/e01_reserves.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/e01_reserves.tex",
+      "source_sha256": "143e902cd772ca2209f4a68e15ded43eb318335fefa29c96a040bbc546e36867",
+      "transformations": [],
+      "published_sha256": "143e902cd772ca2209f4a68e15ded43eb318335fefa29c96a040bbc546e36867",
+      "bytes": 4670
+    },
+    {
+      "path": "docs/extended_appendix_details/e02_training.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/e02_training.tex",
+      "source_sha256": "ccce6341824c9e32d14c09af896916fbb5c3465bb079b4bbfbf77e0bbb07c364",
+      "transformations": [],
+      "published_sha256": "ccce6341824c9e32d14c09af896916fbb5c3465bb079b4bbfbf77e0bbb07c364",
+      "bytes": 6722
+    },
+    {
+      "path": "docs/extended_appendix_details/e03_extended_training.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/e03_extended_training.tex",
+      "source_sha256": "bf945e24f842e029f5d165111da9c789ff8e8d1b67f94a49c30553f2512ef468",
+      "transformations": [],
+      "published_sha256": "bf945e24f842e029f5d165111da9c789ff8e8d1b67f94a49c30553f2512ef468",
+      "bytes": 18086
+    },
+    {
+      "path": "docs/extended_appendix_details/e04_influence.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/e04_influence.tex",
+      "source_sha256": "eabb1e74e790b3b139188f6f06243a9e5ce18933aeb9f842f8cea170e3ffe708",
+      "transformations": [],
+      "published_sha256": "eabb1e74e790b3b139188f6f06243a9e5ce18933aeb9f842f8cea170e3ffe708",
+      "bytes": 8299
+    },
+    {
+      "path": "docs/extended_appendix_details/e05_acquisition.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/e05_acquisition.tex",
+      "source_sha256": "2ef2001efacb4a93bb31456ba3148dc91e1aaf0c66845d4209910ef09f3d5dae",
+      "transformations": [],
+      "published_sha256": "2ef2001efacb4a93bb31456ba3148dc91e1aaf0c66845d4209910ef09f3d5dae",
+      "bytes": 15241
+    },
+    {
+      "path": "docs/extended_appendix_details/prospective_reanalysis.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/prospective_reanalysis.tex",
+      "source_sha256": "b6b4822aa818db41b4df60ac0d7fcb3940e8b8ba0ff1fe5ebb754223074bc2c1",
+      "transformations": [],
+      "published_sha256": "b6b4822aa818db41b4df60ac0d7fcb3940e8b8ba0ff1fe5ebb754223074bc2c1",
+      "bytes": 4782
+    },
+    {
+      "path": "docs/extended_appendix_details/transferred_discovery.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/transferred_discovery.tex",
+      "source_sha256": "af1d341c903203c7bf17cbc936ac5bffc031bb0964d7d3827e05d0871d415907",
+      "transformations": [],
+      "published_sha256": "af1d341c903203c7bf17cbc936ac5bffc031bb0964d7d3827e05d0871d415907",
+      "bytes": 18503
+    },
+    {
+      "path": "docs/extended_appendix_details/transferred_estimation.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/transferred_estimation.tex",
+      "source_sha256": "b3437ef6b54c3f9f91f0d27b6b3a924161e4f63aaa5ed6f353f096ecb808b8c0",
+      "transformations": [],
+      "published_sha256": "b3437ef6b54c3f9f91f0d27b6b3a924161e4f63aaa5ed6f353f096ecb808b8c0",
+      "bytes": 19436
+    },
+    {
+      "path": "docs/extended_appendix_details/transferred_experiments.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/transferred_experiments.tex",
+      "source_sha256": "e99920826a5a9114b476f1e12dbd054a76f9edad13a0e3c83bd5f0409ca40536",
+      "transformations": [],
+      "published_sha256": "e99920826a5a9114b476f1e12dbd054a76f9edad13a0e3c83bd5f0409ca40536",
+      "bytes": 36221
+    },
+    {
+      "path": "docs/extended_appendix_details/transferred_interventions.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/transferred_interventions.tex",
+      "source_sha256": "6c2bfa8e80bc8899004d7c4d79605ba63559583a457251e6d1c14af087ca4988",
+      "transformations": [],
+      "published_sha256": "6c2bfa8e80bc8899004d7c4d79605ba63559583a457251e6d1c14af087ca4988",
+      "bytes": 786
+    },
+    {
+      "path": "docs/extended_appendix_details/transferred_theory.tex",
+      "source": "camera-ready-v2:tex/camera_ready_v2/appendix/transferred_theory.tex",
+      "source_sha256": "3b68c72ea90e2ad05fc5eae0395be2e97bf98eb86ae88897c5cb1e7a3baacd20",
+      "transformations": [],
+      "published_sha256": "3b68c72ea90e2ad05fc5eae0395be2e97bf98eb86ae88897c5cb1e7a3baacd20",
+      "bytes": 24301
     },
     {
       "path": "experiments/civilcomments_fisher_glass.py",
@@ -3471,17 +3589,27 @@
       "path": "reanalysis/flip_prediction/README.md",
       "source": "tex/camera_ready_v2/reanalysis/flip_prediction/README.md",
       "source_sha256": "cf03623b4ff4a22bb0b79e56411570abbc5ecd15e62cb415dc5a329e8374e50b",
-      "published_sha256": "cf03623b4ff4a22bb0b79e56411570abbc5ecd15e62cb415dc5a329e8374e50b",
+      "published_sha256": "86d67a34c57fcb7482ddcfdd8c25bb555b3b51f4565e5f2f1c76aa00266b5797",
       "bytes": 7322,
-      "transformations": []
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "cf03623b4ff4a22bb0b79e56411570abbc5ecd15e62cb415dc5a329e8374e50b"
+      }
     },
     {
       "path": "reanalysis/flip_prediction/aggregate.py",
       "source": "tex/camera_ready_v2/reanalysis/flip_prediction/aggregate.py",
       "source_sha256": "7b18a079131e4dd04990541dced45e7c421b660b8eea9fea0d08fcdac2f7e84e",
-      "published_sha256": "7b18a079131e4dd04990541dced45e7c421b660b8eea9fea0d08fcdac2f7e84e",
+      "published_sha256": "a4e129cb716e78e41fd3b17124a57042ddc5c0ff65f2abe86371f9e5a6b03012",
       "bytes": 4671,
-      "transformations": []
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "7b18a079131e4dd04990541dced45e7c421b660b8eea9fea0d08fcdac2f7e84e"
+      }
     },
     {
       "path": "reanalysis/flip_prediction/inputs/runs/erm_lam0_seed22/flip_records.npz",
@@ -3897,111 +4025,174 @@
       "path": "tex/camera_ready_v2/appendix/e01_reserves.tex",
       "source": "tex/camera_ready_v2/appendix/e01_reserves.tex",
       "source_sha256": "143e902cd772ca2209f4a68e15ded43eb318335fefa29c96a040bbc546e36867",
-      "published_sha256": "143e902cd772ca2209f4a68e15ded43eb318335fefa29c96a040bbc546e36867",
-      "bytes": 4670,
-      "transformations": []
+      "published_sha256": "79ab52e63309c0b5b98a100300f74035fdf86139ee3a6f7dbaa996982a1e613d",
+      "bytes": 2316,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "143e902cd772ca2209f4a68e15ded43eb318335fefa29c96a040bbc546e36867"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/e02_training.tex",
       "source": "tex/camera_ready_v2/appendix/e02_training.tex",
       "source_sha256": "ccce6341824c9e32d14c09af896916fbb5c3465bb079b4bbfbf77e0bbb07c364",
-      "published_sha256": "ccce6341824c9e32d14c09af896916fbb5c3465bb079b4bbfbf77e0bbb07c364",
-      "bytes": 6722,
-      "transformations": []
+      "published_sha256": "a8c8e9fc471a1e3f62ff75bdfaaa97e05370f03b43669ccd161a388fb25c1df0",
+      "bytes": 3826,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "ccce6341824c9e32d14c09af896916fbb5c3465bb079b4bbfbf77e0bbb07c364"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/e03_extended_training.tex",
       "source": "tex/camera_ready_v2/appendix/e03_extended_training.tex",
       "source_sha256": "bf945e24f842e029f5d165111da9c789ff8e8d1b67f94a49c30553f2512ef468",
-      "published_sha256": "bf945e24f842e029f5d165111da9c789ff8e8d1b67f94a49c30553f2512ef468",
-      "bytes": 18086,
-      "transformations": []
+      "published_sha256": "462ced929119dea1e2bf7ab81111fd0d3f72312fd71cb88948a7414f97e60038",
+      "bytes": 10711,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "bf945e24f842e029f5d165111da9c789ff8e8d1b67f94a49c30553f2512ef468"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/e04_influence.tex",
       "source": "tex/camera_ready_v2/appendix/e04_influence.tex",
       "source_sha256": "eabb1e74e790b3b139188f6f06243a9e5ce18933aeb9f842f8cea170e3ffe708",
-      "published_sha256": "eabb1e74e790b3b139188f6f06243a9e5ce18933aeb9f842f8cea170e3ffe708",
-      "bytes": 8299,
-      "transformations": []
+      "published_sha256": "c07f1f5e985004940d5aca2ee6ae512c9357bb7405edf39e6b66d976204eae59",
+      "bytes": 4787,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "eabb1e74e790b3b139188f6f06243a9e5ce18933aeb9f842f8cea170e3ffe708"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/e05_acquisition.tex",
       "source": "tex/camera_ready_v2/appendix/e05_acquisition.tex",
       "source_sha256": "2ef2001efacb4a93bb31456ba3148dc91e1aaf0c66845d4209910ef09f3d5dae",
-      "published_sha256": "2ef2001efacb4a93bb31456ba3148dc91e1aaf0c66845d4209910ef09f3d5dae",
-      "bytes": 15241,
-      "transformations": []
+      "published_sha256": "107246e03f367a0cb6aab0045e77010079dae5101b415595648aae608c78fd91",
+      "bytes": 7039,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "2ef2001efacb4a93bb31456ba3148dc91e1aaf0c66845d4209910ef09f3d5dae"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/prospective_reanalysis.tex",
       "source": "tex/camera_ready_v2/appendix/prospective_reanalysis.tex",
       "source_sha256": "b6b4822aa818db41b4df60ac0d7fcb3940e8b8ba0ff1fe5ebb754223074bc2c1",
-      "published_sha256": "b6b4822aa818db41b4df60ac0d7fcb3940e8b8ba0ff1fe5ebb754223074bc2c1",
-      "bytes": 4782,
-      "transformations": []
+      "published_sha256": "c19f4fc18497aa6751640c870b2ed94d2a29a3c31186e11e55584ce602e54059",
+      "bytes": 4201,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "b6b4822aa818db41b4df60ac0d7fcb3940e8b8ba0ff1fe5ebb754223074bc2c1"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/transferred_discovery.tex",
       "source": "tex/camera_ready_v2/appendix/transferred_discovery.tex",
       "source_sha256": "af1d341c903203c7bf17cbc936ac5bffc031bb0964d7d3827e05d0871d415907",
-      "published_sha256": "af1d341c903203c7bf17cbc936ac5bffc031bb0964d7d3827e05d0871d415907",
-      "bytes": 18503,
-      "transformations": []
+      "published_sha256": "1b91e9a690053f229a24d9c95d793c478cbd3b16257949e2c8874d43a76e1fd7",
+      "bytes": 12168,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "af1d341c903203c7bf17cbc936ac5bffc031bb0964d7d3827e05d0871d415907"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/transferred_estimation.tex",
       "source": "tex/camera_ready_v2/appendix/transferred_estimation.tex",
       "source_sha256": "b3437ef6b54c3f9f91f0d27b6b3a924161e4f63aaa5ed6f353f096ecb808b8c0",
-      "published_sha256": "b3437ef6b54c3f9f91f0d27b6b3a924161e4f63aaa5ed6f353f096ecb808b8c0",
-      "bytes": 19436,
-      "transformations": []
+      "published_sha256": "24311cf502344090ddf615d8e76f601707dc10f8ce1d8033db129fb3301c51a8",
+      "bytes": 12566,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "b3437ef6b54c3f9f91f0d27b6b3a924161e4f63aaa5ed6f353f096ecb808b8c0"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/transferred_experiments.tex",
       "source": "tex/camera_ready_v2/appendix/transferred_experiments.tex",
       "source_sha256": "e99920826a5a9114b476f1e12dbd054a76f9edad13a0e3c83bd5f0409ca40536",
-      "published_sha256": "e99920826a5a9114b476f1e12dbd054a76f9edad13a0e3c83bd5f0409ca40536",
-      "bytes": 36221,
-      "transformations": []
+      "published_sha256": "9201a05376172f0eb62deaaf1b4d28ce37dc5423e22983f292b2fbc6793735c6",
+      "bytes": 23809,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "e99920826a5a9114b476f1e12dbd054a76f9edad13a0e3c83bd5f0409ca40536"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/transferred_interventions.tex",
       "source": "tex/camera_ready_v2/appendix/transferred_interventions.tex",
       "source_sha256": "6c2bfa8e80bc8899004d7c4d79605ba63559583a457251e6d1c14af087ca4988",
-      "published_sha256": "6c2bfa8e80bc8899004d7c4d79605ba63559583a457251e6d1c14af087ca4988",
-      "bytes": 786,
-      "transformations": []
+      "published_sha256": "36623d731523170dd123e1eee0b80a25670226e258c5c97fcd8086b222beade5",
+      "bytes": 660,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "6c2bfa8e80bc8899004d7c4d79605ba63559583a457251e6d1c14af087ca4988"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/transferred_theory.tex",
       "source": "tex/camera_ready_v2/appendix/transferred_theory.tex",
       "source_sha256": "3b68c72ea90e2ad05fc5eae0395be2e97bf98eb86ae88897c5cb1e7a3baacd20",
-      "published_sha256": "3b68c72ea90e2ad05fc5eae0395be2e97bf98eb86ae88897c5cb1e7a3baacd20",
-      "bytes": 24301,
-      "transformations": []
+      "published_sha256": "928e0c4e41936135e9d37041cb1c168b071429df8ff5ede6d9c312588809de09",
+      "bytes": 16292,
+      "transformations": [
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v2": "3b68c72ea90e2ad05fc5eae0395be2e97bf98eb86ae88897c5cb1e7a3baacd20"
+      }
     },
     {
       "path": "tex/camera_ready_v2/checklist.tex",
       "source": "tex/camera_ready_v2/checklist.tex",
       "source_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
-      "published_sha256": "1c8da12aa14a9fae95e2fccc0596cb4d1ebb5d63dbcecc1bf7f421098a9aca02",
-      "bytes": 27726,
+      "published_sha256": "ffdcd88ee936d6a855040ae81d58e2c6716f131581e93a3c93873aa439122569",
+      "bytes": 27986,
       "transformations": [
-        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
       ],
-      "prior_release_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff"
+      "prior_release_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
+      "prior_release_hashes": {
+        "camera-ready-v2": "1c8da12aa14a9fae95e2fccc0596cb4d1ebb5d63dbcecc1bf7f421098a9aca02"
+      }
     },
     {
       "path": "tex/camera_ready_v2/declarations.tex",
       "source": "tex/camera_ready_v2/declarations.tex",
       "source_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
-      "published_sha256": "d444c878688f988a2e1a2c471e69f2649e4ea701390b9a0d15b953ba2e911eca",
-      "bytes": 1464,
+      "published_sha256": "3c08527d1bdae5a78f45be00ad8116e011b8191983d12ba5214c34d78e78f541",
+      "bytes": 1611,
       "transformations": [
-        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
       ],
-      "prior_release_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350"
+      "prior_release_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
+      "prior_release_hashes": {
+        "camera-ready-v2": "d444c878688f988a2e1a2c471e69f2649e4ea701390b9a0d15b953ba2e911eca"
+      }
     },
     {
       "path": "tex/camera_ready_v2/figures/acquisition_summary.csv",
@@ -4263,23 +4454,31 @@
       "path": "tex/camera_ready_v2/main.pdf",
       "source": "tex/camera_ready_v2/main.pdf",
       "source_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
-      "published_sha256": "4ea6d733500d944fc48c86baf22544ac4ee2212d05aba98783b46a1a9eb7367e",
-      "bytes": 1033427,
+      "published_sha256": "e0fd0b79e3b55f66ceeed35e52ab4a1261d2f291da3bfabcb97522d66e48a2fa",
+      "bytes": 844742,
       "transformations": [
-        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
       ],
-      "prior_release_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2"
+      "prior_release_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
+      "prior_release_hashes": {
+        "camera-ready-v2": "4ea6d733500d944fc48c86baf22544ac4ee2212d05aba98783b46a1a9eb7367e"
+      }
     },
     {
       "path": "tex/camera_ready_v2/main.tex",
       "source": "tex/camera_ready_v2/main.tex",
       "source_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c",
-      "published_sha256": "a17c504e30de61fa3132cc5a6cd92fdc3ce86470d63320086f02847694dfe96f",
-      "bytes": 6735,
+      "published_sha256": "f77bf7c506ff65d11bc4353a0a9b96b9fe6cf0432075f940982ef9dc95288f55",
+      "bytes": 5203,
       "transformations": [
-        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged."
+        "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
+        "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged."
       ],
-      "prior_release_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c"
+      "prior_release_sha256": "9cce39cbf11dd926261a280916e27519e527fe6186ebb10f6bc05655a6b6cf4c",
+      "prior_release_hashes": {
+        "camera-ready-v2": "a17c504e30de61fa3132cc5a6cd92fdc3ce86470d63320086f02847694dfe96f"
+      }
     },
     {
       "path": "tex/camera_ready_v2/neurips_2026.sty",
@@ -4385,6 +4584,7 @@
     "The final manuscript and editable figure sources are included; manuscript-specific private revision notes and old backups are excluded.",
     "camera-ready-v2 adds paper-specific independent rerun guides, a synthetic runner, and validated Stanford Waterbirds preparation. Missing historical run files limit exact archival replay, not the availability of experiment replication workflows."
   ],
-  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v2",
-  "artifact_mapping": "README.md#manuscript-to-artifact-map"
+  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v3",
+  "artifact_mapping": "README.md#manuscript-to-artifact-map",
+  "manuscript_map": "docs/MANUSCRIPT_MAP.md"
 }

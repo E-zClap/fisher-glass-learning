@@ -1,0 +1,798 @@
+% Updated from the user-supplied Appendix A draft (attachment ff144394).
+% Explicit appendix equation tags preserve A.1--A.32 without renumbering the main text.
+
+This appendix establishes the results in Sections~\ref{sec:geometry}--\ref{sec:tail-identifiability}. We first derive the nuisance-projected information and its tangency construction. We then prove the inverse-information tail law, the local classification lower bound, and the information-coverage property of Fisher-Glass. Throughout, task coordinates use the normalization fixed in the main text, and environmental aggregation is with respect to the declared distribution \(\Pi\).
+
+\subsection{Projection, Normalization, and Task--Nuisance Tangency}
+\label{app:theory-projection}
+
+Fix an environment \(e\) and its reference distribution \(P_e\). Let
+\[
+s_{T,e}\in L_0^2(P_e)^{d_T},
+\qquad
+s_{N,e}\in L_0^2(P_e)^{d_N}
+\]
+be centered, square-integrable task and nuisance scores. Write
+\[
+J_{AB,e}
+=
+\mathbb E_{P_e}\!\left[s_{A,e}s_{B,e}^{\top}\right],
+\qquad A,B\in\{T,N\}.
+\]
+Assume that the coordinates of \(s_{N,e}\) span the specified nuisance tangent space \(\mathcal T_{N,e}\) and that \(J_{NN,e}\) is positive definite.
+
+\paragraph{Efficient-score projection.}
+
+Set \(\Gamma_e=J_{TN,e}J_{NN,e}^{-1}\). The residual satisfies
+\[
+\mathbb E_{P_e}\!\left[
+(s_{T,e}-\Gamma_es_{N,e})s_{N,e}^{\top}
+\right]
+=
+J_{TN,e}-\Gamma_eJ_{NN,e}
+=
+0.
+\tag{A.1}\label{eq:app-score-orthogonality}
+\]
+Because \(\Gamma_es_{N,e}\) lies componentwise in \(\mathcal T_{N,e}\), this orthogonality identifies it as the componentwise \(L^2(P_e)\) projection of the task score. Consequently,
+\[
+\begin{aligned}
+s_{T,e}^{\mathrm{eff}}
+&=
+s_{T,e}-J_{TN,e}J_{NN,e}^{-1}s_{N,e},
+\\
+F_e
+&=
+\mathbb E_{P_e}\!\left[
+s_{T,e}^{\mathrm{eff}}
+(s_{T,e}^{\mathrm{eff}})^{\top}
+\right]
+\\
+&=
+J_{TT,e}-J_{TN,e}J_{NN,e}^{-1}J_{NT,e}.
+\end{aligned}
+\tag{A.2}\label{eq:app-efficient-schur}
+\]
+This is the efficient-information construction used in Equation~\eqref{eq:efficient-score-information} \citep{bickel1993efficient,tsiatis2006semiparametric}. Equivalently, for every task direction \(u\),
+\[
+\begin{aligned}
+u^{\top}F_eu
+&=
+\min_{v\in\mathbb R^{d_N}}
+\mathbb E_{P_e}\!\left[
+(u^{\top}s_{T,e}-v^{\top}s_{N,e})^2
+\right],
+\\
+v^\star
+&=
+J_{NN,e}^{-1}J_{NT,e}u.
+\end{aligned}
+\tag{A.3}\label{eq:app-variational-schur}
+\]
+Thus \(F_e\succeq0\). A nonzero direction \(u\) has zero efficient information exactly when \(u^{\top}s_{T,e}\) belongs to the nuisance span in \(L^2(P_e)\). The quantity \(\lambda_e=\lambda_{\min}(F_e)\) measures the weakest remaining first-order task information. For an infinite-dimensional nuisance tangent space, the orthogonal-projection definition applies directly to its closed span.
+
+\paragraph{Coordinate normalization.}
+
+Consider separate invertible score transformations
+\[
+\widetilde s_{T,e}=Us_{T,e},
+\qquad
+\widetilde s_{N,e}=Vs_{N,e}.
+\]
+The nuisance span is unchanged, so
+\[
+\widetilde s_{T,e}^{\mathrm{eff}}
+=
+Us_{T,e}^{\mathrm{eff}},
+\qquad
+\widetilde F_e
+=
+UF_eU^{\top}.
+\tag{A.4}\label{eq:app-coordinate-congruence}
+\]
+An invertible nuisance-basis change therefore preserves exact task information when the task coordinates remain fixed. Task rescaling transforms information by congruence, preserving rank while generally changing its numerical eigenvalues. Comparisons of \(\lambda_e\) consequently use a common task-coordinate convention.
+
+For one task and one nuisance score with positive raw information, define
+\[
+\rho_e
+=
+\frac{J_{TN,e}}{\sqrt{J_{TT,e}J_{NN,e}}}.
+\]
+Then
+\[
+F_e
+=
+J_{TT,e}(1-\rho_e^2),
+\qquad
+\frac{F_e}{J_{TT,e}}
+=
+1-\rho_e^2
+\in[0,1].
+\tag{A.5}\label{eq:app-surviving-fraction}
+\]
+Nonzero scalar rescaling of either score leaves this fraction unchanged. More generally, for a scalar task, the fraction is invariant under an invertible nuisance-basis change. These identities concern the exact projection; Appendix~\ref{app:estimation-certification} specifies the coordinate conventions for its ridge implementation.
+
+The following construction expresses the transverse-information geometry of \citet{mansouri_arai_2026_fisher_glasses} in the normalized score coordinates used here.
+
+\begin{appendixproposition}[Task--nuisance tangency]
+\label{prop:task-nuisance-tangency}
+
+Let \(b_e,r_e\) be centered, orthogonal, unit-norm elements of \(L^2(P_e)\). Suppose
+\[
+\mathcal T_{N,e}
+=
+\operatorname{span}\{b_e\}
+\]
+and the scalar task score is
+\[
+a_e=b_e+\delta_er_e,
+\qquad
+\delta_e\ge0.
+\]
+Then
+\[
+J_{TT,e}=1+\delta_e^2,
+\qquad
+F_e=\delta_e^2,
+\qquad
+\frac{F_e}{J_{TT,e}}
+=
+\frac{\delta_e^2}{1+\delta_e^2}.
+\tag{A.6}\label{eq:app-tangency-identities}
+\]
+
+\end{appendixproposition}
+\begin{proof} The coefficient of the projection of \(a_e\) onto \(b_e\) is
+\[
+\frac{\langle a_e,b_e\rangle_e}{\|b_e\|_e^2}=1.
+\]
+Hence its efficient score is \(\delta_er_e\), whose squared norm is \(\delta_e^2\). Orthogonality gives \(\|a_e\|_e^2=1+\delta_e^2\), and division yields the surviving fraction. \end{proof}
+
+The construction keeps raw task information at least one while projected information vanishes quadratically. When the nuisance feature supports a predictor with small observed risk, that predictive success coexists with the displayed information collapse. This is the separation used in Section~\ref{sec:tangency-separation}; Appendix~\ref{app:synthetic-checks} specifies its synthetic realization.
+
+\subsection{Normal Coordinates and the Inverse-Information Tail}
+\label{app:theory-tails}
+
+We prove the geometric tail law of \citet{mansouri_arai_2026_fisher_glasses} under Theorem~\ref{thm:inverse-information-geometry}'s assumptions, including its asymptotic constant. Let
+\[
+\lambda:\mathbb R^d\longrightarrow[0,\infty),
+\]
+and let
+\[
+\mathcal Z=\{z:\lambda(z)=0\}
+\]
+be a nonempty compact \(C^2\) embedded submanifold without boundary, of codimension \(c\in\{1,\ldots,d\}\). Choose a tubular radius \(r_\star>0\) and write
+\[
+U_{r_\star}(\mathcal Z)
+=
+\{z:\operatorname{dist}(z,\mathcal Z)<r_\star\}.
+\]
+Assume that \(\lambda\) is continuous on \(\overline{U_{r_\star}(\mathcal Z)}\) and bounded away from zero outside \(U_{r_\star}(\mathcal Z)\).
+
+Let \(p\) be the environment density with respect to Lebesgue measure. For \(s\in\mathcal Z\), let \(S(N_s\mathcal Z)\) denote the unit sphere in its normal space. In normal coordinates \(z=s+r\omega\), assume uniformly on the unit normal bundle that
+\[
+\begin{aligned}
+\lambda(s+r\omega)
+&=
+a(s,\omega)r^{2m}(1+o(1)),
+\\
+p(s+r\omega)
+&=
+b(s,\omega)r^\nu(1+o(1)),
+\end{aligned}
+\qquad r\downarrow0,
+\tag{A.7}\label{eq:null-set-expansions}
+\]
+where \(m>0\), \(\nu>-c\), and \(a,b\) are continuous and bounded above and below by positive constants. Define
+\[
+\begin{aligned}
+\beta
+&=
+\frac{c+\nu}{2m},
+\\
+C_{\mathcal Z}
+&=
+\frac{1}{c+\nu}
+\int_{\mathcal Z}
+\int_{S(N_s\mathcal Z)}
+b(s,\omega)a(s,\omega)^{-\beta}
+\,d\sigma_s(\omega)\,
+d\operatorname{vol}_{\mathcal Z}(s),
+\end{aligned}
+\tag{A.8}\label{eq:app-tail-constant}
+\]
+where \(\sigma_s\) is the usual, unnormalized surface measure on the normal unit sphere and \(\operatorname{vol}_{\mathcal Z}\) is induced volume on \(\mathcal Z\). In codimension one, the sphere consists of the two normal directions, each with unit mass.
+
+\begin{proof}[Proof of Theorem~\ref{thm:inverse-information-geometry}]
+
+First localize the event of small information. For any \(r_0\in(0,r_\star)\), the annulus
+\[
+\left\{
+z:
+r_0\le\operatorname{dist}(z,\mathcal Z)\le r_\star
+\right\}
+\]
+is compact and contains no zeros of \(\lambda\). Continuity gives a positive minimum there. Together with the lower bound outside the outer tube, this implies that
+\[
+\{\lambda<t\}\subset U_{r_0}(\mathcal Z)
+\]
+for all sufficiently small \(t>0\).
+
+Within the tube, the volume element is
+\[
+\begin{aligned}
+dz
+&=
+j(s,r\omega)\,r^{c-1}
+\,dr\,d\sigma_s(\omega)\,
+d\operatorname{vol}_{\mathcal Z}(s),
+\\
+j(s,r\omega)
+&=
+1+O(r),
+\end{aligned}
+\tag{A.9}\label{eq:app-tube-jacobian}
+\]
+uniformly on the unit normal bundle. Fix \(\zeta\in(0,1)\). The uniform expansions and the Jacobian estimate allow \(r_0\) to be chosen so that
+\[
+\begin{aligned}
+(1-\zeta)a(s,\omega)r^{2m}
+&\le
+\lambda(s+r\omega)
+\le
+(1+\zeta)a(s,\omega)r^{2m},
+\\
+(1-\zeta)b(s,\omega)r^\nu
+&\le
+p(s+r\omega)j(s,r\omega)
+\le
+(1+\zeta)b(s,\omega)r^\nu
+\end{aligned}
+\tag{A.10}\label{eq:app-uniform-tube-bounds}
+\]
+for \(0<r<r_0\).
+
+For sufficiently small \(t\), all relevant radial thresholds lie within this tube. The event \(\lambda<t\) contains the radial region
+\[
+r<
+\left(
+\frac{t}{(1+\zeta)a(s,\omega)}
+\right)^{1/(2m)}
+\]
+and is contained in
+\[
+r<
+\left(
+\frac{t}{(1-\zeta)a(s,\omega)}
+\right)^{1/(2m)}.
+\]
+Integrating the corresponding bounds gives
+\[
+\begin{aligned}
+(1-\zeta)(1+\zeta)^{-\beta}C_{\mathcal Z}t^\beta
+&\le
+\Pr(\lambda<t)
+\\
+&\le
+(1+\zeta)(1-\zeta)^{-\beta}C_{\mathcal Z}t^\beta.
+\end{aligned}
+\tag{A.11}\label{eq:app-small-information-sandwich}
+\]
+Here the radial integral is
+\[
+\int_0^{(t/a)^{1/(2m)}}
+b\,r^{c+\nu-1}\,dr
+=
+\frac{b\,a^{-\beta}}{c+\nu}\,t^\beta.
+\]
+Letting \(t\downarrow0\) and then \(\zeta\downarrow0\) proves
+\[
+\Pr(\lambda<t)\sim C_{\mathcal Z}t^\beta.
+\]
+Compactness and the positive bounds on \(a,b\) give \(0<C_{\mathcal Z}<\infty\). Since \(c\ge1\), the null manifold has zero Lebesgue measure and hence zero environment probability. Taking \(t=x^{-1}\) therefore yields
+\[
+\Pr\!\left(\lambda(z)^{-1}>x\right)
+\sim
+C_{\mathcal Z}x^{-\beta}.
+\tag{A.12}\label{eq:app-geometric-tail}
+\]
+This proves Theorem~\ref{thm:inverse-information-geometry}. \end{proof}
+
+\paragraph{Inverse-information moments.}
+
+For every \(p_0>0\), the tail-integral identity gives
+\[
+\begin{aligned}
+\mathbb E[\lambda^{-p_0}]
+&=
+p_0\int_0^\infty
+x^{p_0-1}\Pr(\lambda^{-1}>x)\,dx,
+\\
+\mathbb E[\lambda^{-p_0}]<\infty
+&\quad\Longleftrightarrow\quad
+p_0<\beta.
+\end{aligned}
+\tag{A.13}\label{eq:app-inverse-moments}
+\]
+The integral over bounded \(x\) is finite, and its tail has the convergence criterion of
+\[
+\int^\infty x^{p_0-\beta-1}\,dx.
+\]
+In particular, the exact inverse-information mean is finite precisely when \(\beta>1\); at \(\beta=1\), the divergence is logarithmic. Appendix~\ref{app:theory-certificate} gives the corresponding certificate limit.
+
+\paragraph{Tangency and independent information branches.}
+
+For the scalar construction \(\lambda=\delta^2\),
+\[
+\Pr(\delta<t)\sim C_\delta t^\gamma
+\]
+immediately gives
+\[
+\Pr(\lambda^{-1}>x)
+\sim
+C_\delta x^{-\gamma/2}.
+\]
+
+The nonnegative residual amplitudes used in the synthetic experiments admit the following scalar portfolio specialization of \citet{mansouri_arai_2026_fisher_glasses}. Suppose
+\[
+\lambda_K=\sum_{k=1}^K w_k\delta_k^2,
+\qquad w_k>0,
+\]
+and \(\delta\in[0,\infty)^K\) has a joint density \(f\) continuous and positive at the origin from within the orthant. A change of variables gives
+\[
+\begin{aligned}
+\Pr(\lambda_K<t)
+&=
+\frac{t^{K/2}}{\sqrt{\prod_{k=1}^K w_k}}
+\int_{B_K^+}
+f\!\left(
+\sqrt{t/w_1}\,u_1,\ldots,
+\sqrt{t/w_K}\,u_K
+\right)\,du
+\\
+&\sim
+\frac{f(0)v_K}
+{2^K\sqrt{\prod_{k=1}^K w_k}}\,
+t^{K/2},
+\end{aligned}
+\tag{A.14}\label{eq:app-independent-branches}
+\]
+where \(B_K^+\) is the positive-orthant portion of the unit ball and \(v_K\) is the volume of the full unit ball. Independence gives
+\[
+f(0)=\prod_{k=1}^K f_k(0+).
+\]
+The inverse-information exponent is therefore \(K/2\), and its first moment is finite for \(K\ge3\).
+
+This calculation applies to the specified additive scalar information, or to information in a fixed task direction. A minimum-eigenvalue conclusion is governed by Theorem~\ref{thm:inverse-information-geometry} applied to that eigenvalue. Appendix~\ref{app:synthetic-checks} evaluates the scalar construction.
+
+\subsection{Local Classification: Testing Reduction and Tail Aggregation}
+\label{app:theory-classification}
+
+For a distribution \(P\), let
+\[
+\mathcal E_P(g)=R_P(g)-R_P^\star
+\]
+denote population excess classification risk. Fix an environment \(e\) and a local family \(\mathcal P_e^{\mathrm{loc}}\), specified independently of the sample size. Its minimax expected excess risk is
+\[
+\mathfrak R_e(n)
+=
+\inf_{\widehat g_n}
+\sup_{P\in\mathcal P_e^{\mathrm{loc}}}
+\mathbb E_{S_n\sim P^{\otimes n}}
+\!\left[
+\mathcal E_P\bigl(\widehat g_n(S_n)\bigr)
+\right],
+\tag{A.15}\label{eq:app-local-minimax}
+\]
+where the infimum ranges over measurable learning rules. The sample consists of \(n\) independent observations from environment \(e\). For randomized rules, the expectation also includes their independent randomization.
+
+Assume \(\lambda_e>0\). For every \(0<t\le t_{0,e}\), the local family contains \(P_{e,+t}\) and \(P_{e,-t}\) with task coordinates \(\pm tu_e\) along a unit weakest efficient-information direction; nuisance coordinates may vary with the alternative. For constants \(K_e,c_e,t_{0,e}>0\) and \(q>0\), suppose
+\[
+\operatorname{KL}(P_{e,+t}\Vert P_{e,-t})
+\le K_et^2\lambda_e
+\]
+and
+\[
+\inf_g
+\left\{
+\mathcal E_{P_{e,+t}}(g)
++
+\mathcal E_{P_{e,-t}}(g)
+\right\}
+\ge c_et^q
+\]
+throughout this radius, as in Theorem~\ref{thm:local-classification-difficulty}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:local-classification-difficulty}]
+
+Fix \(0<t\le t_{0,e}\) and abbreviate \(P_+=P_{e,+t}\) and \(P_-=P_{e,-t}\). The decision-separation assumption gives
+\[
+\mathcal E_{P_+}(g)+\mathcal E_{P_-}(g)\ge c_et^q
+\]
+for every classifier \(g\). For an arbitrary learning rule, define the test
+\[
+\psi_t(S_n)
+=
+\begin{cases}
++,
+&
+\mathcal E_{P_+}(\widehat g_n(S_n))
+\le
+\mathcal E_{P_-}(\widehat g_n(S_n)),
+\\
+-,
+&
+\text{otherwise}.
+\end{cases}
+\tag{A.16}\label{eq:app-induced-test}
+\]
+If this test selects the wrong alternative, the excess risk under the true alternative is at least \(c_et^q/2\). Thus
+\[
+\begin{aligned}
+&\max_{\sigma\in\{+,-\}}
+\mathbb E_{P_\sigma^{\otimes n}}
+\!\left[
+\mathcal E_{P_\sigma}(\widehat g_n)
+\right]
+\\
+&\qquad\ge
+\frac{c_et^q}{4}
+\left\{
+P_+^{\otimes n}(\psi_t=-)
++
+P_-^{\otimes n}(\psi_t=+)
+\right\}.
+\end{aligned}
+\tag{A.17}\label{eq:app-risk-to-testing}
+\]
+The standard two-point testing inequality gives
+\[
+\begin{aligned}
+&P_+^{\otimes n}(\psi_t=-)
++
+P_-^{\otimes n}(\psi_t=+)
+\\
+&\qquad\ge
+\frac12
+\exp\!\left[
+-\operatorname{KL}
+\!\left(
+P_+^{\otimes n}\Vert P_-^{\otimes n}
+\right)
+\right]
+\end{aligned}
+\tag{A.18}\label{eq:app-testing-errors}
+\]
+\citep{lecam1986asymptotic,tsybakov2009introduction}. This inequality follows, for example, from the Hellinger affinity \(a(P,Q)=\int\sqrt{pq}\): Jensen's inequality gives
+\[
+a(P,Q)\ge
+\exp[-\operatorname{KL}(P\Vert Q)/2],
+\]
+Cauchy--Schwarz gives
+\[
+\operatorname{TV}(P,Q)\le\sqrt{1-a(P,Q)^2},
+\]
+and the sum of testing errors is at least
+\[
+1-\operatorname{TV}(P,Q)\ge a(P,Q)^2/2.
+\]
+
+Independence and the assumed KL bound imply
+\[
+\operatorname{KL}
+\!\left(P_+^{\otimes n}\Vert P_-^{\otimes n}\right)
+=
+n\operatorname{KL}(P_+\Vert P_-)
+\le
+nK_et^2\lambda_e.
+\]
+Both alternatives belong to the full local family. Taking its supremum and then the infimum over learning rules yields, for every admissible \(t\),
+\[
+\mathfrak R_e(n)
+\ge
+\frac{c_e}{8}t^q
+\exp(-nK_et^2\lambda_e).
+\tag{A.19}\label{eq:app-testing-reduction}
+\]
+Choose
+\[
+t_n
+=
+\min\left\{
+t_{0,e},
+(nK_e\lambda_e)^{-1/2}
+\right\}.
+\]
+Then \(nK_e\lambda_et_n^2\le1\), and hence
+\[
+\mathfrak R_e(n)
+\ge
+c_0c_e
+\min\left\{
+t_{0,e}^{q},
+(nK_e\lambda_e)^{-q/2}
+\right\},
+\qquad
+c_0=\frac{\exp(-1)}8.
+\tag{A.20}\label{eq:app-local-risk-bound}
+\]
+This proves Theorem~\ref{thm:local-classification-difficulty}. Independent learner randomization can be included in the testing experiment with the same law under both alternatives, leaving the KL calculation unchanged. \end{proof}
+
+\paragraph{Quadratic decision separation.}
+
+A sufficient condition for \(q=2\) can be expressed through decision-boundary mass. Suppose the binary alternatives share a feature marginal \(Q_e\), with regression functions
+\[
+\eta_{\pm,t}(x)
+=
+P_{e,\pm t}(Y=1\mid X=x)
+\]
+and Bayes rules \(g_{\pm,t}^\star\). On their disagreement set
+\[
+D_{e,t}
+=
+\{x:g_{+,t}^\star(x)\ne g_{-,t}^\star(x)\},
+\]
+any classifier disagrees with at least one Bayes rule. The binary excess-risk identity gives
+\[
+\begin{aligned}
+&\inf_g
+\left\{
+\mathcal E_{P_{e,+t}}(g)
++
+\mathcal E_{P_{e,-t}}(g)
+\right\}
+\\
+&\qquad=
+\int_{D_{e,t}}
+\min\left\{
+|2\eta_{+,t}(x)-1|,
+|2\eta_{-,t}(x)-1|
+\right\}\,dQ_e(x).
+\end{aligned}
+\tag{A.21}\label{eq:app-boundary-separation}
+\]
+Equality holds for unrestricted measurable binary classifiers; the integral is a lower bound for any restricted class.
+
+If, for every \(0<t\le t_{0,e}\), a measurable \(A_{e,t}\subseteq D_{e,t}\) satisfies
+\[
+Q_e(A_{e,t})\ge c_{\mathrm{mass},e}t
+\]
+and both margins are at least \(c_{\mathrm{margin},e}t\) on \(A_{e,t}\), for positive constants independent of \(t\), then the right-hand side is at least
+\[
+c_{\mathrm{mass},e}c_{\mathrm{margin},e}t^2.
+\]
+Thus \(q=2\) and
+\[
+c_e=c_{\mathrm{mass},e}c_{\mathrm{margin},e}
+\]
+are valid. This is the moving-boundary regime in which disagreement mass and the relevant margins each scale linearly with the perturbation. Combined with the KL condition of Theorem~\ref{thm:local-classification-difficulty}, it gives the inverse-information factor in the quadratic local bound.
+
+\paragraph{Aggregation across environments.}
+
+Suppose the assumptions hold for \(\Pi\)-almost every environment and the resulting quantities are measurable. Define
+\[
+\mathcal B_e(n)
+=
+c_e
+\min\left\{
+t_{0,e}^{q},
+(nK_e\lambda_e)^{-q/2}
+\right\}.
+\tag{A.22}\label{eq:app-local-bound-factor}
+\]
+Monotonicity and positive homogeneity of CVaR give
+\[
+\operatorname{CVaR}_{\alpha,e\sim\Pi}
+\!\left(\mathfrak R_e(n)\right)
+\ge
+c_0\,
+\operatorname{CVaR}_{\alpha,e\sim\Pi}
+\!\left(\mathcal B_e(n)\right).
+\tag{A.23}\label{eq:app-tail-risk-aggregation}
+\]
+The environment-specific separation strength, distinguishability constant, and local radius remain inside the aggregation. For \(q=2\), the interior regime
+\[
+nK_e\lambda_e\ge t_{0,e}^{-2}
+\]
+gives \(\mathcal B_e(n)=c_e/(nK_e\lambda_e)\); the local radius controls the bound beyond that regime. These are the statistical factors retained in Section~\ref{sec:fg-certificate} when the inverse-information tail motivates the audit.
+
+\subsection{CVaR, Information Coverage, and Stabilization}
+\label{app:theory-certificate}
+
+We use the Fisher-glass certificate of \citet{mansouri_arai_2026_fisher_glasses}, defined through upper-tail CVaR. Fix \(0<\alpha<1\). For a nonnegative random variable \(Z\), allowing extended values, upper-tail conditional value-at-risk is
+\[
+\operatorname{CVaR}_{\alpha}(Z)
+=
+\inf_{\tau\in\mathbb R}
+\left\{
+\tau+
+\frac{1}{1-\alpha}
+\mathbb E[(Z-\tau)_+]
+\right\}
+\tag{A.24}\label{eq:cvar-definition}
+\]
+\citep{rockafellar2000optimization,rockafellar2002conditional}. Its upper-tail weighting representation is
+\[
+\begin{aligned}
+\operatorname{CVaR}_{\alpha}(Z)
+&=
+\sup_{\xi\in\mathcal W_\alpha}
+\mathbb E[\xi Z],
+\\
+\mathcal W_\alpha
+&=
+\left\{
+\xi:
+0\le\xi\le\frac1{1-\alpha},
+\ \mathbb E\xi=1
+\right\}.
+\end{aligned}
+\tag{A.25}\label{eq:app-cvar-dual}
+\]
+Indeed, for every feasible \(\xi\) and every \(\tau\),
+\[
+\mathbb E[\xi Z]
+=
+\tau+\mathbb E[\xi(Z-\tau)]
+\le
+\tau+\frac{\mathbb E[(Z-\tau)_+]}{1-\alpha}.
+\]
+Let
+\[
+v_\alpha
+=
+\inf\{v:\Pr(Z\le v)\ge\alpha\}.
+\]
+For integrable \(Z\), equality is attained by assigning weight \((1-\alpha)^{-1}\) above \(v_\alpha\), zero below it, and the remaining weight at \(v_\alpha\). Such a choice exists because
+\[
+\Pr(Z>v_\alpha)
+\le
+1-\alpha
+\le
+\Pr(Z\ge v_\alpha).
+\]
+Thus atoms at the threshold receive exactly the fraction needed to fill the upper tail. For nonnegative \(Z\) with infinite mean, both representations have value \(+\infty\).
+
+This representation establishes monotonicity, positive homogeneity, and
+\[
+v_\alpha\le\operatorname{CVaR}_{\alpha}(Z).
+\]
+For a finite audit with weights \(\pi_g\ge0\) summing to one, it becomes
+\[
+\operatorname{CVaR}_{\alpha,\pi}(Z_g)
+=
+\max_{\substack{
+\sum_g\omega_g=1\\
+0\le\omega_g\le\pi_g/(1-\alpha)
+}}
+\sum_g\omega_g Z_g.
+\tag{A.26}\label{eq:app-finite-cvar}
+\]
+These normalized upper-tail weights also provide the convention used in the information-sensitivity calculation of Appendix~\ref{app:tail-transverse-influence}.
+
+\begin{proof}[Proof of Proposition~\ref{prop:information-coverage}]
+
+Assume \(\varepsilon>0\) and \(\lambda_e\in[0,\infty)\) is finite almost surely. Write
+\[
+\begin{aligned}
+L_e^{(\varepsilon)}
+&=
+(\lambda_e+\varepsilon)^{-1},
+\\
+I_\alpha^{\mathrm{FG}}(\varepsilon)
+&=
+\left[
+\operatorname{CVaR}_{\alpha,e\sim\Pi}
+\!\left(L_e^{(\varepsilon)}\right)
+\right]^{-1}.
+\end{aligned}
+\tag{A.27}\label{eq:app-stabilized-certificate}
+\]
+The explicit argument \(\varepsilon\) records the stabilization used in Equation~\eqref{eq:fisher-glass-certificate}. If
+\[
+I_\alpha^{\mathrm{FG}}(\varepsilon)
+\ge\rho>\varepsilon,
+\]
+then
+\[
+v_\alpha(L^{(\varepsilon)})
+\le
+\operatorname{CVaR}_{\alpha}(L^{(\varepsilon)})
+\le
+\rho^{-1}.
+\]
+By the quantile definition,
+\[
+\begin{aligned}
+\Pr_{e\sim\Pi}\!\left(\lambda_e\ge\rho-\varepsilon\right)
+&=
+\Pr_{e\sim\Pi}\!\left(
+L_e^{(\varepsilon)}\le\rho^{-1}
+\right)
+\\
+&\ge\alpha.
+\end{aligned}
+\tag{A.28}\label{eq:app-information-coverage}
+\]
+This proves Proposition~\ref{prop:information-coverage}, including environments whose information equals the threshold. \end{proof}
+
+Because \(0<L_e^{(\varepsilon)}\le\varepsilon^{-1}\), the stabilized certificate satisfies
+\[
+I_\alpha^{\mathrm{FG}}(\varepsilon)\ge\varepsilon.
+\]
+A level \(\rho>\varepsilon\) therefore certifies a strictly positive information floor \(\rho-\varepsilon\).
+
+\paragraph{Finite-group interpretation.}
+
+For four equally weighted groups and \(\alpha=0.95\), the group with the largest inverse-information value contains enough probability mass to fill the upper tail. Equation~\eqref{eq:app-finite-cvar} gives
+\[
+\begin{aligned}
+\operatorname{CVaR}_{0.95}(L^{(\varepsilon)})
+&=
+\max_g L_g^{(\varepsilon)},
+\\
+I_{0.95}^{\mathrm{FG}}(\varepsilon)
+&=
+\min_g\lambda_g+\varepsilon.
+\end{aligned}
+\tag{A.29}\label{eq:app-four-group-certificate}
+\]
+The certificate identifies the weakest absolute information under the declared normalization. The surviving fraction \(F_g/J_{TT,g}\) measures relative task--nuisance alignment within a scalar-task group. The two quantities can therefore rank groups differently, as in Section~\ref{sec:prospective-diagnosis}.
+
+\paragraph{The exact-information limit.}
+
+Define \(L_e^{(0)}=\lambda_e^{-1}\), with \(1/0=+\infty\). As \(\varepsilon\downarrow0\),
+\[
+L_e^{(\varepsilon)}\uparrow L_e^{(0)}.
+\]
+For each feasible \(\xi\), monotone convergence gives
+\[
+\mathbb E[\xi L^{(\varepsilon)}]
+\uparrow
+\mathbb E[\xi L^{(0)}].
+\]
+Taking the supremum over \(\xi\) in Equation~\eqref{eq:app-cvar-dual} therefore yields
+\[
+\begin{aligned}
+\operatorname{CVaR}_{\alpha}(L^{(\varepsilon)})
+&\uparrow
+\operatorname{CVaR}_{\alpha}(L^{(0)}),
+\\
+I_\alpha^{\mathrm{FG}}(\varepsilon)
+&\downarrow
+I_\alpha^{\mathrm{FG}}(0)
+:=
+\left[
+\operatorname{CVaR}_{\alpha}(\lambda^{-1})
+\right]^{-1},
+\end{aligned}
+\tag{A.30}\label{eq:app-exact-limit}
+\]
+where \(1/(+\infty)=0\). The interchange follows because the supremum over \(\xi\) and the increasing supremum along any sequence \(\varepsilon_k\downarrow0\) commute.
+
+For any nonnegative \(Z\),
+\[
+\mathbb EZ
+\le
+\operatorname{CVaR}_{\alpha}(Z)
+\le
+\frac{\mathbb EZ}{1-\alpha}.
+\tag{A.31}\label{eq:app-cvar-mean-bounds}
+\]
+The lower bound uses the feasible weight \(\xi=1\); the upper bound follows from \(\tau=0\) in the variational representation. Hence the exact certificate is strictly positive precisely when
+\[
+\mathbb E[\lambda^{-1}]<\infty.
+\]
+Under Theorem~\ref{thm:inverse-information-geometry},
+\[
+\begin{aligned}
+I_\alpha^{\mathrm{FG}}(0)>0
+&\quad\Longleftrightarrow\quad
+\beta=\frac{c+\nu}{2m}>1,
+\\
+I_\alpha^{\mathrm{FG}}(0)=0
+&\quad\text{for }\beta\le1.
+\end{aligned}
+\tag{A.32}\label{eq:app-certificate-integrability}
+\]
+This establishes the limiting interpretation in Section~\ref{sec:fg-certificate}. Information coverage is a population statement under \(\Pi\); the confidence level of an estimated lower certificate is supplied separately by the estimation analysis. Together, the geometric tail law, the conditional local-risk bound, and the coverage property define the population targets of the operational audit in Section~\ref{sec:computing-auditing}.

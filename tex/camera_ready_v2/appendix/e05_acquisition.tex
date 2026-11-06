@@ -1,149 +1,73 @@
-% Sources and implementation audit: e_acquisition_provenance.md.
 \subsection{Feature-Space Acquisition Experiments}
 \label{app:feature-acquisition}
 
-We evaluate information-guided acquisition through controlled feature-space interventions on Waterbirds. Each candidate translates a frozen representation along a difference between same-label background-group means. Selection uses a geometric residual score, current task loss, or their product; evaluation measures information and accuracy after head retraining. Task and background annotations define the interventions and groups.
-
-\paragraph{Candidate construction and data roles.}
-Let $v$ be a frozen ImageNet MobileNetV3-small representation~\cite{howard2019searching}, standardized coordinatewise using training means and standard deviations. For task label $y$ and background annotation $b\in\{0,1\}$, let $\bar v_{y,b}$ be the corresponding official-training-split mean. At strength $\gamma_{\mathrm{cf}}$, construct
+\paragraph{Candidates, budgets and refitting.}
+Using training-standardized frozen MobileNetV3-small representations, let $\bar v_{y,b}$ denote the official-training mean for task label $y$ and background $b\in\{0,1\}$. Each official-validation candidate becomes
 \begin{equation}
-v^{\mathrm{cf}}=v+\gamma_{\mathrm{cf}}\bigl(\bar v_{y,1-b}-\bar v_{y,b}\bigr),
-\qquad y^{\mathrm{cf}}=y.
+v^{\mathrm{cf}}=v+\gamma_{\mathrm{cf}}(\bar v_{y,1-b}-\bar v_{y,b}),
+\qquad y^{\mathrm{cf}}=y,\quad b^{\mathrm{cf}}=1-b .
 \label{eq:feature-counterfactual}
 \end{equation}
-Candidates come from the official validation split. Their assigned background is $b^{\mathrm{cf}}=1-b$, so their resulting group is $(y,1-b)$, even at fractional $\gamma_{\mathrm{cf}}$. The code falls back to background-only training means if a label--background mean is unavailable; the reported $\gamma_{\mathrm{cf}}=1$ run uses label-conditional shifts for every candidate. Its mean and 95th-percentile displacement norms are $9.297$ and $9.463$. These translations preserve the supplied task label by construction and provide a frozen-feature proxy for nuisance intervention; they do not establish pixel-level or semantic label preservation.
+This preserves the assigned label, not necessarily semantic or pixel-level content. The reported unit-strength run uses label-conditional means for every candidate. A balanced logistic background probe, fitted and standardized on training data, stays fixed and scores the translated features. Test data supply final evaluation only.
 
-A balanced logistic background probe is fitted on training features and held fixed. Its decision score is centered and scaled by its training-score mean and standard deviation, and recomputed on each translated feature. Selected features and fixed labels are concatenated with the original training set. The representation and background probe remain fixed; the task head is refitted from scratch. Test examples supply final evaluation only. Validation examples selected for acquisition enter training, so subsequent validation metrics are not an independent evaluation of the acquired model.
+Budgets $b_{\mathrm{acq}}=.01,.02,.05$ use $k=\min\{\max(1,\operatorname{round}(b_{\mathrm{acq}}n_{\mathrm{train}})),n_{\mathrm{cand}}\}$, giving $48,96,240$ candidates from the 1,199-example validation pool relative to 4,795 original training examples. These are formula-implied counts; historical selected-index records were not recovered. Acquired features and labels augment training, and a balanced logistic task head is fitted from scratch, without an FG penalty or special acquisition weights. Both probe and head use L-BFGS, at most 1,000 iterations, and library defaults ($C=1$, tolerance $10^{-4}$, fitted intercept). Class weights are recomputed on the augmented set. New task logits are normalized by augmented-training moments, while nuisance normalization stays fixed. Acquired validation examples are no longer an independent evaluation sample. Seeds are 17--21; the historical scikit-learn version was not pinned.
 
-For acquisition fraction $b_{\mathrm{acq}}\in\{0.01,0.02,0.05\}$, the code uses
-\begin{equation}
-k=\min\!\left\{\max\!\left(1,\operatorname{round}(b_{\mathrm{acq}}n_{\mathrm{train}})\right),
-n_{\mathrm{cand}}\right\}.
-\label{eq:acquisition-count}
-\end{equation}
-The original training size is $4{,}795$ and the validation pool has $1{,}199$ examples. Thus the three prescribed counts are $48$, $96$, and $240$, yielding augmented training sizes $4{,}843$, $4{,}891$, and $5{,}035$. All candidates are eligible for the selectors in the tables. These counts follow the implemented rule and split sizes; the retained summaries do not contain the per-run selected-index or group-count records.
-
-\paragraph{Starting model and implemented geometric score.}
-The refitted balanced logistic head has $78.2\%$ average test accuracy, $52.5\%$ worst-group accuracy, ridge certificate $I_{0.95}^{\rid}=0.209$, and inverse-information 95th percentile $4.683$. Its weakest-information group is landbird/land. This is the acquisition baseline; the predefined-group diagnostic uses its own fitted head and probe.
-
-At the current head, let $z$ be its logit centered and scaled using original-training logits, and let $q$ be the standardized background-probe score. Standard deviations below $10^{-6}$ are replaced by $1$. For each original validation group $g$, the operational matrix is the equally weighted within-group second moment of $(z,q)$, without a predictive factor $p(1-p)$. With $\lambda_{\rid}=10^{-3}$ and $\varepsilon=10^{-8}$, set
-\begin{equation}
-\begin{aligned}
-\beta_g&=\frac{J_{TN,g}}{J_{NN,g}+\lambda_{\rid}},\\
-\lambda_g&=J_{TT,g}-\frac{J_{TN,g}^2}{J_{NN,g}+\lambda_{\rid}},
-\qquad L_g=(\lambda_g+\varepsilon)^{-1}.
-\end{aligned}
-\label{eq:acquisition-residual-coordinates}
-\end{equation}
-The current Schur routine floors numerically negative information at zero. The selector forms $T=\{g:L_g\ge\operatorname{quantile}_{0.95}(L_1,\ldots,L_4)\}$, using NumPy's interpolated quantile and including every threshold tie. Its actual candidate score is
+\paragraph{Implemented score and its scope.}
+Let $(z,q)$ be the task logit and nuisance score standardized on original training data. Original validation-group moments are unweighted second moments, without $p(1-p)$; put $\beta_g=J_{TN,g}/(J_{NN,g}+.001)$, $\lambda_g=J_{TT,g}-J_{TN,g}^2/(J_{NN,g}+.001)$, and $L_g=(\lambda_g+\varepsilon)^{-1}$ with $\varepsilon=10^{-8}$. Numerical negative information is floored at zero. For the threshold-inclusive tail $T=\{g:L_g\ge\operatorname{quantile}_{.95}(L_1,\ldots,L_4)\}$, the code ranks by
 \begin{equation}
 \widetilde G_\alpha(a)=
-\frac{\displaystyle\sum_{g\in T}(\lambda_g+\varepsilon)^{-2}
-\bigl(z_a^{\mathrm{cf}}-\beta_g q_a^{\mathrm{cf}}\bigr)^2}
-{\displaystyle\max\!\left\{\sum_{g\in T}(\lambda_g+\varepsilon)^{-2},10^{-12}\right\}}.
+\frac{\sum_{g\in T}(\lambda_g+\varepsilon)^{-2}(z_a^{\mathrm{cf}}-\beta_gq_a^{\mathrm{cf}})^2}
+{\max\{\sum_{g\in T}(\lambda_g+\varepsilon)^{-2},10^{-12}\}},
+\qquad
+\widetilde{\TTI}_\alpha(a)=\widetilde G_\alpha(a)\loss_w(v_a^{\mathrm{cf}},y_a).
 \label{eq:implemented-acquisition-score}
 \end{equation}
-For a unique weakest group, $T$ contains that group alone and the inverse-square factor cancels. The code applies every retained tail projector to every candidate, independently of the candidate's assigned group. It includes no group-allocation indicator, group-size factor, subtraction of existing information, or replacement term. The residual square is nonnegative; the score has no additional negative-gain clipping.
+Every tail projector is applied to every candidate, irrespective of its assigned group; for a unique worst group the inverse-square weight cancels. The score lacks group allocation, sample-count scaling, old-information subtraction and replacement terms. Its nonnegative residual square is an unnormalized rank-one contribution at fixed coordinates, not the derivative of normalized augmentation or of the post-refit certificate. Threshold-inclusive ties also differ from the fractional/direction-dependent CVaR convention in Appendix~\ref{app:tail-transverse-influence}.
 
-Equation~\ref{eq:implemented-acquisition-score} is a geometric surrogate for the directional gain in Appendix~\ref{app:tail-transverse-influence}. At fixed coordinates, its residual square is the ridge-Schur directional contribution of an unnormalized rank-one addition. Actual acquisition appends examples to one assigned group, and within-group normalized augmentation instead changes a group moment toward candidate information, with allocation and sample-count scaling. Those terms are absent from the implemented ranking. Threshold-inclusive tail ties also do not implement the fractional or direction-dependent CVaR weights needed in the general derivative. Finally, refitting the head and recomputing logit normalization change the audited coordinates. The selected score therefore is not the exact derivative of the eventual post-training certificate.
-
-The empirical selector ranks by $\widetilde{\TTI}_\alpha(a)=\widetilde G_\alpha(a)\loss_w(v_a^{\mathrm{cf}},y_a)$; the tilde distinguishes this implemented product from the exact directional-gain product based on $G_\alpha$. High-loss and pure-tail controls rank by $\loss_w$ and $\widetilde G_\alpha$, respectively. The rank product multiplies separately rank-normalized geometric scores and losses: ascending \texttt{argsort} positions receive evenly spaced values from $0$ to $1$; equal values are not assigned averaged ranks. The uncertainty product uses $\widetilde G_\alpha(a)p_a(1-p_a)$, with $p_a=\operatorname{sigmoid}(\operatorname{clip}(f_w(v_a^{\mathrm{cf}}),-60,60))$. Task loss is binary cross-entropy, with probabilities floored at $10^{-12}$ inside logarithms. Top-$k$ selection reverses NumPy's ascending \texttt{argsort}; no separate stable tie-breaking convention is imposed.
-
-\paragraph{Budget comparison at $\gamma_{\mathrm{cf}}=1$.}
-Table~\ref{tab:acquisition-budget} retains all three supplied budgets and the selected-candidate summaries. Entries are means across seeds 17--21. Worst-group accuracy gains are percentage-point changes after acquisition and retraining; certificate gains are absolute changes in the ridge certificate. The geometric score and loss are measured before retraining on the selected candidates.
+High loss and pure tail use $\loss_w$ and $\widetilde G_\alpha$. Rank product multiplies ordinal rank-normalizations of these two scores; uncertainty product multiplies $\widetilde G_\alpha$ by $p(1-p)$. Equal values are not assigned averaged ranks. The acquisition baseline has $78.2\%$ average and $52.5\%$ worst-group accuracy, certificate $.209$, and weakest-information group landbird/land; it is distinct from the predefined-diagnostic cohort.
 
 \begin{table}[htbp]
-\centering
-\caption{Acquisition at $\gamma_{\mathrm{cf}}=1$. $\widetilde{\TTI}_\alpha$ denotes the implemented residual-score surrogate times task loss. $\Delta a$ is worst-group accuracy gain in percentage points; $\Delta I$ is the absolute ridge-certificate gain. The retained report supplies means without uncertainty intervals.}
-\label{tab:acquisition-budget}
-\small
-\setlength{\tabcolsep}{5pt}
+\centering\small
+\caption{Feature-space acquisition, means over seeds 17--21. $\Delta a$ is worst-group accuracy gain in percentage points and $\Delta I$ the absolute ridge-certificate gain. Panel (a) gives the complete strength-by-budget comparison; panel (b) retains pure-tail and alternative-product controls at unit strength. Only aggregate reports survive, so historical seed-level intervals are unavailable.}
+\label{tab:acquisition-strength}\label{tab:acquisition-budget}\label{tab:acquisition-products}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
-Budget & Selector & $\Delta a$ (pp) & $\Delta I$ & $\widetilde G_\alpha$ & Loss \\
-\midrule
-$1\%$ & $\widetilde{\TTI}_\alpha$ & $+4.52$ & $+0.0317$ & 1.046 & 8.159 \\
- & High loss & $+3.27$ & $+0.0603$ & 0.471 & 11.913 \\
- & Pure tail & $+0.62$ & $+0.0045$ & 2.946 & 0.176 \\
-\addlinespace
-$2\%$ & $\widetilde{\TTI}_\alpha$ & $+6.85$ & $+0.0452$ & 0.777 & 6.842 \\
- & High loss & $+5.76$ & $+0.0581$ & 0.450 & 9.038 \\
- & Pure tail & $+2.80$ & $+0.0098$ & 2.402 & 0.303 \\
-\addlinespace
-$5\%$ & $\widetilde{\TTI}_\alpha$ & $+7.94$ & $+0.0606$ & 0.557 & 4.245 \\
- & High loss & $+7.01$ & $+0.0630$ & 0.403 & 4.794 \\
- & Pure tail & $+3.58$ & $+0.0340$ & 1.691 & 1.038 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The empirical $\widetilde{\TTI}_\alpha$ has larger reported mean worst-group accuracy gains than high-loss selection at all three budgets at $\gamma_{\mathrm{cf}}=1$, while high loss produces larger certificate gains. At the $1\%$ budget, pure-tail selection attains mean geometric score $2.946$ but mean loss only $0.176$. Multiplication by loss selects candidates with geometric score $1.046$ and loss $8.159$, producing a $4.52$-point accuracy gain rather than $0.62$ points. High-loss selection attains loss $11.913$ and geometric score $0.471$. The selection-stage score and the realized post-training certificate describe different quantities.
-
-\paragraph{Alternative products and intervention strength.}
-Table~\ref{tab:acquisition-products} compares the additional products at $\gamma_{\mathrm{cf}}=1$. The rank product yields the largest reported accuracy gain at the $1\%$ budget among these product rules, whereas $\widetilde{\TTI}_\alpha$ has larger gains at $2\%$ and $5\%$. Replacing loss by $p(1-p)$ gives smaller accuracy gains at every reported budget.
-
-\begin{table}[htbp]
-\centering
-\caption{Alternative products at $\gamma_{\mathrm{cf}}=1$: reported mean worst-group accuracy gains (pp) and absolute ridge-certificate gains.}
-\label{tab:acquisition-products}
-\small
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
- & \multicolumn{2}{c}{Rank product} & \multicolumn{2}{c}{Geometric score $\times\ p(1-p)$} \\
-\cmidrule(lr){2-3}\cmidrule(l){4-5}
-Budget & $\Delta a$ (pp) & $\Delta I$ & $\Delta a$ (pp) & $\Delta I$ \\
-\midrule
-$1\%$ & $+5.45$ & $+0.0287$ & $+1.56$ & $+0.0012$ \\
-$2\%$ & $+6.54$ & $+0.0326$ & $+1.71$ & $+0.0073$ \\
-$5\%$ & $+6.07$ & $+0.0516$ & $+3.12$ & $+0.0230$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-{\raggedright
-The retained report \path{reports/waterbirds_tail_transverse_influence_report.md} supplies the strength comparisons in Table~\ref{tab:acquisition-strength}.
-\par}
-It gives numerical comparisons at $\gamma_{\mathrm{cf}}\in\{0.25,0.5,1.5\}$ alongside $\gamma_{\mathrm{cf}}=1$. High loss gives larger accuracy gains at every budget for strengths $0.25$ and $1.5$. At $\gamma_{\mathrm{cf}}=0.5$, $\widetilde{\TTI}_\alpha$ has larger gains at $1\%$ and $2\%$, while high loss has the larger gain at $5\%$. The advantage of $\widetilde{\TTI}_\alpha$ at $\gamma_{\mathrm{cf}}=1$ thus depends on intervention strength and budget. At $\gamma_{\mathrm{cf}}=1.5$ and $5\%$, $\widetilde{\TTI}_\alpha$ has the larger certificate gain, although high loss has the larger accuracy gain.
-
-\begin{table}[htbp]
-\centering
-\caption{Strength-by-budget sensitivity from the retained report named above. Entries are reported means; no seed-level uncertainty is available.}
-\label{tab:acquisition-strength}
-\small
-\begin{tabular}{@{}llrrrr@{}}
-\toprule
- & & \multicolumn{2}{c}{Geometric score $\times$ loss} & \multicolumn{2}{c}{High loss} \\
+\multicolumn{6}{l}{(a) Strength and budget: implemented geometric score $\times$ loss versus high loss}\\
+ & & \multicolumn{2}{c}{$\widetilde{\TTI}_\alpha$} & \multicolumn{2}{c}{High loss}\\
 \cmidrule(lr){3-4}\cmidrule(l){5-6}
-$\gamma_{\mathrm{cf}}$ & Budget & $\Delta a$ (pp) & $\Delta I$ & $\Delta a$ (pp) & $\Delta I$ \\
+$\gamma_{\mathrm{cf}}$ & Budget & $\Delta a$ & $\Delta I$ & $\Delta a$ & $\Delta I$\\
 \midrule
-0.25 & $1\%$ & $+4.05$ & $+0.0308$ & $+5.76$ & $+0.0411$ \\
- & $2\%$ & $+7.17$ & $+0.0366$ & $+7.63$ & $+0.0477$ \\
- & $5\%$ & $+8.88$ & $+0.0521$ & $+10.12$ & $+0.0590$ \\
-\addlinespace
-0.5 & $1\%$ & $+6.39$ & $+0.0205$ & $+4.36$ & $+0.0328$ \\
- & $2\%$ & $+5.61$ & $+0.0300$ & $+4.83$ & $+0.0446$ \\
- & $5\%$ & $+6.54$ & $+0.0417$ & $+8.57$ & $+0.0437$ \\
-\addlinespace
-1 & $1\%$ & $+4.52$ & $+0.0317$ & $+3.27$ & $+0.0603$ \\
- & $2\%$ & $+6.85$ & $+0.0452$ & $+5.76$ & $+0.0581$ \\
- & $5\%$ & $+7.94$ & $+0.0606$ & $+7.01$ & $+0.0630$ \\
-\addlinespace
-1.5 & $1\%$ & $+7.48$ & $+0.0662$ & $+7.63$ & $+0.1018$ \\
- & $2\%$ & $+8.72$ & $+0.0826$ & $+9.81$ & $+0.1006$ \\
- & $5\%$ & $+9.97$ & $+0.1159$ & $+12.31$ & $+0.1137$ \\
+0.25 & $1\%$ & $+4.05$ & $+0.0308$ & $+5.76$ & $+0.0411$\\
+ & $2\%$ & $+7.17$ & $+0.0366$ & $+7.63$ & $+0.0477$\\
+ & $5\%$ & $+8.88$ & $+0.0521$ & $+10.12$ & $+0.0590$\\
+0.5 & $1\%$ & $+6.39$ & $+0.0205$ & $+4.36$ & $+0.0328$\\
+ & $2\%$ & $+5.61$ & $+0.0300$ & $+4.83$ & $+0.0446$\\
+ & $5\%$ & $+6.54$ & $+0.0417$ & $+8.57$ & $+0.0437$\\
+1 & $1\%$ & $+4.52$ & $+0.0317$ & $+3.27$ & $+0.0603$\\
+ & $2\%$ & $+6.85$ & $+0.0452$ & $+5.76$ & $+0.0581$\\
+ & $5\%$ & $+7.94$ & $+0.0606$ & $+7.01$ & $+0.0630$\\
+1.5 & $1\%$ & $+7.48$ & $+0.0662$ & $+7.63$ & $+0.1018$\\
+ & $2\%$ & $+8.72$ & $+0.0826$ & $+9.81$ & $+0.1006$\\
+ & $5\%$ & $+9.97$ & $+0.1159$ & $+12.31$ & $+0.1137$\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+\multicolumn{7}{l}{(b) Unit-strength controls}\\
+ & \multicolumn{2}{c}{Pure tail} & \multicolumn{2}{c}{Rank product} & \multicolumn{2}{c}{Score $\times p(1-p)$}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Budget & $\Delta a$ & $\Delta I$ & $\Delta a$ & $\Delta I$ & $\Delta a$ & $\Delta I$\\
+\midrule
+$1\%$ & $+0.62$ & $+0.0045$ & $+5.45$ & $+0.0287$ & $+1.56$ & $+0.0012$\\
+$2\%$ & $+2.80$ & $+0.0098$ & $+6.54$ & $+0.0326$ & $+1.71$ & $+0.0073$\\
+$5\%$ & $+3.58$ & $+0.0340$ & $+6.07$ & $+0.0516$ & $+3.12$ & $+0.0230$\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Figure~\ref{fig:acquisition} plots the $\gamma_{\mathrm{cf}}=1$ accuracy and certificate gains. Connecting segments guide the eye between the three evaluated budgets.
+At $\gamma_{\mathrm{cf}}=1$, the loss product exceeds high loss in mean worst-group accuracy at all budgets, while high loss gives larger certificate gains. This advantage is strength-dependent: high loss wins accuracy at every budget for $.25$ and $1.5$, and at the $5\%$ budget for $.5$. The rank product also exceeds the chosen loss product at $1\%$ ($5.45$ versus $4.52$ points); the chosen product is not uniformly best. Information gains and predictive gains are distinct outcomes.
 
-\paragraph{Fitting, allocation, and aggregation.}
-The documented run uses the \texttt{sklearn} backend with seeds 17--21. Both task head and background probe use \texttt{LogisticRegression}, \texttt{solver=lbfgs}, \texttt{max\_iter=1000}, and \texttt{class\_weight=balanced}; remaining settings use the library defaults, including $C=1$, tolerance $10^{-4}$, intercept fitting, and the default regularization configuration. The retained report does not pin a scikit-learn version. No Fisher-Glass penalty is used in this head refit. The base fit receives the run seed, the acquired fit receives seed $+1000$, and the shared probe receives the first run seed $+1$.
-
-Acquired examples have no special acquisition weights. Class balancing is recomputed on the augmented set: every example of class $y$, original or acquired, receives class weight $N_{\mathrm{aug}}/(2N_{\mathrm{aug},y})$. The geometric matrix uses equal within-group observation weights, and the four evaluation groups have equal environment weights. The code's group-balanced control samples up to $\lceil k/4\rceil$ examples from each resulting group in group-ID order, fills any deficit uniformly from remaining candidates, and truncates to $k$. Other geometric and loss selectors impose no group quotas. A random selector samples without replacement; the low-loss geometric control restricts eligibility to losses at or below the pool median.
-
-After refitting, evaluation normalizes the new task logits using the augmented training set, while the nuisance normalization remains that of the original probe-training split. At $\alpha=0.95$ with four equally weighted groups, the reported inverse-information tail statistic equals the maximum group inverse information. The implementation's threshold-inclusive mean and exact discrete CVaR therefore agree in value here, including tied maxima; this does not make their directional tie rules identical.
-
-{\raggedright
-The experiment is implemented in \path{experiments/waterbirds_counterfactual_antidote.py}, with scoring, fitting, and aggregation helpers in \path{experiments/waterbirds_antidote_acquisition.py}. Its aggregator computes a mean and $1.96s/\sqrt{n}$ half-width across runs. Only aggregate reports were retained; per-seed acquisition JSON/CSV outputs are unavailable, so the tables report means without uncertainty intervals. The report describes the balanced baseline as deterministic across seeds; the seed average is not evidence from five independent benchmark splits. The numerical tables here are supported by the retained reports, rather than a fresh acquisition rerun.
-\par}
+The retained acquisition reports support Table~\ref{tab:acquisition-strength}; its values are not a fresh rerun. Per-seed JSON/CSV, selected indices and pinned historical versions remain unavailable, so no historical uncertainty is reconstructed. Independent rerun code, full selected-candidate score/loss breakdowns, allocation mechanics and expanded protocol are available in the artifact (see the \hyperref[sec:artifact-availability]{artifact availability statement}). Five seeds on fixed splits do not constitute five independent datasets.
+\FloatBarrier

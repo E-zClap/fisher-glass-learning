@@ -1,0 +1,78 @@
+% Supplied Appendix E.1, with assumptions and notation checked against A/B/D.
+\subsection{Information Reserves under Observed-Source Allocation}
+\label{app:information-reserves}
+\label{sec:information-floors}
+
+We specialize the Fisher-reserve principle of \citet{mansouri_arai_2026_fisher_glasses} to an observed-source mixture of joint information matrices. Fix the predictor, task and nuisance coordinates, and their normalization. Let $J_e$ denote the joint information in environment $e$, and let $J_0$ denote the anchor information in the same coordinates. Assume both matrices are positive semidefinite with positive-definite nuisance blocks.
+
+Consider an observed-source design that samples the base experiment with probability $1-r$ and the anchor with probability $r\in(0,1]$, with allocation probabilities independent of the task and nuisance parameters. The source identity is part of each observation. Its likelihood score is the score of the observed component, so the per-observation information is
+\begin{equation}
+J_e^{\res}=(1-r)J_e+rJ_0.
+\label{eq:reserve-information-allocation}
+\end{equation}
+The same affine relation holds for an allocation of declared operational matrix contributions with a fixed matrix map (Appendix~\ref{app:operational-matrices}). This information-accumulation relation specifies the experiment to which the reserve guarantee applies.
+
+Write $F_e^0=S_0(J_e)$ and $F_0^0=S_0(J_0)$ using the unregularized Schur operator from Appendix~\ref{app:ridge-unregularized}. Suppose the anchor satisfies $F_0^0\succeq\rho_0 I$ for some $\rho_0>0$. Then, for every environment $e$,
+\begin{equation}
+\boxed{
+F_e^{\res}:=S_0(J_e^{\res})
+\succeq(1-r)F_e^0+rF_0^0
+\succeq r\rho_0 I.
+}
+\label{eq:reserve-information-floor}
+\end{equation}
+
+\begin{proof}
+For a block matrix $J=\begin{psmallmatrix}A&B\\B^\top&C\end{psmallmatrix}$ with $C\succ0$, define
+\begin{equation}
+q_J(u,v)=
+\begin{pmatrix}u\\-v\end{pmatrix}^{\!\top}
+J\begin{pmatrix}u\\-v\end{pmatrix}.
+\label{eq:reserve-quadratic-form}
+\end{equation}
+Completing the square gives
+\begin{equation}
+\begin{aligned}
+q_J(u,v)
+={}&u^\top S_0(J)u\\
+&+(v-C^{-1}B^\top u)^\top
+C(v-C^{-1}B^\top u),
+\end{aligned}
+\label{eq:reserve-schur-variational}
+\end{equation}
+and hence $u^\top S_0(J)u=\min_{v\in\R^{d_N}}q_J(u,v)$. For every fixed $u$, linearity of $q_J$ in $J$ yields
+\begin{equation}
+\begin{aligned}
+&u^\top S_0((1-r)J_e+rJ_0)u\\
+&\quad=\min_v\{(1-r)q_{J_e}(u,v)+rq_{J_0}(u,v)\}\\
+&\quad\ge(1-r)\min_vq_{J_e}(u,v)+r\min_vq_{J_0}(u,v)\\
+&\quad=u^\top\bigl((1-r)F_e^0+rF_0^0\bigr)u.
+\end{aligned}
+\label{eq:reserve-schur-concavity}
+\end{equation}
+This proves Schur-complement concavity in Loewner order. The information floor follows from $F_e^0\succeq0$ and the anchor bound.
+\end{proof}
+
+For any declared environment distribution $\Pi$, $0<\alpha<1$, and stabilization $\varepsilon\ge0$, the pointwise floor implies
+\begin{equation}
+L_e^{\res,(\varepsilon)}
+=\frac{1}{\lambda_{\min}(F_e^{\res})+\varepsilon}
+\le\frac{1}{r\rho_0+\varepsilon}.
+\label{eq:reserve-inverse-information-bound}
+\end{equation}
+Consequently, monotonicity of CVaR (Appendix~\ref{app:theory-certificate}) gives
+\begin{equation}
+\begin{gathered}
+I_\alpha^{\FG,\res}(\varepsilon)
+:=\left[\CVaR_{\alpha,e\sim\Pi}
+\bigl(L_e^{\res,(\varepsilon)}\bigr)\right]^{-1},\\
+\boxed{I_\alpha^{\FG,\res}(\varepsilon)
+\ge r\rho_0+\varepsilon\ge r\rho_0.}
+\end{gathered}
+\label{eq:reserve-certificate-bound}
+\end{equation}
+The final expression is the coarser bound reported in Section~\ref{sec:improving-information}. For $n$ base observations and $m$ anchor observations, the normalized allocation is $r=m/(n+m)$. The guarantee is evaluated at the fixed predictor and coordinate system; a subsequent training step is followed by a new audit of the resulting predictor.
+
+An estimated anchor can be incorporated through a positive lower confidence bound $\underline\rho_0\le\lambda_{\min}(F_0^0)$ from Appendix~\ref{app:lower-audit}, under that appendix's estimation and conditioning assumptions. On its confidence event, the reserve bounds hold with $\rho_0=\underline\rho_0$ simultaneously across the base environments.
+
+In the synthetic construction, anchor amplitude $\delta_0=0.5$ supplies projected information $\rho_0=\delta_0^2=0.25$. The allocation $r=0.05$ gives $r\rho_0=0.0125$. The reported five-seed certificate is $0.01260\pm0.000001$ at $\alpha=0.95$ and $\varepsilon=10^{-12}$, where the uncertainty is the nominal $95\%$ normal-approximation interval half-width. Appendix~\ref{app:synthetic-checks} specifies this evaluated reserve setting.

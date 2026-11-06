@@ -1,165 +1,69 @@
-% Supplied Appendix E.4. Matrix target and allocation must be held consistent.
 \subsection{Tail-Transverse Influence}
 \label{app:tail-transverse-influence}
 \label{sec:targeted-interventions}
 
-An acquisition score evaluates how a candidate changes the current information audit. Fix the predictor, coordinates, calibration, slice rules, and finite audit weights $\pi_g\ge0$ summing to one. For action $a$, specify an admissible positive-semidefinite matrix path
-\begin{equation}
-J_g(t,a)=J_g+tH_{g,a}+o(t),\qquad t\downarrow0,
-\label{eq:influence-matrix-path}
-\end{equation}
-where the remainder is in operator norm and $H_{g,a}$ is symmetric. The path incorporates allocation, normalization, and any retained pooling in the declared matrix target. Audit weights remain fixed along this path.
+Fix the predictor, coordinates, calibration, slice rules and finite audit weights $\pi_g\ge0$, $\sum_g\pi_g=1$. An action specifies a positive-semidefinite path $J_g(t,a)=J_g+tH_{g,a}+o(t)$ as $t\downarrow0$, with symmetric $H_{g,a}$ and an operator-norm remainder. Allocation, normalization and retained pooling belong in this path; audit weights stay fixed.
 
-\paragraph{Schur differential and the lifted direction.}
-Write
-\begin{equation}
-J_g=\begin{pmatrix}A_g&B_g\\B_g^\top&C_g\end{pmatrix},
-\quad C_g\succ0,
-\qquad
-H=\begin{pmatrix}H_{TT}&H_{TN}\\H_{TN}^\top&H_{NN}\end{pmatrix}.
-\label{eq:influence-block-partition}
-\end{equation}
-Differentiating the inverse in the Schur operator of Appendix~\ref{app:ridge-unregularized} gives
+\paragraph{One differential for exact and ridge targets.}
+Write $J_g=\begin{psmallmatrix}A_g&B_g\\B_g^\top&C_g\end{psmallmatrix}$. Choose a fixed $\rho\ge0$ with $C_g+\rho I\succ0$: $\rho=0$ gives exact Schur information and $\rho=\lambda_{\rid}$ gives the ridge target. Set $Q_g=(C_g+\rho I)^{-1}$, $S_\rho(J_g)=A_g-B_gQ_gB_g^\top$, and let $\lambda_g$ be its smallest eigenvalue. Since $DQ_g[H_{NN}]=-Q_gH_{NN}Q_g$,
 \begin{equation}
 \begin{aligned}
-DS_0(J_g)[H]
-={}&H_{TT}-H_{TN}C_g^{-1}B_g^\top
--B_gC_g^{-1}H_{TN}^\top\\
-&+B_gC_g^{-1}H_{NN}C_g^{-1}B_g^\top.
+DS_\rho(J_g)[H]={}&H_{TT}-H_{TN}Q_gB_g^\top-B_gQ_gH_{TN}^\top\\
+&+B_gQ_gH_{NN}Q_gB_g^\top,\\
+p_g(u)&=\begin{pmatrix}u\\-Q_gB_g^\top u\end{pmatrix},
+\qquad u^\top DS_\rho(J_g)[H]u=p_g(u)^\top Hp_g(u).
 \end{aligned}
 \label{eq:influence-schur-differential}
 \end{equation}
-Suppose $\lambda_g=\lambda_{\min}(S_0(J_g))$ is simple, with unit eigenvector $u_g$. Define the lifted efficient direction
+For a simple minimum eigenvalue with unit eigenvector $u_g$, differentiating the eigenvalue equation therefore gives
 \begin{equation}
-p_g=\begin{pmatrix}u_g\\-C_g^{-1}B_g^\top u_g\end{pmatrix}.
-\label{eq:influence-efficient-lift}
-\end{equation}
-Differentiating the eigenvalue equation and using $u_g^\top u_g=1$ gives $D\lambda_g[H]=u_g^\top DS_0(J_g)[H]u_g$. Expanding $p_g^\top Hp_g$ yields the four terms in this quadratic form. Therefore,
-\begin{equation}
-\boxed{
-h_{g,a}:=
-\left.\frac{d}{dt}\lambda_{\min}(S_0(J_g(t,a)))\right|_{t=0+}
-=p_g^\top H_{g,a}p_g.
-}
+h_{g,a}:=D_a\lambda_g=p_g^\top H_{g,a}p_g,
+\qquad p_g=p_g(u_g).
 \label{eq:directional-schur-derivative}
 \end{equation}
-For an additive rank-one contribution $H_{g,a}=s_as_a^\top$,
+For allocation rate $\eta_g\ge0$, additive and normalized contributions have different derivatives:
 \begin{equation}
 \begin{aligned}
-h_{g,a}&=(p_g^\top s_a)^2,\\
-p_g^\top s_a
-&=u_g^\top(s_{T,a}-B_gC_g^{-1}s_{N,a}).
-\end{aligned}
-\label{eq:influence-rank-one-gain}
-\end{equation}
-This measures the candidate score remaining along the weak task direction after nuisance residualization.
-
-\paragraph{Allocation and normalization.}
-For normalized augmentation by candidate matrix $M_{g,a}$,
-\begin{equation}
-J_g(t,a)=\frac{J_g+tM_{g,a}}{1+t},
-\qquad H_{g,a}=M_{g,a}-J_g.
-\label{eq:influence-normalized-path}
-\end{equation}
-The variational identity~\eqref{eq:reserve-schur-variational} gives $p_g^\top J_gp_g=\lambda_g$, so
-\begin{equation}
-h_{g,a}=p_g^\top M_{g,a}p_g-\lambda_g.
-\label{eq:influence-normalized-gain}
-\end{equation}
-A replacement has perturbation equal to its new contribution minus its removed contribution, with the declared allocation rate included. These expressions place candidate gains in the same information units as the audited matrices.
-
-\paragraph{Fixed-ridge derivative.}
-For $S_{\rid}$ from Appendix~\ref{app:ridge-unregularized}, hold $\lambda_{\rid}$ fixed and set
-\begin{equation}
-Q_g=(C_g+\lambda_{\rid}I)^{-1},
-\qquad
-p_{g,\rid}=\begin{pmatrix}
-u_{g,\rid}\\-Q_gB_g^\top u_{g,\rid}
-\end{pmatrix},
-\label{eq:influence-ridge-lift}
-\end{equation}
-where $u_{g,\rid}$ is a unit eigenvector associated with a simple smallest eigenvalue $\lambda_{g,\rid}$ of $S_{\rid}(J_g)$. Since $DQ_g[H_{NN}]=-Q_gH_{NN}Q_g$, the Schur differential takes the same form with $C_g^{-1}$ replaced by $Q_g$. Thus
-\begin{equation}
-D\lambda_{g,\rid}[H]=p_{g,\rid}^\top Hp_{g,\rid}.
-\label{eq:influence-ridge-derivative}
-\end{equation}
-For normalized augmentation, the identity $Q_gC_gQ_g=Q_g-\lambda_{\rid}Q_g^2$ yields
-\begin{equation}
-p_{g,\rid}^\top J_gp_{g,\rid}
-=\lambda_{g,\rid}
--\lambda_{\rid}\lVert Q_gB_g^\top u_{g,\rid}\rVert_2^2.
-\label{eq:influence-ridge-baseline}
-\end{equation}
-Consequently,
-\begin{equation}
-\begin{aligned}
-D\lambda_{g,\rid}[M_{g,a}-J_g]
-={}&p_{g,\rid}^\top M_{g,a}p_{g,\rid}
--\lambda_{g,\rid}\\
-&+\lambda_{\rid}\lVert Q_gB_g^\top u_{g,\rid}\rVert_2^2.
+H_{g,a}=\eta_gs_as_a^\top
+&\ \Longrightarrow\ h_{g,a}=\eta_g(p_g^\top s_a)^2,\\
+J_g(t,a)=\frac{J_g+t\eta_gM_{g,a}}{1+t\eta_g}
+&\ \Longrightarrow\ H_{g,a}=\eta_g(M_{g,a}-J_g),\\
+&\hspace{13mm}h_{g,a}=\eta_g\!\left[p_g^\top M_{g,a}p_g-\lambda_g
++\rho\lVert Q_gB_g^\top u_g\rVert^2\right].
 \end{aligned}
 \label{eq:influence-ridge-normalized-gain}
 \end{equation}
-The ridge gain therefore uses its own eigenvalue, eigenvector, lifted direction, and allocation derivative consistently.
+Indeed $Q_gC_gQ_g=Q_g-\rho Q_g^2$, so $p_g^\top J_gp_g=\lambda_g-\rho\lVert Q_gB_g^\top u_g\rVert^2$; the correction vanishes at $\rho=0$. Rank-one gain is the squared efficient residual $[u_g^\top(s_{T,a}-B_gQ_gs_{N,a})]^2$. Replacement instead uses the allocated new-minus-removed contribution. For one observation appended to group $g$, its indicator and original sample-count scaling enter $\eta_g$; they cannot be omitted when claiming a normalized-augmentation derivative.
 
-\paragraph{CVaR sensitivity.}
-Choose either the exact or fixed-ridge matrix target consistently, and write its eigenvalues and derivatives as $\lambda_g$ and $h_{g,a}$. Fix $\varepsilon>0$ and $0<\alpha<1$. With $L_g=(\lambda_g+\varepsilon)^{-1}$, define the feasible tail weights
+\paragraph{Tail sensitivity, including nonsmooth cases.}
+Fix $\varepsilon>0$ and $0<\alpha<1$, and put $L_g=(\lambda_g+\varepsilon)^{-1}$. Appendix~\ref{app:theory-certificate}'s finite CVaR dual uses
+$\mathcal W_{\alpha,\pi}=\{\omega\ge0:\sum_g\omega_g=1,\ \omega_g\le\pi_g/(1-\alpha)\}$.
+Let $\Omega_\alpha^\star(L)$ maximize $\sum_g\omega_gL_g$ over this set. If the maximizer $\omega_\alpha$ is unique and eigenvalues are simple,
 \begin{equation}
-\mathcal W_{\alpha,\pi}
-=\left\{\omega\ge0:\ \sum_g\omega_g=1,
-\quad\omega_g\le\frac{\pi_g}{1-\alpha}\right\}.
-\label{eq:influence-tail-weight-set}
-\end{equation}
-The finite-audit representation~\eqref{eq:app-finite-cvar} gives
-\begin{equation}
-C_\alpha(L):=\CVaR_{\alpha,\pi}(L_g)
-=\max_{\omega\in\mathcal W_{\alpha,\pi}}\sum_g\omega_gL_g.
-\label{eq:influence-cvar-dual}
-\end{equation}
-Let $\Omega_\alpha^\star(L)$ denote its maximizing weight vectors. If the maximizing vector $\omega_\alpha$ is unique and the smallest eigenvalues are simple, differentiation yields
-\begin{equation}
-\boxed{
-G_\alpha(a):=-D_aC_\alpha
-=\sum_g\omega_{\alpha,g}
-\frac{h_{g,a}}{(\lambda_g+\varepsilon)^2}.
-}
+G_\alpha(a):=-D_a\CVaR_{\alpha,\pi}(L)
+=\sum_g\omega_{\alpha,g}\frac{h_{g,a}}{(\lambda_g+\varepsilon)^2},
+\qquad D_a I_{\alpha,\pi}=I_{\alpha,\pi}^{\,2}G_\alpha(a).
 \label{eq:tail-information-gain}
 \end{equation}
-Indeed, $D_aL_g=-h_{g,a}/(\lambda_g+\varepsilon)^2$, and the unique active linear functional supplies the derivative of the CVaR maximization. The normalized weights include the upper-tail mass factor. A positive gain decreases inverse-information CVaR and increases its reciprocal:
-\begin{equation}
-D_aI_{\alpha,\pi}=I_{\alpha,\pi}^{\,2}G_\alpha(a),
-\qquad I_{\alpha,\pi}=C_\alpha(L)^{-1}.
-\label{eq:influence-certificate-derivative}
-\end{equation}
+This follows from $D_aL_g=-h_{g,a}/(\lambda_g+\varepsilon)^2$ and differentiation of the unique active linear functional. The dual weights include fractional threshold mass and the upper-tail normalization.
 
-\paragraph{Ties and repeated eigenvalues.}
-At a repeated minimum eigenvalue, the exact right derivative uses its eigenspace $\mathcal E_g$:
+For a repeated minimum eigenvalue with eigenspace $\mathcal E_g$, symmetric eigenvalue perturbation gives the first formula below. At a CVaR tie, the right derivative of a maximum is the maximum of its active directional derivatives; negation gives the second:
 \begin{equation}
-h_{g,a}
-=\min_{\substack{u\in\mathcal E_g\\\lVert u\rVert_2=1}}
-p_g(u)^\top H_{g,a}p_g(u),
-\label{eq:influence-repeated-eigenvalue}
-\end{equation}
-where the lift corresponds to the chosen exact or ridge target. This is the smallest eigenvalue of the Schur differential restricted to $\mathcal E_g$.
-
-At a CVaR tie, the right derivative is obtained from the currently active linear functionals:
-\begin{equation}
--D_a^+C_\alpha
-=\min_{\omega\in\Omega_\alpha^\star(L)}
+\begin{aligned}
+h_{g,a}&=\min_{\substack{u\in\mathcal E_g\\\lVert u\rVert=1}}
+p_g(u)^\top H_{g,a}p_g(u),\\
+G_\alpha^+(a):=-D_a^+\CVaR_{\alpha,\pi}(L)
+&=\min_{\omega\in\Omega_\alpha^\star(L)}
 \sum_g\omega_g\frac{h_{g,a}}{(\lambda_g+\varepsilon)^2}.
+\end{aligned}
 \label{eq:influence-tied-cvar-gain}
 \end{equation}
-This follows because the right derivative of the maximum in~\eqref{eq:influence-cvar-dual} is the maximum of its active directional loss derivatives; negation turns that maximum into a minimum. Equations~\eqref{eq:influence-repeated-eigenvalue} and~\eqref{eq:influence-tied-cvar-gain} specify the directional gain at either source of nondifferentiability, including when both occur. A fixed maximizing tail-weight choice also defines an acquisition score; equality to the directional decrease follows under the unique-weight conditions above.
+These formulas cover either or both sources of nondifferentiability; the reciprocal-certificate identity holds with right derivatives. An arbitrary fixed maximizing tail vector is only a score unless it attains this direction-dependent minimum.
 
-\paragraph{Tail-transverse influence.}
-For a candidate intervention with assigned task label $y_a$, define
+For assigned label $y_a$, tail-transverse influence multiplies the directional information gain by current prediction loss:
 \begin{equation}
-\boxed{
-\TTI(a)=G_\alpha(a)\,\loss_w(x_a^{\mathrm{cf}},y_a),
-}
-\qquad\loss_w(x,y)=-\log p_w(y\mid x).
+\TTI(a)=G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a),
+\qquad \loss_w(x,y)=-\log p_w(y\mid x),
 \label{eq:tail-transverse-influence}
 \end{equation}
-The information factor emphasizes weak task directions in the current audit. The loss factor emphasizes candidates that the current predictor handles poorly. Their product ranks candidates under the declared acquisition budget. At nonsmooth points, the directional gain in~\eqref{eq:influence-tied-cvar-gain} supplies an exact right-sensitivity convention; an implementation using a fixed tail choice records that choice.
-
-Scores are evaluated at the fixed predictor, and selected candidates then enter training. Held-out evaluation measures the realized information and predictive-performance changes after finite augmentation and retraining. The reported feature-space experiment uses a normalized residual-square surrogate $\widetilde G_\alpha(a)$ in its product score. Appendix~\ref{app:feature-acquisition} specifies that implemented score and its distinction from the directional CVaR decrease derived here.
+using $G_\alpha^+$ at nonsmooth points. This ranks actions at the fixed predictor; finite augmentation, refitting and changed normalization require a new audit. The implemented residual-square surrogate $\widetilde G_\alpha$ below omits allocation/baseline terms and is distinguished from this derivative.

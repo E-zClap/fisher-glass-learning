@@ -21,7 +21,7 @@ python -m pip freeze > build/fresh_reproduction/environment.txt
 python -c "import sys,torch; print(sys.version); print(torch.__version__,torch.version.cuda,torch.cuda.is_available())"
 ```
 
-The local validation environment used NumPy 1.26.4, SciPy 1.13.1, scikit-learn 1.7.1, PyTorch 2.7.1, torchvision 0.22.1, WILDS 2.0.0, matplotlib 3.10.0 and Pillow 10.4.0. These identify a tested source/smoke environment, **not a recovered lockfile for the historical frozen-training/acquisition runs**. The separately pinned Table D.9 environment applies only to that auxiliary refit. Save the actual environment, exact command, device, new JSON outputs and caches for every full rerun.
+The local validation environment used NumPy 1.26.4, SciPy 1.13.1, scikit-learn 1.7.1, PyTorch 2.7.1, torchvision 0.22.1, WILDS 2.0.0, matplotlib 3.10.0 and Pillow 10.4.0. These identify a tested source/smoke environment, **not a recovered lockfile for the historical frozen-training/acquisition runs**. The separately pinned Table D.6 environment applies only to that auxiliary refit. Save the actual environment, exact command, device, new JSON outputs and caches for every full rerun.
 
 The synthetic experiment needs only NumPy and matplotlib and runs on CPU. Frozen-feature training and acquisition also run on CPU; `--device cuda` in those scripts accelerates feature extraction, while their small linear-head fitting remains as implemented. The end-to-end and primary image pipelines should use the declared GPU configuration.
 

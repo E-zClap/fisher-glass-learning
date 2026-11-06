@@ -1,0 +1,85 @@
+\subsection{Regularized Training}
+\label{app:regularized-training}
+
+Regularized training combines a predictive objective with the information criterion in Sections~3--4. For training group $g$, let $\widehat J_g(w)$ be the declared operational matrix at predictor parameters $w$, and define
+\begin{equation}
+\widehat F_g^{\rid}(w)=S_{\rid}(\widehat J_g(w)),\qquad
+\widehat L_g(w)=\bigl[\lambda_{\min}(\widehat F_g^{\rid}(w))+\varepsilon\bigr]^{-1}.
+\end{equation}
+For fixed group weights $\pi_g\geq0$ with $\sum_g\pi_g=1$, the objective is
+\begin{equation}
+\begin{split}
+\min_{w,\tau}\quad &\widehat R_{\mathrm{base}}(w)\\
+&+\lambda_{\FG}\left[\tau+
+\frac{1}{1-\alpha}\sum_{g=1}^{G}\pi_g
+\bigl(\widehat L_g(w)-\tau\bigr)_+\right].
+\end{split}
+\label{eq:fisher-glass-training-objective}
+\end{equation}
+Here $\lambda_{\FG}\geq0$, and $\widehat R_{\mathrm{base}}$ is empirical task risk or the Group DRO objective. Uniform weights $\pi_g=1/G$ give Equation~\ref{eq:fg-training-compact}. The information penalty increases the cost of weak projected directions, while the base objective specifies predictive performance. With four equally weighted Waterbirds groups and $\alpha=0.95$, this CVaR is the maximum group inverse-information loss. The implemented frozen-feature training tail level is $0.75$, which also gives that maximum for four equally weighted groups. Certificates are evaluated at $\alpha=0.95$.
+
+The operational matrix, coordinate normalization, ridge, and inverse-information stabilization determine the penalty's scale. In this known-group experiment, the operational matrix is the unweighted second moment of the standardized current task logit and fixed background-probe score, rather than the predictive-$p(1-p)$ matrix used in hidden-slice discovery. The nuisance ridge is $\lambda_{\rid}=10^{-3}$ and the reciprocal stabilization is $\varepsilon=10^{-8}$.
+
+\paragraph{Frozen-feature protocol and coefficient selection.}
+The experiment uses cached ImageNet MobileNetV3-small features and the Waterbirds diagnostic's background-probe nuisance coordinate. Feature and probe-score standardization use training moments. The current task logits are standardized during training by their full-training mean and population standard deviation plus $10^{-6}$. A linear head is trained by full-batch AdamW for 1,200 updates, with learning rate $0.01$, weight decay $10^{-4}$, seeds 17--21, weights initialized as $N(0,0.01^2)$, and zero intercept. Evaluation normalizes task logits by the resulting training-logit moments. The training implementation clamps each projected information value below at $\varepsilon$ before computing $1/(F+\varepsilon)$; this extra training guard is distinct from the evaluation matrix definition.
+
+The Group DRO baseline minimizes the maximum of the four group mean binary cross-entropies. Loss-CVaR training averages the largest $\lceil0.1n\rceil$ per-example losses; its reported evaluation loss-CVaR uses level $0.95$. JTT first fits ERM and then retrains with weight 20 on its training mistakes, normalized by total example weight. The reported runs use an Intel i9-11900F workstation with 32\,GB RAM. Official training, validation, and test splits retain their fitting, selection, and final-evaluation roles.
+
+For Fisher-Glass and Group DRO + FG, the reported coefficient grid is
+\begin{equation}
+\Lambda_{\FG}=\{0.01,0.03,0.1,0.3\}.
+\end{equation}
+For each seed and family, let $\widehat a_{\mathrm{worst,val}}(\lambda)$ denote validation worst-group accuracy. Define
+\begin{equation}
+\begin{split}
+a_\star&=\max_{\lambda\in\Lambda_{\FG}}
+\widehat a_{\mathrm{worst,val}}(\lambda),\\
+\Lambda_{\mathrm{adm}}&=\{\lambda\in\Lambda_{\FG}:
+\widehat a_{\mathrm{worst,val}}(\lambda)\geq a_\star-0.02\},\\
+\widehat\lambda_{\FG}&\in\arg\max_{\lambda\in\Lambda_{\mathrm{adm}}}
+\widehat I_{0.95,\mathrm{val}}^{\rid}(\lambda).
+\end{split}
+\end{equation}
+The tolerance is two percentage points; certificate ties prefer higher validation worst-group accuracy. This rule uses validation group annotations. In the original reported cohort, it selects $0.03$ for standalone Fisher-Glass in all five seeds and coefficients in $\{0.1,0.3\}$ for Group DRO + FG.
+
+\paragraph{Frozen-feature results.}
+Tables~\ref{tab:e-frozen-performance} and~\ref{tab:e-frozen-information} give the complete six-method comparison. Entries are means with nominal 95\% normal-approximation intervals ($\pm1.96$ standard errors) across five training seeds; information certificates use $\alpha=0.95$.
+\begin{table}[htbp]
+\centering\small
+\caption{Frozen-feature Waterbirds: predictive performance in the original training cohort.}
+\label{tab:e-frozen-performance}
+\begin{tabular}{@{}p{32mm}>{\raggedleft\arraybackslash}p{27mm}>{\raggedleft\arraybackslash}p{31mm}>{\raggedleft\arraybackslash}p{28mm}@{}}
+\toprule
+Method & Average acc. (\%) & Worst-group acc. (\%) & Loss-CVaR$_{0.95}$\\
+\midrule
+ERM & $77.2\pm0.1$ & $55.7\pm0.3$ & $1.969\pm0.007$\\
+Group DRO & $80.9\pm0.3$ & $67.3\pm0.3$ & $1.143\pm0.021$\\
+JTT & $77.4\pm0.1$ & $54.1\pm0.2$ & $2.167\pm0.004$\\
+Loss-CVaR & $78.2\pm0.1$ & $52.1\pm0.3$ & $2.427\pm0.041$\\
+Fisher-Glass & $80.4\pm0.2$ & $56.3\pm0.3$ & $1.866\pm0.025$\\
+Group DRO + FG & $80.6\pm0.9$ & $69.4\pm1.3$ & $0.855\pm0.082$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\caption{Frozen-feature Waterbirds: ridge information in the original training cohort.}
+\label{tab:e-frozen-information}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & Ridge certificate & Inverse-information p95\\
+\midrule
+ERM & $0.198\pm0.001$ & $4.86\pm0.02$\\
+Group DRO & $0.233\pm0.003$ & $4.10\pm0.06$\\
+JTT & $0.234\pm0.001$ & $4.13\pm0.01$\\
+Loss-CVaR & $0.233\pm0.002$ & $4.17\pm0.03$\\
+Fisher-Glass & $0.399\pm0.006$ & $2.46\pm0.04$\\
+Group DRO + FG & $0.614\pm0.059$ & $1.63\pm0.17$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fisher-Glass increases the mean certificate from $0.198$ to $0.399$ relative to ERM. Adding the penalty to Group DRO increases the certificate from $0.233$ to $0.614$ and mean worst-group accuracy from $67.3\%$ to $69.4\%$. JTT and loss-CVaR supply comparisons with error-based and predictive-loss objectives. Predictive performance and projected information induce distinct rankings.
+
+These tables preserve the original reported training cohort. Appendix~\ref{app:estimation-certification} provides ridge-to-unregularized comparisons and lower audits for fresh replications with retained group-level blocks; those runs do not retroactively certify the historical checkpoints. The implementation is \texttt{experiments/waterbirds\_fisher\_glass\_training.py}.
+\FloatBarrier
