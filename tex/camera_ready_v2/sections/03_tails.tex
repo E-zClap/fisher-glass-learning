@@ -6,7 +6,7 @@ The frequency of near-null environments determines the inverse-information tail.
 \subsection{Collapse Geometry Determines Information Tails}
 \label{sec:collapse-geometry}
 
-In the tangency construction, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law of \citet{mansouri_arai_2026_fisher_glasses} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass. We state the law with explicit regularity and localization assumptions.
+In the tangency construction, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law in Theorem~\ref{thm:inverse-information-geometry} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass. We state the law with explicit regularity and localization assumptions.
 
 \begin{theorem}[Geometric tail law {\citep{mansouri_arai_2026_fisher_glasses}}]
 \label{thm:inverse-information-geometry}
@@ -48,7 +48,7 @@ The KL condition limits distinguishability after nuisance adjustment; decision s
 \subsection{The Fisher-Glass Certificate}
 \label{sec:fg-certificate}
 
-Upper-tail conditional value-at-risk, $\CVaR_\alpha$, averages the largest $1-\alpha$ fraction of a quantity, with fractional weighting at atoms \citep{rockafellar2000optimization,rockafellar2002conditional}. Following \citet{mansouri_arai_2026_fisher_glasses}, we apply the Fisher-glass certificate to classification environments $e\sim\Pi$, using the weakest task information $\lambda_e$ and stabilization $\varepsilon$:
+Upper-tail conditional value-at-risk, $\CVaR_\alpha$, averages the largest $1-\alpha$ fraction of a quantity, with fractional weighting at atoms \citep{rockafellar2000optimization,rockafellar2002conditional}. We apply the Fisher-glass certificate \citep{mansouri_arai_2026_fisher_glasses} to classification environments $e\sim\Pi$, using the weakest task information $\lambda_e$ and stabilization $\varepsilon$:
 \begin{equation}
 L_e^{(\varepsilon)}=(\lambda_e+\varepsilon)^{-1},
 \qquad

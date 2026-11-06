@@ -166,7 +166,7 @@ Draw $U_e\sim\mathrm{Uniform}(0,1)$, set $\delta_e=0.35U_e^{1/\gamma}$, and draw
 \end{equation}
 Population feature moments are exact; loss/accuracy use 256 observations per environment. The $\gamma=1$ experiment uses 300,000 environments and seeds 11--15. Fit the log-survival slope over the largest 5\% of inverse information; empirical CVaR averages values at or above the empirical $\alpha$-quantile. Figure~\ref{fig:geometry-tails} regenerates seed 11 with $L_e=(\delta_e^2+10^{-12})^{-1}$, rather than recovering missing original raw output; its survival curve and the five-seed summaries have different replication levels.
 
-Table~\ref{tab:d-synthetic-summary} checks the tail law and scalar independent-branch specialization of \citet{mansouri_arai_2026_fisher_glasses}. For $K$ independent draws, information $K^{-1}\sum_j\delta_{e,j}^2$ has exponent $K/2$ at $\gamma=1$; weights affect its constant. The mass sweep predicts $\gamma/2$. An anchor with $\delta_0=0.5$ and reserve mass $0.05$ yields information $0.95\delta_e^2+0.05(0.25)$, floor $0.0125$, and measured certificate $0.01260\pm0.000001$ (five seeds; Appendix~\ref{app:information-reserves}).
+Table~\ref{tab:d-synthetic-summary} checks Theorem~\ref{thm:inverse-information-geometry} and the scalar portfolio law in Appendix~\ref{app:theory-tails}. For $K$ independent draws, information $K^{-1}\sum_j\delta_{e,j}^2$ has exponent $K/2$ at $\gamma=1$; weights affect its constant. The mass sweep predicts $\gamma/2$. An anchor with $\delta_0=0.5$ and reserve mass $0.05$ yields information $0.95\delta_e^2+0.05(0.25)$, floor $0.0125$, and measured certificate $0.01260\pm0.000001$ (five seeds; Appendix~\ref{app:information-reserves}).
 
 \begin{table}[htbp]
 \centering\small

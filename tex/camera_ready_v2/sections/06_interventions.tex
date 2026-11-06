@@ -1,7 +1,7 @@
 \section{Information-Guided Interventions}
 \label{sec:improving-information}
 
-The audit supplies objectives for data allocation, training, and acquisition. An observed-source allocation instantiates the Fisher-reserve principle of \citet{mansouri_arai_2026_fisher_glasses}: assigning fraction $r$ to an anchor with unregularized projected information at least $\rho_0 I$ establishes the floor $r\rho_0$, under common coordinates and positive-definite nuisance blocks (Appendix~\ref{app:information-reserves}). Learning combines empirical task risk or Group DRO with inverse-information tail risk:
+The audit supplies objectives for data allocation, training, and acquisition. An observed-source allocation instantiates the Fisher-reserve principle \citep{mansouri_arai_2026_fisher_glasses}: assigning fraction $r$ to an anchor with unregularized projected information at least $\rho_0 I$ establishes the floor $r\rho_0$, under common coordinates and positive-definite nuisance blocks (Appendix~\ref{app:information-reserves}). Learning combines empirical task risk or Group DRO with inverse-information tail risk:
 \begin{equation}
 \min_w\;\widehat R_{\mathrm{base}}(w)
 +\lambda_{\FG}\operatorname{CVaR}_{\alpha,g}
