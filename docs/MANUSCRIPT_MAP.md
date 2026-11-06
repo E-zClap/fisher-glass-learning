@@ -1,4 +1,4 @@
-# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10
+# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10/v11
 
 The current PDF has 45 pages: main text 1–10, references 11–12, scientific appendices 13–37, and declarations/checklist 38–45. The section structure and ten-page main-text budget are retained. The v3 compression reduced the scientific appendices from 41 to 23 pages; v8 adds two pages for verified post hoc comparisons and operational guidance, preserving proofs, controls and uncertainty.
 
@@ -16,11 +16,13 @@ Camera-ready-v9 rebalances Sections 8 and 9 and clarifies three statements about
 
 Camera-ready-v10 clarifies operational matrices, experimental predictors, slice membership and rediscovery, flip-prediction observations, and acquisition-surrogate scope. It fixes algorithm/table reading order while retaining 45 pages and ten main-text pages. Table/equation numbers, numerical results, figures, references, and reproducibility artifacts are unchanged; Table D.9 control labels now name feature moments and centered covariance.
 
+Camera-ready-v11 replaces the abstract and keeps the introduction framework citation unbroken. Pagination remains 45 pages with ten main-text pages; table/equation numbers, results, figures, references, and reproducibility artifacts are unchanged.
+
 ## Table crosswalk
 
-Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v10 numbers.
+Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v11 numbers.
 
-| Stable LaTeX label | v2 table | v3–v7 table | v8–v10 table |
+| Stable LaTeX label | v2 table | v3–v7 table | v8–v11 table |
 |---|---|---|---|
 | `tab:appB-conditioning` | B.1 | B.1 | B.1 |
 | `tab:appB-certificates` | B.2 | B.1 | B.1 |
