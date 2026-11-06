@@ -1,7 +1,7 @@
 \section{Task--Nuisance Geometry and Information Collapse}
 \label{sec:geometry}
 
-Let $e\sim\Pi$ index an observed group or latent subpopulation. The audit fixes the task contrast, admissible nuisance variations, and common task-coordinate normalization. Information describes the task distinction remaining after nuisance adjustment.
+Let $e$ index an observed group or latent subpopulation, and let $\Pi$ be the declared distribution over these environments. The audit fixes the task contrast, admissible nuisance variations, and common task-coordinate normalization. Information describes the task distinction remaining after nuisance adjustment.
 
 \subsection{Task Information After Nuisance Profiling}
 \label{sec:task-information}
@@ -25,7 +25,7 @@ F_e=J_{TT,e}(1-\rho_e^2),
 \underbrace{F_e/J_{TT,e}}_{\text{surviving-information fraction}}=1-\rho_e^2.
 \label{eq:surviving-information-fraction}
 \end{equation}
-Absolute information measures remaining curvature in the declared coordinates. The fraction measures the proportion retained, lies in $[0,1]$, and is invariant to nonzero scalar rescaling of either score. It compares alignment across slices with different raw information; its feature--Schur analogue supplies the prospective selection statistic. The Fisher-Glass certificate summarizes absolute information across environments.
+Absolute information measures remaining curvature in the declared coordinates. The fraction measures the proportion retained, lies in $[0,1]$, and is invariant to nonzero scalar rescaling of either score. It compares alignment across slices with different raw information; the prospective selection statistic uses a ridge-regularized feature--Schur analogue with fixed coordinate scales. The Fisher-Glass certificate summarizes absolute information across environments.
 
 \subsection{Task--Nuisance Alignment and Loss--Information Separation}
 \label{sec:tangency-separation}

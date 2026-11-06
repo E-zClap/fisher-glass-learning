@@ -140,7 +140,7 @@ All audits & 75 & \shortstack{0.211\\(0.178)} & \shortstack{0.00252\\(0.00300)} 
 \end{tabular}
 \end{table}
 
-Every run passed conditioning and satisfied $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid}$; Waterbirds diagnostic values are $0.1504$, $0.1639$, and $0.1646$. Across the five CivilComments diagnostic seeds, the mean ridge and unregularized certificates are $0.4993$ and $0.4991$, respectively. The first ordering is enforced by the caps and does not establish confidence coverage. Training audits use fresh models: original training runs lacked the retained environment blocks needed for checkpoint-specific auditing.
+Every run passed conditioning and satisfied $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid}$; Waterbirds diagnostic values are $0.1504$, $0.1639$, and $0.1646$. Across the five CivilComments diagnostic seeds, the mean ridge and unregularized certificates are $0.4993$ and $0.4991$, respectively. The inequality $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}$ is enforced by the caps and does not establish confidence coverage. Training audits use fresh models: original training runs lacked the retained environment blocks needed for checkpoint-specific auditing.
 
 For the separate audits in Table~\ref{tab:appB-training}, frozen Group DRO + FG maximizes validation certificate within two percentage points of the best validation worst-group accuracy among $\{0.1,0.3\}$; seeds 17--21 select $(0.3,0.1,0.3,0.3,0.3)$. Repeated frozen-feature training/audit runs at ridges $10^{-4},10^{-3},10^{-2}$ give maximum group gaps $0.0001443$, $0.0014374$, $0.0138286$ and Wald upper values $0.0001996$, $0.0019880$, $0.0191165$.
 

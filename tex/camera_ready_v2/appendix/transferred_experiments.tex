@@ -14,7 +14,7 @@ Table~\ref{tab:d-experiment-overview} identifies the operational targets; Append
 Experiment & Representation and reported quantity & Seeds \\
 \midrule
 Prospective Waterbirds & Fine-tuned MobileNetV3-small; background-probe surviving fraction & 22--26 \\
-Synthetic & Normalized task/nuisance coordinates; inverse-information tail and certificate & 11--15 \\
+Synthetic & Scalar task $z=s+\delta_e r$ and nuisance $s$; exact population moments, inverse-information tail and certificate & 11--15 \\
 Hidden Waterbirds slices & Frozen MobileNetV3-small and fixed CLIP direction; shrunken predictive information & 17--21 \\
 CivilComments groups & TF-IDF logistic classifier; feature--Schur certificate & 13--17 \\
 Waterbirds groups & Frozen MobileNetV3-small and logistic fitting; feature--Schur certificate & 17--21 \\
@@ -25,9 +25,9 @@ Waterbirds groups & Frozen MobileNetV3-small and logistic fitting; feature--Schu
 
 
 \paragraph{Uncertainty.}
-Prospective, synthetic, predefined-group, and frozen-feature training summaries report nominal 95\% normal-approximation half-widths $1.96s/\sqrt5$, with sample standard deviation $s$. Hidden-slice and group-free comparisons use five-seed Student-$t$ intervals; contrasts are paired within seed. The end-to-end frontier reports standard deviations, and the conditional Gaussian/Wald audit is separate (Appendix~\ref{app:implemented-audit}). Hidden-gate bootstrap intervals condition on the frozen gate and recompute evaluation weights (Appendix~\ref{app:hidden-slice-discovery}). Acquisition retains means without recovered per-seed intervals.
+Prospective, synthetic, predefined-group, and frozen-feature training summaries report nominal 95\% normal-approximation half-widths $1.96s/\sqrt5$, with sample standard deviation $s$. Hidden-slice and group-free comparisons use five-seed Student-$t$ intervals; contrasts are paired within seed. The end-to-end coefficient sweep reports standard deviations, and the conditional Gaussian/Wald audit is separate (Appendix~\ref{app:implemented-audit}). Hidden-gate bootstrap intervals condition on the frozen gate and recompute evaluation weights (Appendix~\ref{app:hidden-slice-discovery}). Acquisition retains means without recovered per-seed intervals.
 
-Seeds describe fitting/partition or control variation on fixed benchmark splits, not independent datasets. The frozen Waterbirds classifier and primary diagnostic are deterministic after feature extraction and logistic fitting; only its random controls and reserve anchor vary. Prospective intervals use training seeds: 23,176 composites share 5,794 birds, with two donors per bird and arm. Accuracy changes are percentage points; information retains its original units.
+Seeds describe fitting/partition or control variation on fixed benchmark splits, not independent datasets. For the predefined-group Waterbirds diagnostic in Appendix~\ref{app:predefined-diagnostics}, the classifier is deterministic after feature extraction and logistic fitting; only its random controls and reserve anchor vary across seeds. Prospective intervals use training seeds: 23,176 composites share 5,794 birds, with two donors per bird and arm. Accuracy changes are percentage points; information retains its original units.
 
 \subsection{Prospective Nuisance Intervention}
 \label{app:prospective-intervention}
@@ -123,14 +123,17 @@ Waterbird/water & 56.4 & 41.8 & 299 \\
 Reapplying eligibility within each seed leaves LL and WW. Minimum validation accuracy and maximum uncalibrated NLL, evaluated separately on this identical set, agree with the surviving-fraction selector in all five seeds. All-group comparisons answer a different question; landbird/water determines the model-level certificate (Table~\ref{tab:d-selection-comparison}).
 \input{appendix/prospective_reanalysis.tex}
 
+\paragraph{Development chronology.}
+The surviving-fraction rule followed an absolute-information pilot on seeds 17--21 and was frozen for newly trained seeds 22--26 on the same benchmark. Primary-cohort entries use the documented rerun; the original-versus-rerun ledger is retained in the artifact. Appendix~\ref{app:extended-training} gives the Fisher-Glass training comparison under this same intervention.
+
 \input{appendix/four_way_comparison.tex}
 
 \paragraph{Auxiliary flip prediction.}
-Originally correct predictions contribute two opposite-type donor rows per bird. Baseline predictors are uncalibrated NLL, calibrated true-label confidence, absolute raw logit and standardized task logit $z$. Augmentation adds $\beta_gb$ and $|z-\beta_gb|$, with $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ frozen from the validation block. Both models use identical five-fold, nonshuffled CUB-species \texttt{GroupKFold} splits, keeping species and donor pairs together. Logistic regression uses an intercept, $\ell_2$ penalty, $C=1$, L-BFGS, tolerance $10^{-4}$, maximum 5,000 iterations, seed 0 and no class weighting or tuning. All columns, including group indicators, are centered and scaled using training-fold means and population standard deviations; standard deviations below $10^{-9}$ are replaced by one.
+Each originally correct source bird contributes two opposite-type donor rows. All predictor covariates are evaluated on the original, pre-intervention image. Baseline predictors are uncalibrated NLL, calibrated true-label confidence, absolute raw logit and standardized task logit $z$. Augmentation adds $\beta_gb$ and $|z-\beta_gb|$, with $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ frozen from the validation block. Both models use identical five-fold, nonshuffled CUB-species \texttt{GroupKFold} splits, keeping species and donor pairs together. Logistic regression uses an intercept, $\ell_2$ penalty, $C=1$, L-BFGS, tolerance $10^{-4}$, maximum 5,000 iterations, seed 0 and no class weighting or tuning. All columns, including group indicators, are centered and scaled using training-fold means and population standard deviations; standard deviations below $10^{-9}$ are replaced by one.
 
-Pool out-of-fold predictions within seed before computing average precision (AUPRC), AUROC and mean log likelihood. For clipped probabilities $q\in[10^{-12},1-10^{-12}]$,
+Pool out-of-fold predictions within seed before computing average precision (reported as AUPRC), area under the receiver operating characteristic curve (AUROC), and mean log likelihood. For seed $s$, $N_s$ counts all retained donor rows in the analyzed population, including flips and nonflips. Let $y^{\mathrm{flip}}_{si}=1$ indicate an incorrect prediction on the donor composite and $y^{\mathrm{flip}}_{si}=0$ a correct prediction. The probabilities $q^A_{si}$ and $q^B_{si}$ are the augmented and baseline out-of-fold flip predictions. For clipped probabilities $q\in[10^{-12},1-10^{-12}]$,
 \begin{equation}
-G_s=\frac1{N_s}\sum_{i=1}^{N_s}\!\left[\operatorname{LL}(y_{si},q^A_{si})-\operatorname{LL}(y_{si},q^B_{si})\right],\quad
+G_s=\frac1{N_s}\sum_{i=1}^{N_s}\!\left[\operatorname{LL}(y^{\mathrm{flip}}_{si},q^A_{si})-\operatorname{LL}(y^{\mathrm{flip}}_{si},q^B_{si})\right],\quad
 \operatorname{LL}(y,q)=y\log q+(1-y)\log(1-q).
 \label{eq:d-flip-loglik-gain}
 \end{equation}
@@ -153,9 +156,6 @@ Selected slice & 1,181 & 0.564 & $+0.013$ & $+0.026$ (5/5) & $+0.015$ (5/5) \\
 \par\smallskip
 \end{table}
 
-
-\paragraph{Development chronology.}
-The surviving-fraction rule followed an absolute-information pilot on seeds 17--21 and was frozen for newly trained seeds 22--26 on the same benchmark. These tables consistently use the documented primary rerun; the original-versus-rerun ledger is retained in the artifact. Appendix~\ref{app:extended-training} gives the Fisher-Glass training comparison under this same intervention.
 
 \FloatBarrier
 \subsection{Synthetic Classification and Tail Checks}
@@ -214,7 +214,7 @@ Appendix~\ref{app:hidden-slice-discovery} gives the blind protocol: task labels,
 
 All selectors share classifiers with average accuracy $76.3\pm0.7\%$ and post hoc worst-group accuracy $57.3\pm1.3\%$. CLIP search finds $98.8\%$ membership-weighted slice accuracy. Table~\ref{tab:d-hidden-selectors} includes every matched-mass comparator and paired contrast. The random-direction interval and the uncentered and centered feature-moment intervals against high-loss selection contain zero. Feature controls reevaluate gates selected using predictive Fisher without rediscovery.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering\small
 \setlength{\tabcolsep}{3pt}
 \caption{Hidden-slice comparisons. Panel (a): means $\pm$ 95\% Student-$t$ half-widths across five paired seeds; predictive information retains calibration and shrinkage $\eta=0.10$. Panel (b): CLIP-search minus comparator, with paired 95\% Student-$t$ intervals; negative differences indicate lower information.}
@@ -242,8 +242,8 @@ Predictive & High-loss slice & $-0.014$ & $[-0.020,-0.008]$ \\
 Predictive & Random slice & $-0.008$ & $[-0.009,-0.007]$ \\
 Predictive & Constant gate & $-0.008$ & $[-0.009,-0.007]$ \\
 Predictive & Random direction & $-0.0004$ & $[-0.0015,0.0007]$ \\
-Unweighted feature & High-loss slice & $-0.034$ & $[-0.106,0.039]$ \\
-Centered unweighted & High-loss slice & $-0.071$ & $[-0.166,0.024]$ \\
+Feature moments & High-loss slice & $-0.034$ & $[-0.106,0.039]$ \\
+Centered covariance & High-loss slice & $-0.071$ & $[-0.166,0.024]$ \\
 \bottomrule
 \end{tabular}
 \par\smallskip

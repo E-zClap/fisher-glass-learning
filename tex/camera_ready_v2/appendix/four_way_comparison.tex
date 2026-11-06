@@ -8,7 +8,7 @@ H&=\left(\tfrac14\sum_g L_g\right)^{-1}, &
 C&=\left[\CVaR_{0.95,\pi}(L_g)\right]^{-1},\qquad \pi_g=\tfrac14.
 \end{aligned}
 \]
-Thus $H$ is the harmonic mean of the stabilized projected information values $F_g+\varepsilon$. The four summaries use uncentered feature moments; projection uses nuisance ridge $10^{-3}$, and $H$ and $C$ use reciprocal stabilization $\varepsilon=10^{-8}$. This post hoc analysis joins validation summaries to held-out interventions in the primary (seeds 22--26) and development (17--21) cohorts. It compares summaries of existing models, not training objectives.
+Thus $H$ is the harmonic mean of the stabilized projected information values $F_g+\varepsilon$. The four summaries use uncentered feature moments; projection uses nuisance ridge $10^{-3}$, and $H$ and $C$ use reciprocal stabilization $\varepsilon=10^{-8}$. This post hoc analysis joins validation summaries to held-out interventions in the primary (seeds 22--26) and development (17--21) cohorts. It compares summaries of existing models, not training objectives. ``Selected FG'' denotes the Fisher-Glass models selected within each cohort, including the accuracy-budget fallbacks listed in the caption; Appendix~\ref{app:extended-training} details the primary training comparison.
 
 \begin{table}[htbp]
 \centering\small
