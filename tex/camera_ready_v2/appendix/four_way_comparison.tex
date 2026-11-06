@@ -1,0 +1,59 @@
+\paragraph{Raw, projected, and tail summaries.}
+We compare four summaries of retained validation geometry: mean raw task second moment $A$, arithmetic mean projected information $P$, reciprocal mean inverse information $H$, and inverse-CVaR certificate $C$. For the four equally weighted groups, let $F_g=\widehat F_g^{\rid}$ and $L_g=(F_g+\varepsilon)^{-1}$. Then
+\[
+\begin{aligned}
+A&=\tfrac14\sum_g\widehat J_{TT,g}, &
+P&=\tfrac14\sum_g F_g,\\
+H&=\left(\tfrac14\sum_g L_g\right)^{-1}, &
+C&=\left[\CVaR_{0.95,\pi}(L_g)\right]^{-1},\qquad \pi_g=\tfrac14.
+\end{aligned}
+\]
+Thus $H$ is stabilized harmonic projected information, not mean inverse information. All four summaries use uncentered feature moments, nuisance ridge $10^{-3}$, and reciprocal stabilization $10^{-8}$. This post hoc analysis joins validation summaries to held-out interventions in the primary (seeds 22--26) and development (17--21) cohorts. It compares summaries of existing models, not training objectives.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\caption{Four validation summaries and their intervention associations. Panels (a)--(b): means $\pm$ nominal 95\% normal-approximation half-widths, $1.96s/\sqrt5$; changes are paired within seed and drops are signed percentage points. Selected FG includes accuracy-budget fallbacks (primary seeds 22, 24; development seed 20). Panel (c): descriptive Spearman coefficients for ten models arranged in five ERM/FG seed pairs per cohort, with average ranks for tied outcomes.}
+\label{tab:four-way-swap}
+\textit{(a) Model summaries and paired changes}\par\smallskip
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Cohort & Model/change & $A$: raw & $P$: projected & $H$: harmonic & $C$: inverse-CVaR\\
+\midrule
+Primary & ERM & $1.142\pm0.012$ & $0.500\pm0.010$ & $0.442\pm0.011$ & $0.289\pm0.014$\\
+& Selected FG & $0.730\pm0.086$ & $0.484\pm0.047$ & $0.435\pm0.043$ & $0.330\pm0.043$\\
+& FG $-$ ERM & $-0.412\pm0.079$ & $-0.016\pm0.046$ & $-0.007\pm0.041$ & $+0.041\pm0.046$\\
+Development & ERM & $1.152\pm0.005$ & $0.489\pm0.011$ & $0.413\pm0.014$ & $0.255\pm0.018$\\
+& Selected FG & $0.754\pm0.118$ & $0.519\pm0.065$ & $0.433\pm0.057$ & $0.303\pm0.082$\\
+& FG $-$ ERM & $-0.398\pm0.118$ & $+0.030\pm0.063$ & $+0.020\pm0.066$ & $+0.048\pm0.095$\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\textit{(b) ERM group-selection rules and controlled drops}\par\smallskip
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.34\linewidth}llrr@{}}
+\toprule
+Rule & Candidates & Selected, each cohort & Primary & Development\\
+\midrule
+Minimum raw second moment & All four & LL 4/5; LW 1/5 & $+15.8\pm21.3$ & $+16.9\pm23.2$\\
+Minimum projected / largest inverse contribution / CVaR-active group & All four & LW 5/5 & $-26.9\pm2.0$ & $-29.7\pm2.2$\\
+Largest inverse contribution & Eligible & LL 5/5 & $+26.7\pm1.8$ & $+29.2\pm2.8$\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\textit{(c) Model-level rank associations with held-out outcomes}\par\smallskip
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Primary} & \multicolumn{2}{c}{Development}\\
+Summary & $D_{\max}$ & $W_{\mathrm{opp}}$ & $D_{\max}$ & $W_{\mathrm{opp}}$\\
+\midrule
+$A$: mean raw & $-0.10$ & $+0.26$ & $+0.26$ & $-0.13$\\
+$P$: mean projected & $-0.09$ & $+0.21$ & $-0.03$ & $-0.43$\\
+$H$: reciprocal mean inverse & $-0.15$ & $+0.21$ & $-0.12$ & $-0.40$\\
+$C$: inverse-CVaR & $+0.15$ & $-0.24$ & $-0.03$ & $-0.48$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For Table~\ref{tab:four-way-swap}(c), $D_{\max}=100\max_g(\operatorname{Acc}_{\mathrm{same},g}-\operatorname{Acc}_{\mathrm{opposite},g})$ and $W_{\mathrm{opp}}=\min_g\operatorname{Acc}_{\mathrm{opposite},g}$, both over all four groups. Integer correct counts recover exact outcome ties: primary ERM seeds 22 and 25 share drop $348/642$, despite different floating-point subtractions. LL and LW denote landbird/land and landbird/water. Negative drops mean opposite-type recomposition improves accuracy. The largest group contributes $38.3\%$ and $40.6\%$ of summed inverse information on average in the primary and development cohorts, respectively. The original headline rules differed: surviving fraction in the primary cohort, absolute projected information in development; this comparison consistently uses all four groups for model summaries and correlations.
+
+Projection and aggregation give different model summaries, with rank associations varying across cohorts. For four equally weighted groups and $\alpha=0.95$, $C=\min_gF_g+\varepsilon$; its active group also minimizes projected information and maximizes inverse contribution. Here that group is LW, whose opposite-type recomposition improves accuracy. The prospective WW diagnosis instead uses the surviving fraction within the eligible set. This comparison does not establish superior swap-damage prediction by inverse-CVaR; paired changes in $P,H,C$ all have intervals containing zero. The artifact provides per-model and per-seed values, exact-count outcomes, input hashes, and replay code.

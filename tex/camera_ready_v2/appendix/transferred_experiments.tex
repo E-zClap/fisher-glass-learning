@@ -123,6 +123,8 @@ Waterbird/water & 56.4 & 41.8 & 299 \\
 Reapplying eligibility within each seed leaves LL and WW. Minimum validation accuracy and maximum uncalibrated NLL, evaluated separately on this identical set, agree with the surviving-fraction selector in all five seeds. All-group comparisons answer a different question; landbird/water determines the model-level certificate (Table~\ref{tab:d-selection-comparison}).
 \input{appendix/prospective_reanalysis.tex}
 
+\input{appendix/four_way_comparison.tex}
+
 \paragraph{Auxiliary flip prediction.}
 Originally correct predictions contribute two opposite-type donor rows per bird. Baseline predictors are uncalibrated NLL, calibrated true-label confidence, absolute raw logit and standardized task logit $z$. Augmentation adds $\beta_gb$ and $|z-\beta_gb|$, with $\beta_g=\widehat J_{TN,g}/(\widehat J_{NN,g}+10^{-3})$ frozen from the validation block. Both models use identical five-fold, nonshuffled CUB-species \texttt{GroupKFold} splits, keeping species and donor pairs together. Logistic regression uses an intercept, $\ell_2$ penalty, $C=1$, L-BFGS, tolerance $10^{-4}$, maximum 5,000 iterations, seed 0 and no class weighting or tuning. All columns, including group indicators, are centered and scaled using training-fold means and population standard deviations; standard deviations below $10^{-9}$ are replaced by one.
 
@@ -254,7 +256,7 @@ CLIP, random-direction, random-slice and constant-gate selectors choose landbird
 \paragraph{Support and sensitivity.}
 On same-class rows from the 15\% training-calibration subset, cross-fold gate-score correlation is $0.419\,[0.353,0.485]$ and overlap $0.258\,[0.225,0.291]$. Test ESS is $414\,[383,445]$ using admissible weights. Raw membership mass is $0.083\,[0.077,0.089]$ within the selected class (target $0.10$), not the full test set; landbirds contain 4,510 test examples. Validation cross-fitting, separate from final testing, gives information $0.004$--$0.005$ over masses $\{0.05,0.10,0.20\}$ versus high-loss $0.012$--$0.027$, and $0.004$--$0.006$ over shrinkages $\{0.05,0.10,0.20\}$.
 
-Composition after held-out evaluation is $97.0\%$ landbird/land for CLIP, $94.4\%$ for random direction, and $58.4\%$ landbird/water for high loss. CLIP information is below the weakest predefined group's in every seed. A metadata-trained oracle probe used only after blind freeze gives information $0.003\pm0.000$, NLL $0.009\pm0.004$, and $99.1\%$ landbird/land composition (zero width is rounding). Repair outcomes are in Appendix~\ref{app:extended-training}.
+Composition after held-out evaluation is $97.0\%$ landbird/land for CLIP, $94.4\%$ for random direction, and $58.4\%$ landbird/water for high loss. The hidden slice has lower projected predictive information than the weakest predefined group in all five seeds: mean paired difference $-0.0029$, with 95\% Student-$t$ interval $[-0.0034,-0.0024]$, taking the predefined-group minimum separately within each seed. Both sides use the same model, CLIP coordinate, calibrated predictive moments, pooling $\eta=0.10$, and ridge $10^{-3}$. A metadata-trained oracle probe used only after blind freeze gives information $0.003\pm0.000$, NLL $0.009\pm0.004$, and $99.1\%$ landbird/land composition (zero width is rounding). Repair outcomes are in Appendix~\ref{app:extended-training}.
 
 \FloatBarrier
 \subsection{Predefined-Group Diagnostics}

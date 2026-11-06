@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "scope": "Post hoc arithmetic reanalysis of public retained records; no new training or raw example data.",
+  "hidden_vs_predefined": {
+    "definition": "Hidden projected predictive information minus the minimum predefined-group value computed separately within each seed.",
+    "model": "ERM",
+    "nuisance": "fixed CLIP water-background minus land-background text direction",
+    "fisher_config": {
+      "epsilon": 1e-08,
+      "ridge": 0.001,
+      "shrinkage": 0.1
+    },
+    "pooling_reference": "Full task class, matching hidden-slice certification",
+    "n_seeds": 5,
+    "seeds_below_predefined_minimum": 5,
+    "mean_paired_difference": -0.002909442064424319,
+    "standard_error": 0.00017626701282556878,
+    "interval": {
+      "method": "Two-sided Student-t over paired seeds",
+      "confidence": 0.95,
+      "degrees_of_freedom": 4,
+      "critical_value": 2.7764451051977987,
+      "half_width": 0.000489395684967388,
+      "lower": -0.003398837749391707,
+      "upper": -0.002420046379456931
+    },
+    "per_seed": [
+      {
+        "seed": 17,
+        "hidden_projected_predictive_information": 0.004700454801494017,
+        "minimum_predefined_projected_predictive_information": 0.007631631899054877,
+        "minimum_predefined_group": "landbird/land",
+        "difference_hidden_minus_minimum": -0.0029311770975608605,
+        "class_reference_n": 4510,
+        "model_temperature": 1.9802778936697694
+      },
+      {
+        "seed": 18,
+        "hidden_projected_predictive_information": 0.006531331500511395,
+        "minimum_predefined_projected_predictive_information": 0.009221057611193099,
+        "minimum_predefined_group": "landbird/land",
+        "difference_hidden_minus_minimum": -0.002689726110681704,
+        "class_reference_n": 4510,
+        "model_temperature": 2.266831410665104
+      },
+      {
+        "seed": 19,
+        "hidden_projected_predictive_information": 0.004118901827172015,
+        "minimum_predefined_projected_predictive_information": 0.00764734156399304,
+        "minimum_predefined_group": "landbird/land",
+        "difference_hidden_minus_minimum": -0.0035284397368210247,
+        "class_reference_n": 4510,
+        "model_temperature": 2.102867716976617
+      },
+      {
+        "seed": 20,
+        "hidden_projected_predictive_information": 0.0054874957761914455,
+        "minimum_predefined_projected_predictive_information": 0.007961854295636905,
+        "minimum_predefined_group": "landbird/land",
+        "difference_hidden_minus_minimum": -0.002474358519445459,
+        "class_reference_n": 4510,
+        "model_temperature": 2.040652457730275
+      },
+      {
+        "seed": 21,
+        "hidden_projected_predictive_information": 0.0050309411594251984,
+        "minimum_predefined_projected_predictive_information": 0.007954450017037746,
+        "minimum_predefined_group": "landbird/land",
+        "difference_hidden_minus_minimum": -0.002923508857612548,
+        "class_reference_n": 4510,
+        "model_temperature": 2.1669797903857164
+      }
+    ]
+  },
+  "civilcomments_certificates": {
+    "definition": "Mean over the five feature-Schur ridge audit seeds; each certificate is the reciprocal uniform 0.95-CVaR of stabilized inverse information.",
+    "ridge": 0.001,
+    "reciprocal_epsilon": 1e-08,
+    "n_seeds": 5,
+    "mean_ridge_certificate": 0.49927619632342557,
+    "mean_unregularized_certificate": 0.4990945173051447,
+    "per_seed": [
+      {
+        "seed": 13,
+        "ridge_certificate": 0.49907575566202766,
+        "unregularized_certificate": 0.49889363352077853
+      },
+      {
+        "seed": 14,
+        "ridge_certificate": 0.49978785250478447,
+        "unregularized_certificate": 0.49960575171941624
+      },
+      {
+        "seed": 15,
+        "ridge_certificate": 0.500080331475724,
+        "unregularized_certificate": 0.4998989430851909
+      },
+      {
+        "seed": 16,
+        "ridge_certificate": 0.49721593983111995,
+        "unregularized_certificate": 0.4970335091618518
+      },
+      {
+        "seed": 17,
+        "ridge_certificate": 0.5002211021434718,
+        "unregularized_certificate": 0.500040749038486
+      }
+    ]
+  },
+  "source_sha256_relative_to_artifact_root": {
+    "hidden_slice_corrected_v2/runs/seed_17/discovery.json": "186b66f37ed6d725bf3ee80aa7a60f78a961e6058e3b4c913dd799c42d9d07a0",
+    "hidden_slice_corrected_v2/runs/seed_17/blind_test_results.json": "ed7a65fc15b50d71a77c0a854ca88a76a9c9137f7ebc505bb69b0c2eda6335e8",
+    "hidden_slice_corrected_v2/runs/seed_17/posthoc.json": "11cf037acc56d266511adeb56fd113953a0dbbc2a16d2c4975485d208812e9d9",
+    "hidden_slice_corrected_v2/runs/seed_18/discovery.json": "6879a5385ca55ff95257b9afa62c243d3b14467dbefe2c031903361dd722f50e",
+    "hidden_slice_corrected_v2/runs/seed_18/blind_test_results.json": "9608a3f9f337bce7d4566f3b016a8159a0445ce559c35ba585c1cc3b8790892e",
+    "hidden_slice_corrected_v2/runs/seed_18/posthoc.json": "3ef3bc1895405cb7db9054ca4059292493870357d81a24c78c1fb01a9953cd82",
+    "hidden_slice_corrected_v2/runs/seed_19/discovery.json": "a321ec747f8f518442c86a90490e1b3860f5fb5a4ad78fcc185f8666b3421355",
+    "hidden_slice_corrected_v2/runs/seed_19/blind_test_results.json": "96feab573fa563027ca8c277b2f85c19d639e6f078c3c13797ef7559dcb14a94",
+    "hidden_slice_corrected_v2/runs/seed_19/posthoc.json": "7e41225b93c8898c0799a06e41f26c518318fbbccc6c3363f408726124e0ec36",
+    "hidden_slice_corrected_v2/runs/seed_20/discovery.json": "46e621fb6c93dd7b865f36135dd5575d3a53968bd6634ec551ba53b42a1e36ea",
+    "hidden_slice_corrected_v2/runs/seed_20/blind_test_results.json": "fc2dc772015792b78c903fc41372bfbda6626510458879807ffe079591b76d5f",
+    "hidden_slice_corrected_v2/runs/seed_20/posthoc.json": "817828e20c1a18cff325b9d46b0bad0e4e7b5920a066d754394f0fa12e574714",
+    "hidden_slice_corrected_v2/runs/seed_21/discovery.json": "99e93908889e976a701f9ac637832e9132204f55b730f0e7ec1253f1fc5aaae6",
+    "hidden_slice_corrected_v2/runs/seed_21/blind_test_results.json": "2d79df4f0bb5237be4b7caa306b9a73d220f44cce10a92be3f74ce904dc858e2",
+    "hidden_slice_corrected_v2/runs/seed_21/posthoc.json": "16c49b6a48bf2f4c07fa2729ebc71112d61c11bfe99e34dcf5225df1ef851518",
+    "w2_audit/diagnostics/civilcomments_seed_13.json": "4a28b7e09d1419ba695d182722356ec33e9ddb448d1474ce004433e059e294b4",
+    "w2_audit/diagnostics/civilcomments_seed_14.json": "2fd67c90de4fe32656352eb479e10e7a0617a901c26d8ee4105238a22252769a",
+    "w2_audit/diagnostics/civilcomments_seed_15.json": "f3390456000ae114d0c3b71f045c8e1c03f65a50b0bf9eb186751b7aa0d07c8e",
+    "w2_audit/diagnostics/civilcomments_seed_16.json": "70739bafc1705e162f3c4d4c2fe4edfea4f29ff2267ceb400eb1fa5ba3397648",
+    "w2_audit/diagnostics/civilcomments_seed_17.json": "0d023e17208c4c5365762e762089937e791d3095b346be717fbe52073305bc8f"
+  }
+}

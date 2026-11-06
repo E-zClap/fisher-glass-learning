@@ -1,0 +1,638 @@
+{
+  "analysis": "post_hoc_four_way_swap",
+  "schema_version": 1,
+  "definitions": {
+    "A": "mean_g raw_fisher",
+    "P": "mean_g projected_fisher",
+    "H": "1 / mean_g (1 / (projected_fisher + epsilon))",
+    "C": "1 / upper_CVaR_0.95_uniform(1 / (projected_fisher + epsilon))",
+    "D_max_pp": "100 * max_g (accuracy_same_g - accuracy_opposite_g)",
+    "W_opp": "min_g accuracy_opposite_g"
+  },
+  "parameters": {
+    "groups": [
+      "landbird/land",
+      "landbird/water",
+      "waterbird/land",
+      "waterbird/water"
+    ],
+    "group_weight": 0.25,
+    "ridge": 0.001,
+    "epsilon": 1e-08,
+    "alpha": 0.95,
+    "ci": "mean +/- 1.96 * sample_sd / sqrt(5); paired changes within seed",
+    "spearman": "Pearson correlation of average ranks; exact rational outcome ties; descriptive only"
+  },
+  "cohorts": [
+    {
+      "cohort": "primary",
+      "artifact_directory": "prospective_v2",
+      "seeds": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "original_headline_statistic": "projected_over_raw",
+      "original_headline_group": "waterbird/water",
+      "accuracy_budget_fallback_seeds": [
+        22,
+        24
+      ],
+      "frozen_hash": "4c36c7529df0affc5a9f648150f3e36d462574933c39fcfd88c7731c2460615e",
+      "candidate_models_checked": 20,
+      "candidate_group_records_checked": 80,
+      "analysed_models": 10,
+      "analysed_group_records": 40,
+      "held_out_sources_per_model": 5794,
+      "draws_per_source_per_arm": 2,
+      "largest_inverse_share_ERM": {
+        "mean": 0.3829807291246623,
+        "ci95_half_width": 0.01891641210913685,
+        "n_seed_pairs": 5
+      },
+      "outcome_ties": {
+        "D_max_pp": [
+          {
+            "exact_value": "5800/107",
+            "models": [
+              "erm_lam0_seed22",
+              "erm_lam0_seed25"
+            ]
+          }
+        ],
+        "W_opp": []
+      }
+    },
+    {
+      "cohort": "development",
+      "artifact_directory": "prospective_v1",
+      "seeds": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "original_headline_statistic": "projected_fisher",
+      "original_headline_group": "landbird/land",
+      "accuracy_budget_fallback_seeds": [
+        20
+      ],
+      "frozen_hash": "6989773ddf82d93c9657b19e1ebf5b3b9e09012ce47c6a7ca8ac81f537062d26",
+      "candidate_models_checked": 20,
+      "candidate_group_records_checked": 80,
+      "analysed_models": 10,
+      "analysed_group_records": 40,
+      "held_out_sources_per_model": 5794,
+      "draws_per_source_per_arm": 2,
+      "largest_inverse_share_ERM": {
+        "mean": 0.4061981843991184,
+        "ci95_half_width": 0.01704643112479902,
+        "n_seed_pairs": 5
+      },
+      "outcome_ties": {
+        "D_max_pp": [],
+        "W_opp": [
+          {
+            "exact_value": "203/428",
+            "models": [
+              "erm_lam0_seed20",
+              "erm_lam0_seed21"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "panel_a": [
+    {
+      "cohort": "primary",
+      "arm": "ERM",
+      "summary": "A",
+      "mean": 1.141743827527132,
+      "ci95_half_width": 0.012179723853546856,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "ERM",
+      "summary": "P",
+      "mean": 0.4997631223232453,
+      "ci95_half_width": 0.010139346722634108,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "ERM",
+      "summary": "H",
+      "mean": 0.44166844492464585,
+      "ci95_half_width": 0.011354751642673766,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "ERM",
+      "summary": "C",
+      "mean": 0.2889165438992153,
+      "ci95_half_width": 0.013655211231183456,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "selected_FG",
+      "summary": "A",
+      "mean": 0.7300682370197425,
+      "ci95_half_width": 0.08624433223082632,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "selected_FG",
+      "summary": "P",
+      "mean": 0.4839178935432547,
+      "ci95_half_width": 0.04694376270611279,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "selected_FG",
+      "summary": "H",
+      "mean": 0.43516395259657115,
+      "ci95_half_width": 0.043425844945399215,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "selected_FG",
+      "summary": "C",
+      "mean": 0.3298294277854275,
+      "ci95_half_width": 0.0433597358409065,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "FG_minus_ERM",
+      "summary": "A",
+      "mean": -0.41167559050738967,
+      "ci95_half_width": 0.07880065763794418,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "FG_minus_ERM",
+      "summary": "P",
+      "mean": -0.01584522877999057,
+      "ci95_half_width": 0.045877536967193475,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "FG_minus_ERM",
+      "summary": "H",
+      "mean": -0.0065044923280747294,
+      "ci95_half_width": 0.04092914339607626,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "primary",
+      "arm": "FG_minus_ERM",
+      "summary": "C",
+      "mean": 0.040912883886212205,
+      "ci95_half_width": 0.046259062025328514,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "ERM",
+      "summary": "A",
+      "mean": 1.1522958247939898,
+      "ci95_half_width": 0.005120965017914308,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "ERM",
+      "summary": "P",
+      "mean": 0.4889386129518515,
+      "ci95_half_width": 0.011027925783105913,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "ERM",
+      "summary": "H",
+      "mean": 0.41318548914182035,
+      "ci95_half_width": 0.013961659129473789,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "ERM",
+      "summary": "C",
+      "mean": 0.2550401962321774,
+      "ci95_half_width": 0.017973818311116746,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "selected_FG",
+      "summary": "A",
+      "mean": 0.7541601601300242,
+      "ci95_half_width": 0.11785204202385656,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "selected_FG",
+      "summary": "P",
+      "mean": 0.5191545161407418,
+      "ci95_half_width": 0.06457469499051975,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "selected_FG",
+      "summary": "H",
+      "mean": 0.43303460195091126,
+      "ci95_half_width": 0.056984795919752286,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "selected_FG",
+      "summary": "C",
+      "mean": 0.30265863218589045,
+      "ci95_half_width": 0.08239530186188337,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "FG_minus_ERM",
+      "summary": "A",
+      "mean": -0.39813566466396555,
+      "ci95_half_width": 0.11842086947614074,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "FG_minus_ERM",
+      "summary": "P",
+      "mean": 0.03021590318889029,
+      "ci95_half_width": 0.06336642994285331,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "FG_minus_ERM",
+      "summary": "H",
+      "mean": 0.019849112809090907,
+      "ci95_half_width": 0.06600342933584738,
+      "n_seed_pairs": 5
+    },
+    {
+      "cohort": "development",
+      "arm": "FG_minus_ERM",
+      "summary": "C",
+      "mean": 0.04761843595371308,
+      "ci95_half_width": 0.09536441341753059,
+      "n_seed_pairs": 5
+    }
+  ],
+  "panel_b": [
+    {
+      "cohort": "primary",
+      "rule": "minimum_raw",
+      "candidates": "all_four",
+      "group_counts": {
+        "landbird/land": 4,
+        "landbird/water": 1
+      },
+      "mean": 15.764966740576495,
+      "ci95_half_width": 21.313012253207013,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 22,
+          "group": "landbird/land",
+          "signed_drop_pp": 23.325942350332593
+        },
+        {
+          "seed": 23,
+          "group": "landbird/land",
+          "signed_drop_pp": 26.78492239467849
+        },
+        {
+          "seed": 24,
+          "group": "landbird/water",
+          "signed_drop_pp": -27.583148558758314
+        },
+        {
+          "seed": 25,
+          "group": "landbird/land",
+          "signed_drop_pp": 28.647450110864746
+        },
+        {
+          "seed": 26,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.649667405764966
+        }
+      ]
+    },
+    {
+      "cohort": "primary",
+      "rule": "minimum_projected_largest_inverse_cvar_active",
+      "candidates": "all_four",
+      "group_counts": {
+        "landbird/water": 5
+      },
+      "mean": -26.895787139689578,
+      "ci95_half_width": 1.9945257306442836,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 22,
+          "group": "landbird/water",
+          "signed_drop_pp": -22.993348115299334
+        },
+        {
+          "seed": 23,
+          "group": "landbird/water",
+          "signed_drop_pp": -27.827050997782703
+        },
+        {
+          "seed": 24,
+          "group": "landbird/water",
+          "signed_drop_pp": -27.583148558758314
+        },
+        {
+          "seed": 25,
+          "group": "landbird/water",
+          "signed_drop_pp": -28.913525498891353
+        },
+        {
+          "seed": 26,
+          "group": "landbird/water",
+          "signed_drop_pp": -27.161862527716185
+        }
+      ]
+    },
+    {
+      "cohort": "primary",
+      "rule": "largest_inverse_contribution",
+      "candidates": "eligible",
+      "group_counts": {
+        "landbird/land": 5
+      },
+      "mean": 26.696230598669622,
+      "ci95_half_width": 1.7653656080288758,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 22,
+          "group": "landbird/land",
+          "signed_drop_pp": 23.325942350332593
+        },
+        {
+          "seed": 23,
+          "group": "landbird/land",
+          "signed_drop_pp": 26.78492239467849
+        },
+        {
+          "seed": 24,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.073170731707318
+        },
+        {
+          "seed": 25,
+          "group": "landbird/land",
+          "signed_drop_pp": 28.647450110864746
+        },
+        {
+          "seed": 26,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.649667405764966
+        }
+      ]
+    },
+    {
+      "cohort": "development",
+      "rule": "minimum_raw",
+      "candidates": "all_four",
+      "group_counts": {
+        "landbird/land": 4,
+        "landbird/water": 1
+      },
+      "mean": 16.9490022172949,
+      "ci95_half_width": 23.206837355417605,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 17,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.073170731707318
+        },
+        {
+          "seed": 18,
+          "group": "landbird/land",
+          "signed_drop_pp": 33.83592017738359
+        },
+        {
+          "seed": 19,
+          "group": "landbird/land",
+          "signed_drop_pp": 26.452328159645234
+        },
+        {
+          "seed": 20,
+          "group": "landbird/water",
+          "signed_drop_pp": -30.110864745011085
+        },
+        {
+          "seed": 21,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.494456762749447
+        }
+      ]
+    },
+    {
+      "cohort": "development",
+      "rule": "minimum_projected_largest_inverse_cvar_active",
+      "candidates": "all_four",
+      "group_counts": {
+        "landbird/water": 5
+      },
+      "mean": -29.671840354767184,
+      "ci95_half_width": 2.1854466322502697,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 17,
+          "group": "landbird/water",
+          "signed_drop_pp": -28.292682926829265
+        },
+        {
+          "seed": 18,
+          "group": "landbird/water",
+          "signed_drop_pp": -33.791574279379155
+        },
+        {
+          "seed": 19,
+          "group": "landbird/water",
+          "signed_drop_pp": -28.69179600886918
+        },
+        {
+          "seed": 20,
+          "group": "landbird/water",
+          "signed_drop_pp": -30.110864745011085
+        },
+        {
+          "seed": 21,
+          "group": "landbird/water",
+          "signed_drop_pp": -27.47228381374723
+        }
+      ]
+    },
+    {
+      "cohort": "development",
+      "rule": "largest_inverse_contribution",
+      "candidates": "eligible",
+      "group_counts": {
+        "landbird/land": 5
+      },
+      "mean": 29.175166297117517,
+      "ci95_half_width": 2.7643259360179275,
+      "n_seed_pairs": 5,
+      "per_seed": [
+        {
+          "seed": 17,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.073170731707318
+        },
+        {
+          "seed": 18,
+          "group": "landbird/land",
+          "signed_drop_pp": 33.83592017738359
+        },
+        {
+          "seed": 19,
+          "group": "landbird/land",
+          "signed_drop_pp": 26.452328159645234
+        },
+        {
+          "seed": 20,
+          "group": "landbird/land",
+          "signed_drop_pp": 31.019955654101995
+        },
+        {
+          "seed": 21,
+          "group": "landbird/land",
+          "signed_drop_pp": 27.494456762749447
+        }
+      ]
+    }
+  ],
+  "panel_c": [
+    {
+      "cohort": "primary",
+      "summary": "A",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.09726488698881033,
+      "W_opp": 0.2606060606060606
+    },
+    {
+      "cohort": "primary",
+      "summary": "P",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.08510677611520903,
+      "W_opp": 0.21212121212121213
+    },
+    {
+      "cohort": "primary",
+      "summary": "H",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.1458973304832155,
+      "W_opp": 0.21212121212121213
+    },
+    {
+      "cohort": "primary",
+      "summary": "C",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": 0.1458973304832155,
+      "W_opp": -0.23636363636363636
+    },
+    {
+      "cohort": "development",
+      "summary": "A",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": 0.2606060606060606,
+      "W_opp": -0.1337392196096142
+    },
+    {
+      "cohort": "development",
+      "summary": "P",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.030303030303030304,
+      "W_opp": -0.43161293601284584
+    },
+    {
+      "cohort": "development",
+      "summary": "H",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.11515151515151516,
+      "W_opp": -0.4012176588288426
+    },
+    {
+      "cohort": "development",
+      "summary": "C",
+      "n_models": 10,
+      "n_seed_pairs": 5,
+      "D_max_pp": -0.030303030303030304,
+      "W_opp": -0.480245379507251
+    }
+  ],
+  "provenance": {
+    "source_repository": "https://github.com/E-zClap/fisher-glass-learning",
+    "reference_source_commit": "7f129365db05c69917383eeca9e1af2eeae4873f",
+    "inputs": [
+      {
+        "path": "artifacts/prospective_v2/frozen_selection.json",
+        "sha256": "db92e05f7543141dc7f856c0616455d6423b4bf7f102e534f7d42951e27dd544",
+        "bytes": 279395
+      },
+      {
+        "path": "artifacts/prospective_v2/shift_summary.json",
+        "sha256": "9a3a07178268416aa72a82652a8d920cb3a92d33d4a75f7ba462bbbd306f1ebb",
+        "bytes": 198582
+      },
+      {
+        "path": "artifacts/prospective_v2/paired_generation.json",
+        "sha256": "6aee964293c483e7450f16b95f576131146faa3c85b61a2d303f0128d1865d3b",
+        "bytes": 1025
+      },
+      {
+        "path": "artifacts/prospective_v1/frozen_selection.json",
+        "sha256": "115f33d82dc596f694212b7817eec7bdeb7174496e3376183d8a6a82d35e8bcf",
+        "bytes": 279491
+      },
+      {
+        "path": "artifacts/prospective_v1/shift_summary.json",
+        "sha256": "caee9a9a333d2db355502e7934e429d0d2fe580a8ce9b8a7d29de0561f3a49bd",
+        "bytes": 368170
+      },
+      {
+        "path": "artifacts/prospective_v1/paired_generation.json",
+        "sha256": "6aee964293c483e7450f16b95f576131146faa3c85b61a2d303f0128d1865d3b",
+        "bytes": 1025
+      }
+    ],
+    "analysis_script_sha256": "3f1bf0f00a2a50a946d8294321a8a8381f24f5f5bbfd54a10e68e7af6364cd24"
+  }
+}

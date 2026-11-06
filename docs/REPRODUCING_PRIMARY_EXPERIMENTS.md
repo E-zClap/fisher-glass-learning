@@ -110,6 +110,6 @@ python experiments/waterbirds_hidden_slice/make_report.py --out-dir build/result
 - All 39 hidden-slice unit tests passed, covering blind boundaries, geometry, gate constraints/gradients, repairs, and reporting. Run `python -m unittest discover -s experiments/waterbirds_hidden_slice/tests -v`.
 - The portable downloader's five fixture tests passed, including incomplete data, wrong counts, path escape/symlink rejection, and refusal to overwrite an existing dataset. Run `python -m unittest discover -s scripts/tests -p test_prepare_waterbirds.py -v`.
 - Stanford returned HTTP 206 for a range request, reported the expected 489,698,023-byte archive, and its downloaded prefix was opened as gzip/tar with the expected dataset/species/JPEG paths. Caltech masks and public MobileNet/CLIP endpoints responded successfully. This verifies acquisition access and the extractor on fixtures; a complete new raw-image/GPU run was not performed for this release audit.
-- Table D.6 was fully refit from retained original numeric donor rows; all 15 seed/variant metrics agreed with the archive to maximum absolute difference 2.73e-12.
+- Table D.7 was fully refit from retained original numeric donor rows; all 15 seed/variant metrics agreed with the archive to maximum absolute difference 2.73e-12.
 
 The code needed for a new primary run is included; external dataset/model downloads and GPU computation remain the reader's execution requirements. These checks do not claim a newly completed five-seed training or hidden-discovery run.

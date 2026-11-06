@@ -1,4 +1,4 @@
-"""Regenerate Table D.6 and paired seed changes from retained results (stdlib only)."""
+"""Regenerate Table D.7 and paired seed changes from retained results (stdlib only)."""
 from __future__ import annotations
 
 import argparse
@@ -84,7 +84,7 @@ def main():
         writer.writerows(rows)
     (args.output_dir / "paired_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "table_d9.csv").write_text("\n".join(table) + "\n", encoding="utf-8")
-    print("Verified all archived means and nominal normal intervals; regenerated 15 paired rows and Table D.6.")
+    print("Verified all archived means and nominal normal intervals; regenerated 15 paired rows and Table D.7.")
 
 
 if __name__ == "__main__":

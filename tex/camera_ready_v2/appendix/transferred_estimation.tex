@@ -22,6 +22,12 @@ For a binary scalar logit $\ell_{\theta,\mu}=\ell_w+\theta z+\mu b$, this gives 
 
 Prospective selection uses uncentered feature--Schur fractions; Appendix~\ref{app:prospective-intervention} compares centered and predictive targets. Within-group normalization of $p(1-p)$ weights changes the effective nuisance ridge and differs from the predictive moment. Hidden discovery leaves this factor unnormalized and shrinks toward the same-class pooled matrix, with $\eta=0.10$. Removing ridge leaves the declared matrix, including shrinkage, unchanged. Normalization conventions and nuisance-specification checks appear in Appendices~\ref{app:experimental-details} and~\ref{app:predefined-diagnostics}.
 
+\paragraph{Operational subspaces and cost.}
+A task coordinate specifies the predictive contrast to be audited; nuisance coordinates specify variations expected to preserve it. Candidate constructions include an answer-logit contrast with controlled prompt-template variation for a transformer, a region-level class contrast with validated appearance changes for segmentation, and a conditional denoising-score contrast for a diffusion model. Logits, probes, intermediate representations, and low-rank parameter perturbations provide finite-dimensional coordinates. For total operational dimension $d=d_T+d_N$, dense moment storage costs $O(d^2)$, and direct factorization or eigendecomposition costs $O(d^3)$ per slice. Minibatch accumulation and iterative eigensolvers support larger operational subspaces; feature or score extraction remains dependent on the backbone and input size. These examples are candidate extensions for future evaluation.
+
+\paragraph{Admission of new nuisance specifications.}
+A proposed admission protocol prespecifies independent checks of nuisance relevance, task preservation, split stability, and nuisance-block conditioning. An identifiability conclusion requires all four checks to pass; a failed prerequisite is recorded as an unvalidated specification. For a finite admitted family, report the minimum certificate with uncertainty accounting for the family. The present experiments evaluate prespecified nuisance hypotheses, with implemented checks and sensitivity analyses in Appendices~\ref{app:implemented-audit}, \ref{app:hidden-slice-discovery}, and~\ref{app:predefined-diagnostics}. The general admission procedure remains to be evaluated.
+
 \subsection{Ridge Regularization and the Unregularized Target}
 \label{app:ridge-unregularized}
 For $J=\begin{psmallmatrix}A&B\\B^\top&C\end{psmallmatrix}\succeq0$, with $A=J_{TT}$, $B=J_{TN}$, $C=J_{NN}\succ0$, and $\lambda_{\rid}>0$, define
@@ -113,7 +119,7 @@ Let $J^*$ have blocks $(A^*,B^*,C^*)$, and write $\widehat F_g^0=S_0(\widehat J_
 \end{equation}
 A denominator $C^*$ or $C^*+\lambda_{\rid}$ at or below $10^{-12}$ gives zero for its corresponding Schur value and an infinite gap; otherwise~\eqref{eq:ridge-exact-gap} is used even for non-PSD draws. An infinite upper gap or $C_g^L\le10^{-12}$ forces zero and an uncertifiable status; support, empirical-PSD, and identity checks can also prevent certification. With $\lambda_{\rid}=10^{-3}$, certificates with superscripts $0$, $\rid$, and $\mathrm W$ aggregate $\widehat F_g^0$, $\widehat F_g^{\rid}$, and $\underline\lambda_g^{\mathrm W}$, respectively, using uniform environment weights, $\alpha=0.95$, $\varepsilon=10^{-8}$, and fractional CVaR threshold-atom mass.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering\small
 \caption{Same-cohort summaries of 75 default-ridge held-out audits. Conditioning/gap parentheses are within-run nominal Wald lower/upper values; entries are extrema across runs, not joint confidence statements across seeds or methods. Inflation is ridge minus exact plug-in certificate.}
 \label{tab:appB-conditioning}
@@ -134,7 +140,7 @@ All audits & 75 & \shortstack{0.211\\(0.178)} & \shortstack{0.00252\\(0.00300)} 
 \end{tabular}
 \end{table}
 
-Every run passed conditioning and satisfied $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid}$; Waterbirds diagnostic values are $0.1504$, $0.1639$, and $0.1646$. The first ordering is enforced by the caps and does not establish confidence coverage. Training audits use fresh models: original training runs lacked the retained environment blocks needed for checkpoint-specific auditing.
+Every run passed conditioning and satisfied $\underline I_{0.95}^{\mathrm W}\le\widehat I_{0.95}^{0}\le\widehat I_{0.95}^{\rid}$; Waterbirds diagnostic values are $0.1504$, $0.1639$, and $0.1646$. Across the five CivilComments diagnostic seeds, the mean ridge and unregularized certificates are $0.4993$ and $0.4991$, respectively. The first ordering is enforced by the caps and does not establish confidence coverage. Training audits use fresh models: original training runs lacked the retained environment blocks needed for checkpoint-specific auditing.
 
 For the separate audits in Table~\ref{tab:appB-training}, frozen Group DRO + FG maximizes validation certificate within two percentage points of the best validation worst-group accuracy among $\{0.1,0.3\}$; seeds 17--21 select $(0.3,0.1,0.3,0.3,0.3)$. Repeated frozen-feature training/audit runs at ridges $10^{-4},10^{-3},10^{-2}$ give maximum group gaps $0.0001443$, $0.0014374$, $0.0138286$ and Wald upper values $0.0001996$, $0.0019880$, $0.0191165$.
 

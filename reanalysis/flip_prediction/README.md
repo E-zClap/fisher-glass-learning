@@ -1,4 +1,4 @@
-# Table D.6: individual flip prediction
+# Table D.7: individual flip prediction
 
 These artifacts recover and reproduce the auxiliary flip-prediction analysis of the prospective **v2 rerun, ERM training seeds 22–26**. All three variants are retained. The analysis uses already-scored donor rows; refitting its logistic predictors does not train a neural network or generate/score images.
 
@@ -62,4 +62,4 @@ The original uncertainty convention is preserved: nominal normal-approximation 9
 - `paired_per_seed.csv`, `paired_summary.json`, `table_d9.csv`: deterministic exports of those outputs.
 - `provenance.json`: checksums, recorded software versions, source relationships, and limits. The historical invocation did not record source SHA256 values; the present source hashes identify inspected snapshots, and numerical refitting checks their agreement with the archived results.
 
-This comparison tests the incremental prediction supplied by the added nuisance-related coordinates. It does not isolate a unique contribution of the scalar information statistic. The archived likelihood-ratio statistics are in-sample calculations from regularized fits; Table D.6 uses the held-out gains, and neither the manuscript protocol nor this export treats those statistics as an additional held-out test.
+This comparison tests the incremental prediction supplied by the added nuisance-related coordinates. It does not isolate a unique contribution of the scalar information statistic. The archived likelihood-ratio statistics are in-sample calculations from regularized fits; Table D.7 uses the held-out gains, and neither the manuscript protocol nor this export treats those statistics as an additional held-out test.
