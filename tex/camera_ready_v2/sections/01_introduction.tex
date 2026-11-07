@@ -1,9 +1,9 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Reliable prediction under distribution shift requires understanding a model's evidence. A classifier can perform well using a nuisance cue correlated with its label, then fail when that correlation changes. Group-robust learning and error-based reweighting emphasize subpopulation performance \citep{sagawa2019distributionally,liu2021just}. We ask a complementary question: \emph{how much task information remains after nuisance variation is accounted for?}
+High source accuracy does not establish that a classifier will remain accurate when nuisance cues change while labels stay fixed. This matters when assessing a model for use and when judging a proposed repair: predictive success and dependence on nuisance cues are different properties. Group-robust learning and error-based reweighting emphasize subpopulation performance \citep{sagawa2019distributionally,liu2021just}. We ask a complementary question: how much information distinguishes the task after declared nuisance variation is accounted for (Figure~\ref{fig:concept})? We connect this question to classification difficulty and statistical audits of trained predictors.
 
-We investigate this question on Waterbirds, a bird-classification benchmark with correlated backgrounds. Among groups meeting validation-performance criteria, we select the smallest fraction of task-logit second moment remaining after ridge adjustment for a background-prediction score. We call this the \emph{uncentered feature--Schur fraction}; the background probe is a classifier trained to predict land/water background type. Models and the selected group are frozen before held-out evaluation. Across five seeds, the group achieves $92.0\%$ accuracy on untouched images. Background replacements preserving the extracted bird foreground and labels yield $93.2\%$ accuracy when background type is preserved and $40.6\%$ when it is changed: a controlled difference of $52.6$ percentage points within an accurately classified population.
+Our Waterbirds experiment makes the stakes concrete. A feature-based diagnostic of task--background alignment selects a group with 92.0\% held-out accuracy, with models and selection frozen before intervention evaluation. Background replacement preserving the extracted bird foreground and labels yields 93.2\% accuracy when background type is preserved and 40.6\% when it changes---a controlled difference of 52.6 percentage points across five seeds. Accurate source predictions therefore coexist with substantial sensitivity to a task-preserving change.
 
 \begin{figure}[t]
 \centering
@@ -12,13 +12,13 @@ We investigate this question on Waterbirds, a bird-classification benchmark with
 \label{fig:concept}
 \end{figure}
 
-Efficient-score theory describes task information after nuisance adjustment through an orthogonal projection \citep{bickel1993efficient,tsiatis2006semiparametric}. The Fisher-glass framework of \mbox{\citet{mansouri_arai_2026_fisher_glasses}} connects this geometry to inverse-information tails and a population tail certificate, describing how frequently nuisance-adjusted information becomes very small across environments. We study its implications for classification difficulty and trained-predictor evaluation. Figure~\ref{fig:concept} introduces the geometry; Section~\ref{sec:geometry} specifies task and nuisance coordinates.
-
-Our classification result combines local indistinguishability with quantitative Bayes-decision separation. The bound retains environment-dependent information, separation constants, and local radius. Audits use regularization-aware bounds, subpopulation selection rules with minimum-support constraints, and independent evaluation. Given task labels and a fixed nuisance direction, search identifies a held-out Waterbirds population with $98.8\%$ membership-weighted accuracy and low estimated projected predictive Fisher information.
+\begin{samepage}
+Efficient-score theory defines nuisance-adjusted task information through projection \citep{bickel1993efficient,tsiatis2006semiparametric}. The Fisher-glass framework of \mbox{\citet{mansouri_arai_2026_fisher_glasses}} connects this geometry to inverse-information tails and a population certificate. Using this geometry to assess classifiers requires a link to classification risk, statistical control of estimated information, and evidence about its behavioral relevance. We develop and evaluate these steps here.\par
+\end{samepage}
 
 Our contributions are:
 \begin{itemize}
-\item \textbf{Local classification theory.} We derive an excess-classification-risk lower bound under explicit distinguishability and decision-separation conditions, connecting efficient task information to local learning difficulty.
-\item \textbf{Statistical audit methodology.} We derive bounds for regularized Schur estimates and independently evaluated population gates, accounting for membership normalization and support correction.
-\item \textbf{Machine-learning evaluation.} We study controlled background sensitivity, held-out discovery of accurate low-information populations, and the joint information--performance outcomes of targeted training and acquisition.
+\item \textbf{When weak information limits classification.} We derive local excess-classification-risk lower bounds under explicit distinguishability and Bayes-decision-separation conditions. These identify when small efficient information constrains learning, with separation strength and local radius retained.
+\item \textbf{Statistical audits of predefined and learned populations.} We derive bounds accounting for estimation error, ridge regularization, membership normalization, and support correction. With task labels and a fixed nuisance direction, search identifies an independently evaluated population with 98.8\% membership-weighted accuracy and low estimated projected predictive Fisher information.
+\item \textbf{Evaluating information as an improvement target.} Controlled background interventions, training, and acquisition examine how nuisance-adjusted information relates to sensitivity and performance. Information gains and predictive gains can diverge, so information objectives require behavioral validation.
 \end{itemize}
