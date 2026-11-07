@@ -1,6 +1,6 @@
 # Rebuttal experiments and retained follow-up analyses
 
-This map documents the evidence included in the final camera-ready-v20 release and standalone supplement. It is an experiment inventory, not a transcript of the submitted response. Paths below are relative to the package root. Section/table labels follow the current manuscript; the earlier expanded appendix sources retain historical numbering.
+This map documents the evidence included in the final camera-ready-v21 release and standalone supplement. It is an experiment inventory, not a transcript of the submitted response. Paths below are relative to the package root. Section/table labels follow the current manuscript; the earlier expanded appendix sources retain historical numbering.
 
 ## Completed rebuttal experiments
 
