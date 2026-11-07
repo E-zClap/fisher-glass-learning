@@ -1,0 +1,54 @@
+The accompanying ZIP is the \texttt{camera-ready-v15} reproducibility artifact
+for the final manuscript. It includes the experiment implementations, retained
+numerical inputs and outputs, final manuscript sources and PDF, and this
+standalone supplementary document. The versioned release is available at
+\begin{center}
+\url{https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v15}.
+\end{center}
+Use the files and checksums in this release when reproducing the reported
+results. The final manuscript clarifies the matched eligible-selector comparison
+and ridge-bias limitation, places the funding and competing-interest statement
+before the bibliography, and retains the official checklist guidance. Scientific
+Appendices A--E and the retained experimental results are unchanged. This
+supplement adds a reader guide, an evidence/replay map, and the retained paired
+failure-prediction intervals; it introduces no new empirical experiment.
+
+\paragraph{Two reproduction routes.}
+\emph{Numerical replay} recomputes tables and comparisons from retained outputs, without retraining image models or obtaining benchmark datasets. \emph{Independent replication} reruns the documented experiments from their original data sources. The latter requires the relevant data, dependencies, and compute resources and need not reproduce historical file bytes. These routes are documented separately in \path{START_HERE.md}, \path{docs/REPRODUCING_PRIMARY_EXPERIMENTS.md}, and \path{docs/REPRODUCING_EXPERIMENTS.md}.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Entry points for the retained evidence. Paths are relative to the ZIP's top-level folder; the experiment map gives exact commands and cohort details.}
+\label{tab:supplement-replay-map}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.35\linewidth}>{\raggedright\arraybackslash}p{.61\linewidth}@{}}
+\toprule
+Evidence & Included location \\
+\midrule
+Prospective intervention and development cohort & \path{artifacts/prospective_v2/};\newline \path{artifacts/prospective_v1/} \\
+Matched selectors and matrix constructions & \path{reanalysis/matched_selectors/};\newline \path{reanalysis/matrix_constructions/} \\
+Four validation summaries & \path{reanalysis/four_way_swap/} \\
+Within-group failure prediction & \path{reanalysis/flip_prediction/} \\
+Ridge-to-exact audit & \path{artifacts/w2_audit/};\newline \path{scripts/reproduce_w2_audit.py} \\
+Corrected hidden-slice discovery and repair & \path{artifacts/hidden_slice_corrected_v2/} \\
+Group-free coefficient selection & \path{artifacts/group_free_v2/};\newline \path{experiments/waterbirds_group_free_lambda/} \\
+Worked classification derivation & \path{reanalysis/classification_mechanism/} \\
+Historical training and acquisition summaries & \path{reports/};\newline \path{docs/REPRODUCING_EXPERIMENTS.md} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Integrity and cohort identity.}
+\path{ARTIFACT_MANIFEST.json} records the distributed files and their SHA-256 hashes, along with original archive identifiers and transformations. The corrected hidden-slice v2 cohort supplies the discovery and repair tables; it must not be replaced by the older uncorrected archive. The prospective development cohort and primary five-seed cohort remain separate. The four-way and matrix comparisons are reanalyses of retained records, not additional independently trained objective arms.
+
+\paragraph{Historical limits and extended records.}
+Some original synthetic, frozen-training, and acquisition per-seed outputs were not retained. Their aggregate reports and executable replication workflows are included, but missing historical observations and uncertainty intervals are not reconstructed. Expanded execution details are preserved in \path{docs/extended_appendix_details/}; those records retain historical numbering, while \path{docs/MANUSCRIPT_MAP.md} gives the current crosswalk. \path{docs/REBUTTAL_EXPERIMENT_MAP.md} maps the completed rebuttal additions to their sources and replay routes.
+
+\Needspace{6\baselineskip}
+\paragraph{External assets.}
+The package includes the two retained composite illustrations used in main-paper Figure~\ref{fig:concept}, with image identifiers, donor metadata, and hashes. Full benchmark datasets, other intervention images, feature caches, and pretrained or fitted model weights are obtained or regenerated through the documented workflows. \path{DATA_LICENSES.md} records upstream access and rights information; inclusion of the figure illustrations does not assign them a new license.
+
+\FloatBarrier
+\subsection{Retained Paired Failure-Prediction Uncertainty}
+\label{app:supplement-flip-uncertainty}
+\input{supplement_flip_intervals.tex}

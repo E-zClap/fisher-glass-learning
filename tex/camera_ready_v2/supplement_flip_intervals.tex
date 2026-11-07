@@ -1,0 +1,40 @@
+% Rendered from package/reanalysis/flip_prediction/paired_summary.json.
+% No predictor refitting, image inference, or new empirical analysis.
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\caption{Retained paired uncertainty for auxiliary flip prediction.
+Changes are augmented minus baseline, paired within each of the five training
+seeds 22--26 and averaged equally across seeds. Nominal 95\% normal-approximation
+intervals are $\bar d\pm1.96s_d/\sqrt5$, where $s_d$ is the sample standard
+deviation of the five paired changes. Log-likelihood gains are nats per donor
+row; AUPRC denotes average precision, and AUROC is the area under the receiver operating characteristic curve. The original species-held-out folds and
+fitting protocol in Table~\ref{tab:d-flip-prediction} are preserved. This table
+formats the retained summary values; it introduces no new analysis.}
+\label{tab:supplement-flip-intervals}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.32\linewidth}lrr@{}}
+\toprule
+Variant & Metric & Paired mean & Nominal 95\% interval \\
+\midrule
+All groups, no indicators & Log likelihood & $+0.0164$ & $[+0.0132,+0.0197]$ \\
+ & AUPRC & $+0.0354$ & $[+0.0282,+0.0426]$ \\
+ & AUROC & $+0.0964$ & $[+0.0896,+0.1033]$ \\
+\addlinespace
+All groups, with indicators & Log likelihood & $+0.0009$ & $[+0.0002,+0.0017]$ \\
+ & AUPRC & $-0.0067$ & $[-0.0085,-0.0048]$ \\
+ & AUROC & $+0.0027$ & $[+0.0012,+0.0042]$ \\
+\addlinespace
+Selected waterbird/water group & Log likelihood & $+0.0128$ & $[+0.0110,+0.0147]$ \\
+ & AUPRC & $+0.0257$ & $[+0.0211,+0.0302]$ \\
+ & AUROC & $+0.0150$ & $[+0.0120,+0.0179]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The augmented predictor adds $\beta_gb$ and $|z-\beta_gb|$ jointly to the same
+source-image loss, calibrated confidence, and logit predictors. These comparisons
+therefore assess the two added coordinates together. There is no background-only
+ablation, and the results do not isolate a residual-only or scalar-information
+contribution. In the pooled variant with group indicators, the AUPRC change is
+negative. The intervals summarize training-seed variation on a shared benchmark,
+not uncertainty across independent datasets.

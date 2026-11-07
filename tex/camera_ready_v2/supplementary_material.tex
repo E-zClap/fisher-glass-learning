@@ -1,0 +1,138 @@
+\documentclass{article}
+
+% Compile from this directory; the NeurIPS style is copied here unchanged.
+\usepackage[main, final]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{needspace}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\providecommand*{\theHalgorithm}{\arabic{algorithm}}
+
+\hypersetup{
+  colorlinks=true,
+  citecolor=blue,
+  linkcolor=blue,
+  filecolor=blue,
+  urlcolor=blue
+}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\CVaR}{\operatorname{CVaR}}
+\newcommand{\VaR}{\operatorname{VaR}}
+\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\FG}{\mathrm{FG}}
+\newcommand{\res}{\mathrm{res}}
+\newcommand{\port}{\mathrm{port}}
+\newcommand{\rid}{\mathrm{rid}}
+\newcommand{\eff}{\mathrm{eff}}
+\newcommand{\TTI}{\mathrm{TTI}}
+\newcommand{\loss}{\ell}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\simiid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\newcommand{\pospart}[1]{\left(#1\right)_{+}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{appendixproposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem*{assumption}{Assumption}
+
+\title{Supplementary Material\\[0.25em]\large Fisher-Glass Learning: Classification Bounds and Subpopulation Audits}
+
+\author{%
+  El Mustapha Mansouri \\
+  School of Engineering, Institute of Science Tokyo \\
+  Yokohama, Kanagawa 226-8501, Japan \\
+  \texttt{mansouri.e.2224@m.isct.ac.jp}
+}
+
+\externaldocument[][nocite]{main_reference_labels}[main.pdf]
+\renewcommand{\thepage}{S\arabic{page}}
+\begin{document}
+\maketitle
+\input{supplement_overview.tex}
+\clearpage
+\appendix
+% Let short appendix pages end naturally instead of stretching float/text gaps.
+\raggedbottom
+% Keep appendix float pages aligned to the text area's upper edge.
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\renewcommand{\theHfigure}{supp.\thesection.\arabic{figure}}
+\renewcommand{\theHtable}{supp.\thesection.\arabic{table}}
+
+\section{Proofs of the Core Results}
+\label{app:core-proofs}
+\input{appendix/transferred_theory.tex}
+
+\section{Estimation and Certification}
+\label{app:estimation-certification}
+\input{appendix/transferred_estimation.tex}
+\FloatBarrier
+
+\section{Hidden-Slice Discovery}
+\label{app:hidden-slice-discovery}
+\input{appendix/transferred_discovery.tex}
+\FloatBarrier
+
+\clearpage
+\section{Experimental Protocols and Additional Results}
+\label{app:experimental-details}
+\input{appendix/transferred_experiments.tex}
+
+\FloatBarrier
+
+\clearpage
+\section{Information-Changing Interventions}
+\label{app:information-interventions}
+\input{appendix/transferred_interventions.tex}
+
+\FloatBarrier
+
+\clearpage
+
+\section{Reproducibility and Evidence Provenance}
+\label{sec:artifact-availability}
+\label{app:supplement-reproducibility}
+\input{supplement_reproducibility.tex}
+\FloatBarrier
+\clearpage
+\bibliographystyle{plainnat}
+\begingroup
+\raggedright
+\microtypesetup{protrusion=false}
+\setlength{\bibsep}{2pt plus 0.3pt}
+\nocite{arjovsky2019invariant,ash2021gone,audibert2007fast,bickel1993efficient,borkan2019nuanced,cox1987parameter,guo2017calibration,howard2019searching,koh2021wilds,lecam1986asymptotic,liu2021just,mansouri_arai_2026_fisher_glasses,newey1990semiparametric,oakdenrayner2020hidden,paranjape2022agro,pukelsheim2006optimal,radford2021learning,rame2022fishr,rockafellar2000optimization,rockafellar2002conditional,russakovsky2015imagenet,sagawa2019distributionally,sohoni2020no,telea2004image,tropp2012user,tsiatis2006semiparametric,tsybakov2009introduction,wah2011cub,zhou2018places}
+\bibliography{references_core,references_camera_ready}
+\endgroup
+\end{document}

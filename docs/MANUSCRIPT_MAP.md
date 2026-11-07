@@ -1,6 +1,6 @@
-# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10/v11/v12/v13/v14
+# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10/v11/v12/v13/v14/v15
 
-The current v14 PDF has 43 pages: main text 1–10, references 11–12, scientific appendices 13–39, and declarations/checklist 40–43. This map follows stable manuscript labels across releases. The v3 compression reduced the scientific appendices from 41 to 23 pages; v8 added two pages for verified post hoc comparisons and operational guidance, preserving proofs, controls and uncertainty. Historical page ranges should not be used to locate current content.
+The current v15 PDF has 47 pages: main text and the funding/competing-interest statement 1–10, references 11–12, scientific appendices 13–39, and artifact availability/checklist 40–47. This map follows stable manuscript labels across releases. The v3 compression reduced the scientific appendices from 41 to 23 pages; v8 added two pages for verified post hoc comparisons and operational guidance, preserving proofs, controls and uncertainty. Historical page ranges should not be used to locate current content.
 
 Camera-ready-v4 applies seven wording clarifications to v3. Table and equation numbering, numerical values, the page budget, and the crosswalk below are unchanged. In v4, the revised caption of Table E.2 appears on page 31.
 
@@ -24,9 +24,11 @@ Camera-ready-v13 replaces the four main figure captions and their short titles w
 
 Camera-ready-v14 adds a boundary-region classification family with matching minimax bounds in Section 3.2 and Appendix A.4 (`app:classification-mechanism`, `prop:boundary-region-minimax`), with deterministic derivation checks under `reanalysis/classification_mechanism/`. It promotes the existing within-group failure-prediction result, retains the matched-selector qualification, and replaces Figure 1's conceptual bird artwork with two retained experimental composites and group accuracy labels. Panel B remains schematic. The completed checklist retains its questions, answers, and justifications while omitting the template Guidelines blocks. No new empirical experiment is introduced.
 
+Camera-ready-v15 synchronizes the final manuscript, restores the official checklist Guidelines blocks, places the funding and competing-interest statement before the references, and clarifies the Section 3 introduction, matched eligible-selector comparison, and ridge-bias limitation. Main text remains ten pages; Appendices A–E remain verbatim and retain all scientific result numbering. The standalone supplement adds a reader guide, an evidence/replay map, and supplementary Table F.2 with all nine retained paired flip-prediction intervals. No new empirical experiment, training, or image inference is introduced.
+
 ## Current figure and theorem numbering
 
-| Stable LaTeX label | v13 | v14 |
+| Stable LaTeX label | v13 | v14–v15 |
 |---|---|---|
 | `fig:concept` | Figure 1 | Figure 1: retained image pair and schematic geometry |
 | `fig:prospective-main` | Figure 3 | Figure 2 |
@@ -39,9 +41,9 @@ The new worked classification proof is Appendix A.4 (`app:classification-mechani
 
 ## Table crosswalk
 
-Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v14 numbers.
+Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v15 numbers.
 
-| Stable LaTeX label | v2 table | v3–v7 table | v8–v14 table |
+| Stable LaTeX label | v2 table | v3–v7 table | v8–v15 table |
 |---|---|---|---|
 | `tab:appB-conditioning` | B.1 | B.1 | B.1 |
 | `tab:appB-certificates` | B.2 | B.1 | B.1 |

@@ -1,0 +1,107 @@
+\section*{Guide to the Supplemental Material}
+
+This supplement collects the proofs, estimation details, experimental protocols,
+and additional results supporting \emph{Fisher-Glass Learning: Classification
+Bounds and Subpopulation Audits}. Appendix~\ref{app:core-proofs} gives the
+theoretical arguments, including the worked classification family.
+Appendices~\ref{app:estimation-certification} and~\ref{app:hidden-slice-discovery}
+define the operational matrices, uncertainty calculations, and frozen-gate
+protocol. Appendices~\ref{app:experimental-details}
+and~\ref{app:information-interventions} report the empirical checks and
+information-changing interventions. The map below locates the completed
+comparisons and their principal interpretation limits. Appendix letters and result numbering A--E match the accompanying paper. References to main-text sections and results link to \path{main.pdf}; appendix references are internal. Appendix~\ref{app:supplement-reproducibility} gives the evidence and replay index.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.20\linewidth}
+                  >{\raggedright\arraybackslash}p{.52\linewidth}
+                  >{\raggedright\arraybackslash}p{.23\linewidth}@{}}
+\toprule
+Comparison & Protocol and result to read together & Location \\
+\midrule
+\endfirsthead
+\toprule
+Comparison & Protocol and result to read together & Location \\
+\midrule
+\endhead
+Frozen background intervention &
+Validation selects the waterbird/water group before held-out scoring. Same-type
+and opposite-type recompositions share bird foregrounds and labels. The
+controlled accuracy difference is 52.6 percentage points across five training
+seeds; confident-flip results are reported separately. &
+Appendix~\ref{app:prospective-intervention};
+Table~\ref{tab:d-intervention-outcomes} \\
+\addlinespace
+Selection and summary controls &
+Accuracy and negative log-likelihood (NLL) selectors agree with the surviving-fraction rule on the same
+eligible set. Centering reverses the selection; the specified predictive-Fisher
+construction preserves it. The four-summary comparison does not establish
+superior swap-damage prediction by inverse-CVaR. &
+Tables~\ref{tab:d-selection-comparison}--\ref{tab:d-matrix-per-seed},
+\ref{tab:four-way-swap} \\
+\addlinespace
+Auxiliary failure prediction &
+Species-held-out prediction adds background and residual coordinates to source
+loss, confidence, and logit predictors. Gains within the selected group are
+positive across seeds; pooled average precision decreases when group indicators are
+included. This does not isolate a scalar-information or residual-only effect. &
+Appendix~\ref{app:prospective-intervention};
+Tables~\ref{tab:d-flip-prediction}, \ref{tab:supplement-flip-intervals} \\
+\addlinespace
+Ridge and exact-information audits &
+The 75 default-ridge audits report nuisance conditioning, ridge inflation, exact
+plug-in values, and nominal conditional Wald lower values. Fresh training
+audits are separate from historical training cohorts; numerical lower/exact
+ordering alone does not establish confidence coverage. &
+Appendix~\ref{app:implemented-audit};
+Tables~\ref{tab:appB-conditioning}, \ref{tab:appB-training} \\
+\addlinespace
+Hidden-slice discovery &
+Task labels and a fixed nuisance direction define the search; group annotations
+remain sealed through evaluation. Matched-mass selectors, random-direction and
+feature-moment controls, support, stability, and post hoc composition are
+reported. CLIP versus random direction remains inconclusive. &
+Appendices~\ref{app:hidden-slice-discovery}, \ref{app:discovery-results};
+Table~\ref{tab:d-hidden-selectors} \\
+\addlinespace
+Constrained slice repair &
+Loss, Fisher, and combined repairs share accuracy constraints and an unchanged
+candidate. Fisher repair selects that unchanged model in all five seeds.
+Group-supervised Group DRO improves worst-group accuracy without raising the
+rediscovered slice's mean information. &
+Appendix~\ref{app:extended-training};
+Table~\ref{tab:e-repair-performance} \\
+\addlinespace
+Group-free coefficient selection &
+This separate post hoc audit selects the same coefficients as validation-NLL
+minimization. Information increases while worst-group accuracy decreases by
+12.6 points on average. The proposed threshold-and-risk-budget policy is
+distinct and has not been prospectively evaluated. &
+Appendix~\ref{app:extended-training};
+Table~\ref{tab:e-groupfree-performance} \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\paragraph{Cohorts and scope.}
+The primary prospective intervention uses seeds 22--26 and the surviving-fraction
+rule. The earlier development cohort uses seeds 17--21 and an absolute-information
+rule; both use the same benchmark. Matched selectors, matrix constructions, and
+the four-summary comparison analyze retained records after the intervention
+outcomes were known. Hidden-slice discovery and its constrained repair use the
+corrected v2 cohort, distinct from the post hoc group-free coefficient cohort.
+No retained experiment tests whether the learned low-information slice is more
+sensitive than a confidence-matched population. Intervals across seeds describe
+fitting or partition variation on fixed data, not independent datasets.
+
+\paragraph{Provenance and replay.}
+The accompanying artifact's \path{START_HERE.md} and
+\path{docs/MANUSCRIPT_MAP.md} map these results to retained inputs, hashes, and
+replay commands. Numerical replay uses saved records and does not retrain the
+image classifiers. Historical synthetic, diagnostic, training, and acquisition
+summaries have explicitly documented gaps in their original per-seed outputs;
+fresh audits and regenerated figures do not replace those missing records.
+Acquisition means therefore carry no reconstructed historical intervals.
+The experiment guides distinguish independent replication from exact replay.
