@@ -1,14 +1,19 @@
 \section{Computing and Auditing Fisher-Glass}
 \label{sec:computing-auditing}
 
-An operational audit fixes the task contrast, nuisance hypothesis, matrix construction, and audit distribution before measuring information on independent data. Information concerns the declared low-dimensional task and nuisance coordinates. Each experiment specifies coordinate normalization; fitted nuisance probes and temperature calibration are frozen before final evaluation.
+The audit establishes which population information statements are supported after accounting for how the matrix and population were constructed. It fixes the task contrast, nuisance hypothesis, matrix, normalization, and audit distribution before independent evaluation. Ridge can raise an information estimate, adaptive selection can exaggerate extremes, and weak support can destabilize weighted populations. The corrections below address these distinct sources of distortion; fitted nuisance probes and temperatures are frozen before final evaluation.
 
 \subsection{Operational Scores and Nuisance Coordinates}
 \label{sec:operational-scores}
 
 For a fitted binary predictive probability $p_w(x)$, including any fixed temperature calibration, introduce task and nuisance directions $z(x)$ and $b(x)$ through $\operatorname{logit}p_{\theta,\mu}(x)=\operatorname{logit}p_w(x)+\theta z(x)+\mu b(x)$. At $\theta=\mu=0$, the score is $(Y_i-p_i)v_i$, with $v_i=(z_i,b_i)^\top$ and $p_i=p_w(x_i)$. Feature moments use $M_i=v_iv_i^\top$; predictive Fisher uses $M_i=p_i(1-p_i)v_iv_i^\top$. The prospective Waterbirds audit uses the uncentered feature--Schur fraction of task-logit and background-probe coordinates. Hidden-slice discovery uses temperature-calibrated predictive Fisher, mixing 90\% of the gated matrix with 10\% of the current split's same-class mean matrix before projection, during both search and held-out evaluation. This corresponds to shrinkage $\eta=0.10$; feature moments supply a comparison. Appendix~\ref{app:operational-matrices} specifies these constructions, the observed-label score alternative, operational subspaces, and computational cost.
 
-The experiments prespecify nuisance coordinates from metadata, fitted annotation probes, or a fixed semantic direction. Without nuisance annotations, that direction is the audited nuisance hypothesis. We report fitting splits, normalization, and nuisance-block conditioning. Appendix~\ref{app:hidden-slice-discovery} describes gate stability; Appendix~\ref{app:predefined-diagnostics} records the predefined-group specification checks.
+For the scalar, unregularized, unshrunk predictive target with positive nuisance information,
+\begin{equation}
+F_{\mathrm{pred}}=\min_a\E[p(X)(1-p(X))\{z(X)-a b(X)\}^2].
+\label{eq:predictive-confidence-decomposition}
+\end{equation}
+Small information can therefore reflect task--nuisance alignment or confident probabilities with small $p(1-p)$. Neither mechanism alone establishes intervention sensitivity. Nuisance coordinates come from metadata, fitted annotation probes, or a fixed semantic direction; without annotations, that direction is the hypothesis being audited. Appendices~\ref{app:hidden-slice-discovery} and~\ref{app:predefined-diagnostics} report stability and specification checks.
 
 \subsection{Ridge Estimation and Lower Information Bounds}
 \label{sec:stable-estimation}
@@ -30,7 +35,7 @@ Real-data computations use $\lambda_{\rid}=10^{-3}$. Ridge stabilizes residualiz
 \end{aligned}
 \label{eq:lower-certificate}
 \end{equation}
-Here $[x]_+=\max\{x,0\}$. On that event, this lower-bounds the unregularized population certificate for the declared matrix and audit distribution. Certification also requires a positive lower confidence bound for $\lambda_{\min}(J_{NN,g})$. The scalar audits use Bonferroni-adjusted Gaussian/Wald moment simulation at nominal 95\% confidence, holding the fitted model, evaluated slices, and coordinate-standardization constants fixed. Appendix~\ref{app:estimation-certification} records the gap identity, error allowances, and numerical comparison.
+Here $[x]_+=\max\{x,0\}$. On that event, this lower-bounds the unregularized population certificate. A large lower bound supports a positive information floor; a small lower bound alone does not establish small true information. Certification also requires a positive lower confidence bound for $\lambda_{\min}(J_{NN,g})$. The real-data audits use Bonferroni-adjusted Gaussian/Wald moment simulation at nominal 95\% confidence, conditional on fitted models, slices, and normalization. These implemented intervals differ from the concentration guarantees under Appendix~\ref{app:estimation-certification}'s assumptions.
 
 \subsection{Hidden-Slice Discovery and Held-Out Certification}
 \label{sec:hidden-slice-method}

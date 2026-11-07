@@ -1,0 +1,80 @@
+{
+  "gallery_id": "W28",
+  "source_row": 4888,
+  "img_id": 4889,
+  "source_filename": "084.Red_legged_Kittiwake/Red_Legged_Kittiwake_0015_73792.jpg",
+  "group": 3,
+  "draw": 0,
+  "retrieval_date": "2026-11-07",
+  "assets": {
+    "same": {
+      "path": "assets/fig01_w28/w28_same.jpg",
+      "sha256": "f0b9ef9ed3e7fd1e183aca2a76dc16525b3514c6c323f0e03bbc09968d13f444",
+      "size_pixels": [
+        500,
+        375
+      ],
+      "remote_sha256": "f0b9ef9ed3e7fd1e183aca2a76dc16525b3514c6c323f0e03bbc09968d13f444"
+    },
+    "opposite": {
+      "path": "assets/fig01_w28/w28_opposite.jpg",
+      "sha256": "dae6e05ac746b4969b9b0725eeebd8e8b45c7ff51d117f5b396c152e31519b90",
+      "size_pixels": [
+        500,
+        375
+      ],
+      "remote_sha256": "dae6e05ac746b4969b9b0725eeebd8e8b45c7ff51d117f5b396c152e31519b90"
+    }
+  },
+  "manifest_archive": "prospective_nuisance_shift_v2_rerun_results.tar.gz",
+  "manifest_archive_sha256": "f6200e749d604cd6fc2db43e2ff47ee34d36c1e8245fbeb55191dc21cf1bec0c",
+  "manifest_records": [
+    {
+      "row": "9512",
+      "source_row": "4888",
+      "img_id": "4889",
+      "img_filename": "084.Red_legged_Kittiwake/Red_Legged_Kittiwake_0015_73792.jpg",
+      "species": "084.Red_legged_Kittiwake",
+      "y": "1",
+      "source_place": "1",
+      "group": "3",
+      "arm": "opposite",
+      "draw": "0",
+      "target_place": "0",
+      "path": "build/prospective_shift_v2_rerun/paired/opposite/draw0/084.Red_legged_Kittiwake/Red_Legged_Kittiwake_0015_73792.jpg",
+      "donor_filename": "098.Scott_Oriole/Scott_Oriole_0005_92362.jpg",
+      "visible_inpaint_fraction": "0.01948782397851401",
+      "foreground_fraction": "0.20683733333333335",
+      "rim_fraction": "0.046010666666666665"
+    },
+    {
+      "row": "9514",
+      "source_row": "4888",
+      "img_id": "4889",
+      "img_filename": "084.Red_legged_Kittiwake/Red_Legged_Kittiwake_0015_73792.jpg",
+      "species": "084.Red_legged_Kittiwake",
+      "y": "1",
+      "source_place": "1",
+      "group": "3",
+      "arm": "same",
+      "draw": "0",
+      "target_place": "1",
+      "path": "build/prospective_shift_v2_rerun/paired/same/draw0/084.Red_legged_Kittiwake/Red_Legged_Kittiwake_0015_73792.jpg",
+      "donor_filename": "100.Brown_Pelican/Brown_Pelican_0056_95229.jpg",
+      "visible_inpaint_fraction": "0.024653449626067372",
+      "foreground_fraction": "0.20683733333333335",
+      "rim_fraction": "0.046010666666666665"
+    }
+  ],
+  "display": "Full uncropped JPEGs at native 4:3 aspect ratio; schematic geometry and labels in TikZ.",
+  "accuracy_scope": "93.2% and 40.6% are group-level five-training-seed mean accuracies; no per-image prediction claim.",
+  "geometry_status": "Schematic.",
+  "original_source_reference": {
+    "sha256": "b77b3c68059d781997f99ba40c05b4b4e46765a808f42f8e3553b90d86ba037b",
+    "size_pixels": [
+      500,
+      375
+    ]
+  },
+  "publication_note": "Private connection details and the unused original-image asset path are omitted; retained experiment identifiers, donor metadata, and image hashes are unchanged."
+}

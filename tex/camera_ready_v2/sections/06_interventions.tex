@@ -1,7 +1,7 @@
 \section{Information-Guided Interventions}
 \label{sec:improving-information}
 
-The audit guides data allocation, training, and acquisition. An \emph{anchor} is an additional observation source with a lower bound on projected task information. When each observation's source is observed, assigning fraction $r$ to an anchor with unregularized information at least $\rho_0 I$ establishes the floor $r\rho_0$, under common coordinates and positive-definite nuisance blocks. This instantiates the Fisher-reserve principle \citep{mansouri_arai_2026_fisher_glasses} (Appendix~\ref{app:information-reserves}). For predictor parameters $w$, empirical task-risk objective $\widehat R_{\mathrm{base}}$ (ERM or group distributionally robust optimization, Group DRO), and penalty coefficient $\lambda_{\FG}$, training uses equally weighted groups in the inverse-information tail:
+We evaluate whether information changes improve the intended predictive outcome. An informative observation source can guarantee an information floor under the Fisher-reserve design \citep{mansouri_arai_2026_fisher_glasses} (Appendix~\ref{app:information-reserves}); training and acquisition require separate behavioral evaluation. For predictor parameters $w$, empirical task-risk objective $\widehat R_{\mathrm{base}}$ (ERM or group distributionally robust optimization, Group DRO), and penalty $\lambda_{\FG}$, training uses equally weighted groups:
 \begin{equation}
 \min_w\;\widehat R_{\mathrm{base}}(w)
 +\lambda_{\FG}\operatorname{CVaR}_{\alpha,g}
@@ -27,11 +27,11 @@ Group DRO + Fisher-Glass & $80.6\pm0.9$ & $69.4\pm1.3$ & $0.614\pm0.059$ \\
 \end{tabular}
 \end{table}
 
-Fisher-Glass approximately doubles ERM's certificate; with Group DRO it raises both the certificate and mean worst-group accuracy (Table~\ref{tab:frozen-training}). Stronger penalties can reduce accuracy (Appendix~\ref{app:extended-training}), requiring task and validation criteria for selection.
+Fisher-Glass approximately doubles ERM's certificate; with Group DRO it raises both the certificate and mean worst-group accuracy (Table~\ref{tab:frozen-training}). Stronger penalties can reduce accuracy (Appendix~\ref{app:extended-training}). These source-performance gains do not establish a repair of background sensitivity.
 
 \FloatBarrier
 
-In prospective fine-tuning, the mean validation certificate increases from $0.289$ to $0.330$; controlled background-swap drops are $52.9$ points for FG and $52.6$ for ERM. A separate frozen-feature experiment continues classifier training with a Fisher penalty on a frozen discovered slice under validation-accuracy constraints; it selects the unchanged model in all five seeds. On a separate cohort, post hoc coefficient selection raises information in slices rediscovered per candidate but reduces worst-group accuracy by $12.6$ percentage points; selected coefficients match validation-NLL minimization in every seed (Appendix~\ref{app:extended-training}).
+In prospective fine-tuning, the validation certificate increases from $0.289$ to $0.330$, while controlled swap drops remain $52.9$ points for FG and $52.6$ for ERM. A separate Fisher-based frozen-slice repair under validation-accuracy constraints selects the unchanged model in all five seeds. On another cohort, post hoc selection raises rediscovered-slice information but reduces worst-group accuracy by $12.6$ points; selected coefficients match validation-NLL minimization in every seed (Appendix~\ref{app:extended-training}). Thus information improvement and the intended behavioral improvement are separate outcomes.
 
 For candidate $a$ with modified feature/input $x_a^{\mathrm{cf}}$ and label $y_a$, \emph{tail-transverse influence} $\TTI(a)=G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$ weights current predictive loss by the first-order inverse-information CVaR decrease $G_\alpha(a)$ along $a$'s allocation path. This differentiates the Schur complement along its weakest task direction with tail-sensitive weights (Appendix~\ref{app:tail-transverse-influence}). Waterbirds ranks candidates by $\widetilde{\TTI}_\alpha(a)=\widetilde G_\alpha(a)\loss_w(x_a^{\mathrm{cf}},y_a)$, using the tail-weighted squared-residual surrogate $\widetilde G_\alpha$ defined in Appendix~\ref{app:feature-acquisition}.
 

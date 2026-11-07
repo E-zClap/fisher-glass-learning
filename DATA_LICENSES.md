@@ -1,6 +1,8 @@
 # Asset provenance and rights status
 
-This release distributes experiment source code, manuscript sources, derived numerical audit inputs and outputs, and retained reports. It does not redistribute benchmark images/text, pretrained model weights, fitted model weights, or feature caches. Compact numeric inputs contain derived coordinates and, where needed, numeric labels and bird-species names.
+This release distributes experiment source code, manuscript sources, derived numerical audit inputs and outputs, retained reports, and the two Waterbirds composite images used as manuscript illustrations in Figure 1. It does not redistribute full benchmark image/text datasets, other generated intervention images, pretrained model weights, fitted model weights, or feature caches. Compact numeric inputs contain derived coordinates and, where needed, numeric labels and bird-species names.
+
+The Figure 1 examples are the retained same-type and opposite-type draw-0 composites for source row 4888, image ID 4889, a red-legged kittiwake. Their source identifiers, donor records, and SHA256 hashes are recorded in `tex/camera_ready_v2/figures/fig01_image_provenance.json`. They retain the applicable upstream image rights and credits; inclusion as illustrations does not assign them a new license. The full benchmark and image-selection galleries are not distributed.
 
 No repository-wide software license has been assigned. The absence of a license should not be interpreted as a grant of reuse rights. Dataset and model links below describe external assets; they do not assign their rights to this repository. The historical runs did not retain a complete software bill of materials or all source-version/license records.
 

@@ -38,11 +38,4 @@ a_e=b_e+\delta_e r_e,
 \quad \frac{F_e}{J_{TT,e}}=\frac{\delta_e^2}{1+\delta_e^2}.
 \label{eq:tangency-identities}
 \end{equation}
-Projection removes $b_e$, leaving $\delta_e r_e$. Raw information stays at least one as efficient information vanishes quadratically; $\delta_e$ measures distance from the nuisance span. When nuisance features support low observed risk, low loss coexists with arbitrarily weak efficient information, even in accurately classified populations. Appendix~\ref{app:theory-projection} gives the construction and proof. Figure~\ref{fig:geometry-tails} illustrates the population consequence: frequent near-alignment of task scores with nuisance spans produces a heavy inverse-information tail.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{figures/fig02_geometry_tails.pdf}
-\caption[Near-alignment produces a heavy inverse-information tail]{\input{figures/caption02_main.tex}}
-\label{fig:geometry-tails}
-\end{figure}
+Projection removes $b_e$, leaving $\delta_e r_e$; raw information stays at least one as efficient information vanishes. Section~\ref{sec:synthetic-validation} illustrates low observed loss alongside the corresponding feature-moment geometry. A classification cost additionally requires different optimal decisions, which the next section makes explicit. The inherited tail mechanism is illustrated in Appendix Figure~\ref{fig:geometry-tails}.

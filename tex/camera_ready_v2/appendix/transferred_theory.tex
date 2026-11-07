@@ -40,7 +40,7 @@ This establishes Equation~\eqref{eq:tangency-identities}; coexistence with low p
 \subsection{Normal Coordinates and the Inverse-Information Tail}
 \label{app:theory-tails}
 
-Under Theorem~\ref{thm:inverse-information-geometry}, the zero set $\mathcal Z=\{\lambda=0\}$ is a nonempty compact $C^2$ embedded manifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Write $U_r(\mathcal Z)=\{z:\operatorname{dist}(z,\mathcal Z)<r\}$ for its tube, $N_s\mathcal Z$ for the normal space at $s$, $S(N_s\mathcal Z)$ for its unit sphere, and $\operatorname{vol}_{\mathcal Z}$ for induced volume. The nonnegative $\lambda$ is continuous on $\overline U_{r_\star}(\mathcal Z)$ and bounded away from zero outside it. In coordinates $z=s+r\omega$, assume uniformly over $\omega\in S(N_s\mathcal Z)$ and $s\in\mathcal Z$
+The full assumptions of Theorem~\ref{thm:inverse-information-geometry} are as follows. The zero set $\mathcal Z=\{\lambda=0\}$ is a nonempty compact $C^2$ embedded manifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Write $U_r(\mathcal Z)=\{z:\operatorname{dist}(z,\mathcal Z)<r\}$ for its tube, $N_s\mathcal Z$ for the normal space at $s$, $S(N_s\mathcal Z)$ for its unit sphere, and $\operatorname{vol}_{\mathcal Z}$ for induced volume. The nonnegative $\lambda$ is continuous on $\overline U_{r_\star}(\mathcal Z)$ and bounded away from zero outside it. In coordinates $z=s+r\omega$, assume uniformly over $\omega\in S(N_s\mathcal Z)$ and $s\in\mathcal Z$
 \begin{equation}
 \lambda(s+r\omega)=a(s,\omega)r^{2m}(1+o(1)),\qquad
 p(s+r\omega)=b(s,\omega)r^\nu(1+o(1)),
@@ -99,6 +99,13 @@ For $\lambda=\delta^2$, $\Pr(\delta<t)\sim C_\delta t^\gamma$ gives exponent $\g
 \label{eq:app-independent-branches}
 \end{equation}
 Here $B_K^+$ is the positive-orthant unit ball and $v_K$ the full ball's volume. Independence gives $f(0)=\prod_k f_k(0+)$ for branch marginal densities $f_k$; the inverse mean is finite for $K\ge3$. This calculation concerns additive scalar information or a fixed task direction. A minimum-eigenvalue conclusion instead requires applying Theorem~\ref{thm:inverse-information-geometry} to that eigenvalue.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig02_geometry_tails.pdf}
+\caption[Near-alignment produces a heavy inverse-information tail]{\input{figures/caption02_main.tex}}
+\label{fig:geometry-tails}
+\end{figure}
 
 \subsection{Local Classification: Testing Reduction and Tail Aggregation}
 \label{app:theory-classification}
@@ -166,6 +173,102 @@ If these assumptions hold for $\Pi$-almost every environment and all quantities 
 \label{eq:app-tail-risk-aggregation}
 \end{equation}
 Separation $c_e$, distinguishability $K_e$, and radius $t_{0,e}$ remain inside the aggregation. For $q=2$ and $nK_e\lambda_e\ge t_{0,e}^{-2}$, $\mathcal B_e(n)=c_e/(nK_e\lambda_e)$; outside that interior regime the radius truncates the bound.
+
+\subsection{A Boundary-Region Classification Family}
+\label{app:classification-mechanism}
+
+Fix a known $0<\delta\le1/2$ and let $\mathcal P_\delta$ be the family in Equation~\eqref{eq:boundary-region-family}, with $X\sim\operatorname{Unif}[-1,1]$ and parameter rectangle $|\theta|,|\mu|\le\delta/8$. Define
+\[
+\mathfrak R_\delta(n)=\inf_{\widehat g_n}\sup_{|\theta|,|\mu|\le\delta/8}
+\mathbb E_{\theta,\mu}[R_{\theta,\mu}(\widehat g_n)-R_{\theta,\mu}^\star],
+\]
+where the infimum ranges over measurable, possibly randomized learning rules based on $n$ independent observations.
+
+\begin{appendixproposition}[Nuisance confounding near a classification boundary]
+\label{prop:boundary-region-minimax}
+At the reference parameter $(0,0)$, the raw and efficient task information satisfy
+\[
+J_{TT}=4\log3,
+\qquad F_\delta=4\log\frac{2+\delta}{2-\delta},
+\qquad 4\delta\le F_\delta\le\frac{64}{15}\delta.
+\]
+For every $n\ge1$,
+\begin{equation}
+\frac1{128e}\min\{\delta^2,(n\delta)^{-1}\}
+\le\mathfrak R_\delta(n)
+\le\min\left\{\frac{\delta^2}{32},
+\frac{1-(1-\delta)^{n+1}}{2(n+1)\delta}\right\}.
+\label{eq:boundary-region-finite-bounds}
+\end{equation}
+Consequently, the rate in Equation~\eqref{eq:boundary-region-minimax-rate} holds with constants independent of $n$ and $\delta$.
+\end{appendixproposition}
+
+\begin{proof}
+Write $b_\delta(x)=\mathbf1\{|x|>\delta\}$ and $\eta_0(x)=1/2+x/4$. Throughout the rectangle, $1/8\le\eta_{\theta,\mu}\le7/8$, so the binary likelihood is regular in $(\theta,\mu)$ for each fixed $\delta>0$. Inside $|x|\le\delta$, the regression crosses $1/2$ at $-4\theta\in[-\delta/2,\delta/2]$. Outside, $|\theta+\mu|\le\delta/4<|x|/4$, so its sign relative to $1/2$ is the sign of $x$. Thus
+\begin{equation}
+g_{\theta,\mu}^\star(x)=\mathbf1\{x\ge-4\theta\},
+\qquad
+\mathcal E_{\theta,\mu}(g_a)=2(a-\theta)^2
+\quad\text{for }g_a(x)=\mathbf1\{x\ge-4a\},\ |a|\le\delta/8.
+\label{eq:boundary-region-risk-identity}
+\end{equation}
+The second identity integrates the margin over the interval between the two thresholds, which lies entirely inside $[-\delta,\delta]$.
+
+\paragraph{Information.}
+Let $v_0(x)=\eta_0(x)(1-\eta_0(x))=(4-x^2)/16$. The reference scores are
+\[
+s_T=\frac{Y-\eta_0(X)}{v_0(X)},\qquad s_N=b_\delta(X)s_T.
+\]
+Since $b_\delta^2=b_\delta$, $J_{TN}=J_{NN}>0$, so the nuisance-projection coefficient is one and $s_T^{\mathrm{eff}}=\mathbf1\{|X|\le\delta\}s_T$. Hence
+\begin{equation}
+J_{TT}=\int_{-1}^{1}\frac8{4-x^2}\,dx=4\log3,
+\qquad
+F_\delta=\int_{-\delta}^{\delta}\frac8{4-x^2}\,dx
+=4\log\frac{2+\delta}{2-\delta}.
+\label{eq:boundary-region-information-integrals}
+\end{equation}
+On $[-\delta,\delta]$, $2\le8/(4-x^2)\le32/15$, giving the asserted bounds on $F_\delta$.
+
+\paragraph{Decision separation and distinguishability.}
+For $0<t\le\delta/8$, take $P_{+t}=P_{t,-t}$ and $P_{-t}=P_{-t,t}$. Their regression functions are $\eta_0\pm t\mathbf1\{|x|\le\delta\}$ and their Bayes rules disagree on $(-4t,4t)$. The binary excess-risk identity therefore gives the exact separation
+\begin{equation}
+\inf_g\{\mathcal E_{+t}(g)+\mathcal E_{-t}(g)\}
+=\frac12\int_{-4t}^{4t}\left(2t-\frac{|x|}{2}\right)dx
+=4t^2.
+\label{eq:boundary-region-separation}
+\end{equation}
+For Bernoulli parameters $p,q$, $\KL(\operatorname{Ber}(p)\Vert\operatorname{Ber}(q))\le(p-q)^2/[q(1-q)]$. Here the alternatives agree outside the central region; inside, $p-q=2t$ and $q\in[5/16,11/16]$. Since $P(|X|\le\delta)=\delta$ and $F_\delta\ge4\delta$,
+\begin{equation}
+\KL(P_{+t}\Vert P_{-t})
+\le\frac{1024}{55}\delta t^2
+\le\frac{256}{55}F_\delta t^2
+<5F_\delta t^2.
+\label{eq:boundary-region-kl}
+\end{equation}
+Theorem~\ref{thm:local-classification-difficulty} thus applies with $q=2$, $c_e=4$, $K_e=5$, $t_{0,e}=\delta/8$, and $\lambda_e=F_\delta$. Its proof gives
+\[
+\mathfrak R_\delta(n)\ge\frac1{2e}
+\min\left\{\frac{\delta^2}{64},\frac1{5nF_\delta}\right\}
+\ge\frac1{128e}\min\{\delta^2,(n\delta)^{-1}\},
+\]
+using $F_\delta\le64\delta/15$ in the last step.
+
+\paragraph{Matching upper bound, including empty central samples.}
+Let $I_i=\mathbf1\{|X_i|\le\delta\}$, $N=\sum_i I_i\sim\operatorname{Bin}(n,\delta)$, and define
+\begin{equation}
+\widehat\theta=\operatorname{clip}_{[-\delta/8,\delta/8]}
+\left(\frac{\sum_{i=1}^nI_i(Y_i-1/2-X_i/4)}{N+1}\right).
+\label{eq:boundary-region-estimator}
+\end{equation}
+This estimator is zero when $N=0$. Conditional on the feature observations, each selected residual has mean $\theta$, variance at most $1/4$, and independent noise. Before clipping, its mean-squared error is at most $(N/4+\theta^2)/(N+1)^2\le1/[4(N+1)]$; clipping cannot increase squared error because the interval contains $\theta$. The identity
+\[
+\mathbb E\frac1{N+1}
+=\frac{1-(1-\delta)^{n+1}}{(n+1)\delta}
+\]
+and Equation~\eqref{eq:boundary-region-risk-identity} give the second upper bound in Equation~\eqref{eq:boundary-region-finite-bounds}. The fixed rule $g_0$ gives the first, since $2\theta^2\le\delta^2/32$. Taking the better of these two known rules proves the stated upper bound.
+\end{proof}
+
+Only the central observations distinguish the least-favorable task alternatives: their expected number is $n\delta$. The inverse-information rate is active once $n\delta^3$ is sufficiently large; otherwise the local decision scale $\delta^2$ caps the risk. The nuisance parameter here changes conditional probabilities outside the boundary region while preserving the Bayes rule at fixed $\theta$. This is a statistical learning mechanism, not a mathematical model of the image-background intervention.
 
 \subsection{CVaR, Information Coverage, and Stabilization}
 \label{app:theory-certificate}

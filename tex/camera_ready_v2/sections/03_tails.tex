@@ -1,29 +1,10 @@
-\section{Information Tails and Local Classification Difficulty}
+\section{Classification Difficulty and Population Information}
 \label{sec:tail-identifiability}
-
-The frequency of near-null environments determines the inverse-information tail. Its classification consequence additionally depends on how weak task alternatives change the Bayes decision.
-
-\subsection{Collapse Geometry Determines Information Tails}
-\label{sec:collapse-geometry}
-
-In the scalar construction of Section~\ref{sec:tangency-separation}, $\lambda_e=\delta_e^2$: if $\Pr(\delta_e<t)\sim Ct^\gamma$, then $\Pr(\lambda_e^{-1}>x)\sim Cx^{-\gamma/2}$. The geometric tail law in Theorem~\ref{thm:inverse-information-geometry} relates the inverse-information exponent to null-set codimension, information vanishing order, and nearby probability mass.
-
-\begin{theorem}[Geometric tail law {\citep{mansouri_arai_2026_fisher_glasses}}]
-\label{thm:inverse-information-geometry}
-Let $z\in\R^d$ parameterize environments with density $p$, and let the Fisher-null set $\mathcal Z=\{z:\lambda(z)=0\}$ be a nonempty compact $C^2$ embedded submanifold without boundary, of codimension $c\in\{1,\ldots,d\}$. Suppose $\lambda$ is continuous on the closure of a fixed tubular neighborhood of $\mathcal Z$ and bounded away from zero outside it. In normal coordinates $z=s+r\omega$, let $s\in\mathcal Z$, $r$ be normal distance, and $\omega$ a unit normal direction. As $r\downarrow0$, assume uniformly that information and density have the respective asymptotic forms $a(s,\omega)r^{2m}(1+o(1))$ and $b(s,\omega)r^\nu(1+o(1))$, where $m>0$, $\nu>-c$, and the continuous coefficients are uniformly positive and bounded. Then, for some $C>0$,
-\begin{equation}
-\Pr(\lambda(z)^{-1}>x)\sim Cx^{-\beta},
-\qquad \beta=\frac{c+\nu}{2m}.
-\label{eq:inverse-information-tail-exponent}
-\end{equation}
-\end{theorem}
-
-An information threshold defines a narrow tube around $\mathcal Z$; integrating its probability mass determines the exponent. Greater codimension makes simultaneous collapse rarer, whereas higher-order vanishing produces a heavier tail. Quadratic collapse with positive density gives $\beta=c/2$, and $\E[\lambda_e^{-1}]$ is finite precisely when $\beta>1$. Thus substantial information across most environments can coexist with divergent average inverse information. Appendix~\ref{app:theory-tails} gives the proof and asymptotic constant.
 
 \subsection{Efficient Information and Local Classification Difficulty}
 \label{sec:classification-difficulty}
 
-The geometric tail acquires a classification consequence when nearby nuisance-adjusted alternatives induce quantitatively different optimal decisions. Define classification risk $R_P(g)=P\{g(X)\ne Y\}$, Bayes risk $R_P^\star=\inf_g R_P(g)$, and excess risk $\mathcal E_P(g)=R_P(g)-R_P^\star$. For a specified local family, let $\mathfrak R_e(n)$ denote minimax expected excess classification risk based on $n$ independent observations from environment $e$.
+Parameter ambiguity need not imply classification difficulty: probabilities $0.90$ and $0.95$ prescribe the same label. A lower bound requires statistically similar alternatives whose optimal decisions disagree on enough probability mass. Define classification risk $R_P(g)=P\{g(X)\ne Y\}$, Bayes risk $R_P^\star=\inf_g R_P(g)$, and excess risk $\mathcal E_P(g)=R_P(g)-R_P^\star$. For a specified local family, let $\mathfrak R_e(n)$ denote minimax expected excess classification risk based on $n$ independent observations from environment $e$. Write $\KL(P\Vert Q)$ for the Kullback--Leibler divergence.
 
 \begin{theorem}[Local classification difficulty]
 \label{thm:local-classification-difficulty}
@@ -42,7 +23,45 @@ Then, for a universal constant $c_0>0$,
 \end{equation}
 \end{theorem}
 
-The Kullback--Leibler (KL) bound limits distinguishability after nuisance adjustment; decision separation specifies the cost of confusing the alternatives. Both must hold over the environment-specific radius $t_{0,e}$. For quadratic separation, $q=2$, when $nK_e\lambda_e\ge t_{0,e}^{-2}$, the bound scales as $c_e/(nK_e\lambda_e)$. The minimum caps the bound at the scale set by the local neighborhood. This is a conditional local result: efficient information sets the testing scale, while Bayes-decision separation supplies the classification lower bound. The testing proof and tail-aggregation implication are in Appendix~\ref{app:theory-classification}.
+The KL bound limits distinguishability; decision separation supplies the classification cost. Both must hold over radius $t_{0,e}$. With quadratic separation, the interior rate is $c_e/(nK_e\lambda_e)$, capped by the local decision scale. Appendix~\ref{app:theory-classification} proves the testing reduction; the next example calculates both conditions and a matching upper bound.
+
+\begin{samepage}
+\subsection{A Worked Classification Mechanism}
+\label{sec:classification-mechanism}
+Let $X\sim\operatorname{Unif}[-1,1]$, $0<\delta\le1/2$, $|\theta|,|\mu|\le\delta/8$, and
+\begin{equation}
+\eta_{\theta,\mu}(x):=P_{\theta,\mu}(Y=1\mid X=x)
+=\tfrac12+\tfrac{x}{4}+\theta+\mu\mathbf1\{|x|>\delta\}.
+\label{eq:boundary-region-family}
+\end{equation}
+Here $\delta$ is boundary-region half-width and probability mass. The nuisance reproduces a task shift outside that region; the Bayes rule is $g_\theta^\star(x)=\mathbf1\{x\ge-4\theta\}$ throughout the family. At $(\theta,\mu)=(0,0)$,
+\begin{equation}
+J_{TT}=4\log3,
+\qquad F_\delta=4\log\frac{2+\delta}{2-\delta}\asymp\delta.
+\label{eq:boundary-region-information}
+\end{equation}
+The alternatives $(t,-t)$ and $(-t,t)$ agree outside $|X|\le\delta$, have decision separation $4t^2$, and satisfy $\KL(P_{+t}\Vert P_{-t})\le5F_\delta t^2$ for $0<t\le\delta/8$. Theorem~\ref{thm:local-classification-difficulty} and a matching estimator give minimax risk over this parameter rectangle, uniformly in $n\ge1$ and $\delta$,
+\begin{equation}
+\mathfrak R_\delta(n)\asymp\min\{\delta^2,(n\delta)^{-1}\}.
+\label{eq:boundary-region-minimax-rate}
+\end{equation}
+Approximately $n\delta$ observations distinguish the task effect from nuisance variation where the decision boundary can move. The $\delta^2$ cap retains the shrinking local decision scale. This statistical nuisance preserves Bayes labels at fixed $\theta$; it does not model the physical background-swap operation. Appendix~\ref{app:classification-mechanism} gives the calculation and a finite-sample upper bound.\par
+\end{samepage}
+
+\subsection{Information Tails Across Populations}
+\label{sec:collapse-geometry}
+
+Population aggregation describes how often weak task information occurs; classification still retains the radius and separation factors above. The inherited geometric law is:
+\begin{theorem}[Geometric tail law {\citep{mansouri_arai_2026_fisher_glasses}}]
+\label{thm:inverse-information-geometry}
+Under the uniform regularity and localization assumptions in Appendix~\ref{app:theory-tails}, let the Fisher-null set have codimension $c$, information vanish to order $2m$, and nearby density have order $\nu>-c$. Then, for some $C>0$,
+\begin{equation}
+\Pr(\lambda(z)^{-1}>x)\sim Cx^{-\beta},
+\qquad \beta=\frac{c+\nu}{2m}.
+\label{eq:inverse-information-tail-exponent}
+\end{equation}
+\end{theorem}
+Quadratic collapse with positive density gives $\beta=c/2$; the inverse mean is finite exactly when $\beta>1$. Appendix~\ref{app:theory-tails} contains the calculation and Figure~\ref{fig:geometry-tails}.
 
 \begin{samepage}
 \subsection{The Fisher-Glass Certificate}
@@ -70,4 +89,4 @@ I_\alpha^{\FG}\ge\rho
 \end{equation}
 \end{proposition}
 
-The certificate therefore establishes an absolute information floor on at least an $\alpha$-fraction of the specified environment distribution. Its connection to classification retains the local-radius and decision-separation factors in the preceding bound. The CVaR representation, coverage proof, and limiting interpretation appear in Appendix~\ref{app:theory-certificate}. Section~\ref{sec:computing-auditing} constructs operational certificates from declared score or feature matrices; Appendix~\ref{app:operational-matrices} states their statistical interpretations.
+The certificate establishes an absolute information floor on an $\alpha$-fraction of the declared environment distribution; classification consequences retain the local radius and decision separation. Appendix~\ref{app:theory-certificate} gives the proof. With four equally weighted groups and $\alpha=0.95$, it reduces to the minimum stabilized information, so that real-data audit does not isolate a benefit from tail aggregation.
