@@ -1,16 +1,16 @@
 # Fisher-Glass supplemental material
 
-This is the **camera-ready-v15** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v15). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
+This is the **camera-ready-v16** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v16). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
 
 Start with [supplementary_material.pdf](supplementary_material.pdf) for the scientific supplement and its reproduction guide, or [main.pdf](main.pdf) for the complete final paper. The [experiment map](docs/REBUTTAL_EXPERIMENT_MAP.md) identifies each retained cohort, its protocol, reproduction command, and limitations.
 
 The final paper has 47 pages: main text and the funding/competing-interest statement on pages 1–10, references on pages 11–12, scientific Appendices A–E on pages 13–39, and artifact availability/checklist on pages 40–47. The main-paper SHA256 is:
 
 ```text
-9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7
+8ac938152387845dad1a45ee5225c0b93053edf59d6d0cfb650c4f065f4db044
 ```
 
-This release synchronizes the final source and PDF, restores the official checklist guidance, clarifies the matched eligible-selector comparison and ridge limitation, and includes the standalone supplementary document and retained paired flip-prediction intervals. Scientific Appendices A–E and experimental values are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
+This release adds one application-motivation citation about autonomous bird monitoring to the introduction and synchronizes the final source/PDF and standalone supplement. The paper and supplement share the complete 30-entry bibliography. Scientific Appendices A–E, experimental values, and the retained paired flip-prediction intervals are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
 
 ## Package contents
 

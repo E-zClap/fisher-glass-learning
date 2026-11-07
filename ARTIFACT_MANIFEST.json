@@ -1,5 +1,5 @@
 {
-  "release": "camera-ready-v15",
+  "release": "camera-ready-v16",
   "scope": "Current paper and standalone scientific supplement, experiment replication code, retained numerical replay inputs, deterministic theoretical checks, and two Figure 1 illustrations; excludes full datasets, other intervention images, feature caches and model weights.",
   "original_archives": [
     {
@@ -77,8 +77,8 @@
       "path": "README.md",
       "source": "camera-ready-v1 release authoring",
       "source_sha256": null,
-      "published_sha256": "f25dad43a90db7f3ee660e8aa1b96b8ff2a5c6ba1f32338d73d6b63287636c6e",
-      "bytes": 18081,
+      "published_sha256": "cdbb0f8bae88f0a4c263305b3434ad1a4fe9c2f605e0f8ee8ffc3ab5492738fc",
+      "bytes": 18101,
       "transformations": [
         "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
         "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged.",
@@ -93,7 +93,8 @@
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
-        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged."
+        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
       "prior_release_sha256": "b6bd92f92e2453632db57c11172c22bab93ad011813cb8988f8b8eb7f02bf5cf",
       "prior_release_hashes": {
@@ -109,16 +110,22 @@
         "camera-ready-v11": "195ef97c8f80df0566c3348bd003a70dfb69a7a0d18cd3499d137d99073fb212",
         "camera-ready-v12": "027accf9f9b4886eff1c5f738cb1c1b43280621b9d00dfa8433283e0a5e35fe8",
         "camera-ready-v13": "66d1d2a188e8b3cd89eb72405b66537b7f8d230bdba688a4afef5cba6a8dcb3f",
-        "camera-ready-v14": "1c8d085709f3e2ee7e8a78bc9f74d822dfd46984f9272f7b90ccbff877dd7f39"
+        "camera-ready-v14": "1c8d085709f3e2ee7e8a78bc9f74d822dfd46984f9272f7b90ccbff877dd7f39",
+        "camera-ready-v15": "f25dad43a90db7f3ee660e8aa1b96b8ff2a5c6ba1f32338d73d6b63287636c6e"
       }
     },
     {
       "path": "START_HERE.md",
       "source": "supplemental_camera_ready_v2/package/START_HERE.md",
       "source_sha256": "04e08403ae42ff19f91950016a2c9c5a7f7ba0cd24997bdd2495e4c6e90f4ac9",
-      "transformations": [],
-      "published_sha256": "04e08403ae42ff19f91950016a2c9c5a7f7ba0cd24997bdd2495e4c6e90f4ac9",
-      "bytes": 7275
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "90fc1bdc10584367baa57b0d81655c6df004c6ed3018c8b1719c4f0de0931464",
+      "bytes": 7297,
+      "prior_release_hashes": {
+        "camera-ready-v15": "04e08403ae42ff19f91950016a2c9c5a7f7ba0cd24997bdd2495e4c6e90f4ac9"
+      }
     },
     {
       "path": "artifacts/checkpoint_identifiers.csv",
@@ -2944,10 +2951,11 @@
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
-        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged."
+        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
-      "published_sha256": "8bc488dea210d34a0f74d807ae6510019bf01f9eb62f276663ebda251b51a931",
-      "bytes": 11015,
+      "published_sha256": "226ca1857c41a2de5815868e5cad1b41defe29c0a1e91030aaa00d04d8942d00",
+      "bytes": 11540,
       "prior_release_hashes": {
         "camera-ready-v3": "700d484b05a8929bc12e192de08315f46e02cc31df33b10258fdedae9b8d4e16",
         "camera-ready-v4": "d1a094c08f9142244f69678508ee2d033f5f290543f5a31beaa06bc111221edd",
@@ -2960,16 +2968,22 @@
         "camera-ready-v11": "acfb21b27f7b24ed0d9480ecfad399e3fba553f4fe2afaf1cf34594ef580c3fa",
         "camera-ready-v12": "2a4e85c730b816d3e67cb260ad361f1782087f55721eb860f5da02c401b909d8",
         "camera-ready-v13": "529e98c6e632f4734a2c3438ba5b5505baa985ec4777391ce2396e8ecc2366e1",
-        "camera-ready-v14": "ab4b46e87b786efe88dac835cfb7e2989f203e025a1d01fb3e28a0c5153cdb25"
+        "camera-ready-v14": "ab4b46e87b786efe88dac835cfb7e2989f203e025a1d01fb3e28a0c5153cdb25",
+        "camera-ready-v15": "8bc488dea210d34a0f74d807ae6510019bf01f9eb62f276663ebda251b51a931"
       }
     },
     {
       "path": "docs/REBUTTAL_EXPERIMENT_MAP.md",
       "source": "supplemental_camera_ready_v2/package/docs/REBUTTAL_EXPERIMENT_MAP.md",
       "source_sha256": "46428b31f51dd161bb12d7776c404dca63e51f704418ff3435dd4750065eeb2c",
-      "transformations": [],
-      "published_sha256": "46428b31f51dd161bb12d7776c404dca63e51f704418ff3435dd4750065eeb2c",
-      "bytes": 12285
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "9aeb193cb370329a5221326358681fea3fdea230163d52bc341a6d4b30e1f636",
+      "bytes": 12285,
+      "prior_release_hashes": {
+        "camera-ready-v15": "46428b31f51dd161bb12d7776c404dca63e51f704418ff3435dd4750065eeb2c"
+      }
     },
     {
       "path": "docs/REPRODUCING_EXPERIMENTS.md",
@@ -3670,10 +3684,14 @@
       "source": "tex/camera_ready_v2/main.pdf",
       "source_sha256": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7",
       "transformations": [
-        "Byte-identical delivery copy of the final complete paper."
+        "Byte-identical delivery copy of the final complete paper.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
-      "published_sha256": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7",
-      "bytes": 1059087
+      "published_sha256": "8ac938152387845dad1a45ee5225c0b93053edf59d6d0cfb650c4f065f4db044",
+      "bytes": 1060005,
+      "prior_release_hashes": {
+        "camera-ready-v15": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7"
+      }
     },
     {
       "path": "reanalysis/classification_mechanism/README.md",
@@ -4233,9 +4251,14 @@
       "path": "supplementary_material.pdf",
       "source": "supplemental_camera_ready_v2/package/supplementary_material.pdf",
       "source_sha256": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242",
-      "transformations": [],
-      "published_sha256": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242",
-      "bytes": 734057
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "a411c09c5f63f60ce6a821b5e3a750951d97986ceaa7638b330bba7678ed4ada",
+      "bytes": 734425,
+      "prior_release_hashes": {
+        "camera-ready-v15": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242"
+      }
     },
     {
       "path": "tex/camera_ready_v2/appendix/e01_reserves.tex",
@@ -4461,7 +4484,7 @@
       "path": "tex/camera_ready_v2/checklist.tex",
       "source": "tex/camera_ready_v2/checklist.tex",
       "source_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
-      "published_sha256": "dcf4a8ad95ddb2509944af53a52d6b717af10c2d443987ca9e6f372397d4a08d",
+      "published_sha256": "f55ffbbe1996af9172df125be27a53f92f38e5bd3be24d44479bcd1e39cd547f",
       "bytes": 28116,
       "transformations": [
         "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
@@ -4477,7 +4500,8 @@
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
-        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged."
+        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
       "prior_release_sha256": "4f27495c60a6786e78c1b6f98d8f957f4797c69ea34322430da70f4f475c30ff",
       "prior_release_hashes": {
@@ -4493,14 +4517,15 @@
         "camera-ready-v11": "f46ad4f220d4f9fd3a8fc98172e98d31c595ee39573fe17de712601907921adf",
         "camera-ready-v12": "be4b77ffecb208854c0fff62fa8ca9c9c2ded2df98c209d7235a72e6b4e5afba",
         "camera-ready-v13": "65313d31bfc38f70eda509337107c0eee9b7b93836384950084f762dc9323a81",
-        "camera-ready-v14": "955502b2fc16f2975372a2dc077632b460b8a1cd3e02ef60137be1ad867a67ae"
+        "camera-ready-v14": "955502b2fc16f2975372a2dc077632b460b8a1cd3e02ef60137be1ad867a67ae",
+        "camera-ready-v15": "dcf4a8ad95ddb2509944af53a52d6b717af10c2d443987ca9e6f372397d4a08d"
       }
     },
     {
       "path": "tex/camera_ready_v2/declarations.tex",
       "source": "tex/camera_ready_v2/declarations.tex",
       "source_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
-      "published_sha256": "57dd7caef636120a883ea78964e33238868f7ea09a358430a2ad7f9df8fe013f",
+      "published_sha256": "e7684b308fde8386165823483ebb35e8b1550d7c26dd9a2f1639d80fefb57779",
       "bytes": 1551,
       "transformations": [
         "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
@@ -4516,7 +4541,8 @@
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
-        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged."
+        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
       "prior_release_sha256": "4d8d60a9a33ed511a07493fc976d8a4e055eadbb31383f87e576c704d1fcd350",
       "prior_release_hashes": {
@@ -4532,7 +4558,8 @@
         "camera-ready-v11": "b9ffcafd7b2179a57e443d2651694cbed41ae9cd211e02c0d6d974a7af69b10a",
         "camera-ready-v12": "c0ee18eb39c3aaa41abc8d399d79ca395723a79adbe5c57319ddd81eaece73a6",
         "camera-ready-v13": "2d5aa1fd3141fa7de4ce32fb5d6e9994a6fd6fae815d0623de71d3e2251ef4cc",
-        "camera-ready-v14": "217b872a804d66e8c49682b217c2e1443facef94a03ab0d08eaeea7ecdf3c470"
+        "camera-ready-v14": "217b872a804d66e8c49682b217c2e1443facef94a03ab0d08eaeea7ecdf3c470",
+        "camera-ready-v15": "57dd7caef636120a883ea78964e33238868f7ea09a358430a2ad7f9df8fe013f"
       }
     },
     {
@@ -4859,8 +4886,8 @@
       "path": "tex/camera_ready_v2/main.pdf",
       "source": "tex/camera_ready_v2/main.pdf",
       "source_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
-      "published_sha256": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7",
-      "bytes": 1059087,
+      "published_sha256": "8ac938152387845dad1a45ee5225c0b93053edf59d6d0cfb650c4f065f4db044",
+      "bytes": 1060005,
       "transformations": [
         "camera-ready-v2: reproducibility documentation, verified data preparation, or corrected manuscript checklist; scientific results unchanged.",
         "camera-ready-v3: appendix presentation consolidation and release/table cross-references; numerical evidence unchanged.",
@@ -4875,7 +4902,8 @@
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
-        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged."
+        "camera-ready-v15: final manuscript/compliance wording and release documentation; scientific results and retained numerical artifacts unchanged.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
       "prior_release_sha256": "339f35840a8de558f2c5c04e534e85456b1abf644ba3e9396d28197c45e79ab2",
       "prior_release_hashes": {
@@ -4891,7 +4919,8 @@
         "camera-ready-v11": "51ec0533cf089414c9c6fcbd8d4edcbef9aca3faddc6ea0c034942ca62ca3401",
         "camera-ready-v12": "9e25fd64fb80a2c8ee7d6ae3e1fb3b5e67fab55be382ae81fddb80e9a91c2624",
         "camera-ready-v13": "c0293a4a9da7bfe7aca3d5f20dae8e00177dcf250b9fcf6858f5be0f06bfc894",
-        "camera-ready-v14": "3d6f719b07e6fc14581a272c6506c73a751f870a477ccaa172b57fac634136d4"
+        "camera-ready-v14": "3d6f719b07e6fc14581a272c6506c73a751f870a477ccaa172b57fac634136d4",
+        "camera-ready-v15": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7"
       }
     },
     {
@@ -4939,9 +4968,14 @@
       "path": "tex/camera_ready_v2/references_camera_ready.bib",
       "source": "tex/camera_ready_v2/references_camera_ready.bib",
       "source_sha256": "c93a1c3e62d804017cfeff3ffd9ed1e8fe58e160da893b01c4073914c1fe401a",
-      "published_sha256": "c93a1c3e62d804017cfeff3ffd9ed1e8fe58e160da893b01c4073914c1fe401a",
-      "bytes": 4023,
-      "transformations": []
+      "published_sha256": "82dc348cb3766002d7dd5d19314e2c2b36937992f607a4bfddb61f532ac4bd40",
+      "bytes": 4360,
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "prior_release_hashes": {
+        "camera-ready-v15": "c93a1c3e62d804017cfeff3ffd9ed1e8fe58e160da893b01c4073914c1fe401a"
+      }
     },
     {
       "path": "tex/camera_ready_v2/references_core.bib",
@@ -4955,15 +4989,16 @@
       "path": "tex/camera_ready_v2/sections/01_introduction.tex",
       "source": "tex/camera_ready_v2/sections/01_introduction.tex",
       "source_sha256": "7bd1ea3ad8d99360c7dde136dac66ac8addbddd79ba710b1511aae2c10a85405",
-      "published_sha256": "28b1c62b305b9d5c1571eaff0828775f733b6511ab6bc766a95015a85609e47e",
-      "bytes": 3249,
+      "published_sha256": "7f1862539d6ee4891c9c68f51eadc04ad84acb6b9ac13471f758b7ad7de3fd2e",
+      "bytes": 3411,
       "transformations": [
         "camera-ready-v5: citation placement/pinpoints, construction attribution, image-construction wording and provenance credit; synchronized release references. Equations and numerical results unchanged.",
         "camera-ready-v7: source-verified clarity pass for definitions, matrix/weight/calibration conventions, uncertainty and experiment transitions; layout and release references synchronized. Scientific results and experimental artifacts unchanged.",
         "camera-ready-v11: user-supplied abstract replacement, nonbreaking introduction citation, and synchronized release metadata; scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v12: user-supplied introduction and contribution framing, paragraph/float placement, and synchronized release metadata; abstract, scientific results and reproducibility artifacts unchanged.",
         "camera-ready-v13: four user-supplied concise main figure captions, synchronized short titles and release metadata; body prose, artwork, scientific results and reproducibility artifacts unchanged.",
-        "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments."
+        "camera-ready-v14: final manuscript, source/provenance and release-scope update; no new empirical experiments.",
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
       ],
       "prior_release_hashes": {
         "camera-ready-v4": "7bd1ea3ad8d99360c7dde136dac66ac8addbddd79ba710b1511aae2c10a85405",
@@ -4971,7 +5006,8 @@
         "camera-ready-v10": "63282d14c53f08de7c51fac55e1e00939c9271980bc7f5ce5dbcdf5fa820c681",
         "camera-ready-v11": "ad6545c7f1f15e8175d5e380a22fc44187d2f2132d9a4ac6a45809a935d400ce",
         "camera-ready-v12": "143a33aed3078cf1b36f890eb31eaefe0d6b34914c42706c20b8d551b2d0284c",
-        "camera-ready-v13": "c6b7f38a9ba881336752bc92ebfcb5ddad35a0c1fe6ee19e6c055589c568fc7a"
+        "camera-ready-v13": "c6b7f38a9ba881336752bc92ebfcb5ddad35a0c1fe6ee19e6c055589c568fc7a",
+        "camera-ready-v15": "28b1c62b305b9d5c1571eaff0828775f733b6511ab6bc766a95015a85609e47e"
       }
     },
     {
@@ -5160,25 +5196,40 @@
       "path": "tex/camera_ready_v2/supplement_reproducibility.tex",
       "source": "supplemental_camera_ready_v2/package/tex/camera_ready_v2/supplement_reproducibility.tex",
       "source_sha256": "866d226d8f631cb025ae8a5c5c2126de23b36ef284f5dc9b183b1e86490ed21e",
-      "transformations": [],
-      "published_sha256": "866d226d8f631cb025ae8a5c5c2126de23b36ef284f5dc9b183b1e86490ed21e",
-      "bytes": 4783
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "f8d8f9a4ed98bda6ff9113512e731c7704325ded127c767f936b49a720235cc6",
+      "bytes": 4764,
+      "prior_release_hashes": {
+        "camera-ready-v15": "866d226d8f631cb025ae8a5c5c2126de23b36ef284f5dc9b183b1e86490ed21e"
+      }
     },
     {
       "path": "tex/camera_ready_v2/supplementary_material.pdf",
       "source": "supplemental_camera_ready_v2/package/tex/camera_ready_v2/supplementary_material.pdf",
       "source_sha256": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242",
-      "transformations": [],
-      "published_sha256": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242",
-      "bytes": 734057
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "a411c09c5f63f60ce6a821b5e3a750951d97986ceaa7638b330bba7678ed4ada",
+      "bytes": 734425,
+      "prior_release_hashes": {
+        "camera-ready-v15": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242"
+      }
     },
     {
       "path": "tex/camera_ready_v2/supplementary_material.tex",
       "source": "supplemental_camera_ready_v2/package/tex/camera_ready_v2/supplementary_material.tex",
       "source_sha256": "12485aae5c0e0016f06019f0b9e7dda1835fdeefe5f2e19c1749561c00065e9f",
-      "transformations": [],
-      "published_sha256": "12485aae5c0e0016f06019f0b9e7dda1835fdeefe5f2e19c1749561c00065e9f",
-      "bytes": 4278
+      "transformations": [
+        "camera-ready-v16: application-motivation citation/bibliography and synchronized PDF, cross-reference and release documentation; retained results unchanged."
+      ],
+      "published_sha256": "a3535cdbaf84aaa32727a1ca392d17a8231a16f9877fe137b8e44d445ed28571",
+      "bytes": 4439,
+      "prior_release_hashes": {
+        "camera-ready-v15": "12485aae5c0e0016f06019f0b9e7dda1835fdeefe5f2e19c1749561c00065e9f"
+      }
     }
   ],
   "notes": [
@@ -5188,20 +5239,21 @@
     "The final manuscript and editable figure sources are included; manuscript-specific private revision notes and old backups are excluded.",
     "camera-ready-v2 adds paper-specific independent rerun guides, a synthetic runner, and validated Stanford Waterbirds preparation. Missing historical run files limit exact archival replay, not the availability of experiment replication workflows.",
     "camera-ready-v14 adds deterministic checks for the analytic classification example and the two byte-preserved Figure 1 intervention illustrations. Private connection details are omitted from their published provenance; full benchmark datasets and other generated images remain excluded. No new empirical experiments were performed.",
-    "camera-ready-v15 restores checklist Guidelines, places acknowledgments before references, clarifies eligible selector comparisons and nuisance-ridge limitations, and adds the standalone supplement and reproduction guide. The LLM-usage answer remains N/A. Retained empirical artifacts and deterministic reanalysis inputs/outputs are unchanged; no new experiments were run."
+    "camera-ready-v15 restores checklist Guidelines, places acknowledgments before references, clarifies eligible selector comparisons and nuisance-ridge limitations, and adds the standalone supplement and reproduction guide. The LLM-usage answer remains N/A. Retained empirical artifacts and deterministic reanalysis inputs/outputs are unchanged; no new experiments were run.",
+    "camera-ready-v16 adds one introduction application-motivation sentence citing the Mansouri 2025 bird-feeder preprint (arXiv:2508.09398), its bibliography entry, and synchronized release/supplement documentation. Scientific results, experiment code, retained numerical artifacts and analytic reanalysis are unchanged; no new experiments were run."
   ],
-  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v15",
+  "release_url": "https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v16",
   "artifact_mapping": "docs/REBUTTAL_EXPERIMENT_MAP.md",
   "manuscript_map": "docs/MANUSCRIPT_MAP.md",
   "supplement": {
     "start_here": "START_HERE.md",
     "paper": "main.pdf",
     "paper_pages": 47,
-    "paper_sha256": "9c568df6006e5dc4a448b8e16d36165f3f62a6cedb895e5f4b3b2465aa8d1db7",
+    "paper_sha256": "8ac938152387845dad1a45ee5225c0b93053edf59d6d0cfb650c4f065f4db044",
     "standalone": "supplementary_material.pdf",
     "standalone_pages": 33,
-    "standalone_sha256": "5e74235a289f64d1980bae85e859523e6e719596c6ea67c390e2dae6b1868242",
-    "base_release": "camera-ready-v14",
-    "base_commit": "1015770d32011efea2e8dd64963f401d4e569ab7"
+    "standalone_sha256": "a411c09c5f63f60ce6a821b5e3a750951d97986ceaa7638b330bba7678ed4ada",
+    "base_release": "camera-ready-v15",
+    "base_commit": "fe0fc65ac4fbcfd15144cf1c0267208408df5299"
   }
 }
