@@ -1,6 +1,6 @@
-# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10/v11/v12/v13/v14/v15/v16/v17/v18
+# Manuscript map: camera-ready-v2 to camera-ready-v3/v4/v5/v6/v7/v8/v9/v10/v11/v12/v13/v14/v15/v16/v17/v18/v19
 
-The current v18 PDF has 47 pages: main text and the funding/competing-interest statement 1–10, references 11–12, scientific appendices 13–39, and artifact availability/checklist 40–47. This map follows stable manuscript labels across releases. The v3 compression reduced the scientific appendices from 41 to 23 pages; v8 added two pages for verified post hoc comparisons and operational guidance, preserving proofs, controls and uncertainty. Historical page ranges should not be used to locate current content.
+The current v19 PDF has 47 pages: main text and the funding/competing-interest statement 1–10, references 11–12, scientific appendices 13–39, and artifact availability/checklist 40–47. This map follows stable manuscript labels across releases. The v3 compression reduced the scientific appendices from 41 to 23 pages; v8 added two pages for verified post hoc comparisons and operational guidance, preserving proofs, controls and uncertainty. Historical page ranges should not be used to locate current content.
 
 Camera-ready-v4 applies seven wording clarifications to v3. Table and equation numbering, numerical values, the page budget, and the crosswalk below are unchanged. In v4, the revised caption of Table E.2 appears on page 31.
 
@@ -30,11 +30,13 @@ Camera-ready-v16 adds one application-motivation sentence and citation in the in
 
 Camera-ready-v17 replaces the main-paper abstract. The main paper remains 47 pages with ten pages of main text; scientific Appendices A–E, result numbering, numerical evidence, figures, and all 30 bibliography entries remain unchanged. The standalone supplement and release metadata are synchronized with the final manuscript. No new empirical experiment or analysis is introduced.
 
-Camera-ready-v18 corrects the funding acknowledgement on main-paper page 10 to: ‘This work was supported by JST FOREST Program (Grant No. JPMJFR2547).’ The competing-interest statement and abstract remain unchanged. The main paper remains 47 pages with ten pages of main text; scientific Appendices A–E, result numbering, numerical evidence, figures, and all 30 bibliography entries remain unchanged. Release metadata and the standalone supplement are synchronized; no new empirical experiment or analysis is introduced.
+Camera-ready-v18 revised the funding acknowledgement on main-paper page 10; that revision is superseded by v19. The competing-interest statement and abstract remain unchanged. The main paper remains 47 pages with ten pages of main text; scientific Appendices A–E, result numbering, numerical evidence, figures, and all 30 bibliography entries remain unchanged. Release metadata and the standalone supplement are synchronized; no new empirical experiment or analysis is introduced.
+
+Camera-ready-v19 restores the author's original funding declaration on main-paper page 10. The competing-interest statement and abstract remain unchanged. The main paper remains 47 pages with ten pages of main text; scientific Appendices A–E, result numbering, numerical evidence, figures, heading case/style, and all 30 bibliography entries remain unchanged. Release metadata and the standalone supplement are synchronized; no new empirical experiment or analysis is introduced.
 
 ## Current figure and theorem numbering
 
-| Stable LaTeX label | v13 | v14–v18 |
+| Stable LaTeX label | v13 | v14–v19 |
 |---|---|---|
 | `fig:concept` | Figure 1 | Figure 1: retained image pair and schematic geometry |
 | `fig:prospective-main` | Figure 3 | Figure 2 |
@@ -47,9 +49,9 @@ The new worked classification proof is Appendix A.4 (`app:classification-mechani
 
 ## Table crosswalk
 
-Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v18 numbers.
+Multiple semantic labels now identify a single table with complementary panels. Historical reports and preserved source snapshots keep their original numbering; the current guides use v8–v19 numbers.
 
-| Stable LaTeX label | v2 table | v3–v7 table | v8–v18 table |
+| Stable LaTeX label | v2 table | v3–v7 table | v8–v19 table |
 |---|---|---|---|
 | `tab:appB-conditioning` | B.1 | B.1 | B.1 |
 | `tab:appB-certificates` | B.2 | B.1 | B.1 |
