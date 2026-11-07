@@ -1,12 +1,14 @@
 \documentclass{article}
 
 % Compile from this directory; the NeurIPS style is copied here unchanged.
+% Match the numeric citation style used in the companion manuscript.
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
 \usepackage[main, final]{neurips_2026}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{courier}
-\usepackage{url}
+\usepackage{xurl}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -29,10 +31,10 @@
 
 \hypersetup{
   colorlinks=true,
-  citecolor=blue,
-  linkcolor=blue,
-  filecolor=blue,
-  urlcolor=blue
+  citecolor=blue!50!black,
+  linkcolor=blue!50!black,
+  filecolor=blue!50!black,
+  urlcolor=blue!50!black
 }
 
 \newcommand{\E}{\mathbb{E}}
@@ -129,9 +131,9 @@
 \clearpage
 \bibliographystyle{plainnat}
 \begingroup
-\raggedright
-\microtypesetup{protrusion=false}
-\setlength{\bibsep}{2pt plus 0.3pt}
+\renewcommand{\ttdefault}{cmtt}
+\setlength{\bibsep}{4pt plus 0.5pt minus 0.5pt}
+\interlinepenalty=10000
 \nocite{arjovsky2019invariant,ash2021gone,audibert2007fast,bickel1993efficient,borkan2019nuanced,cox1987parameter,guo2017calibration,howard2019searching,koh2021wilds,lecam1986asymptotic,liu2021just,mansouri2025autonomous,mansouri_arai_2026_fisher_glasses,newey1990semiparametric,oakdenrayner2020hidden,paranjape2022agro,pukelsheim2006optimal,radford2021learning,rame2022fishr,rockafellar2000optimization,rockafellar2002conditional,russakovsky2015imagenet,sagawa2019distributionally,sohoni2020no,telea2004image,tropp2012user,tsiatis2006semiparametric,tsybakov2009introduction,wah2011cub,zhou2018places}
 \bibliography{references_core,references_camera_ready}
 \endgroup

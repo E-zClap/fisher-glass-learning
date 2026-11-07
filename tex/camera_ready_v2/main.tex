@@ -1,12 +1,14 @@
 \documentclass{article}
 
 % Compile from this directory; the NeurIPS style is copied here unchanged.
+% Match the numeric citation style used in the companion manuscript.
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
 \usepackage[main, final]{neurips_2026}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{courier}
-\usepackage{url}
+\usepackage{xurl}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{graphicx}
@@ -27,9 +29,9 @@
 
 \hypersetup{
   colorlinks=true,
-  citecolor=blue,
-  linkcolor=blue,
-  urlcolor=blue
+  citecolor=blue!50!black,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black
 }
 
 \newcommand{\E}{\mathbb{E}}
@@ -97,9 +99,9 @@ This work received no funding. The author declares no competing interests.
 \clearpage
 \bibliographystyle{plainnat}
 \begingroup
-\raggedright
-\microtypesetup{protrusion=false}
-\setlength{\bibsep}{2pt plus 0.3pt}
+\renewcommand{\ttdefault}{cmtt}
+\setlength{\bibsep}{4pt plus 0.5pt minus 0.5pt}
+\interlinepenalty=10000
 \bibliography{references_core,references_camera_ready}
 \endgroup
 

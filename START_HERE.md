@@ -1,16 +1,16 @@
 # Fisher-Glass supplemental material
 
-This is the **camera-ready-v21** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v21). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
+This is the **camera-ready-v22** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v22). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
 
 Start with [supplementary_material.pdf](supplementary_material.pdf) for the scientific supplement and its reproduction guide, or [main.pdf](main.pdf) for the complete final paper. The [experiment map](docs/REBUTTAL_EXPERIMENT_MAP.md) identifies each retained cohort, its protocol, reproduction command, and limitations.
 
-The final paper has 47 pages: main text and the funding/competing-interest statement on pages 1–10, references on pages 11–12, scientific Appendices A–E on pages 13–39, and artifact availability/checklist on pages 40–47. The main-paper SHA256 is:
+The final paper has 48 pages: main text and the funding/competing-interest statement on pages 1–10, references on pages 11–12, scientific Appendices A–E on pages 13–40, and artifact availability/checklist on pages 41–48. The main-paper SHA256 is:
 
 ```text
-c885998a84a1f206b2eb37954471d1118b5ff7fb12799ddc948a12328dfaf4ce
+1e51688c112a44acd70aa79381e1faaa9560e1571c51a5a74befded9e7f2038b
 ```
 
-This release replaces Figure 1's caption and short title and synchronizes the final source/PDF and standalone supplement. The Figure 1 artwork, photographs, geometry, and labels are unchanged. The abstract and competing-interest statement remain unchanged. The paper and supplement share the complete 30-entry bibliography. Scientific Appendices A–E, experimental values, and the retained paired flip-prediction intervals are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
+This release adopts numeric citations, harmonizes bibliography typography and link colors, and synchronizes the final source/PDF and standalone supplement. The Figure 1 caption, artwork, photographs, geometry, and labels are unchanged. The abstract and competing-interest statement remain unchanged. The paper and supplement share the complete 30-entry bibliography. Scientific Appendices A–E, experimental values, and the retained paired flip-prediction intervals are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
 
 ## Package contents
 
