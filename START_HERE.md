@@ -1,16 +1,16 @@
 # Fisher-Glass supplemental material
 
-This is the **camera-ready-v17** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v17). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
+This is the **camera-ready-v18** reproducibility release for the final paper, [available on GitHub](https://github.com/E-zClap/fisher-glass-learning/releases/tag/camera-ready-v18). It includes the final manuscript, standalone scientific supplement, experiment implementations, retained results, and numerical replay inputs. Preparing this release introduced no new empirical experiments.
 
 Start with [supplementary_material.pdf](supplementary_material.pdf) for the scientific supplement and its reproduction guide, or [main.pdf](main.pdf) for the complete final paper. The [experiment map](docs/REBUTTAL_EXPERIMENT_MAP.md) identifies each retained cohort, its protocol, reproduction command, and limitations.
 
 The final paper has 47 pages: main text and the funding/competing-interest statement on pages 1–10, references on pages 11–12, scientific Appendices A–E on pages 13–39, and artifact availability/checklist on pages 40–47. The main-paper SHA256 is:
 
 ```text
-ff31ce983f1cc351cd1ff6fac8e7aa719a5551269cb8576b11a8bf61f8117180
+060de2108d4ea73eee7adc81b704c9aaed571bfddc6d84dea83af8c8346e0996
 ```
 
-This release updates the main-paper abstract and synchronizes the final source/PDF and standalone supplement. The paper and supplement share the complete 30-entry bibliography. Scientific Appendices A–E, experimental values, and the retained paired flip-prediction intervals are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
+This release corrects the main-paper funding acknowledgement to JST FOREST Program (Grant No. JPMJFR2547) and synchronizes the final source/PDF and standalone supplement. The abstract and competing-interest statement remain unchanged. The paper and supplement share the complete 30-entry bibliography. Scientific Appendices A–E, experimental values, and the retained paired flip-prediction intervals are unchanged. [ARTIFACT_MANIFEST.json](ARTIFACT_MANIFEST.json) records the files included here, their hashes, and original archive provenance.
 
 ## Package contents
 
